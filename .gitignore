@@ -8,3 +8,8 @@ Fintech Payment Platform OpenAPI說明文檔20260304/
 .DS_Store
 __pycache__/
 *.pyc
+
+# 審核/測試臨時文件（含敏感信息，不發佈）
+test_api.py
+extract_docx.py
+extracted_docx_content.txt
