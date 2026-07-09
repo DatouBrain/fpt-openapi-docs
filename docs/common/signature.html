@@ -105,7 +105,7 @@
   "sign": "22C9835251DCF58BB70C78FA8D6448BD"
 }</code></pre>
 <p>正確的簽名排序結果為（排除 <code>sign</code> 和 <code>lang</code>）：</p>
-<pre><span class="code-label">TEXT</span><code class="language-text">amount=1&body=a chair&client_id=1001&client_ip=127.0.0.1&nonce_str=1409196838&notify_url=2031&order_no=Me08772e914454656bf26ec8996e35bb&service=pay.weixin.web.intl&store_id=1001001</code></pre>
+<pre><span class="code-label">TEXT</span><code class="language-text">amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.weixin.web.intl&amp;store_id=1001001</code></pre>
 
 <h2 id="sign-algorithm">簽名演算法</h2>
 <p>使用 MD5 摘要演算法，在簽名原始串後加上商戶通信金鑰進行計算，結果轉為大寫：</p>
@@ -118,10 +118,10 @@
 <h2 id="full-example">完整示例</h2>
 <p>假設商戶秘鑰為 <code>MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=</code>：</p>
 <pre><span class="code-label">TEXT</span><code class="language-text">簽名原始串：
-amount=1&body=a chair&client_id=1001&client_ip=127.0.0.1&nonce_str=1409196838&notify_url=2031&order_no=Me08772e914454656bf26ec8996e35bb&service=pay.weixin.web.intl&store_id=1001001
+amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.weixin.web.intl&amp;store_id=1001001
 
 拼接金鑰後：
-amount=1&body=a chair&client_id=1001&client_ip=127.0.0.1&nonce_str=1409196838&notify_url=2031&order_no=Me08772e914454656bf26ec8996e35bb&service=pay.weixin.web.intl&store_id=1001001&key=MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=
+amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.weixin.web.intl&amp;store_id=1001001&amp;key=MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=
 
 MD5 運算並轉大寫：
 D89E5E3DF1447F61F6AC1EC4AB8B177E</code></pre>
