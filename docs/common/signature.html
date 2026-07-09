@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>數字簽名 | Fintech Payment OpenAPI 文檔</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon">FP</span>
+        <span class="logo-text">Fintech Payment <span class="logo-sub">OpenAPI</span></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html">首頁</a>
+        <a href="../common/quick-start.html">接入指引</a>
+        <a href="../common/data-format.html">通用規則</a>
+        <a href="../payments/card-online/global-payments-online.html">產品文檔</a>
+      </nav>
+      <button class="menu-toggle" aria-label="選單">☰</button>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="sidebar">
+<div class="sidebar-group" data-group="common">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>通用規則</div>
+  <ul class="sidebar-links">
+    <li><a href="../common/quick-start.html" class="sub-link">快速入門</a></li>
+    <li><a href="../common/endpoints.html" class="sub-link">API 調用地址</a></li>
+    <li><a href="../common/data-format.html" class="sub-link">數據格式</a></li>
+    <li><a href="../common/signature.html" class="sub-link active">數字簽名</a></li>
+    <li><a href="../common/request-headers.html" class="sub-link">請求頭說明</a></li>
+    <li><a href="../common/error-codes.html" class="sub-link">錯誤碼說明</a></li>
+    <li><a href="../common/notification.html" class="sub-link">支付通知說明</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online 無卡支付</a></li>
+    <li><a href="../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online 支付 <span class="status-tag upcoming">暫未開放</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-offline/global-payments-offline.html" class="sub-link">Global Payments Offline 物理卡支付 <span class="status-tag upcoming">暫未開放</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP 支付</a></li>
+    <li><a href="../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB 支付</a></li>
+    <li><a href="../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP 支付</a></li>
+    <li><a href="../payments/qr-online/alipay-plus.html" class="sub-link">Alipay Plus+ 支付</a></li>
+    <li><a href="../payments/qr-online/wechat-web.html" class="sub-link">Wechat WEB 支付</a></li>
+    <li><a href="../payments/qr-online/wechat-wap.html" class="sub-link">Wechat WAP 支付</a></li>
+    <li><a href="../payments/qr-online/wechat-miniprogram.html" class="sub-link">Wechat 公眾帳號和小程序支付</a></li>
+    <li><a href="../payments/qr-online/wechat-app.html" class="sub-link">Wechat APP 支付</a></li>
+    <li><a href="../payments/qr-online/qr-code.html" class="sub-link">掃碼支付</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-offline/barcode.html" class="sub-link">付款碼支付</a></li>
+    <li><a href="../payments/qr-offline/cash-api.html" class="sub-link">CashAPI 支付</a></li>
+  </ul>
+</div>
+</aside>
+
+
+    <main class="main-content">
+      <h1 id="overview">數字簽名</h1>
+<div class="page-meta">
+  <span class="page-meta-item">文檔版本：V1.0</span>
+</div>
+<p>為保證資料傳輸過程中的真實性和完整性，所有 API 請求和響應都需要進行數字簽名。簽名分為兩步：先按規則拼接簽名原始串，再用 MD5 演算法計算簽名結果。</p>
+
+<h2 id="sign-string">簽名原始串</h2>
+<p>無論是請求還是應答，簽名原始串按以下規則組裝：</p>
+<ol>
+  <li>除 <code>sign</code> 和 <code>lang</code> 字段外，所有參數按照字段名的 ASCII 碼從小到大排序，使用 QueryString 格式（即 <code>key1=value1&amp;key2=value2&amp;...</code>）拼接</li>
+  <li>空值不傳遞，不參與簽名組串</li>
+  <li>字段名和字段值都採用原始值，不進行 URL Encode</li>
+  <li>平台返回的應答或通知可能會由於升級增加參數，請驗證應答簽名時注意允許這種情況</li>
+</ol>
+
+<h3>示例</h3>
+<p>假設有以下請求參數：</p>
+<pre><span class="code-label">JSON</span><code class="language-json">{
+  "client_id": "1001",
+  "store_id": "1001001",
+  "service": "pay.weixin.web.intl",
+  "order_no": "Me08772e914454656bf26ec8996e35bb",
+  "amount": "1",
+  "body": "a chair",
+  "notify_url": "2031",
+  "client_ip": "127.0.0.1",
+  "nonce_str": "1409196838",
+  "sign": "22C9835251DCF58BB70C78FA8D6448BD"
+}</code></pre>
+<p>正確的簽名排序結果為（排除 <code>sign</code> 和 <code>lang</code>）：</p>
+<pre><span class="code-label">TEXT</span><code class="language-text">amount=1&body=a chair&client_ip=127.0.0.1&client_id=1001&nonce_str=1409196838&notify_url=2031&order_no=Me08772e914454656bf26ec8996e35bb&service=pay.weixin.web.intl&store_id=1001001</code></pre>
+
+<h2 id="sign-algorithm">簽名演算法</h2>
+<p>使用 MD5 摘要演算法，在簽名原始串後加上商戶通信金鑰進行計算，結果轉為大寫：</p>
+<div class="callout info">
+  <div class="callout-title">📐 簽名公式</div>
+  <p><code>sign = MD5(簽名原始串 + "&key=" + 商戶秘鑰).toUpperCase()</code></p>
+</div>
+<p>注意：簽名時將字符串轉化為位元組流時指定的編碼字符集應為 <code>UTF-8</code>。</p>
+
+<h2 id="full-example">完整示例</h2>
+<p>假設商戶秘鑰為 <code>MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=</code>：</p>
+<pre><span class="code-label">TEXT</span><code class="language-text">簽名原始串：
+amount=1&body=a chair&client_ip=127.0.0.1&client_id=1001&nonce_str=1409196838&notify_url=2031&order_no=Me08772e914454656bf26ec8996e35bb&service=pay.weixin.web.intl&store_id=1001001
+
+拼接金鑰後：
+amount=1&body=a chair&client_ip=127.0.0.1&client_id=1001&nonce_str=1409196838&notify_url=2031&order_no=Me08772e914454656bf26ec8996e35bb&service=pay.weixin.web.intl&store_id=1001001&key=MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=
+
+MD5 運算並轉大寫：
+52A4A2D2ACA971B309A0B9B1F21C8698</code></pre>
+
+<h2 id="code-examples">多語言代碼示例</h2>
+
+<h3>Python</h3>
+<pre><span class="code-label">PYTHON</span><code class="language-python">import hashlib
+
+def generate_sign(params, merchant_key):
+    # 排除 sign 和 lang，按 key ASCII 碼排序
+    filtered = {k: v for k, v in params.items()
+                if k not in ("sign", "lang") and v}
+    sorted_params = sorted(filtered.items())
+    # 拼接成 key=value&key=value
+    sign_str = "&".join(f"{k}={v}" for k, v in sorted_params)
+    # 拼接商戶秘鑰
+    sign_str += f"&key={merchant_key}"
+    # MD5 轉大寫
+    return hashlib.md5(sign_str.encode("utf-8")).hexdigest().upper()</code></pre>
+
+<h3>Java</h3>
+<pre><span class="code-label">JAVA</span><code class="language-java">import java.security.MessageDigest;
+import java.util.*;
+
+public String generateSign(Map&lt;String, String&gt; params, String merchantKey) throws Exception {
+    // 排除 sign 和 lang
+    params.remove("sign");
+    params.remove("lang");
+    // 按 key 排序
+    List&lt;String&gt; keys = new ArrayList&lt;&gt;(params.keySet());
+    Collections.sort(keys);
+    // 拼接
+    StringBuilder sb = new StringBuilder();
+    for (String key : keys) {
+        String val = params.get(key);
+        if (val != null && !val.isEmpty()) {
+            if (sb.length() > 0) sb.append("&amp;");
+            sb.append(key).append("=").append(val);
+        }
+    }
+    sb.append("&amp;key=").append(merchantKey);
+    // MD5
+    MessageDigest md = MessageDigest.getInstance("MD5");
+    byte[] digest = md.digest(sb.toString().getBytes("UTF-8"));
+    StringBuilder hex = new StringBuilder();
+    for (byte b : digest) hex.append(String.format("%02X", b));
+    return hex.toString();
+}</code></pre>
+
+<h3>PHP</h3>
+<pre><span class="code-label">PHP</span><code class="language-php">&lt;?php
+function generateSign($params, $merchantKey) {
+    // 排除 sign 和 lang
+    unset($params['sign'], $params['lang']);
+    // 按 key 排序
+    ksort($params);
+    // 拼接
+    $parts = [];
+    foreach ($params as $k =&gt; $v) {
+        if ($v !== '' &amp;&amp; $v !== null) {
+            $parts[] = "{$k}={$v}";
+        }
+    }
+    $signStr = implode('&amp;', $parts) . "&amp;key={$merchantKey}";
+    // MD5 轉大寫
+    return strtoupper(md5($signStr));
+}</code></pre>
+
+<h3>Node.js</h3>
+<pre><span class="code-label">JAVASCRIPT</span><code class="language-javascript">const crypto = require("crypto");
+
+function generateSign(params, merchantKey) {
+    // 排除 sign 和 lang
+    const { sign, lang, ...rest } = params;
+    // 按 key 排序
+    const sortedKeys = Object.keys(rest).sort();
+    // 拼接
+    const signStr = sortedKeys
+        .filter(k => rest[k])
+        .map(k => `${k}=${rest[k]}`)
+        .join("&") + `&key=${merchantKey}`;
+    // MD5 轉大寫
+    return crypto.createHash("md5").update(signStr, "utf8").digest("hex").toUpperCase();
+}</code></pre>
+
+    </main>
+
+    <nav class="toc-nav">
+<div class="toc-nav-title">本頁目錄</div>
+<ul>
+  <li><a href="#sign-string" class="toc-h2">簽名原始串</a></li>
+  <li><a href="#sign-algorithm" class="toc-h2">簽名演算法</a></li>
+  <li><a href="#full-example" class="toc-h2">完整示例</a></li>
+  <li><a href="#code-examples" class="toc-h2">多語言代碼示例</a></li>
+</ul>
+</nav>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

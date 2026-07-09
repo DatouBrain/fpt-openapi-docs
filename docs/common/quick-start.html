@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>快速入門 | Fintech Payment OpenAPI 文檔</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon">FP</span>
+        <span class="logo-text">Fintech Payment <span class="logo-sub">OpenAPI</span></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html">首頁</a>
+        <a href="../common/quick-start.html">接入指引</a>
+        <a href="../common/data-format.html">通用規則</a>
+        <a href="../payments/card-online/global-payments-online.html">產品文檔</a>
+      </nav>
+      <button class="menu-toggle" aria-label="選單">☰</button>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="sidebar">
+<div class="sidebar-group" data-group="common">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>通用規則</div>
+  <ul class="sidebar-links">
+    <li><a href="../common/quick-start.html" class="sub-link active">快速入門</a></li>
+    <li><a href="../common/endpoints.html" class="sub-link">API 調用地址</a></li>
+    <li><a href="../common/data-format.html" class="sub-link">數據格式</a></li>
+    <li><a href="../common/signature.html" class="sub-link">數字簽名</a></li>
+    <li><a href="../common/request-headers.html" class="sub-link">請求頭說明</a></li>
+    <li><a href="../common/error-codes.html" class="sub-link">錯誤碼說明</a></li>
+    <li><a href="../common/notification.html" class="sub-link">支付通知說明</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online 無卡支付</a></li>
+    <li><a href="../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online 支付 <span class="status-tag upcoming">暫未開放</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-offline/global-payments-offline.html" class="sub-link">Global Payments Offline 物理卡支付 <span class="status-tag upcoming">暫未開放</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP 支付</a></li>
+    <li><a href="../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB 支付</a></li>
+    <li><a href="../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP 支付</a></li>
+    <li><a href="../payments/qr-online/alipay-plus.html" class="sub-link">Alipay Plus+ 支付</a></li>
+    <li><a href="../payments/qr-online/wechat-web.html" class="sub-link">Wechat WEB 支付</a></li>
+    <li><a href="../payments/qr-online/wechat-wap.html" class="sub-link">Wechat WAP 支付</a></li>
+    <li><a href="../payments/qr-online/wechat-miniprogram.html" class="sub-link">Wechat 公眾帳號和小程序支付</a></li>
+    <li><a href="../payments/qr-online/wechat-app.html" class="sub-link">Wechat APP 支付</a></li>
+    <li><a href="../payments/qr-online/qr-code.html" class="sub-link">掃碼支付</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-offline/barcode.html" class="sub-link">付款碼支付</a></li>
+    <li><a href="../payments/qr-offline/cash-api.html" class="sub-link">CashAPI 支付</a></li>
+  </ul>
+</div>
+</aside>
+
+
+    <main class="main-content">
+      <h1 id="overview">快速入門</h1>
+<div class="page-meta">
+  <span class="page-meta-item">文檔版本：V1.0</span>
+</div>
+<p>本指南將引導您從零開始完成 Fintech Payment OpenAPI 的接入，包括環境準備、簽名計算、發起支付請求及處理支付通知。</p>
+
+<h2 id="prerequisites">接入前準備</h2>
+<p>在開始接入前，請確保您已具備以下條件：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr><th>項目</th><th>說明</th><th>獲取方式</th></tr></thead>
+<tbody>
+<tr><td>商戶帳號</td><td>Fintech Payment 平台商戶帳號</td><td>由平台商務團隊開通</td></tr>
+<tr><td>client_id</td><td>客戶端 ID，標識商戶身份</td><td>商戶後台或商務團隊提供</td></tr>
+<tr><td>store_id</td><td>門店 ID，標識具體門店</td><td>商戶後台或商務團隊提供</td></tr>
+<tr><td>商戶秘鑰</td><td>用於數字簽名的通信金鑰</td><td>商務團隊提供，請妥善保管</td></tr>
+<tr><td>服務器環境</td><td>支持 HTTPS POST 請求的服務器</td><td>商戶自行準備</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="payment-flow">支付流程</h2>
+<p>典型的支付流程如下：</p>
+<div class="callout info">
+  <div class="callout-title">📋 業務流程</div>
+  <p><strong>1. 下單</strong> → 商戶服務器調用 <code>/pay</code> 接口創建訂單<br>
+  <strong>2. 調起支付</strong> → 商戶根據返回的支付鏈接/二維碼引導用戶支付<br>
+  <strong>3. 支付通知</strong> → 平台異步通知商戶 <code>notify_url</code> 支付結果<br>
+  <strong>4. 訂單查詢</strong> → 商戶主動調用 <code>/query</code> 確認訂單狀態<br>
+  <strong>5. 退款</strong>（可選）→ 商戶調用 <code>/refund</code> 發起退款</p>
+</div>
+<p>所有接口調用都必須在商戶服務器端完成，切勿在客戶端直接調用。</p>
+
+<h2 id="quick-steps">快速接入步驟</h2>
+
+<h3>步驟一：構建請求參數</h3>
+<p>組裝 JSON 格式的請求參數，包含業務參數和公共參數：</p>
+<pre><span class="code-label">JSON</span><code class="language-json">{
+  "service": "pay.weixin.web.intl",
+  "client_id": "1001",
+  "store_id": "1001001",
+  "order_no": "ORDER20260708001",
+  "amount": 1.00,
+  "body": "測試商品",
+  "notify_url": "https://your-domain.com/notify",
+  "callback_url": "https://your-domain.com/result",
+  "client_ip": "127.0.0.1",
+  "nonce_str": "abc123def456",
+  "lang": "en_US"
+}</code></pre>
+
+<h3>步驟二：計算簽名</h3>
+<p>將所有參數（除 <code>sign</code> 和 <code>lang</code> 外）按 ASCII 碼從小到大排序，拼接成 QueryString 格式，再拼接商戶秘鑰後做 MD5 運算：</p>
+<pre><span class="code-label">PYTHON</span><code class="language-python">import hashlib
+
+params = {
+    "service": "pay.weixin.web.intl",
+    "client_id": "1001",
+    "store_id": "1001001",
+    "order_no": "ORDER20260708001",
+    "amount": "1.00",
+    "body": "測試商品",
+    "notify_url": "https://your-domain.com/notify",
+    "callback_url": "https://your-domain.com/result",
+    "client_ip": "127.0.0.1",
+    "nonce_str": "abc123def456",
+}
+
+# 1. 按 key 的 ASCII 碼從小到大排序
+sorted_params = sorted(params.items())
+
+# 2. 拼接成 key=value&key=value 格式（空值不傳遞）
+sign_str = "&".join(f"{k}={v}" for k, v in sorted_params if v)
+
+# 3. 拼接商戶秘鑰
+merchant_key = "YOUR_MERCHANT_KEY"
+sign_str += f"&key={merchant_key}"
+
+# 4. MD5 運算並轉大寫
+sign = hashlib.md5(sign_str.encode("utf-8")).hexdigest().upper()
+print(sign)</code></pre>
+
+<h3>步驟三：發送 API 請求</h3>
+<pre><span class="code-label">PYTHON</span><code class="language-python">import requests, json
+
+params["sign"] = sign
+
+url = "https://uat.fintechpaymenthub.com/openapi/v1/pay"
+response = requests.post(url, json=params, headers={"Content-Type": "application/json"})
+result = response.json()
+
+if result.get("message") == "SUCCESS":
+    print("下單成功！", result)
+else:
+    print("下單失敗：", result)</code></pre>
+
+<h3>步驟四：處理支付通知</h3>
+<p>支付完成後，平台會向 <code>notify_url</code> 發送 POST 請求通知支付結果。商戶需：</p>
+<ul>
+  <li>驗證簽名是否正確</li>
+  <li>校驗訂單號和金額與本地系統一致</li>
+  <li>處理業務邏輯後返回純字符串 <code>success</code></li>
+</ul>
+
+<h2 id="code-example">完整代碼示例</h2>
+<p>以下是一個完整的 Python 示例，涵蓋下單、查詢和通知處理：</p>
+<pre><span class="code-label">PYTHON</span><code class="language-python">import hashlib, json, requests
+from flask import Flask, request
+
+app = Flask(__name__)
+MERCHANT_KEY = "YOUR_MERCHANT_KEY"
+BASE_URL = "https://uat.fintechpaymenthub.com/openapi/v1"
+
+def sign(params, key=MERCHANT_KEY):
+    sorted_params = sorted(params.items())
+    sign_str = "&".join(f"{k}={v}" for k, v in sorted_params if v)
+    sign_str += f"&key={key}"
+    return hashlib.md5(sign_str.encode("utf-8")).hexdigest().upper()
+
+# 下單
+def create_order():
+    params = {
+        "service": "pay.weixin.web.intl",
+        "client_id": "1001", "store_id": "1001001",
+        "order_no": "ORDER20260708001", "amount": "1.00",
+        "body": "測試商品", "notify_url": "https://your-domain.com/notify",
+        "callback_url": "https://your-domain.com/result",
+        "client_ip": "127.0.0.1", "nonce_str": "abc123def456",
+    }
+    params["sign"] = sign(params)
+    resp = requests.post(f"{BASE_URL}/pay", json=params)
+    return resp.json()
+
+# 查詢訂單
+def query_order(order_no):
+    params = {
+        "service": "pay.weixin.web.intl",
+        "client_id": "1001", "store_id": "1001001",
+        "order_no": order_no, "nonce_str": "query123456",
+    }
+    params["sign"] = sign(params)
+    resp = requests.post(f"{BASE_URL}/query", json=params)
+    return resp.json()
+
+# 接收支付通知
+@app.route("/notify", methods=["POST"])
+def notify():
+    data = request.get_json()
+    # 驗證簽名
+    recv_sign = data.pop("sign", "")
+    if sign(data) != recv_sign:
+        return "FAIL"
+    # 校驗訂單
+    if data.get("message") == "SUCCESS":
+        # 更新本地訂單狀態
+        print(f"訂單 {data.get('order_no')} 支付成功")
+    return "success"</code></pre>
+<p>更多語言示例請參考 <a href="signature.html">數字簽名</a> 頁面。</p>
+
+    </main>
+
+    <nav class="toc-nav">
+<div class="toc-nav-title">本頁目錄</div>
+<ul>
+  <li><a href="#prerequisites" class="toc-h2">接入前準備</a></li>
+  <li><a href="#payment-flow" class="toc-h2">支付流程</a></li>
+  <li><a href="#quick-steps" class="toc-h2">快速接入步驟</a></li>
+  <li><a href="#code-example" class="toc-h2">完整代碼示例</a></li>
+</ul>
+</nav>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

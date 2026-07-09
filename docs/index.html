@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fintech Payment OpenAPI 文檔</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">FP</span>
+        <span class="logo-text">Fintech Payment <span class="logo-sub">OpenAPI</span></span>
+      </a>
+      <nav class="header-nav">
+        <a href="index.html" class="active">首頁</a>
+        <a href="common/quick-start.html">接入指引</a>
+        <a href="common/data-format.html">通用規則</a>
+        <a href="payments/card-online/global-payments-online.html">產品文檔</a>
+      </nav>
+      <button class="menu-toggle" aria-label="選單">☰</button>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="sidebar">
+<div class="sidebar-group" data-group="common">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>通用規則</div>
+  <ul class="sidebar-links">
+    <li><a href="common/quick-start.html" class="sub-link">快速入門</a></li>
+    <li><a href="common/endpoints.html" class="sub-link">API 調用地址</a></li>
+    <li><a href="common/data-format.html" class="sub-link">數據格式</a></li>
+    <li><a href="common/signature.html" class="sub-link">數字簽名</a></li>
+    <li><a href="common/request-headers.html" class="sub-link">請求頭說明</a></li>
+    <li><a href="common/error-codes.html" class="sub-link">錯誤碼說明</a></li>
+    <li><a href="common/notification.html" class="sub-link">支付通知說明</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online 無卡支付</a></li>
+    <li><a href="payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online 支付 <span class="status-tag upcoming">暫未開放</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="payments/card-offline/global-payments-offline.html" class="sub-link">Global Payments Offline 物理卡支付 <span class="status-tag upcoming">暫未開放</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP 支付</a></li>
+    <li><a href="payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB 支付</a></li>
+    <li><a href="payments/qr-online/alipay-app.html" class="sub-link">Alipay APP 支付</a></li>
+    <li><a href="payments/qr-online/alipay-plus.html" class="sub-link">Alipay Plus+ 支付</a></li>
+    <li><a href="payments/qr-online/wechat-web.html" class="sub-link">Wechat WEB 支付</a></li>
+    <li><a href="payments/qr-online/wechat-wap.html" class="sub-link">Wechat WAP 支付</a></li>
+    <li><a href="payments/qr-online/wechat-miniprogram.html" class="sub-link">Wechat 公眾帳號和小程序支付</a></li>
+    <li><a href="payments/qr-online/wechat-app.html" class="sub-link">Wechat APP 支付</a></li>
+    <li><a href="payments/qr-online/qr-code.html" class="sub-link">掃碼支付</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="payments/qr-offline/barcode.html" class="sub-link">付款碼支付</a></li>
+    <li><a href="payments/qr-offline/cash-api.html" class="sub-link">CashAPI 支付</a></li>
+  </ul>
+</div>
+</aside>
+
+
+    <main class="main-content" style="max-width: 1100px;">
+      
+<div class="home-hero">
+  <h1>Fintech Payment OpenAPI</h1>
+  <p>為您提供安全、便捷、多渠道的支付接口服務，支持卡支付、行動支付、掃碼支付等多種支付方式。</p>
+  <div class="cta-buttons">
+    <a href="common/quick-start.html" class="btn btn-primary">🚀 開始接入</a>
+    <a href="common/data-format.html" class="btn btn-secondary">📚 查看文檔</a>
+  </div>
+</div>
+
+<section class="payment-categories">
+  <h2>支付渠道一覽</h2>
+  <div class="category-grid">
+    
+<div class="category-card card-pay">
+  <div class="icon">💳</div>
+  <h3>Card Pay（Online）</h3>
+  <p>支持 Visa、Mastercard、銀聯等卡組織的線上卡支付</p>
+  <ul class="links">
+    <li><a href="payments/card-online/global-payments-online.html">Global Payments Online 無卡支付<span class="arrow">→</span></a></li>
+    <li><a href="payments/card-online/fintech-payment-online.html">Fintech Payment Online 支付 <span class="status-tag upcoming">暫未開放</span><span class="arrow">→</span></a></li>
+  </ul>
+</div>
+
+<div class="category-card card-pay">
+  <div class="icon">💳</div>
+  <h3>Card Pay（Offline）</h3>
+  <p>支持 Visa、Mastercard 等卡組織的線下物理卡支付</p>
+  <ul class="links">
+    <li><a href="payments/card-offline/global-payments-offline.html">Global Payments Offline 物理卡支付 <span class="status-tag upcoming">暫未開放</span><span class="arrow">→</span></a></li>
+  </ul>
+</div>
+
+<div class="category-card qr-pay">
+  <div class="icon">📱</div>
+  <h3>QR Pay（Online）</h3>
+  <p>支持 Alipay、WeChat 等行動支付的線上掃碼支付</p>
+  <ul class="links">
+    <li><a href="payments/qr-online/alipay-wap.html">Alipay WAP 支付<span class="arrow">→</span></a></li>
+    <li><a href="payments/qr-online/alipay-web.html">Alipay WEB 支付<span class="arrow">→</span></a></li>
+    <li><a href="payments/qr-online/alipay-app.html">Alipay APP 支付<span class="arrow">→</span></a></li>
+    <li><a href="payments/qr-online/alipay-plus.html">Alipay Plus+ 支付<span class="arrow">→</span></a></li>
+    <li><a href="payments/qr-online/wechat-web.html">Wechat WEB 支付<span class="arrow">→</span></a></li>
+    <li><a href="payments/qr-online/wechat-wap.html">Wechat WAP 支付<span class="arrow">→</span></a></li>
+    <li><a href="payments/qr-online/wechat-miniprogram.html">Wechat 公眾帳號和小程序支付<span class="arrow">→</span></a></li>
+    <li><a href="payments/qr-online/wechat-app.html">Wechat APP 支付<span class="arrow">→</span></a></li>
+    <li><a href="payments/qr-online/qr-code.html">掃碼支付<span class="arrow">→</span></a></li>
+  </ul>
+</div>
+
+<div class="category-card qr-pay">
+  <div class="icon">📱</div>
+  <h3>QR Pay（Offline）</h3>
+  <p>支持付款碼、CashAPI 等線下掃碼支付</p>
+  <ul class="links">
+    <li><a href="payments/qr-offline/barcode.html">付款碼支付<span class="arrow">→</span></a></li>
+    <li><a href="payments/qr-offline/cash-api.html">CashAPI 支付<span class="arrow">→</span></a></li>
+  </ul>
+</div>
+
+  </div>
+</section>
+
+<section style="padding: 40px 0;">
+  <div class="callout info">
+    <div class="callout-title">ℹ️ 接入前提醒</div>
+    <p>所有接口調用前，請先閱讀 <a href="common/quick-start.html">快速入門</a> 和 <a href="common/data-format.html">通用規則</a>，確保接口調用正確。</p>
+  </div>
+</section>
+
+
+      <footer class="site-footer">
+        <p>&copy; 2026 Fintech Payment. 保留所有權利。 | <a href="https://fintechpayment.com" target="_blank">官方網站</a></p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

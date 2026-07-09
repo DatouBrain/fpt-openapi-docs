@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>數據格式 | Fintech Payment OpenAPI 文檔</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon">FP</span>
+        <span class="logo-text">Fintech Payment <span class="logo-sub">OpenAPI</span></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html">首頁</a>
+        <a href="../common/quick-start.html">接入指引</a>
+        <a href="../common/data-format.html">通用規則</a>
+        <a href="../payments/card-online/global-payments-online.html">產品文檔</a>
+      </nav>
+      <button class="menu-toggle" aria-label="選單">☰</button>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="sidebar">
+<div class="sidebar-group" data-group="common">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>通用規則</div>
+  <ul class="sidebar-links">
+    <li><a href="../common/quick-start.html" class="sub-link">快速入門</a></li>
+    <li><a href="../common/endpoints.html" class="sub-link">API 調用地址</a></li>
+    <li><a href="../common/data-format.html" class="sub-link active">數據格式</a></li>
+    <li><a href="../common/signature.html" class="sub-link">數字簽名</a></li>
+    <li><a href="../common/request-headers.html" class="sub-link">請求頭說明</a></li>
+    <li><a href="../common/error-codes.html" class="sub-link">錯誤碼說明</a></li>
+    <li><a href="../common/notification.html" class="sub-link">支付通知說明</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online 無卡支付</a></li>
+    <li><a href="../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online 支付 <span class="status-tag upcoming">暫未開放</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-offline/global-payments-offline.html" class="sub-link">Global Payments Offline 物理卡支付 <span class="status-tag upcoming">暫未開放</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP 支付</a></li>
+    <li><a href="../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB 支付</a></li>
+    <li><a href="../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP 支付</a></li>
+    <li><a href="../payments/qr-online/alipay-plus.html" class="sub-link">Alipay Plus+ 支付</a></li>
+    <li><a href="../payments/qr-online/wechat-web.html" class="sub-link">Wechat WEB 支付</a></li>
+    <li><a href="../payments/qr-online/wechat-wap.html" class="sub-link">Wechat WAP 支付</a></li>
+    <li><a href="../payments/qr-online/wechat-miniprogram.html" class="sub-link">Wechat 公眾帳號和小程序支付</a></li>
+    <li><a href="../payments/qr-online/wechat-app.html" class="sub-link">Wechat APP 支付</a></li>
+    <li><a href="../payments/qr-online/qr-code.html" class="sub-link">掃碼支付</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-offline/barcode.html" class="sub-link">付款碼支付</a></li>
+    <li><a href="../payments/qr-offline/cash-api.html" class="sub-link">CashAPI 支付</a></li>
+  </ul>
+</div>
+</aside>
+
+
+    <main class="main-content">
+      <h1 id="overview">數據格式</h1>
+<div class="page-meta">
+  <span class="page-meta-item">文檔版本：V1.0</span>
+</div>
+<p>本頁面說明 Fintech Payment OpenAPI 的數據傳輸格式，包括請求格式、響應格式及公共參數。</p>
+
+<h2 id="request-format">請求格式</h2>
+<p>API 支持兩種請求提交方式：</p>
+
+<h3>標準模式（JSON POST）</h3>
+<p>絕大多數支付渠道採用 HTTPS POST + JSON 格式提交數據：</p>
+<ul>
+  <li>請求方法：<code>POST</code></li>
+  <li>Content-Type：<code>application/json</code></li>
+  <li>字符編碼：<code>UTF-8</code></li>
+  <li>數據必須簽名</li>
+</ul>
+<pre><span class="code-label">JSON</span><code class="language-json">{
+  "service": "pay.weixin.web.intl",
+  "order_no": "00f78e479fe74a11a73be0feb9999749",
+  "body": "測試支付",
+  "amount": 1.00,
+  "callback_url": "https://your-domain.com/result",
+  "notify_url": "https://your-domain.com/notify",
+  "client_ip": "127.0.0.1",
+  "client_id": "1002",
+  "store_id": "1001002",
+  "nonce_str": "ptf3tyjv",
+  "sign": "64950ED7B13489114C671EFD24C45AC3",
+  "lang": "en_US"
+}</code></pre>
+
+<h3>託管模式（FORM POST）</h3>
+<p>Global Payments Online 託管模式使用 HTML 表單提交，適合直接在瀏覽器中跳轉到支付頁面：</p>
+<ul>
+  <li>請求方法：<code>POST</code></li>
+  <li>Content-Type：<code>application/x-www-form-urlencoded</code></li>
+  <li>字符編碼：<code>UTF-8</code></li>
+  <li>數據必須簽名</li>
+</ul>
+<pre><span class="code-label">HTML</span><code class="language-html">&lt;form action="https://uat.fintechpaymenthub.com/openapi/v1/pay" method="post"&gt;
+  &lt;input type="hidden" name="service" value="pay.globalpayment.card.notpresent"&gt;
+  &lt;input type="hidden" name="client_id" value="1001"&gt;
+  &lt;input type="hidden" name="store_id" value="1001001"&gt;
+  &lt;input type="hidden" name="order_no" value="ORDER001"&gt;
+  &lt;input type="hidden" name="amount" value="100"&gt;
+  &lt;input type="hidden" name="sign" value="XXXXX"&gt;
+&lt;/form&gt;</code></pre>
+
+<h2 id="response-format">響應格式</h2>
+<p>所有接口返回 JSON 格式數據。根據 <code>message</code> 字段判斷請求是否成功：</p>
+
+<h3>成功返回</h3>
+<pre><span class="code-label">JSON</span><code class="language-json">{
+  "message": "SUCCESS",
+  "order_no": "00f78e479fe74a11a73be0feb9999749",
+  "transaction_id": "FTP202012181649370001",
+  "submit_time": "20201218164937",
+  "nonce_str": "o66w9pft",
+  "sign": "3F6C05280C90E5BB1330524FD61C6121"
+}</code></pre>
+<p><code>message</code> 返回 <code>SUCCESS</code> 表示接口調用成功。返回結果中包含 <code>sign</code> 字段，商戶應驗證簽名以確保數據完整性。</p>
+
+<h3>錯誤返回</h3>
+<pre><span class="code-label">JSON</span><code class="language-json">{
+  "message": "Missing Merchant ID",
+  "errors": [
+    {
+      "field": "mch_id",
+      "message": "Missing Merchant ID",
+      "code": "MISSING_FIELD"
+    }
+  ]
+}</code></pre>
+<p><code>message</code> 返回非 <code>SUCCESS</code> 時表示接口調用出錯。<code>errors</code> 數組包含具體的錯誤字段和錯誤碼。</p>
+
+<h2 id="common-params">公共請求參數</h2>
+<p>以下參數在所有接口中通用：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr><th>參數名</th><th>類型</th><th>必填</th><th>說明</th><th>是否參與簽名</th></tr></thead>
+<tbody>
+<tr><td><code>service</code></td><td>String(40)</td><td><span class="param-required yes">必填</span></td><td>支付服務標識，區分不同支付渠道</td><td>✅</td></tr>
+<tr><td><code>client_id</code></td><td>String(32)</td><td><span class="param-required yes">必填</span></td><td>商戶客戶端 ID</td><td>✅</td></tr>
+<tr><td><code>store_id</code></td><td>String(50)</td><td><span class="param-required yes">必填</span></td><td>門店 ID</td><td>✅</td></tr>
+<tr><td><code>order_no</code></td><td>String(32)</td><td><span class="param-required yes">必填</span></td><td>商戶系統內部的訂單號，需確保唯一</td><td>✅</td></tr>
+<tr><td><code>nonce_str</code></td><td>String(32)</td><td><span class="param-required yes">必填</span></td><td>隨機字符串，防重放攻擊</td><td>✅</td></tr>
+<tr><td><code>sign</code></td><td>String(64)</td><td><span class="param-required yes">必填</span></td><td>數字簽名，詳見<a href="signature.html">數字簽名</a></td><td>❌</td></tr>
+<tr><td><code>lang</code></td><td>String(10)</td><td><span class="param-required no">選填</span></td><td>語言設置，如 <code>en_US</code>、<code>zh_CN</code></td><td>❌</td></tr>
+</tbody>
+</table>
+</div>
+
+    </main>
+
+    <nav class="toc-nav">
+<div class="toc-nav-title">本頁目錄</div>
+<ul>
+  <li><a href="#request-format" class="toc-h2">請求格式</a></li>
+  <li><a href="#response-format" class="toc-h2">響應格式</a></li>
+  <li><a href="#common-params" class="toc-h2">公共請求參數</a></li>
+</ul>
+</nav>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

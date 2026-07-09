@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>支付通知說明 | Fintech Payment OpenAPI 文檔</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon">FP</span>
+        <span class="logo-text">Fintech Payment <span class="logo-sub">OpenAPI</span></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html">首頁</a>
+        <a href="../common/quick-start.html">接入指引</a>
+        <a href="../common/data-format.html">通用規則</a>
+        <a href="../payments/card-online/global-payments-online.html">產品文檔</a>
+      </nav>
+      <button class="menu-toggle" aria-label="選單">☰</button>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="sidebar">
+<div class="sidebar-group" data-group="common">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>通用規則</div>
+  <ul class="sidebar-links">
+    <li><a href="../common/quick-start.html" class="sub-link">快速入門</a></li>
+    <li><a href="../common/endpoints.html" class="sub-link">API 調用地址</a></li>
+    <li><a href="../common/data-format.html" class="sub-link">數據格式</a></li>
+    <li><a href="../common/signature.html" class="sub-link">數字簽名</a></li>
+    <li><a href="../common/request-headers.html" class="sub-link">請求頭說明</a></li>
+    <li><a href="../common/error-codes.html" class="sub-link">錯誤碼說明</a></li>
+    <li><a href="../common/notification.html" class="sub-link active">支付通知說明</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online 無卡支付</a></li>
+    <li><a href="../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online 支付 <span class="status-tag upcoming">暫未開放</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-offline/global-payments-offline.html" class="sub-link">Global Payments Offline 物理卡支付 <span class="status-tag upcoming">暫未開放</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP 支付</a></li>
+    <li><a href="../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB 支付</a></li>
+    <li><a href="../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP 支付</a></li>
+    <li><a href="../payments/qr-online/alipay-plus.html" class="sub-link">Alipay Plus+ 支付</a></li>
+    <li><a href="../payments/qr-online/wechat-web.html" class="sub-link">Wechat WEB 支付</a></li>
+    <li><a href="../payments/qr-online/wechat-wap.html" class="sub-link">Wechat WAP 支付</a></li>
+    <li><a href="../payments/qr-online/wechat-miniprogram.html" class="sub-link">Wechat 公眾帳號和小程序支付</a></li>
+    <li><a href="../payments/qr-online/wechat-app.html" class="sub-link">Wechat APP 支付</a></li>
+    <li><a href="../payments/qr-online/qr-code.html" class="sub-link">掃碼支付</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-offline/barcode.html" class="sub-link">付款碼支付</a></li>
+    <li><a href="../payments/qr-offline/cash-api.html" class="sub-link">CashAPI 支付</a></li>
+  </ul>
+</div>
+</aside>
+
+
+    <main class="main-content">
+      <h1 id="overview">支付通知說明</h1>
+<div class="page-meta">
+  <span class="page-meta-item">文檔版本：V1.0</span>
+</div>
+<p>支付完成後，平台會異步通知商戶支付結果。本頁面說明通知機制、重試策略及處理建議。</p>
+
+<h2 id="mechanism">通知機制</h2>
+<p>支付完成後，系統會將支付結果通知到下單時填寫的 <code>notify_url</code>：</p>
+<ul>
+  <li>通知方式：<code>POST</code> 請求，數據體為 JSON 格式</li>
+  <li>通知 URL：下單接口中提交的 <code>notify_url</code> 參數</li>
+  <li>通知內容包含訂單號、交易號、支付金額、支付狀態等信息，並附帶 <code>sign</code> 簽名</li>
+</ul>
+
+<h2 id="retry-strategy">重試策略</h2>
+<p>如果平台收到商戶的應答不是純字符串 <code>success</code>，或超過 5 秒未返回，平台認為通知失敗，將按以下策略重新發起通知：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr><th>重試次數</th><th>間隔時間</th></tr></thead>
+<tbody>
+<tr><td>第 1 次</td><td>0 秒（立即）</td></tr>
+<tr><td>第 2 次</td><td>15 秒</td></tr>
+<tr><td>第 3 次</td><td>15 秒</td></tr>
+<tr><td>第 4 次</td><td>30 秒</td></tr>
+<tr><td>第 5 次</td><td>180 秒（3 分鐘）</td></tr>
+<tr><td>第 6 次</td><td>1800 秒（30 分鐘）</td></tr>
+<tr><td>第 7-9 次</td><td>1800 秒（30 分鐘）</td></tr>
+<tr><td>第 10 次</td><td>3600 秒（1 小時）</td></tr>
+</tbody>
+</table>
+</div>
+<div class="callout warning">
+  <div class="callout-title">⚠️ 注意</div>
+  <p>平台會盡可能提高通知的成功率，但不保證通知最終能成功。建議商戶同時使用<strong>主動查詢</strong>（調用 <code>/query</code> 接口）作為兜底方案。</p>
+</div>
+
+<h2 id="best-practices">處理建議</h2>
+<p>由於存在重新發送後台通知的情況，同樣的通知可能會多次發送給商戶系統。商戶系統必須能夠正確處理重複通知：</p>
+<ol>
+  <li><strong>驗證簽名</strong>：收到通知後，先驗證 <code>sign</code> 字段是否正確，防止偽造</li>
+  <li><strong>校驗訂單</strong>：校驗通知中的 <code>order_no</code> 和 <code>amount</code> 與自身業務系統的訂單和金額是否一致</li>
+  <li><strong>冪等處理</strong>：檢查對應訂單是否已處理過，如已處理直接返回 <code>success</code></li>
+  <li><strong>併發控制</strong>：採用數據鎖進行併發控制，避免函數重入造成數據混亂</li>
+  <li><strong>及時應答</strong>：處理完成後立即返回純字符串 <code>success</code>（5 秒內），避免觸發重試</li>
+</ol>
+
+<h3>通知處理代碼示例</h3>
+<pre><span class="code-label">PYTHON</span><code class="language-python">@app.route("/notify", methods=["POST"])
+def handle_notify():
+    data = request.get_json()
+
+    # 1. 驗證簽名
+    recv_sign = data.pop("sign", "")
+    if generate_sign(data) != recv_sign:
+        return "FAIL"
+
+    # 2. 校驗訂單
+    order_no = data.get("order_no")
+    amount = data.get("amount")
+    order = get_order_from_db(order_no)
+    if not order or float(order.amount) != float(amount):
+        return "FAIL"
+
+    # 3. 冪等處理
+    if order.status == "PAID":
+        return "success"  # 已處理，直接返回成功
+
+    # 4. 更新訂單狀態（加鎖防併發）
+    with db_lock:
+        update_order_status(order_no, "PAID")
+
+    # 5. 返回成功
+    return "success"</code></pre>
+
+    </main>
+
+    <nav class="toc-nav">
+<div class="toc-nav-title">本頁目錄</div>
+<ul>
+  <li><a href="#mechanism" class="toc-h2">通知機制</a></li>
+  <li><a href="#retry-strategy" class="toc-h2">重試策略</a></li>
+  <li><a href="#best-practices" class="toc-h2">處理建議</a></li>
+</ul>
+</nav>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

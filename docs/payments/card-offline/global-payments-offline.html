@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Payments Offline 物理卡支付 | Fintech Payment OpenAPI 文檔</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo">
+        <span class="logo-icon">FP</span>
+        <span class="logo-text">Fintech Payment <span class="logo-sub">OpenAPI</span></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../../index.html">首頁</a>
+        <a href="../../common/quick-start.html">接入指引</a>
+        <a href="../../common/data-format.html">通用規則</a>
+        <a href="../../payments/card-online/global-payments-online.html">產品文檔</a>
+      </nav>
+      <button class="menu-toggle" aria-label="選單">☰</button>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="sidebar">
+<div class="sidebar-group" data-group="common">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>通用規則</div>
+  <ul class="sidebar-links">
+    <li><a href="../../common/quick-start.html" class="sub-link">快速入門</a></li>
+    <li><a href="../../common/endpoints.html" class="sub-link">API 調用地址</a></li>
+    <li><a href="../../common/data-format.html" class="sub-link">數據格式</a></li>
+    <li><a href="../../common/signature.html" class="sub-link">數字簽名</a></li>
+    <li><a href="../../common/request-headers.html" class="sub-link">請求頭說明</a></li>
+    <li><a href="../../common/error-codes.html" class="sub-link">錯誤碼說明</a></li>
+    <li><a href="../../common/notification.html" class="sub-link">支付通知說明</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online 無卡支付</a></li>
+    <li><a href="../../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online 支付 <span class="status-tag upcoming">暫未開放</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../payments/card-offline/global-payments-offline.html" class="sub-link active">Global Payments Offline 物理卡支付 <span class="status-tag upcoming">暫未開放</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP 支付</a></li>
+    <li><a href="../../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB 支付</a></li>
+    <li><a href="../../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP 支付</a></li>
+    <li><a href="../../payments/qr-online/alipay-plus.html" class="sub-link">Alipay Plus+ 支付</a></li>
+    <li><a href="../../payments/qr-online/wechat-web.html" class="sub-link">Wechat WEB 支付</a></li>
+    <li><a href="../../payments/qr-online/wechat-wap.html" class="sub-link">Wechat WAP 支付</a></li>
+    <li><a href="../../payments/qr-online/wechat-miniprogram.html" class="sub-link">Wechat 公眾帳號和小程序支付</a></li>
+    <li><a href="../../payments/qr-online/wechat-app.html" class="sub-link">Wechat APP 支付</a></li>
+    <li><a href="../../payments/qr-online/qr-code.html" class="sub-link">掃碼支付</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../payments/qr-offline/barcode.html" class="sub-link">付款碼支付</a></li>
+    <li><a href="../../payments/qr-offline/cash-api.html" class="sub-link">CashAPI 支付</a></li>
+  </ul>
+</div>
+</aside>
+
+
+    <main class="main-content">
+      <h1 id="overview">Global Payments Offline 物理卡支付
+<span class="subtitle">Card Pay（Offline）</span>
+<span class="status-badge upcoming">暫未開放</span>
+</h1>
+<div class="page-meta">
+<span class="page-meta-item">文檔版本：V1.0</span>
+<span class="page-meta-item">接口版本：V1.0</span>
+</div>
+<div class="callout warning">
+<div class="callout-title">⚠️ 提示</div>
+本接口暫未開放使用，僅供參考。具體上線時間請聯繫平臺客服。
+</div>
+<h1 id="卡支付_global-payments-offline">卡支付_Global Payments Offline</h1>
+<h1 id="物理卡支付接口文檔">物理卡支付接口文檔</h1>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>時間</th>
+<th>版本</th>
+<th>修改內容</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>2025-12-19</td>
+<td>1.0</td>
+<td>初稿</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="1引言">1引言</h1>
+<h2 id="11文檔概述">1.1文檔概述</h2>
+<p>物理卡支付是指持有信用卡或者儲蓄卡在pos終端上面刷卡消費的支付方式；如今信用卡已經是非常普遍了，一些超市、電器城、商場、飯店、醫院、網絡、電信等場所都能刷信用卡消費。</p>
+<p>商家使用平臺提供接口進行對接，通過商戶生成的訂單參數提供給服務提供商，並喚起支付，支付成功後獲取相關支付資訊的支付方式。</p>
+<p>場景示例：</p>
+<div class="doc-image"><img src="../../assets/images/global-payments-offline_1.jpg" alt="文檔圖片" loading="lazy"></div>
+<p>支付流程:</p>
+<p>步驟（1）：用戶在綫下實體店中消費，收營員拿出pos機。</p>
+<p>步驟（2）：用戶出示信用卡或者儲蓄卡在pos機上面刷卡授權幷。</p>
+<p>步驟（3）：用戶在pos機上面簽名幷扣款。</p>
+<p>步驟（4）：pos機顯示支付結果信息。</p>
+<h2 id="12閱讀對象">1.2閱讀對象</h2>
+<p>供商戶平臺服務方技術或業務人員參考和查詢。</p>
+<h1 id="2方案概述">2方案概述</h1>
+<h2 id="21-業務實現流程">2.1 業務實現流程</h2>
+<p>接口調用時序：</p>
+<p>下單接口 API、支付通知接口API和查詢訂單API等都涉及簽名過程，調用都必須在商戶伺服器端完成。
+時序圖如下：</p>
+<div class="doc-image"><img src="../../assets/images/global-payments-offline_2.png" alt="文檔圖片" loading="lazy"></div>
+<h1 id="3數據格式">3數據格式</h1>
+<h2 id="31-提交數據">3.1 提交數據</h2>
+<p>採用 HTTPS 標準的 POST 協議， 為了保證接收方接收數據正確,傳輸數據必須簽名。</p>
+<p>{</p>
+<p>&quot;service&quot;:&quot;pay.globalpayment.card.present&quot;,</p>
+<p>&quot;order_no&quot;:&quot;7586bb6238424e27a66866d1bf746640&quot;,</p>
+<p>&quot;card_type&quot;:&quot;VISA&quot;,</p>
+<p>&quot;amount&quot;:&quot;102.21&quot;,</p>
+<p>&quot;currency&quot;:&quot;USD&quot;,</p>
+<p>&quot;body&quot;:&quot;Multifunctional office chair&quot;,</p>
+<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
+<p>&quot;entry_mode&quot;:&quot;contact&quot;,</p>
+<p>&quot;number&quot;:&quot;4111111111111111&quot;,</p>
+<p>&quot;expiration_year&quot;:&quot;2031&quot;,</p>
+<p>&quot;expiration_month&quot;:&quot;12&quot;,</p>
+<p>&quot;client_id&quot;:&quot;1001&quot;,</p>
+<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
+<p>&quot;nonce_str&quot;:&quot;2r8qnc0h&quot;,</p>
+<p>&quot;sign&quot;:&quot;8535CEB8CAA4F3C15D6F907A9012A3DC&quot;,</p>
+<p>&quot;lang&quot;:&quot;en_US&quot;</p>
+<p>}</p>
+<h2 id="32-返回結果數據格式">3.2 返回結果數據格式</h2>
+<p>正確返回：</p>
+<p>{</p>
+<p>&quot;message&quot;:&quot;SUCCESS&quot;,</p>
+<p>&quot;order_no&quot;:&quot;7586bb6238424e27a66866d1bf746640&quot;,</p>
+<p>&quot;transaction_id&quot;:&quot;FTP202012181541020001&quot;,</p>
+<p>&quot;submit_time&quot;:&quot;20201218154102&quot;,</p>
+<p>&quot;trade_state&quot;:&quot;NOTPAY&quot;,</p>
+<p>&quot;nonce_str&quot;:&quot;cg41bxt5&quot;,</p>
+<p>&quot;sign&quot;:&quot;8092A1F245A942685B0F0F8040398342&quot;</p>
+<p>}</p>
+<p>錯誤返回：</p>
+<p>{</p>
+<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
+<pre><span class="code-label">JSON</span><code class="language-json">&quot;errors&quot;:[</code></pre>
+<p>{</p>
+<p>&quot;field&quot;:&quot;mch_id&quot;,</p>
+<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
+<p>&quot;code&quot;:&quot;MISSING_FIELD&quot;</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>message返回非SUCCESS時表示接口調用出錯。</p>
+<h1 id="4數字簽名">4數字簽名</h1>
+<p>為了保證資料傳輸過程中的資料真實性和完整性， 我們需要對資料進行數字簽名， 在接收簽名資料之後進行簽名校驗。</p>
+<p>數字簽名有兩個步驟， 先按一定規則拼接要簽名的原始串， 再選擇具體的演算法和密鑰計算出簽名結果。</p>
+<h2 id="41-簽名原始串">4.1 簽名原始串</h2>
+<p>無論是請求還是應答， 簽名原始串按以下方式組裝成字串：
+1、 除 sign 欄位外，所有參數按照欄位名的 ascii 碼從小到大排序後使用 QueryString 的格式（即key1=value1&amp;key2=value2…） 拼接而成， 空值不傳遞， 不參與簽名組串。
+2、 簽名原始串中， 欄位名和欄位值都採用原始值， 不進行 URL Encode。</p>
+<p>3、 平臺返回的應答或通知消息可能會由於升級增加參數， 請驗證應答簽名時注意允許這種情況。</p>
+<p>舉例：</p>
+<p>調用某個接口， 接口有如下欄位：</p>
+<p>{</p>
+<p>&quot;client_id&quot;:&quot;1001&quot;,</p>
+<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
+<p>&quot;service&quot;:&quot;pay.globalpayment.card.present&quot;,</p>
+<p>&quot;order_no&quot;:&quot;cf8f6d68bbc64be0b871cf670a26e753&quot;,</p>
+<p>&quot;card_type&quot;:&quot;VISA&quot;,</p>
+<p>&quot;amount&quot;:&quot;339.00&quot;,</p>
+<p>&quot;currency&quot;:&quot;USD&quot;,</p>
+<p>&quot;body&quot;:&quot;a chair&quot;,</p>
+<p>&quot;entry_mode&quot;:&quot;contact&quot;,</p>
+<p>&quot;number&quot;:&quot;4111111111111111&quot;,</p>
+<p>&quot;expiration_year&quot;:&quot;2031&quot;,</p>
+<p>&quot;expiration_month&quot;:&quot;12&quot;,</p>
+<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
+<p>&quot;nonce_str&quot;:&quot;g1pkotyz&quot;,</p>
+<p>&quot;sign&quot;:&quot;669FA672674AA43A14254A1F9AED5636&quot;</p>
+<p>}</p>
+<p>正確的簽名欄位排序為：</p>
+<p>amount=339.00&amp;body=a chair&amp;card_type=VISA&amp;client_ip=127.0.0.1&amp;currency=USD&amp;entry_mode=contact&amp;expiration_month=12&amp;expiration_year=2031&amp;mch_id=1001&amp;nonce_str=g1pkotyz&amp;number=4111111111111111&amp;order_no=cf8f6d68bbc64be0b871cf670a26e753&amp;service=pay.globalpayment.card.present&amp;store_id=1001001</p>
+<h2 id="42-簽名演算法">4.2 簽名演算法</h2>
+<p>MD5 簽名
+MD5 是一種摘要生成演算法， 通過在簽名原始串後加上商戶通信金鑰的內容， 進行 MD5 運算， 形成的摘要
+字串即為簽名結果。 為了方便比較， 簽名結果統一轉換為大寫字元。</p>
+<p>注意： 簽名時將字串轉化成位元組流時指定的編碼字元集應與參數 charset 一致。
+MD5 簽名計算公式：
+sign = MD5 (原字串+&amp;key=商戶祕鑰). toUpperCase</p>
+<p>假設商戶祕鑰為：MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=</p>
+<p>如：
+假設以下為 JSON傳入參數：
+i： 經過 a 過程 URL 鍵值對字典序排序後的字串 string1 為：
+amount=339.00&amp;body=a chair&amp;card_type=VISA&amp;client_ip=127.0.0.1&amp;currency=USD&amp;entry_mode=contact&amp;expiration_month=12&amp;expiration_year=2031&amp;mch_id=1001&amp;nonce_str=g1pkotyz&amp;number=4111111111111111&amp;order_no=cf8f6d68bbc64be0b871cf670a26e753&amp;service=pay.globalpayment.card.present&amp;store_id=1001001
+ii： 經過 b 過程後得到 sign 為：</p>
+<p>sign = md5(string1+&amp;key=商戶祕鑰).toUpperCase</p>
+<p>實際加密字符串為：</p>
+<p>sign = md5(amount=339.00&amp;body=a chair&amp;card_type=VISA&amp;client_ip=127.0.0.1&amp;currency=USD&amp;entry_mode=contact&amp;expiration_month=12&amp;expiration_year=2031&amp;mch_id=1001&amp;nonce_str=g1pkotyz&amp;number=4111111111111111&amp;order_no=cf8f6d68bbc64be0b871cf670a26e753&amp;service=pay.globalpayment.card.present&amp;store_id=1001001&amp;key=MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=).toUpperCase</p>
+<p>最終得到的簽名為：3E902B1934765D62F26DB026D25A2773</p>
+<p>sign與 lang字段不參與接口簽名，接口返回參數解密規則同理</p>
+<h2 id="43請求頭說明">4.3請求頭說明</h2>
+<p>請求參數：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>內容類型</td>
+<td>Content-Type</td>
+<td>是</td>
+<td>String(32)</td>
+<td>值：application/json，請求內容類別型</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="5-接口描述">5 接口描述</h1>
+<h2 id="51-下單接口">5.1 下單接口</h2>
+<h3 id="511-業務功能">5.1.1 業務功能</h3>
+<p>商戶調用下單接口後或生產回應的參數返回給商戶，商戶通過判斷支付管道喚起支付機構進行支付操作，支付完成後支付機構回檔平臺，平臺會將結果通知商戶接口。</p>
+<h3 id="512-交互模式">5.1.2 交互模式</h3>
+<p>請求：後臺同步請求模式</p>
+<p>返回結果：後臺同步請求模式</p>
+<h3 id="513-請求參數列表">5.1.3 請求參數列表</h3>
+<p>請求 url：https://api.fintechpaymenthub.com/openapi/v1/pay</p>
+<p>POST JSON 內容體進行請求</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>接口類型</td>
+<td>service</td>
+<td>是</td>
+<td>String(40)</td>
+<td>固定：pay.globalpayment.card.present</td>
+</tr>
+<tr>
+<td>客戶端ID</td>
+<td>client_id</td>
+<td>是</td>
+<td>String(32)</td>
+<td>商戶客戶端ID</td>
+</tr>
+<tr>
+<td>門店ID</td>
+<td>store_id</td>
+<td>是</td>
+<td>String(50)</td>
+<td>門店ID</td>
+</tr>
+<tr>
+<td>商戶訂單號</td>
+<td>order_no</td>
+<td>是</td>
+<td>String(32)</td>
+<td>商戶系統內部的訂單號 32 個字元內、 可包含字母 確保在商戶系統唯一</td>
+</tr>
+<tr>
+<td>卡類型</td>
+<td>card_type</td>
+<td>是</td>
+<td>String(20)</td>
+<td>卡類型
+VISA、MASTER、UNION_PAY</td>
+</tr>
+<tr>
+<td>金額</td>
+<td>amount</td>
+<td>是</td>
+<td>String(15)</td>
+<td>訂單總金額（必須大於 0），單位為元。</td>
+</tr>
+<tr>
+<td>幣種</td>
+<td>currency</td>
+<td>是</td>
+<td>String(3)</td>
+<td>3位元幣種編碼</td>
+</tr>
+<tr>
+<td>商品描述</td>
+<td>body</td>
+<td>是</td>
+<td>String(127)</td>
+<td>商品描述資訊</td>
+</tr>
+<tr>
+<td>終端IP</td>
+<td>client_ip</td>
+<td>否</td>
+<td>String(16)</td>
+<td>訂單生成的機器 IP</td>
+</tr>
+<tr>
+<td>隨機字串</td>
+<td>nonce_str</td>
+<td>是</td>
+<td>String(32)</td>
+<td>隨機字串， 不長於 32 位，每次提交需傳不同的值</td>
+</tr>
+<tr>
+<td>簽名</td>
+<td>sign</td>
+<td>是</td>
+<td>String(32)</td>
+<td>詳見第 4 章 “ 簽名規則”</td>
+</tr>
+<tr>
+<td>刷卡模式</td>
+<td>entry_mode</td>
+<td>是</td>
+<td>String(32)</td>
+<td>swiped：從卡磁條讀取數據；contact：從直接接觸芯片卡讀取。</td>
+</tr>
+<tr>
+<td>從卡磁條讀取數據模式必傳值：</td>
+<td>從卡磁條讀取數據模式必傳值：</td>
+<td>從卡磁條讀取數據模式必傳值：</td>
+<td>從卡磁條讀取數據模式必傳值：</td>
+<td>從卡磁條讀取數據模式必傳值：</td>
+</tr>
+<tr>
+<td>卡磁條數據</td>
+<td>track_data</td>
+<td>是</td>
+<td>String(500)</td>
+<td>卡片磁條上面的數據</td>
+</tr>
+<tr>
+<td>從直接接觸芯片卡讀取必傳值：</td>
+<td>從直接接觸芯片卡讀取必傳值：</td>
+<td>從直接接觸芯片卡讀取必傳值：</td>
+<td>從直接接觸芯片卡讀取必傳值：</td>
+<td>從直接接觸芯片卡讀取必傳值：</td>
+</tr>
+<tr>
+<td>卡號</td>
+<td>number</td>
+<td>是</td>
+<td>String(20)</td>
+<td>信用卡或儲蓄卡卡號</td>
+</tr>
+<tr>
+<td>有效期年</td>
+<td>expiration_year</td>
+<td>是</td>
+<td>String(4)</td>
+<td>格式: YYYY</td>
+</tr>
+<tr>
+<td>有效期月</td>
+<td>expiration_month</td>
+<td>是</td>
+<td>String(2)</td>
+<td>格式: MM 有效值：01到12</td>
+</tr>
+<tr>
+<td>語言</td>
+<td>lang</td>
+<td>否</td>
+<td>String(32)</td>
+<td>語言</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="514-返回結果">5.1.4 返回結果</h3>
+<p>數據按 XML 的格式即時返回</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>商戶訂單號</td>
+<td>order_no</td>
+<td>是</td>
+<td>String(32）</td>
+<td>商戶生成的訂單號</td>
+</tr>
+<tr>
+<td>FTP訂單號</td>
+<td>transaction_id</td>
+<td>是</td>
+<td>String(26）</td>
+<td>FTP生成的訂單號</td>
+</tr>
+<tr>
+<td>提交時間</td>
+<td>submit_time</td>
+<td>是</td>
+<td>String(50）</td>
+<td>格式為 yyyyMMddhhmmss</td>
+</tr>
+<tr>
+<td>交易狀態</td>
+<td>trade_state</td>
+<td>是</td>
+<td>String(32)</td>
+<td>SUCCESS—支付成功
+NOTPAY—待付款
+FAIL—失敗</td>
+</tr>
+<tr>
+<td>隨機字串</td>
+<td>nonce_str</td>
+<td>是</td>
+<td>String(32)</td>
+<td>隨機字串，不長於 32 位</td>
+</tr>
+<tr>
+<td>簽名</td>
+<td>sign</td>
+<td>是</td>
+<td>String(32)</td>
+<td>詳見第 4 章 “簽名規則”</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="515測試用例">5.1.5測試用例</h3>
+<p>提供了測試用例方便調用</p>
+<p>發起提交的數據：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;service&quot;:&quot;pay.globalpayment.card.present&quot;,
+    &quot;order_no&quot;:&quot;7586bb6238424e27a66866d1bf746640&quot;,
+    &quot;card_type&quot;:&quot;VISA&quot;,
+    &quot;amount&quot;:&quot;102.21&quot;,
+    &quot;currency&quot;:&quot;USD&quot;,
+    &quot;body&quot;:&quot;Multifunctional office chair&quot;,
+    &quot;client_ip&quot;:&quot;127.0.0.1&quot;,
+    &quot;entry_mode&quot;:&quot;contact&quot;,
+    &quot;number&quot;:&quot;4111111111111111&quot;,
+    &quot;expiration_year&quot;:&quot;2031&quot;,
+    &quot;expiration_month&quot;:&quot;12&quot;,
+    &quot;client_id&quot;:&quot;1001&quot;,
+    &quot;store_id&quot;:&quot;1001001&quot;,
+    &quot;nonce_str&quot;:&quot;2r8qnc0h&quot;,
+&quot;sign&quot;:&quot;8535CEB8CAA4F3C15D6F907A9012A3DC&quot;,
+&quot;lang&quot;:&quot;en_US&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>成功返回的數據：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;order_no&quot;:&quot;7586bb6238424e27a66866d1bf746640&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181541020001&quot;,
+    &quot;submit_time&quot;:&quot;20201218154102&quot;,
+    &quot;trade_state&quot;:&quot;NOTPAY&quot;,
+    &quot;nonce_str&quot;:&quot;cg41bxt5&quot;,
+    &quot;sign&quot;:&quot;8092A1F245A942685B0F0F8040398342&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="52撤銷授權接口">5.2撤銷授權接口</h2>
+<h3 id="521-業務功能">5.2.1 業務功能</h3>
+<p>有卡支付時，商戶調用下單接口後如果持卡人不想刷卡支付，調用該接口撤銷信用卡授權。</p>
+<h3 id="522-交互模式">5.2.2 交互模式</h3>
+<p>請求：後臺同步請求模式</p>
+<p>返回結果：後臺同步請求模式</p>
+<h3 id="523-請求參數列表">5.2.3 請求參數列表</h3>
+<p>請求 url：https://api.fintechpaymenthub.com/openapi/v1/reverse</p>
+<p>POST JSON 內容體進行請求</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>接口類型</td>
+<td>service</td>
+<td>是</td>
+<td>String(40)</td>
+<td>固定：pay.globalpayment.card.present</td>
+</tr>
+<tr>
+<td>客戶端ID</td>
+<td>client_id</td>
+<td>是</td>
+<td>String(32)</td>
+<td>商戶客戶端ID</td>
+</tr>
+<tr>
+<td>門店ID</td>
+<td>store_id</td>
+<td>是</td>
+<td>String(50)</td>
+<td>門店ID</td>
+</tr>
+<tr>
+<td>FTP訂單號</td>
+<td>transaction_id</td>
+<td>否</td>
+<td>String(26）</td>
+<td>FTP生成的訂單號（order_no 和 transaction_id 至少一個必填，同時存在時 transaction_id 優先）</td>
+</tr>
+<tr>
+<td>商戶訂單號</td>
+<td>order_no</td>
+<td>否</td>
+<td>String(26）</td>
+<td>商戶生成的訂單號（order_no 和 transaction_id 至少一個必填，同時存在時 transaction_id 優先）</td>
+</tr>
+<tr>
+<td>隨機字串</td>
+<td>nonce_str</td>
+<td>是</td>
+<td>String(32)</td>
+<td>隨機字串，不長於 32 位，每次提交需傳不同的值</td>
+</tr>
+<tr>
+<td>簽名</td>
+<td>sign</td>
+<td>是</td>
+<td>String(32)</td>
+<td>詳見第 4 章 “簽名規則”</td>
+</tr>
+<tr>
+<td>語言</td>
+<td>lang</td>
+<td>否</td>
+<td>String(32)</td>
+<td>語言</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="524-返回結果">5.2.4 返回結果</h3>
+<p>數據按 XML 的格式即時返回</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>商戶訂單號</td>
+<td>order_no</td>
+<td>是</td>
+<td>String(32）</td>
+<td>商戶生成的訂單號</td>
+</tr>
+<tr>
+<td>FTP訂單號</td>
+<td>transaction_id</td>
+<td>是</td>
+<td>String(26）</td>
+<td>FTP生成的訂單號</td>
+</tr>
+<tr>
+<td>狀態</td>
+<td>state</td>
+<td>是</td>
+<td>String(32)</td>
+<td>SUCCESS—撤銷成功
+FAIL—失敗</td>
+</tr>
+<tr>
+<td>隨機字串</td>
+<td>nonce_str</td>
+<td>是</td>
+<td>String(32)</td>
+<td>隨機字串，不長於 32 位</td>
+</tr>
+<tr>
+<td>簽名</td>
+<td>sign</td>
+<td>是</td>
+<td>String(32)</td>
+<td>詳見第 4 章 “簽名規則”</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="525測試用例">5.2.5測試用例</h3>
+<p>提供了測試用例方便調用</p>
+<p>發起提交的數據：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;service&quot;:&quot;pay.globalpayment.card.present&quot;,
+    &quot;client_id&quot;:&quot;1001&quot;,
+    &quot;store_id&quot;:&quot;1001001&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181541020001&quot;,
+    &quot;order_no&quot;:&quot;612b4ab2775c4f1b9642a8269ce6e69e&quot;,
+    &quot;nonce_str&quot;:&quot;5mylxtfj&quot;,
+&quot;sign&quot;:&quot;448A938062F4CCAB8E494F1EFF6530A9&quot;,
+&quot;lang&quot;:&quot;en_US&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>成功返回的數據：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;order_no&quot;:&quot;7586bb6238424e27a66866d1bf746640&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181541020001&quot;,
+    &quot;state&quot;:&quot;SUCCESS&quot;,
+    &quot;sign&quot;:&quot;0C62E2BBFF3306C294310F92A58E8EDD&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="53-扣款接口">5.3 扣款接口</h2>
+<h3 id="531-業務功能">5.3.1 業務功能</h3>
+<p>有卡支付時，商戶調用下單接口後需要調用扣款接口完成實際的扣款操作。這時卡內的金額將會轉出到平臺中。</p>
+<h3 id="532-交互模式">5.3.2 交互模式</h3>
+<p>請求：後臺同步請求模式</p>
+<p>返回結果：後臺同步請求模式</p>
+<h3 id="533-請求參數列表">5.3.3 請求參數列表</h3>
+<p>請求 url：https://api.fintechpaymenthub.com/openapi/v1/deductions</p>
+<p>POST JSON 內容體進行請求</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>接口類型</td>
+<td>service</td>
+<td>是</td>
+<td>String(40)</td>
+<td>固定：pay.globalpayment.card.present</td>
+</tr>
+<tr>
+<td>客戶端ID</td>
+<td>client_id</td>
+<td>是</td>
+<td>String(32)</td>
+<td>商戶客戶端ID</td>
+</tr>
+<tr>
+<td>門店ID</td>
+<td>store_id</td>
+<td>是</td>
+<td>String(50)</td>
+<td>門店ID</td>
+</tr>
+<tr>
+<td>FTP訂單號</td>
+<td>transaction_id</td>
+<td>是</td>
+<td>String(26）</td>
+<td>FTP生成的訂單號</td>
+</tr>
+<tr>
+<td>隨機字串</td>
+<td>nonce_str</td>
+<td>是</td>
+<td>String(32)</td>
+<td>隨機字串，不長於 32 位，每次提交需傳不同的值</td>
+</tr>
+<tr>
+<td>簽名</td>
+<td>sign</td>
+<td>是</td>
+<td>String(32)</td>
+<td>詳見第 4 章 “簽名規則”</td>
+</tr>
+<tr>
+<td>語言</td>
+<td>lang</td>
+<td>否</td>
+<td>String(32)</td>
+<td>語言</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="534-返回結果">5.3.4 返回結果</h3>
+<p>數據按 XML 的格式即時返回</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>商戶訂單號</td>
+<td>order_no</td>
+<td>是</td>
+<td>String(32）</td>
+<td>商戶生成的訂單號</td>
+</tr>
+<tr>
+<td>FTP訂單號</td>
+<td>transaction_id</td>
+<td>是</td>
+<td>String(26）</td>
+<td>FTP生成的訂單號</td>
+</tr>
+<tr>
+<td>提交時間</td>
+<td>submit_time</td>
+<td>是</td>
+<td>String(50）</td>
+<td>格式為 yyyyMMddhhmmss</td>
+</tr>
+<tr>
+<td>支付完成時間</td>
+<td>pay_finish_time</td>
+<td>是</td>
+<td>String(50)</td>
+<td>支付完成時間， 格式為 yyyyMMddhhmmss， 如2009 年 12 月 27 日 9 點 10 分 10 秒錶示為20091227091010。 時區為 GMT+8 beijing。</td>
+</tr>
+<tr>
+<td>交易狀態</td>
+<td>trade_state</td>
+<td>是</td>
+<td>String(32)</td>
+<td>SUCCESS—支付成功
+REFUND—退款
+NOTPAY—待付款
+FAIL—失敗</td>
+</tr>
+<tr>
+<td>隨機字串</td>
+<td>nonce_str</td>
+<td>是</td>
+<td>String(32)</td>
+<td>隨機字串，不長於 32 位</td>
+</tr>
+<tr>
+<td>簽名</td>
+<td>sign</td>
+<td>是</td>
+<td>String(32)</td>
+<td>詳見第 4 章 “簽名規則”</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="535測試用例">5.3.5測試用例</h3>
+<p>提供了測試用例方便調用</p>
+<p>發起提交的數據：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;service&quot;:&quot;pay.globalpayment.card.present&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181606440001&quot;,
+    &quot;client_id&quot;:&quot;1001&quot;,
+    &quot;store_id&quot;:&quot;1001001&quot;,
+    &quot;nonce_str&quot;:&quot;6e9p0iy3&quot;,
+&quot;sign&quot;:&quot;D57E0E5BF6B6AA30DBB4E49BB67EA07D&quot;,
+&quot;lang&quot;:&quot;en_US&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>成功返回的數據：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;order_no&quot;:&quot;fc0eccc0831340a2afae70cfc2100b63&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181606440001&quot;,
+    &quot;submit_time&quot;:&quot;20201218160644&quot;,
+    &quot;pay_finish_time&quot;:&quot;20201218160657&quot;,
+    &quot;trade_state&quot;:&quot;SUCCESS&quot;,
+    &quot;sign&quot;:&quot;D0FF3E8C793F56EDB9C9C284C8EFF2F2&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="54-訂單查詢接口">5.4 訂單查詢接口</h2>
+<h3 id="541-業務功能">5.4.1 業務功能</h3>
+<p>根據商戶訂單號或者FTP訂單號查詢平臺的具體訂單資訊。</p>
+<h3 id="542-交互模式">5.4.2 交互模式</h3>
+<p>後臺系統調用交互模式</p>
+<h3 id="543-請求參數列表">5.4.3 請求參數列表</h3>
+<p>請求 url：https://api.fintechpaymenthub.com/openapi/v1/query
+通過 POST JSON 內容體進行請求</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>接口類型</td>
+<td>service</td>
+<td>是</td>
+<td>String(40)</td>
+<td>固定：pay.globalpayment.card.present</td>
+</tr>
+<tr>
+<td>客戶端ID</td>
+<td>client_id</td>
+<td>是</td>
+<td>String(32)</td>
+<td>商戶客戶端ID</td>
+</tr>
+<tr>
+<td>門店ID</td>
+<td>store_id</td>
+<td>是</td>
+<td>String(50)</td>
+<td>門店ID</td>
+</tr>
+<tr>
+<td>商戶訂單號</td>
+<td>order_no</td>
+<td>否</td>
+<td>String(32）</td>
+<td>商戶生成的訂單號</td>
+</tr>
+<tr>
+<td>FTP訂單號</td>
+<td>transaction_id</td>
+<td>否</td>
+<td>String(26）</td>
+<td>FTP訂單號, order_no 和 transaction_id 至少一個必填，同時存在時 transaction_id 優先</td>
+</tr>
+<tr>
+<td>隨機字串</td>
+<td>nonce_str</td>
+<td>是</td>
+<td>String(32)</td>
+<td>隨機字串，不長於 32 位</td>
+</tr>
+<tr>
+<td>簽名</td>
+<td>sign</td>
+<td>是</td>
+<td>String(32)</td>
+<td>詳見第 4 章 “簽名規則”</td>
+</tr>
+<tr>
+<td>語言</td>
+<td>lang</td>
+<td>否</td>
+<td>String(32)</td>
+<td>語言</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="544-返回結果">5.4.4 返回結果</h3>
+<p>資料按 XML 的格式即時返回</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>FTP訂單號</td>
+<td>transaction_id</td>
+<td>是</td>
+<td>String(26)</td>
+<td>FTP生成的訂單號</td>
+</tr>
+<tr>
+<td>商戶訂單號</td>
+<td>order_no</td>
+<td>是</td>
+<td>String(32)</td>
+<td>商戶生成的訂單號</td>
+</tr>
+<tr>
+<td>門店ID</td>
+<td>store_id</td>
+<td>是</td>
+<td>String(50)</td>
+<td>門店ID</td>
+</tr>
+<tr>
+<td>提交時間</td>
+<td>submit_time</td>
+<td>是</td>
+<td>String(32)</td>
+<td>格式為 yyyyMMddhhmmss</td>
+</tr>
+<tr>
+<td>交易狀態</td>
+<td>trade_state</td>
+<td>是</td>
+<td>String(32)</td>
+<td>SUCCESS—支付成功
+REFUND—退款
+NOTPAY—待付款
+FAIL—失敗</td>
+</tr>
+<tr>
+<td>金額</td>
+<td>amount</td>
+<td>是</td>
+<td>Double</td>
+<td>此值不能為負</td>
+</tr>
+<tr>
+<td>幣種</td>
+<td>currency</td>
+<td>是</td>
+<td>String(3)</td>
+<td>3 位元 ISO 貨幣代碼，大寫字母，人民幣為 CNY。</td>
+</tr>
+<tr>
+<td>卡類型</td>
+<td>card_type</td>
+<td>是</td>
+<td>String(20)</td>
+<td>卡類型
+VISA、MASTER、UNION_PAY</td>
+</tr>
+<tr>
+<td>付款方</td>
+<td>payer</td>
+<td>是</td>
+<td>String(50)</td>
+<td>付款方</td>
+</tr>
+<tr>
+<td>支付完成時間</td>
+<td>pay_finish_time</td>
+<td>是</td>
+<td>String(32)</td>
+<td>支付完成時間，格式為 yyyyMMddhhmmss， 如2009 年 12 月 27 日 9 點 10 分 10 秒錶示為20091227091010。 時區為 GMT+8 beijing。</td>
+</tr>
+<tr>
+<td>商品描述</td>
+<td>body</td>
+<td>是</td>
+<td>String(127)</td>
+<td>商品描述資訊</td>
+</tr>
+<tr>
+<td>退款金額</td>
+<td>refund_amount</td>
+<td>是</td>
+<td>Double</td>
+<td>退款金額</td>
+</tr>
+<tr>
+<td>隨機字串</td>
+<td>nonce_str</td>
+<td>是</td>
+<td>String(32)</td>
+<td>隨機字串，不長於 32 位</td>
+</tr>
+<tr>
+<td>簽名</td>
+<td>sign</td>
+<td>是</td>
+<td>String(32)</td>
+<td>詳見第 4 章 “簽名規則”</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="545測試用例">5.4.5測試用例</h3>
+<p>提供了測試用例方便調用</p>
+<p>發起提交的數據：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;service&quot;:&quot;pay.globalpayment.card.present&quot;,
+    &quot;order_no&quot;:&quot;&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181606440001&quot;,
+    &quot;client_id&quot;:&quot;1001&quot;,
+    &quot;store_id&quot;:&quot;1001001&quot;,
+    &quot;nonce_str&quot;:&quot;j4lu7w9z&quot;,
+&quot;sign&quot;:&quot;936D81CD4FC6E0B821597C5C558BFC11&quot;,
+&quot;lang&quot;:&quot;en_US&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>成功返回的數據：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181606440001&quot;,
+    &quot;order_no&quot;:&quot;fc0eccc0831340a2afae70cfc2100b63&quot;,
+    &quot;store_id&quot;:&quot;1001001&quot;,
+    &quot;submit_time&quot;:&quot;20201218160644&quot;,
+    &quot;trade_state&quot;:&quot;SUCCESS&quot;,
+    &quot;amount&quot;:102.21,
+    &quot;currency&quot;:&quot;USD&quot;,
+    &quot;pay_finish_time&quot;:&quot;20201218160657&quot;,
+    &quot;body&quot;:&quot;Multifunctional office chair&quot;,
+    &quot;refund_amount&quot;:0,
+    &quot;nonce_str&quot;:&quot;3yobej8f&quot;,
+    &quot;sign&quot;:&quot;7957C09B6BE3ED9E4AC439F342BF5BAD&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="6錯誤碼說明">6錯誤碼說明</h1>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>錯誤碼</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>MISSING_FIELD</td>
+<td>字段未傳入</td>
+</tr>
+<tr>
+<td>INVALID_FIELD</td>
+<td>字段校驗錯誤</td>
+</tr>
+<tr>
+<td>NO_EXISTS</td>
+<td>數據不存在</td>
+</tr>
+<tr>
+<td>OTHER</td>
+<td>其他錯誤</td>
+</tr>
+<tr>
+<td>INVALID_SCOPE</td>
+<td>數據超出範圍</td>
+</tr>
+<tr>
+<td>INVALID_LENGTH</td>
+<td>數據長度超過限制</td>
+</tr>
+<tr>
+<td>INCORRECT_SIGNATURE</td>
+<td>無效簽名</td>
+</tr>
+<tr>
+<td>EXPIRED_ORDER</td>
+<td>訂單已過期</td>
+</tr>
+<tr>
+<td>PAY_GATEWAY_FAIL</td>
+<td>支付網關異常</td>
+</tr>
+<tr>
+<td>UNKNOWN_ERROR</td>
+<td>未知錯誤</td>
+</tr>
+<tr>
+<td>XML_FORMAT_ERROR</td>
+<td>XML格式錯誤</td>
+</tr>
+<tr>
+<td>REQUIRE_POST_METHOD</td>
+<td>請使用post方法</td>
+</tr>
+<tr>
+<td>ACCESS_DENIED</td>
+<td>拒絕訪問</td>
+</tr>
+<tr>
+<td>POST_DATA_EMPTY</td>
+<td>post數據爲空</td>
+</tr>
+<tr>
+<td>NOT_UTF8</td>
+<td>編碼格式錯誤</td>
+</tr>
+<tr>
+<td>ORDER_CLOSED</td>
+<td>訂單已關閉</td>
+</tr>
+<tr>
+<td>NO_AUTH</td>
+<td>權限不足</td>
+</tr>
+<tr>
+<td>LACK_PARAMS</td>
+<td>缺少參數</td>
+</tr>
+<tr>
+<td>INVALID_STATUS</td>
+<td>非法狀態</td>
+</tr>
+<tr>
+<td>INVALID_SERVICE</td>
+<td>非法接口類型</td>
+</tr>
+<tr>
+<td>SN_IS_EXISTS</td>
+<td>編號已存在</td>
+</tr>
+<tr>
+<td>NOTIFY_FAIL</td>
+<td>通知異常</td>
+</tr>
+<tr>
+<td>URL_FORMAT_ERROR</td>
+<td>URL格式不正確</td>
+</tr>
+<tr>
+<td>IP_FORMAT_ERROR</td>
+<td>IP格式不正確</td>
+</tr>
+<tr>
+<td>DATE_FORMAT_ERROR</td>
+<td>日期格式不正確</td>
+</tr>
+<tr>
+<td>TRADE_NOT_EXIST</td>
+<td>交易不存在</td>
+</tr>
+<tr>
+<td>TRADE_HAS_SUCCESS</td>
+<td>交易已被支付</td>
+</tr>
+<tr>
+<td>TRADE_FAILED</td>
+<td>交易失敗</td>
+</tr>
+<tr>
+<td>TRADE_TIMEOUT</td>
+<td>交易超時</td>
+</tr>
+<tr>
+<td>INVALID_ORDER_STATUS</td>
+<td>無效的訂單狀態</td>
+</tr>
+<tr>
+<td>REVERSE_FAILED</td>
+<td>撤銷授權失敗</td>
+</tr>
+<tr>
+<td>DEDUCTIONS_FAILED</td>
+<td>扣款失敗</td>
+</tr>
+<tr>
+<td>REFUND_FAILED</td>
+<td>扣款失敗</td>
+</tr>
+<tr>
+<td>INVALID_CLIENT_ID</td>
+<td>無效客戶端ID</td>
+</tr>
+<tr>
+<td>INVALID_STORE_ID</td>
+<td>無效門店ID</td>
+</tr>
+<tr>
+<td>INVALID_AMOUNT</td>
+<td>交易金額不正確</td>
+</tr>
+<tr>
+<td>INVALID_REFUND_FEE</td>
+<td>退款金額不正確</td>
+</tr>
+<tr>
+<td>VALID_FLOW_FAIL</td>
+<td>請求過於頻繁</td>
+</tr>
+<tr>
+<td>UNSUPPORTED_SERVICE</td>
+<td>不支持的接口類型</td>
+</tr>
+<tr>
+<td>DATA_NOT_EXIST</td>
+<td>查詢的數據不存在</td>
+</tr>
+<tr>
+<td>ACCOUNT_LOCKED</td>
+<td>商戶或門店的賬號被鎖定</td>
+</tr>
+<tr>
+<td>AUTHORIZED_PENDING_REVIEW</td>
+<td>待授權處理審查</td>
+</tr>
+<tr>
+<td>DECLINED</td>
+<td>拒絕處理</td>
+</tr>
+<tr>
+<td>INVALID_REQUEST</td>
+<td>非法請求</td>
+</tr>
+<tr>
+<td>SERVER_ERROR</td>
+<td>服務錯誤</td>
+</tr>
+<tr>
+<td>AUTHORIZED_RISK_DECLINED</td>
+<td>拒絕風險授權</td>
+</tr>
+<tr>
+<td>PENDING_AUTHENTICATION</td>
+<td>等待身份驗證</td>
+</tr>
+<tr>
+<td>VOIDED</td>
+<td>已廢棄</td>
+</tr>
+<tr>
+<td>REJECTED</td>
+<td>已拒絕</td>
+</tr>
+<tr>
+<td>AUTHENTICATION_FAILED</td>
+<td>身份驗證失敗</td>
+</tr>
+<tr>
+<td>PENDING_REVIEW</td>
+<td>等待審查</td>
+</tr>
+<tr>
+<td>CHALLENGE</td>
+<td>風險交易</td>
+</tr>
+<tr>
+<td>AVS_FAILED</td>
+<td>AVS檢查被拒絕</td>
+</tr>
+<tr>
+<td>CONTACT_PROCESSOR</td>
+<td>發卡銀行對請求有疑問</td>
+</tr>
+<tr>
+<td>EXPIRED_CARD</td>
+<td>已過期的卡</td>
+</tr>
+<tr>
+<td>PROCESSOR_DECLINED</td>
+<td>髮卡行拒絕支付</td>
+</tr>
+<tr>
+<td>INSUFFICIENT_FUND</td>
+<td>帳戶資金不足</td>
+</tr>
+<tr>
+<td>STOLEN_LOST_CARD</td>
+<td>卡失竊或遺失</td>
+</tr>
+<tr>
+<td>ISSUER_UNAVAILABLE</td>
+<td>髮卡行不可用</td>
+</tr>
+<tr>
+<td>UNAUTHORIZED_CARD</td>
+<td>無效的卡或未經授權的無卡交易</td>
+</tr>
+<tr>
+<td>CVN_NOT_MATCH</td>
+<td>CVN不匹配</td>
+</tr>
+<tr>
+<td>EXCEEDS_CREDIT_LIMIT</td>
+<td>該卡已達到信用額度</td>
+</tr>
+<tr>
+<td>INVALID_CVN</td>
+<td>無效CVN</td>
+</tr>
+<tr>
+<td>DECLINED_CHECK</td>
+<td>支付被拒絕</td>
+</tr>
+<tr>
+<td>BLACKLISTED_CUSTOMER</td>
+<td>訂單信息不匹配</td>
+</tr>
+<tr>
+<td>SUSPENDED_ACCOUNT</td>
+<td>帳戶被凍結</td>
+</tr>
+<tr>
+<td>PAYMENT_REFUSED</td>
+<td>拒絕支付</td>
+</tr>
+<tr>
+<td>CV_FAILED</td>
+<td>CVN檢查被拒絕</td>
+</tr>
+<tr>
+<td>INVALID_ACCOUNT</td>
+<td>無效的帳號</td>
+</tr>
+<tr>
+<td>GENERAL_DECLINE</td>
+<td>拒絕處理</td>
+</tr>
+<tr>
+<td>INVALID_MERCHANT_CONFIGURATION</td>
+<td>商戶配置異常</td>
+</tr>
+<tr>
+<td>BOLETO_DECLINED</td>
+<td>boleto請求被拒絕</td>
+</tr>
+<tr>
+<td>PROCESSOR_TIMEOUT</td>
+<td>支付處理超時</td>
+</tr>
+<tr>
+<td>DEBIT_CARD_USAGE_LIMIT_EXCEEDED</td>
+<td>卡使用次數過多</td>
+</tr>
+<tr>
+<td>SCORE_EXCEEDS_THRESHOLD</td>
+<td>安全檢查不通過</td>
+</tr>
+<tr>
+<td>CONSUMER_AUTHENTICATION_REQUIRED</td>
+<td>未驗證身份信息</td>
+</tr>
+<tr>
+<td>CONSUMER_AUTHENTICATION_FAILED</td>
+<td>付款人無法驗證</td>
+</tr>
+<tr>
+<td>DECISION_PROFILE_REVIEW</td>
+<td>卡待審核</td>
+</tr>
+<tr>
+<td>DECISION_PROFILE_REJECT</td>
+<td>卡審核失敗</td>
+</tr>
+<tr>
+<td>INVALID_DATA</td>
+<td>無效數據</td>
+</tr>
+<tr>
+<td>DUPLICATE_REQUEST</td>
+<td>重複請求</td>
+</tr>
+<tr>
+<td>CARD_TYPE_NOT_ACCEPTED</td>
+<td>不支持卡類型</td>
+</tr>
+<tr>
+<td>PROCESSOR_UNAVAILABLE</td>
+<td>銀行故障</td>
+</tr>
+<tr>
+<td>INVALID_AMOUNT</td>
+<td>交易金額不匹配</td>
+</tr>
+<tr>
+<td>INVALID_CARD_TYPE</td>
+<td>卡類型無效</td>
+</tr>
+<tr>
+<td>SYSTEM_ERROR</td>
+<td>系統故障</td>
+</tr>
+<tr>
+<td>SERVER_TIMEOUT</td>
+<td>服務響應超時</td>
+</tr>
+<tr>
+<td>SERVICE_TIMEOUT</td>
+<td>服務響應超時</td>
+</tr>
+<tr>
+<td>INVALID_OR_MISSING_CONFIG</td>
+<td>商戶配置異常</td>
+</tr>
+<tr>
+<td>EXCEEDS_AUTH_AMOUNT</td>
+<td>金額不正確</td>
+</tr>
+<tr>
+<td>AUTH_ALREADY_REVERSED</td>
+<td>授權已經撤消</td>
+</tr>
+<tr>
+<td>TRANSACTION_ALREADY_SETTLED</td>
+<td>交易已結算</td>
+</tr>
+<tr>
+<td>INVALID_PAYMENT_ID</td>
+<td>請求ID無效</td>
+</tr>
+<tr>
+<td>MISSING_AUTH</td>
+<td>未授權異常</td>
+</tr>
+<tr>
+<td>TRANSACTION_ALREADY_REVERSED_OR_SETTLED</td>
+<td>交易已經結算或撤消</td>
+</tr>
+<tr>
+<td>INVALID_CARD</td>
+<td>無效帳號</td>
+</tr>
+<tr>
+<td>CAPTURE_ALREADY_VOIDED</td>
+<td>扣款已失效</td>
+</tr>
+<tr>
+<td>ACCOUNT_NOT_ALLOWED_CREDIT</td>
+<td>退款被禁止</td>
+</tr>
+<tr>
+<td>NOT_VOIDABLE</td>
+<td>扣款無效</td>
+</tr>
+<tr>
+<td>PENDING_AUTHENTICATION</td>
+<td>需持卡人進行身份驗證</td>
+</tr>
+<tr>
+<td>AUTHENTICATION_FAILED</td>
+<td>商戶無法通過身份驗證</td>
+</tr>
+<tr>
+<td>DECISION_PROFILE_CHALLENGE</td>
+<td>存在風險交易</td>
+</tr>
+<tr>
+<td>APARTMENT_NUMBER_NOT_FOUND</td>
+<td>地址信息不正確</td>
+</tr>
+<tr>
+<td>INSUFFICIENT_ADDRESS_INFORMATION</td>
+<td>地址信息不足</td>
+</tr>
+<tr>
+<td>HOUSE_OR_BOX_NUMBER_NOT_FOUND</td>
+<td>門牌號或郵局不正確</td>
+</tr>
+<tr>
+<td>MULTIPLE_ADDRESS_MATCHES</td>
+<td>存在多個地址匹配</td>
+</tr>
+<tr>
+<td>BOX_NUMBER_NOT_FOUND</td>
+<td>郵政信息無效</td>
+</tr>
+<tr>
+<td>ROUTE_SERVICE_NOT_FOUND</td>
+<td>路由服務標識無效</td>
+</tr>
+<tr>
+<td>STREET_NAME_NOT_FOUND</td>
+<td>郵政編碼與街道不對應</td>
+</tr>
+<tr>
+<td>POSTAL_CODE_NOT_FOUND</td>
+<td>郵政編碼無效</td>
+</tr>
+<tr>
+<td>UNVERIFIABLE_ADDRESS</td>
+<td>地址無法驗證</td>
+</tr>
+<tr>
+<td>MULTIPLE_ADDRESS_MATCHES_INTERNATIONAL</td>
+<td>存在多個地址情況</td>
+</tr>
+<tr>
+<td>ADDRESS_MATCH_NOT_FOUND</td>
+<td>地址無法匹配</td>
+</tr>
+<tr>
+<td>UNSUPPORTED_CHARACTER_SET</td>
+<td>地址驗證服務不支持</td>
+</tr>
+<tr>
+<td>CUSTOMER_WATCHLIST_MATCH</td>
+<td>客戶實體信息被限制</td>
+</tr>
+<tr>
+<td>ADDRESS_COUNTRY_WATCHLIST_MATCH</td>
+<td>訂單被限制</td>
+</tr>
+<tr>
+<td>EMAIL_COUNTRY_WATCHLIST_MATCH</td>
+<td>電子郵件被限制</td>
+</tr>
+<tr>
+<td>IP_COUNTRY_WATCHLIST_MATCH</td>
+<td>IP被限制</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </main>
+
+    <nav class="toc-nav">
+<div class="toc-nav-title">本頁目錄</div>
+<ul>
+  <li><a href="#11文檔概述" class="toc-h2">1.1文檔概述</a></li>
+  <li><a href="#12閱讀對象" class="toc-h2">1.2閱讀對象</a></li>
+  <li><a href="#21-業務實現流程" class="toc-h2">2.1 業務實現流程</a></li>
+  <li><a href="#31-提交數據" class="toc-h2">3.1 提交數據</a></li>
+  <li><a href="#32-返回結果數據格式" class="toc-h2">3.2 返回結果數據格式</a></li>
+  <li><a href="#41-簽名原始串" class="toc-h2">4.1 簽名原始串</a></li>
+  <li><a href="#42-簽名演算法" class="toc-h2">4.2 簽名演算法</a></li>
+  <li><a href="#43請求頭說明" class="toc-h2">4.3請求頭說明</a></li>
+  <li><a href="#51-下單接口" class="toc-h2">5.1 下單接口</a></li>
+  <li><a href="#511-業務功能" class="toc-h3">5.1.1 業務功能</a></li>
+  <li><a href="#512-交互模式" class="toc-h3">5.1.2 交互模式</a></li>
+  <li><a href="#513-請求參數列表" class="toc-h3">5.1.3 請求參數列表</a></li>
+  <li><a href="#514-返回結果" class="toc-h3">5.1.4 返回結果</a></li>
+  <li><a href="#515測試用例" class="toc-h3">5.1.5測試用例</a></li>
+  <li><a href="#52撤銷授權接口" class="toc-h2">5.2撤銷授權接口</a></li>
+  <li><a href="#521-業務功能" class="toc-h3">5.2.1 業務功能</a></li>
+  <li><a href="#522-交互模式" class="toc-h3">5.2.2 交互模式</a></li>
+  <li><a href="#523-請求參數列表" class="toc-h3">5.2.3 請求參數列表</a></li>
+  <li><a href="#524-返回結果" class="toc-h3">5.2.4 返回結果</a></li>
+  <li><a href="#525測試用例" class="toc-h3">5.2.5測試用例</a></li>
+  <li><a href="#53-扣款接口" class="toc-h2">5.3 扣款接口</a></li>
+  <li><a href="#531-業務功能" class="toc-h3">5.3.1 業務功能</a></li>
+  <li><a href="#532-交互模式" class="toc-h3">5.3.2 交互模式</a></li>
+  <li><a href="#533-請求參數列表" class="toc-h3">5.3.3 請求參數列表</a></li>
+  <li><a href="#534-返回結果" class="toc-h3">5.3.4 返回結果</a></li>
+  <li><a href="#535測試用例" class="toc-h3">5.3.5測試用例</a></li>
+  <li><a href="#54-訂單查詢接口" class="toc-h2">5.4 訂單查詢接口</a></li>
+  <li><a href="#541-業務功能" class="toc-h3">5.4.1 業務功能</a></li>
+  <li><a href="#542-交互模式" class="toc-h3">5.4.2 交互模式</a></li>
+  <li><a href="#543-請求參數列表" class="toc-h3">5.4.3 請求參數列表</a></li>
+  <li><a href="#544-返回結果" class="toc-h3">5.4.4 返回結果</a></li>
+  <li><a href="#545測試用例" class="toc-h3">5.4.5測試用例</a></li>
+</ul>
+</nav>
+  </div>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

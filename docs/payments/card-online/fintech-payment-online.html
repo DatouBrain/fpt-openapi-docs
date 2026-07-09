@@ -1,0 +1,2990 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fintech Payment Online 支付 | Fintech Payment OpenAPI 文檔</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo">
+        <span class="logo-icon">FP</span>
+        <span class="logo-text">Fintech Payment <span class="logo-sub">OpenAPI</span></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../../index.html">首頁</a>
+        <a href="../../common/quick-start.html">接入指引</a>
+        <a href="../../common/data-format.html">通用規則</a>
+        <a href="../../payments/card-online/global-payments-online.html">產品文檔</a>
+      </nav>
+      <button class="menu-toggle" aria-label="選單">☰</button>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="sidebar">
+<div class="sidebar-group" data-group="common">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>通用規則</div>
+  <ul class="sidebar-links">
+    <li><a href="../../common/quick-start.html" class="sub-link">快速入門</a></li>
+    <li><a href="../../common/endpoints.html" class="sub-link">API 調用地址</a></li>
+    <li><a href="../../common/data-format.html" class="sub-link">數據格式</a></li>
+    <li><a href="../../common/signature.html" class="sub-link">數字簽名</a></li>
+    <li><a href="../../common/request-headers.html" class="sub-link">請求頭說明</a></li>
+    <li><a href="../../common/error-codes.html" class="sub-link">錯誤碼說明</a></li>
+    <li><a href="../../common/notification.html" class="sub-link">支付通知說明</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online 無卡支付</a></li>
+    <li><a href="../../payments/card-online/fintech-payment-online.html" class="sub-link active">Fintech Payment Online 支付 <span class="status-tag upcoming">暫未開放</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../payments/card-offline/global-payments-offline.html" class="sub-link">Global Payments Offline 物理卡支付 <span class="status-tag upcoming">暫未開放</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP 支付</a></li>
+    <li><a href="../../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB 支付</a></li>
+    <li><a href="../../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP 支付</a></li>
+    <li><a href="../../payments/qr-online/alipay-plus.html" class="sub-link">Alipay Plus+ 支付</a></li>
+    <li><a href="../../payments/qr-online/wechat-web.html" class="sub-link">Wechat WEB 支付</a></li>
+    <li><a href="../../payments/qr-online/wechat-wap.html" class="sub-link">Wechat WAP 支付</a></li>
+    <li><a href="../../payments/qr-online/wechat-miniprogram.html" class="sub-link">Wechat 公眾帳號和小程序支付</a></li>
+    <li><a href="../../payments/qr-online/wechat-app.html" class="sub-link">Wechat APP 支付</a></li>
+    <li><a href="../../payments/qr-online/qr-code.html" class="sub-link">掃碼支付</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../payments/qr-offline/barcode.html" class="sub-link">付款碼支付</a></li>
+    <li><a href="../../payments/qr-offline/cash-api.html" class="sub-link">CashAPI 支付</a></li>
+  </ul>
+</div>
+</aside>
+
+
+    <main class="main-content">
+      <h1 id="overview">Fintech Payment Online 支付
+<span class="subtitle">Card Pay（Online）</span>
+<span class="status-badge upcoming">暫未開放</span>
+</h1>
+<div class="page-meta">
+<span class="page-meta-item">文檔版本：V1.0</span>
+<span class="page-meta-item">接口版本：V1.0</span>
+</div>
+<div class="callout warning">
+<div class="callout-title">⚠️ 提示</div>
+本接口暫未開放使用，僅供參考。具體上線時間請聯繫平臺客服。
+</div>
+<h1 id="卡支付">卡支付</h1>
+<h1 id="fintech-payment-online支付接口文檔">Fintech Payment Online支付接口文檔</h1>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>時間</th>
+<th>版本</th>
+<th>修改內容</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>2025-12-19</td>
+<td>1.0</td>
+<td>初稿</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="1引言">1引言</h1>
+<h2 id="11文檔概述">1.1文檔概述</h2>
+<h2 id="12閱讀對象">1.2閱讀對象</h2>
+<p>供商戶平臺服務方技術或業務人員參考和查詢。</p>
+<h1 id="2方案概述">2方案概述</h1>
+<h2 id="21-業務實現流程">2.1 業務實現流程</h2>
+<p>接口調用時序：</p>
+<p>下單接口 API、支付通知接口API和查詢訂單API等都涉及簽名過程，調用都必須在商戶伺服器端完成。
+時序圖如下：
+下單-支付流程</p>
+<div class="doc-image"><img src="../../assets/images/fintech-payment-online_1.png" alt="文檔圖片" loading="lazy"></div>
+<p>下單-授權流程</p>
+<div class="doc-image"><img src="../../assets/images/fintech-payment-online_2.png" alt="文檔圖片" loading="lazy"></div>
+<p>下單-收銀臺流程</p>
+<div class="doc-image"><img src="../../assets/images/fintech-payment-online_3.png" alt="文檔圖片" loading="lazy"></div>
+<h1 id="3數據格式">3數據格式</h1>
+<h2 id="31-提交數據">3.1 提交數據</h2>
+<p>採用 HTTPS 標準的 POST 協議， 為了保證接收方接收數據正確,傳輸數據必須簽名。</p>
+<p>{</p>
+<p>&quot;service&quot;:&quot;pay.master.Fintech Payment.online&quot;,</p>
+<p>&quot;order_no&quot;:&quot;00f78e479fe74a11a73be0feb9999749&quot;,</p>
+<p>&quot;body&quot;:&quot;測試Fintech PaymentOnline支付&quot;,</p>
+<p>&quot;amount&quot;:1.0,</p>
+<p>&quot;limit_credit_pay&quot;:&quot;0&quot;,</p>
+<p>&quot;callback_url&quot;:&quot;http://localhost/pay/result.html&quot;,</p>
+<p>&quot;notify_url&quot;:&quot;http://localhost/pay/notify&quot;,</p>
+<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
+<p>&quot;attach&quot;:&quot;&quot;,</p>
+<p>&quot;client_id&quot;:&quot;1002&quot;,</p>
+<p>&quot;store_id&quot;:&quot;1001002&quot;,</p>
+<p>&quot;nonce_str&quot;:&quot;ptf3tyjv&quot;,</p>
+<p>&quot;sign&quot;:&quot;64950ED7B13489114C671EFD24C45AC3&quot;,</p>
+<p>&quot;lang&quot;:&quot;en_US&quot;</p>
+<p>}</p>
+<h2 id="32-返回結果數據格式">3.2 返回結果數據格式</h2>
+<p>正確返回：</p>
+<p>{</p>
+<p>&quot;message&quot;:&quot;SUCCESS&quot;,</p>
+<p>&quot;order_no&quot;:&quot;00f78e479fe74a11a73be0feb9999749&quot;,</p>
+<p>&quot;transaction_id&quot;:&quot;FTP202012181649370001&quot;,</p>
+<p>&quot;submit_time&quot;:&quot;20201218164937&quot;,</p>
+<p>&quot;nonce_str&quot;:&quot;o66w9pft&quot;,</p>
+<p>&quot;sign&quot;:&quot;3F6C05280C90E5BB1330524FD61C6121&quot;</p>
+<p>}</p>
+<p>錯誤返回：</p>
+<p>{</p>
+<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
+<pre><span class="code-label">JSON</span><code class="language-json">&quot;errors&quot;:[</code></pre>
+<p>{</p>
+<p>&quot;field&quot;:&quot;mch_id&quot;,</p>
+<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
+<p>&quot;code&quot;:&quot;MISSING_FIELD&quot;</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>message返回非SUCCESS時表示接口調用出錯。</p>
+<h1 id="4數字簽名">4數字簽名</h1>
+<p>為了保證資料傳輸過程中的資料真實性和完整性， 我們需要對資料進行數字簽名， 在接收簽名資料之後進行簽名校驗。</p>
+<p>數字簽名有兩個步驟， 先按一定規則拼接要簽名的原始串， 再選擇具體的演算法和密鑰計算出簽名結果。</p>
+<h2 id="41-簽名原始串">4.1 簽名原始串</h2>
+<p>無論是請求還是應答， 簽名原始串按以下方式組裝成字串：
+1、 除 sign 欄位外， 所有參數按照欄位名的 ascii 碼從小到大排序後使用 QueryString 的格式（即key1=value1&amp;key2=value2…） 拼接而成， 空值不傳遞， 不參與簽名組串。
+2、 簽名原始串中， 欄位名和欄位值都採用原始值， 不進行 URL Encode。</p>
+<p>3、 平臺返回的應答或通知消息可能會由於升級增加參數， 請驗證應答簽名時注意允許這種情況。</p>
+<p>舉例：</p>
+<p>調用某個接口， 接口有如下欄位：</p>
+<p>{</p>
+<p>&quot;client_id&quot;:&quot;1001&quot;,</p>
+<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
+<p>&quot;service&quot;:&quot;pay.master.Fintech Payment.online&quot;,</p>
+<p>&quot;order_no&quot;:&quot;Me08772e914454656bf26ec8996e35bb&quot;,</p>
+<p>&quot;amount&quot;:&quot;1&quot;,</p>
+<p>&quot;body&quot;:&quot;a chair&quot;,</p>
+<p>&quot;notify_url&quot;:&quot;2031&quot;,</p>
+<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
+<p>&quot;nonce_str&quot;:&quot;1409196838&quot;,</p>
+<p>&quot;sign&quot;:&quot;22C9835251DCF58BB70C78FA8D6448BD&quot;</p>
+<p>}</p>
+<p>正確的簽名欄位排序為：</p>
+<p>amount=1&amp;body=a chair&amp;client_ip=127.0.0.1&amp;mch_id=1001&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.master.Fintech Payment.online&amp;store_id=1001001</p>
+<h2 id="42-簽名演算法">4.2 簽名演算法</h2>
+<p>MD5 簽名
+MD5 是一種摘要生成演算法， 通過在簽名原始串後加上商戶通信金鑰的內容， 進行 MD5 運算， 形成的摘要
+字串即為簽名結果。 為了方便比較， 簽名結果統一轉換為大寫字元。</p>
+<p>注意： 簽名時將字串轉化成位元組流時指定的編碼字元集應與參數 charset 一致。
+MD5 簽名計算公式：
+sign = MD5 (原字串+&amp;key=商戶祕鑰). toUpperCase</p>
+<p>假設商戶祕鑰為：MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=</p>
+<p>如：
+假設以下為 JSON傳入參數：
+i： 經過 a 過程 URL 鍵值對字典序排序後的字串 string1 為：
+amount=1&amp;body=a chair&amp;client_ip=127.0.0.1&amp;mch_id=1001&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.master.Fintech Payment.online&amp;store_id=1001001
+ii： 經過 b 過程後得到 sign 為：</p>
+<p>sign = md5(string1+&amp;key=商戶祕鑰).toUpperCase</p>
+<p>實際加密字符串為：</p>
+<p>sign = md5(amount=1&amp;body=a chair&amp;client_ip=127.0.0.1&amp;mch_id=1001&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.master.Fintech Payment.online&amp;store_id=1001001&amp;key=MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=).toUpperCase</p>
+<p>最終得到的簽名為：7AE0CEACF55F20EAAE4390195AA77A92</p>
+<p>sign與 lang字段不參與接口簽名，接口返回參數解密規則同理</p>
+<h2 id="43-請求頭說明">4.3 請求頭說明</h2>
+<p>請求參數：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>內容類型</td>
+<td>Content-Type</td>
+<td>是</td>
+<td>String(32)</td>
+<td>值：application/json，請求內容類別型</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="5-接口描述">5 接口描述</h1>
+<h2 id="51-下單接口">5.1 下單接口</h2>
+<h3 id="511-業務功能">5.1.1 業務功能</h3>
+<p>初始化下單請求， 該請求通過不同的支付方式可以選擇不同的流程（如直接支付、授權、收銀臺支付）</p>
+<h3 id="512-交互模式">5.1.2 交互模式</h3>
+<p>請求：後臺同步請求模式</p>
+<p>返回結果+通知： 後臺請求交互模式+後臺通知交互模式</p>
+<h3 id="513-請求參數列表">5.1.3 請求參數列表</h3>
+<p>請求 url：https://api.fintechpaymenthub.com/openapi/v1/pay</p>
+<p>通過 POST JSON 內容體進行請求接口</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>接口類型</td>
+<td>service</td>
+<td>是</td>
+<td>String(40)</td>
+<td>固定選擇其中一項：pay.master.Fintech Payment.online（Mastercard支付）
+pay.visa.Fintech Payment.online（Visa支付）
+pay.unionpay.master.Fintech Payment.online（UnionPay支付）</td>
+</tr>
+<tr>
+<td>客戶端ID</td>
+<td>client_id</td>
+<td>是</td>
+<td>String(32)</td>
+<td>商戶客戶端ID</td>
+</tr>
+<tr>
+<td>門店ID</td>
+<td>store_id</td>
+<td>是</td>
+<td>String(50)</td>
+<td>門店ID</td>
+</tr>
+<tr>
+<td>商戶訂單號</td>
+<td>order_no</td>
+<td>是</td>
+<td>String(32)</td>
+<td>商戶系統內部的訂單號 32 個字元內、 可包含字母 確保在商戶系統唯一</td>
+</tr>
+<tr>
+<td>商品描述</td>
+<td>body</td>
+<td>是</td>
+<td>String(127)</td>
+<td>商品描述資訊</td>
+</tr>
+<tr>
+<td>金額</td>
+<td>amount</td>
+<td>是</td>
+<td>String(15)</td>
+<td>訂單總金額（必須大於 0），單位為元。</td>
+</tr>
+<tr>
+<td>通知地址</td>
+<td>notify_url</td>
+<td>是</td>
+<td>String(255)</td>
+<td>接收平臺通知的 URL，需給絕對路徑， 255 字符內 格 式如:http://wap.tenpay.com/tenpay.asp， 確保平臺能通過互聯網訪問該地址</td>
+</tr>
+<tr>
+<td>終端IP</td>
+<td>client_ip</td>
+<td>是</td>
+<td>String(16)</td>
+<td>訂單生成的機器 IP</td>
+</tr>
+<tr>
+<td>附加信息</td>
+<td>attach</td>
+<td>否</td>
+<td>String(127)</td>
+<td>商戶附加信息，可做擴展參數</td>
+</tr>
+<tr>
+<td>回調地址</td>
+<td>callback_url</td>
+<td>否</td>
+<td>String(255)</td>
+<td>交易支付完成返回商戶指定的頁面，需給絕對路徑，255 字元以內，確保平臺能通過互聯網訪問該地址</td>
+</tr>
+<tr>
+<td>隨機字串</td>
+<td>nonce_str</td>
+<td>是</td>
+<td>String(32)</td>
+<td>隨機字串，不長於 32 位，每次提交需傳不同的值</td>
+</tr>
+<tr>
+<td>簽名</td>
+<td>sign</td>
+<td>是</td>
+<td>String(32)</td>
+<td>詳見第 4 章 “簽名規則”</td>
+</tr>
+<tr>
+<td>語言</td>
+<td>lang</td>
+<td>否</td>
+<td>String(32)</td>
+<td>語言</td>
+</tr>
+<tr>
+<td>支付類型</td>
+<td>provide_type</td>
+<td>是</td>
+<td>String(32)</td>
+<td>支付類型可選[card：卡支付]</td>
+</tr>
+<tr>
+<td>交易類型</td>
+<td>transaction_type</td>
+<td>是</td>
+<td>String(32)</td>
+<td>交易類型[card:支付、apm:授權、checkout:收銀檯支付]</td>
+</tr>
+<tr>
+<td>幣種</td>
+<td>currency</td>
+<td>是</td>
+<td>String(32)</td>
+<td>幣種</td>
+</tr>
+<tr>
+<td>地址</td>
+<td>shop_address</td>
+<td>是</td>
+<td>String(32)</td>
+<td>地址（交易來源網址或商城地址）</td>
+</tr>
+<tr>
+<td>收貨地址1</td>
+<td>address1</td>
+<td>是</td>
+<td>String(32)</td>
+<td>收貨地址1</td>
+</tr>
+<tr>
+<td>收貨地址2</td>
+<td>address2</td>
+<td>是</td>
+<td>String(32)</td>
+<td>收貨地址2</td>
+</tr>
+<tr>
+<td>城市</td>
+<td>city</td>
+<td>是</td>
+<td>String(32)</td>
+<td>城市</td>
+</tr>
+<tr>
+<td>地區</td>
+<td>state</td>
+<td>是</td>
+<td>String(32)</td>
+<td>地區</td>
+</tr>
+<tr>
+<td>郵編</td>
+<td>zip_code</td>
+<td>是</td>
+<td>String(32)</td>
+<td>郵編</td>
+</tr>
+<tr>
+<td>國家</td>
+<td>country</td>
+<td>是</td>
+<td>String(3)</td>
+<td>國家（參考輔料編碼）</td>
+</tr>
+<tr>
+<td>姓氏</td>
+<td>first_name</td>
+<td>是</td>
+<td>String(32)</td>
+<td>姓氏</td>
+</tr>
+<tr>
+<td>名稱</td>
+<td>last_name</td>
+<td>是</td>
+<td>String(32)</td>
+<td>名稱</td>
+</tr>
+<tr>
+<td>電話</td>
+<td>phone</td>
+<td>是</td>
+<td>String(32)</td>
+<td>電話</td>
+</tr>
+<tr>
+<td>郵箱</td>
+<td>email</td>
+<td>是</td>
+<td>String(128)</td>
+<td>郵箱</td>
+</tr>
+<tr>
+<td>卡號</td>
+<td>pan</td>
+<td>否</td>
+<td>String(20)</td>
+<td>卡號，儅transaction_type為card或者apm時必傳</td>
+</tr>
+<tr>
+<td>cvv</td>
+<td>cvv</td>
+<td>否</td>
+<td>String(4)</td>
+<td>cvv,儅transaction_type為card或者apm時必傳</td>
+</tr>
+<tr>
+<td>卡過期年</td>
+<td>expiry_year</td>
+<td>否</td>
+<td>String(4)</td>
+<td>卡過期年（例如2026）,儅transaction_type為card或者apm時必傳</td>
+</tr>
+<tr>
+<td>卡過期月</td>
+<td>expiry_month</td>
+<td>否</td>
+<td>String(2)</td>
+<td>卡過期月（例如12）,儅transaction_type為card或者apm時必傳</td>
+</tr>
+<tr>
+<td>商品信息</td>
+<td>items</td>
+<td>是</td>
+<td>List</td>
+<td>商品信息</td>
+</tr>
+<tr>
+<td>商品名稱</td>
+<td>items.description</td>
+<td>是</td>
+<td>String(255)</td>
+<td>商品名稱</td>
+</tr>
+<tr>
+<td>商品數量</td>
+<td>items.quantity</td>
+<td>是</td>
+<td>String(9)</td>
+<td>商品數量</td>
+</tr>
+<tr>
+<td>商品單價</td>
+<td>items.unit_price</td>
+<td>是</td>
+<td>String(9)</td>
+<td>商品單價</td>
+</tr>
+<tr>
+<td>支付方式</td>
+<td>payment_method</td>
+<td>否</td>
+<td>String(32）</td>
+<td>支付方式，儅transaction_type為apm時必穿</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="514-返回結果">5.1.4 返回結果</h3>
+<p>數據按 JSON 的格式即時返回</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>商戶訂單號</td>
+<td>order_no</td>
+<td>是</td>
+<td>String(32）</td>
+<td>商戶生成的訂單號</td>
+</tr>
+<tr>
+<td>FTP訂單號</td>
+<td>transaction_id</td>
+<td>是</td>
+<td>String(26）</td>
+<td>FTP生成的訂單號</td>
+</tr>
+<tr>
+<td>提交時間</td>
+<td>submit_time</td>
+<td>是</td>
+<td>String(50）</td>
+<td>格式為 yyyyMMddhhmmss</td>
+</tr>
+<tr>
+<td>支付鏈接</td>
+<td>payUrl</td>
+<td>否</td>
+<td>String</td>
+<td>支付鏈接,如果是收銀檯類型的支付會返回對應的支付鏈接</td>
+</tr>
+<tr>
+<td>結果信息</td>
+<td>message</td>
+<td>是</td>
+<td>String(500)</td>
+<td>描述查詢結果，SUCCESS表示成功，否則返回其他錯誤信息</td>
+</tr>
+<tr>
+<td>隨機字串</td>
+<td>nonce_str</td>
+<td>是</td>
+<td>String(32)</td>
+<td>隨機字串，不長於 32 位</td>
+</tr>
+<tr>
+<td>簽名</td>
+<td>sign</td>
+<td>是</td>
+<td>String(32)</td>
+<td>詳見第 4 章 “簽名規則”</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="515測試用例">5.1.5測試用例</h3>
+<p>提供了測試用例方便調用</p>
+<p>發起提交的數據：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;client_id&quot;: &quot;16324774461291xz&quot;,
+    &quot;store_id&quot;: &quot;HKG-5999-001-001-13579111-001&quot;,
+    &quot;order_no&quot;: &quot;TALWAPO2025121925542412&quot;,
+    &quot;body&quot;: &quot;Fintech Payment支付測試商品&quot;,
+    &quot;amount&quot;: &quot;6&quot;,
+    &quot;payment_inst&quot;: &quot;ALIPAYHK&quot;,
+    &quot;order_type&quot;: &quot;CAT&quot;,
+    &quot;service&quot;: &quot;pay.master.Fintech Payment.online&quot;,
+    &quot;notify_url&quot;: &quot;https://ftpdev.doocom.cn/pay-demo/alipay-web-notify/notify&quot;,
+    &quot;ip_address&quot;: &quot;61.144.175.64&quot;,
+    &quot;nonce_str&quot;: &quot;3A9C3422630DEDE155740EBD769DAE26&quot;,
+    &quot;sign&quot;: &quot;A7DE93C04BB1AE0A50ACA76DA13DFAD5&quot;,
+    &quot;provide_type&quot;: &quot;card&quot;,
+    &quot;transaction_type&quot;: &quot;apm&quot;,
+    &quot;currency&quot;: &quot;USD&quot;,
+    &quot;shop_address&quot;: &quot;www.test.com&quot;,
+    &quot;address1&quot;: &quot;123 Main Street&quot;,
+    &quot;address2&quot;: &quot;Suite 300&quot;,
+    &quot;city&quot;: &quot;HK&quot;,
+    &quot;state&quot;: &quot;HKG&quot;,
+    &quot;zip_code&quot; : &quot;200111&quot;,
+    &quot;country&quot;: &quot;HKG&quot;,
+    &quot;first_name&quot;: &quot;murphy&quot;,
+    &quot;last_name&quot;: &quot;loren&quot;,
+    &quot;phone&quot;: &quot;8615621531201&quot;,
+    &quot;email&quot;: &quot;21345@qq.com&quot;,
+    &quot;attach&quot;: &quot;test&quot;,
+    &quot;pan&quot;: &quot;5346930100125624&quot;,
+    &quot;cvv&quot;: &quot;123&quot;,
+    &quot;expiry_year&quot;: &quot;2026&quot;,
+    &quot;expiry_month&quot;: &quot;12&quot;,
+    &quot;items&quot;: [
+        {
+            &quot;description&quot;: &quot;Mint (piece)&quot;,
+            &quot;quantity&quot;: &quot;1&quot;,
+            &quot;unit_price&quot;: &quot;6&quot;
+        }
+    ]
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>成功返回的數據：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;: &quot;SUCCESS&quot;,
+    &quot;pay_url&quot;: &quot;https://oper.next-apis.com/service-openApi/hosted/checkout/v4/uY099tP5MjAyNTEyMTkyMDAxOTU1NDk5MzExMTQ5MDU2hQR6n797&quot;,
+    &quot;order_no&quot;: &quot;TALWAPO20251219255424570&quot;,
+    &quot;transaction_id&quot;: &quot;FTP202512191759200001&quot;,
+    &quot;nonce_str&quot;: &quot;04iilufm&quot;,
+    &quot;sign&quot;: &quot;E7FA9D92C6CDE96FB3972A8F791721D0&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="52-訂單查詢接口">5.2 訂單查詢接口</h2>
+<h3 id="521-業務功能">5.2.1 業務功能</h3>
+<p>根據商戶訂單號或者FTP訂單號查詢平臺的具體訂單資訊。</p>
+<h3 id="522-交互模式">5.2.2 交互模式</h3>
+<p>後臺系統調用交互模式</p>
+<h3 id="523-請求參數列表">5.2.3 請求參數列表</h3>
+<p>請求 url：https://api.fintechpaymenthub.com/openapi/v1/query
+通過 POST JSON 內容體進行請求</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>必填</th>
+<th>類型</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>接口類型</td>
+<td>service</td>
+<td>是</td>
+<td>是</td>
+<td>String(40)</td>
+<td>String(40)</td>
+<td>固定選擇其中一項：pay.master.Fintech Payment.online（Mastercard支付）
+pay.visa.Fintech Payment.online（Visa支付）
+pay.unionpay.master.Fintech Payment.online（UnionPay支付）</td>
+<td>固定選擇其中一項：pay.master.Fintech Payment.online（Mastercard支付）
+pay.visa.Fintech Payment.online（Visa支付）
+pay.unionpay.master.Fintech Payment.online（UnionPay支付）</td>
+</tr>
+<tr>
+<td>客戶端ID</td>
+<td>client_id</td>
+<td>client_id</td>
+<td>是</td>
+<td>是</td>
+<td>String(32)</td>
+<td>String(32)</td>
+<td>商戶客戶端ID</td>
+</tr>
+<tr>
+<td>門店ID</td>
+<td>store_id</td>
+<td>store_id</td>
+<td>是</td>
+<td>是</td>
+<td>String(50)</td>
+<td>String(50)</td>
+<td>門店ID</td>
+</tr>
+<tr>
+<td>商戶訂單號</td>
+<td>order_no</td>
+<td>order_no</td>
+<td>否</td>
+<td>否</td>
+<td>String(32）</td>
+<td>String(32）</td>
+<td>商戶生成的訂單號（order_no 和 transaction_id 至少一個必填，同時存在時 transaction_id 優先）</td>
+</tr>
+<tr>
+<td>FTP訂單號</td>
+<td>transaction_id</td>
+<td>transaction_id</td>
+<td>否</td>
+<td>否</td>
+<td>String(26）</td>
+<td>String(26）</td>
+<td>FTP訂單號（order_no 和 transaction_id 至少一個必填，同時存在時 transaction_id 優先）</td>
+</tr>
+<tr>
+<td>隨機字串</td>
+<td>nonce_str</td>
+<td>nonce_str</td>
+<td>是</td>
+<td>是</td>
+<td>String(32)</td>
+<td>String(32)</td>
+<td>隨機字串，不長於 32 位</td>
+</tr>
+<tr>
+<td>簽名</td>
+<td>sign</td>
+<td>sign</td>
+<td>是</td>
+<td>是</td>
+<td>String(32)</td>
+<td>String(32)</td>
+<td>詳見第 4 章 “簽名規則”</td>
+</tr>
+<tr>
+<td>語言</td>
+<td>lang</td>
+<td>lang</td>
+<td>否</td>
+<td>否</td>
+<td>String(32)</td>
+<td>String(32)</td>
+<td>語言</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="524-返回結果">5.2.4 返回結果</h3>
+<p>數據按 JSON 的格式即時返回</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>FTP訂單號</td>
+<td>transaction_id</td>
+<td>是</td>
+<td>String(26)</td>
+<td>FTP生成的訂單號</td>
+</tr>
+<tr>
+<td>商戶訂單號</td>
+<td>order_no</td>
+<td>是</td>
+<td>String(32)</td>
+<td>商戶生成的訂單號</td>
+</tr>
+<tr>
+<td>門店ID</td>
+<td>store_id</td>
+<td>是</td>
+<td>String(50)</td>
+<td>門店ID</td>
+</tr>
+<tr>
+<td>提交時間</td>
+<td>submit_time</td>
+<td>是</td>
+<td>String(32)</td>
+<td>格式為 yyyyMMddhhmmss</td>
+</tr>
+<tr>
+<td>交易狀態</td>
+<td>trade_state</td>
+<td>是</td>
+<td>String(32)</td>
+<td>SUCCESS—支付成功
+NOTPAY—待付款
+PROCESSING—處理中
+REFUND—退款
+CANCEL—關閉
+FAIL—失敗</td>
+</tr>
+<tr>
+<td>金額</td>
+<td>amount</td>
+<td>是</td>
+<td>Double</td>
+<td>訂單總金額（必須大於 0），單位為人民幣為元。如訂單總金額為 1 元，amount 為 1。</td>
+</tr>
+<tr>
+<td>幣種</td>
+<td>currency</td>
+<td>是</td>
+<td>String(3)</td>
+<td>3 位元 ISO 貨幣代碼，大寫字母，人民幣為 CNY。</td>
+</tr>
+<tr>
+<td>付款方</td>
+<td>payer</td>
+<td>是</td>
+<td>String(50)</td>
+<td>付款方</td>
+</tr>
+<tr>
+<td>支付完成時間</td>
+<td>pay_finish_time</td>
+<td>是</td>
+<td>String(32)</td>
+<td>支付完成時間，格式為 yyyyMMddhhmmss， 如2009 年 12 月 27 日 9 點 10 分 10 秒錶示為20091227091010。 時區為 GMT+8 beijing。</td>
+</tr>
+<tr>
+<td>商品描述</td>
+<td>body</td>
+<td>是</td>
+<td>String(127)</td>
+<td>商品描述資訊</td>
+</tr>
+<tr>
+<td>退款金額</td>
+<td>refund_amount</td>
+<td>是</td>
+<td>Double</td>
+<td>退款金額，單位為人民幣為元。如訂單總金額為 1 元，amount 為 1。</td>
+</tr>
+<tr>
+<td>第三方商戶號</td>
+<td>out_transaction_id</td>
+<td>是</td>
+<td>String(32)</td>
+<td>對應微信交易記錄賬單詳情中的交易號</td>
+</tr>
+<tr>
+<td>附加信息</td>
+<td>attach</td>
+<td>否</td>
+<td>String(127)</td>
+<td>商家數據包，原樣返回</td>
+</tr>
+<tr>
+<td>結果信息</td>
+<td>message</td>
+<td>是</td>
+<td>String(500)</td>
+<td>描述查詢結果，SUCCESS表示成功，否則返回其他錯誤信息</td>
+<td>描述查詢結果，SUCCESS表示成功，否則返回其他錯誤信息</td>
+</tr>
+<tr>
+<td>隨機字串</td>
+<td>nonce_str</td>
+<td>是</td>
+<td>String(32)</td>
+<td>隨機字串，不長於 32 位</td>
+</tr>
+<tr>
+<td>簽名</td>
+<td>sign</td>
+<td>是</td>
+<td>String(32)</td>
+<td>詳見第 4 章 “簽名規則”</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="525測試用例">5.2.5測試用例</h3>
+<p>提供了測試用例方便調用</p>
+<p>發起提交的數據：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;service&quot;:&quot;pay.master.Fintech Payment.online&quot;,
+    &quot;order_no&quot;:&quot;&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181649370001&quot;,
+    &quot;client_id&quot;:&quot;1002&quot;,
+    &quot;store_id&quot;:&quot;1001002&quot;,
+    &quot;nonce_str&quot;:&quot;ha2n1pje&quot;,
+&quot;sign&quot;:&quot;955BEFA725040AA893CA2F852AD09B71&quot;,
+&quot;lang&quot;:&quot;en_US&quot;
+
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>成功返回的數據：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181649370001&quot;,
+    &quot;order_no&quot;:&quot;00f78e479fe74a11a73be0feb9999749&quot;,
+    &quot;store_id&quot;:&quot;1001002&quot;,
+    &quot;submit_time&quot;:&quot;20201218164937&quot;,
+    &quot;trade_state&quot;:&quot;SUCCESS&quot;,
+    &quot;amount&quot;:1,
+    &quot;currency&quot;:&quot;HKD&quot;,
+    &quot;payer&quot;:&quot;oAOWGsyf4fjHHMzS_wAzfEzGoyWQ&quot;,
+    &quot;pay_finish_time&quot;:&quot;20201110111036&quot;,
+    &quot;body&quot;:&quot;測試Fintech Paymentonline支付&quot;,
+    &quot;refund_amount&quot;:0,
+    &quot;nonce_str&quot;:&quot;dccxwj0e&quot;,
+    &quot;sign&quot;:&quot;2E4F0838DE0110BB54B67EDAF4B65213&quot;,
+    &quot;out_transaction_id&quot;:&quot;127500000158202011109001661238&quot;,
+    &quot;attach&quot;:&quot;sid=1&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="53-退款接口接口">5.3 退款接口接口</h2>
+<h3 id="531-業務功能">5.3.1 業務功能</h3>
+<p>商戶針對某一個已經成功支付的訂單發起退款， 操作結果在同一會話中同步返回。</p>
+<p>一、 退款方式</p>
+<p>目前只支持原路返回退款。</p>
+<p>說明：退款到銀行卡則是非即時的，每個銀行的處理速度不同，一般發起退款後 1-3 個工作日內到賬。總退款金額不能超過用戶實際支付金額(現金券金額不能退款)。</p>
+<p>二、 退款限制</p>
+<p>商戶在退款操作時應該注意退款限制，避免發起不會成功的退款請求，下麵是主要的退款限制：</p>
+<p>1. 退款申請單號由商戶生成，所以商戶一定要保證退款申請單的唯一性。商家在退款過程中要特別注意，只有在能確定退款失敗的情況下，才能重新發起另一筆退款。</p>
+<p>2. 目前大多數銀行都會支持全額退款和部分退款，但是也有少數銀行不支持全額退款或部分退款，或者不支持退款。在這種情況下，商戶可以與賣家協調。</p>
+<h3 id="532-交互模式">5.3.2 交互模式</h3>
+<p>後臺系統調用交互模式</p>
+<h3 id="533-請求參數列表">5.3.3 請求參數列表</h3>
+<p>請求 url：https://api.fintechpaymenthub.com/openapi/v1/refund
+通過 POST JSON 內容體進行請求</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>必填</th>
+<th>類型</th>
+<th>類型</th>
+<th>說明</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>接口類型</td>
+<td>service</td>
+<td>是</td>
+<td>是</td>
+<td>String(40)</td>
+<td>String(40)</td>
+<td>固定選擇其中一項：pay.master.Fintech Payment.online（Mastercard支付）
+pay.visa.Fintech Payment.online（Visa支付）
+pay.unionpay.master.Fintech Payment.online（UnionPay支付）</td>
+<td>固定選擇其中一項：pay.master.Fintech Payment.online（Mastercard支付）
+pay.visa.Fintech Payment.online（Visa支付）
+pay.unionpay.master.Fintech Payment.online（UnionPay支付）</td>
+<td>固定選擇其中一項：pay.master.Fintech Payment.online（Mastercard支付）
+pay.visa.Fintech Payment.online（Visa支付）
+pay.unionpay.master.Fintech Payment.online（UnionPay支付）</td>
+</tr>
+<tr>
+<td>客戶端ID</td>
+<td>client_id</td>
+<td>client_id</td>
+<td>是</td>
+<td>是</td>
+<td>String(32)</td>
+<td>String(32)</td>
+<td>商戶客戶端ID</td>
+</tr>
+<tr>
+<td>門店ID</td>
+<td>store_id</td>
+<td>store_id</td>
+<td>是</td>
+<td>是</td>
+<td>String(50)</td>
+<td>String(50)</td>
+<td>門店ID</td>
+<td>門店ID</td>
+</tr>
+<tr>
+<td>商戶訂單號</td>
+<td>order_no</td>
+<td>order_no</td>
+<td>是</td>
+<td>是</td>
+<td>String(32）</td>
+<td>String(32）</td>
+<td>原商戶生成的訂單號</td>
+<td>原商戶生成的訂單號</td>
+</tr>
+<tr>
+<td>FTP訂單號</td>
+<td>transaction_id</td>
+<td>transaction_id</td>
+<td>是</td>
+<td>是</td>
+<td>String(26）</td>
+<td>String(26）</td>
+<td>原訂單FTP生成的訂單號</td>
+<td>原訂單FTP生成的訂單號</td>
+</tr>
+<tr>
+<td>商戶退款單號</td>
+<td>out_refund_no</td>
+<td>out_refund_no</td>
+<td>是</td>
+<td>是</td>
+<td>String(32）</td>
+<td>String(32）</td>
+<td>商戶退款單號，32 個字元內、可包含字母,確保在商戶系統唯一。同個退款單號多次請求，
+平臺當一個單處理，只會退一次款。如果出現退款不成功，請採用原退款單號重新發起，避免出現重複退款。</td>
+<td>商戶退款單號，32 個字元內、可包含字母,確保在商戶系統唯一。同個退款單號多次請求，
+平臺當一個單處理，只會退一次款。如果出現退款不成功，請採用原退款單號重新發起，避免出現重複退款。</td>
+</tr>
+<tr>
+<td>備註</td>
+<td>remarks</td>
+<td>remarks</td>
+<td>否</td>
+<td>否</td>
+<td>String(255)</td>
+<td>String(255)</td>
+<td>退款備註</td>
+<td>退款備註</td>
+</tr>
+<tr>
+<td>退款金額</td>
+<td>refund_fee</td>
+<td>refund_fee</td>
+<td>是</td>
+<td>是</td>
+<td>String(15)</td>
+<td>String(15)</td>
+<td>退款總金額,單位為元,可以做部分退款</td>
+<td>退款總金額,單位為元,可以做部分退款</td>
+</tr>
+<tr>
+<td>隨機字串</td>
+<td>nonce_str</td>
+<td>nonce_str</td>
+<td>是</td>
+<td>是</td>
+<td>String(32)</td>
+<td>String(32)</td>
+<td>隨機字串，不長於 32 位</td>
+<td>隨機字串，不長於 32 位</td>
+</tr>
+<tr>
+<td>簽名</td>
+<td>sign</td>
+<td>sign</td>
+<td>是</td>
+<td>是</td>
+<td>String(32)</td>
+<td>String(32)</td>
+<td>詳見第 4 章 “簽名規則”</td>
+<td>詳見第 4 章 “簽名規則”</td>
+</tr>
+<tr>
+<td>語言</td>
+<td>lang</td>
+<td>lang</td>
+<td>否</td>
+<td>否</td>
+<td>String(32)</td>
+<td>String(32)</td>
+<td>語言</td>
+<td>語言</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="534-返回結果">5.3.4 返回結果</h3>
+<p>數據按 JSON 的格式即時返回</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>FTP訂單號</td>
+<td>transaction_id</td>
+<td>是</td>
+<td>String(26)</td>
+<td>FTP生成的訂單號</td>
+</tr>
+<tr>
+<td>商戶訂單號</td>
+<td>order_no</td>
+<td>是</td>
+<td>String(32)</td>
+<td>商戶生成的訂單號</td>
+</tr>
+<tr>
+<td>商戶退款單號</td>
+<td>out_refund_no</td>
+<td>是</td>
+<td>String(32）</td>
+<td>商戶退款單號，32 個字元內、可包含字母,確保在商戶系統唯一。同個退款單號多次請求，
+平臺當一個單處理，只會退一次款。如果出現退款不成功，請採用原退款單號重新發起，避免出現重複退款。</td>
+</tr>
+<tr>
+<td>提交時間</td>
+<td>submit_time</td>
+<td>是</td>
+<td>String(32)</td>
+<td>格式為 yyyyMMddhhmmss</td>
+</tr>
+<tr>
+<td>訂單金額</td>
+<td>amount</td>
+<td>是</td>
+<td>Double</td>
+<td>訂單金額,單位為元</td>
+</tr>
+<tr>
+<td>退款金額</td>
+<td>refund_amount</td>
+<td>是</td>
+<td>Double</td>
+<td>退款金額,單位為元</td>
+</tr>
+<tr>
+<td>結果信息</td>
+<td>message</td>
+<td>是</td>
+<td>String(500)</td>
+<td>描述查詢結果，SUCCESS表示成功，否則返回其他錯誤信息</td>
+<td>描述查詢結果，SUCCESS表示成功，否則返回其他錯誤信息</td>
+</tr>
+<tr>
+<td>隨機字串</td>
+<td>nonce_str</td>
+<td>是</td>
+<td>String(32)</td>
+<td>隨機字串，不長於 32 位</td>
+</tr>
+<tr>
+<td>簽名</td>
+<td>sign</td>
+<td>是</td>
+<td>String(32)</td>
+<td>詳見第 4 章 “簽名規則”</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="535測試用例">5.3.5測試用例</h3>
+<p>提供了測試用例方便調用</p>
+<p>發起提交的數據：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;client_id&quot;: &quot;16324774461291xz&quot;,
+    &quot;store_id&quot;: &quot;HKG-5999-001-001-13579111-001&quot;,
+    &quot;order_no&quot;: &quot;TALWAPO20251219255424570&quot;,
+    &quot;out_refund_no&quot;: &quot;TALWAPR20251219180649751&quot;,
+    &quot;remarks&quot;: &quot;Fintech PaymentOnline退款測試&quot;,
+    &quot;refund_fee&quot;: &quot;6&quot;,
+    &quot;service&quot;: &quot;pay.master.Fintech Payment.online&quot;,
+    &quot;nonce_str&quot;: &quot;F2ABD3CE886BA93395ACE9AB0F4603F0&quot;,
+    &quot;sign&quot;: &quot;CB4B66A8F65EB656CFC7D2386F8A5A22&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>成功返回的數據：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;order_no&quot;:&quot;00f78e479fe74a11a73be0feb9999749&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181649370001&quot;,
+    &quot;out_refund_no&quot;:&quot;T1608281521535&quot;,
+    &quot;submit_time&quot;:&quot;20201218165201&quot;,
+    &quot;amount&quot;:1,
+    &quot;refund_amount&quot;:1,
+    &quot;nonce_str&quot;:&quot;t2uycm0j&quot;,
+&quot;sign&quot;:&quot;D41D8CD98F00B204E9800998ECF8427E&quot;,
+&quot;lang&quot;:&quot;en_US&quot;
+
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="54退款查詢接口">5.4退款查詢接口</h2>
+<h3 id="541-業務功能">5.4.1 業務功能</h3>
+<p>提交退款申請後， 通過調用該接口查詢退款狀態。</p>
+<h3 id="542-交互模式">5.4.2 交互模式</h3>
+<p>後臺系統調用交互模式</p>
+<h3 id="543-請求參數列表">5.4.3 請求參數列表</h3>
+<p>請求 url：https://api.fintechpaymenthub.com/openapi/v1/refundQuery
+通過 POST JSON 內容體進行請求</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>接口類型</td>
+<td>service</td>
+<td>是</td>
+<td>String(40)</td>
+<td>固定選擇其中一項：pay.master.Fintech Payment.online（Mastercard支付）
+pay.visa.Fintech Payment.online（Visa支付）
+pay.unionpay.master.Fintech Payment.online（UnionPay支付）</td>
+</tr>
+<tr>
+<td>客戶端ID</td>
+<td>client_id</td>
+<td>是</td>
+<td>String(32)</td>
+<td>商戶客戶端ID</td>
+</tr>
+<tr>
+<td>門店ID</td>
+<td>store_id</td>
+<td>是</td>
+<td>String(50)</td>
+<td>門店ID</td>
+</tr>
+<tr>
+<td>商戶訂單號</td>
+<td>order_no</td>
+<td>否</td>
+<td>String(32）</td>
+<td>退款返回的商戶訂單號，也是訂單的商戶訂單號</td>
+</tr>
+<tr>
+<td>FTP訂單號</td>
+<td>transaction_id</td>
+<td>否</td>
+<td>String(26）</td>
+<td>退款返回的FTP訂單號</td>
+</tr>
+<tr>
+<td>商戶退款單號</td>
+<td>out_refund_no</td>
+<td>否</td>
+<td>String(32）</td>
+<td>商戶生成的退款單號</td>
+</tr>
+<tr>
+<td>第三方退款單號</td>
+<td>to_order_sn</td>
+<td>否</td>
+<td>String(255)</td>
+<td>第三方退款單號，如果同時存在優先順序為： to_order_sn &gt; out_refund_no &gt; transaction_id &gt; order_no</td>
+</tr>
+<tr>
+<td>隨機字串</td>
+<td>nonce_str</td>
+<td>是</td>
+<td>String(32)</td>
+<td>隨機字串，不長於 32 位</td>
+</tr>
+<tr>
+<td>簽名</td>
+<td>sign</td>
+<td>是</td>
+<td>String(32)</td>
+<td>詳見第 4 章 “簽名規則”</td>
+</tr>
+<tr>
+<td>語言</td>
+<td>lang</td>
+<td>否</td>
+<td>String(32)</td>
+<td>語言</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="544-返回結果">5.4.4 返回結果</h3>
+<p>數據按 JSON 的格式即時返回</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>FTP訂單號</td>
+<td>transaction_id</td>
+<td>是</td>
+<td>String(26)</td>
+<td>對應訂單的FTP訂單號</td>
+</tr>
+<tr>
+<td>商戶訂單號</td>
+<td>order_no</td>
+<td>是</td>
+<td>String(32)</td>
+<td>對應訂單的商戶訂單號</td>
+</tr>
+<tr>
+<td>退款金額</td>
+<td>total_fee</td>
+<td>是</td>
+<td>Double</td>
+<td>退款總金額,單位為元</td>
+</tr>
+<tr>
+<td>退款筆數</td>
+<td>refund_count</td>
+<td>是</td>
+<td>Int</td>
+<td>退款記錄數</td>
+</tr>
+<tr>
+<td>商戶退款單號</td>
+<td>out_refund_no_n</td>
+<td>是</td>
+<td>String(32）</td>
+<td>商戶退款單號， 32 個字元內、可包含字母,確保在商戶系統唯一。同個退款單號多次請求，
+平臺當一個單處理，只會退一次款。 如果出現退款不成功，請採用原退款單號重新發起，避免出現重複退款。
+第一筆退款返回字段：out_refund_no_1，
+第二筆退款返回字段：out_refund_no_2，
+以此類推。</td>
+</tr>
+<tr>
+<td>FTP退款單號</td>
+<td>refund_id_n</td>
+<td>是</td>
+<td>String(32）</td>
+<td>FTP退款單號</td>
+</tr>
+<tr>
+<td>第三方退款單號</td>
+<td>to_order_sn_n</td>
+<td>是</td>
+<td>String(32）</td>
+<td>第三方退款單號</td>
+</tr>
+<tr>
+<td>退款金額</td>
+<td>refund_amount_n</td>
+<td>是</td>
+<td>Double</td>
+<td>退款金額,單位為元</td>
+</tr>
+<tr>
+<td>退款時間</td>
+<td>refund_time_n</td>
+<td>是</td>
+<td>String(14)</td>
+<td>yyyyMMddHHmmss</td>
+</tr>
+<tr>
+<td>退款狀態</td>
+<td>refund_status_n</td>
+<td>是</td>
+<td>String(16)</td>
+<td>退款狀態：
+SUCCESS—退款成功
+FAIL—退款失敗
+PROCESSING—退款處理中
+NOTSURE—未確定，需要商戶原退款單號重新發起CHANGE—轉入代發，退款到銀行發現用戶銀行賬戶作廢或者被凍結，導致原路退款銀行卡失敗，資金迴流到商戶的現金帳號，需要商戶人工幹預，通過線下或者平臺轉賬的方式進行退款。</td>
+</tr>
+<tr>
+<td>結果信息</td>
+<td>message</td>
+<td>是</td>
+<td>String(500)</td>
+<td>描述查詢結果，SUCCESS表示成功，否則返回其他錯誤信息</td>
+</tr>
+<tr>
+<td>隨機字串</td>
+<td>nonce_str</td>
+<td>是</td>
+<td>String(32)</td>
+<td>隨機字串，不長於 32 位</td>
+</tr>
+<tr>
+<td>簽名</td>
+<td>sign</td>
+<td>是</td>
+<td>String(32)</td>
+<td>詳見第 4 章 “簽名規則”</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="545測試用例">5.4.5測試用例</h3>
+<p>提供了測試用例方便調用</p>
+<p>發起提交的數據：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;service&quot;:&quot;pay.master.Fintech Payment.online&quot;,
+    &quot;client_id&quot;:&quot;1001&quot;,
+    &quot;store_id&quot;:&quot;1001001&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181649370001&quot;,
+    &quot;order_no&quot;:&quot;&quot;,
+    &quot;out_refund_no&quot;:&quot;&quot;,
+    &quot;to_order_sn&quot;:&quot;&quot;,
+    &quot;nonce_str&quot;:&quot;bhdswd00&quot;,
+    &quot;sign&quot;:&quot;EDD59501B4E5FA849E352E23668480C4&quot;,
+    &quot;callback_url&quot;:&quot;http://localhost/pay/result.html&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>成功返回的數據：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181624320001&quot;,
+    &quot;order_no&quot;:&quot;TALWEBO20210514114611632&quot;,
+    &quot;total_fee&quot;:1,
+    &quot;refund_count&quot;:1,
+    &quot;nonce_str&quot;:&quot;401n5buh&quot;,
+    &quot;out_refund_no_1&quot;:&quot;T9802e9e18ff340548357bfba730d407&quot;,
+    &quot;refund_id_1&quot;:&quot;FTP202105141152540001&quot;,
+    &quot;refund_amount_1&quot;:1,
+    &quot;to_order_sn_1&quot;:&quot;121500000214202105141132335702&quot;,
+    &quot;refund_time_1&quot;:&quot;20210514115254&quot;,
+    &quot;refund_status_1&quot;:&quot;SUCCESS&quot;,
+&quot;sign&quot;:&quot;7A5CA8D8BD0F4E9F78641F9433FD3A4D&quot;,
+&quot;lang&quot;:&quot;en_US&quot;
+
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="55-支付通知接口">5.5 支付通知接口</h2>
+<h3 id="551-業務功能">5.5.1 業務功能</h3>
+<p>支付完成後系統會通知相關數據到下單時填寫的notify_url，通知URL是支付接口中提交的參數 notify_url，支付完成後，平臺會把相關支付和用戶資訊發送到該URL，</p>
+<p>商戶需要接收處理資訊。</p>
+<p>對後臺通知交互時，如果平臺收到商戶的應答不是純字串success或超過5秒後返回時，平臺認為通知失敗，平臺會通過一定的策略（通知頻率為 0/15/15/30/180/1800/1800/1800/1800/3600，單位：秒）間接性重新發起通知，盡可能提高通知的成功率，但不保證通知最終能成功。</p>
+<p>由於存在重新發送後臺通知的情況，因此同樣的通知可能會多次發送給商戶系統。商戶系統必須能夠正確處理重複的通知。</p>
+<p>推薦的做法是，當收到通知進行處理時，首先檢查對應業務數據的狀態，判斷該通知是否已經處理過，如果沒有處理過再進行處理，如果處理過直接返回結果成功。在對業務數據進行狀態檢查和處理之前，要採用數據鎖進行併發控制，以避免函數重入造成的數據混亂。</p>
+<p>特別注意：商戶後臺接收到通知參數後，要對接收到通知參數裏的訂單號order_no 和訂單金額amount和自身業務系統的訂單和金額做校驗，校驗一致後才更新資料庫訂單狀態後臺通知通過請求中的 notify_url 進行，post 方式返回數據流，具體資訊是 xml 格式的串（商戶方在處理時要注意）</p>
+<h3 id="552-交互模式">5.5.2 交互模式</h3>
+<p>後臺通知模式</p>
+<h3 id="553-返回參數列表">5.5.3 返回參數列表</h3>
+<p>數據按 JSON 的格式即時返回</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>FTP訂單號</td>
+<td>transaction_id</td>
+<td>是</td>
+<td>String(26)</td>
+<td>FTP生成的訂單號</td>
+</tr>
+<tr>
+<td>商戶訂單號</td>
+<td>order_no</td>
+<td>是</td>
+<td>String(32)</td>
+<td>商戶生成的訂單號</td>
+</tr>
+<tr>
+<td>第三方商戶號</td>
+<td>out_transaction_id</td>
+<td>是</td>
+<td>String(32)</td>
+<td>對應微信交易記錄賬單詳情中的交易號</td>
+</tr>
+<tr>
+<td>門店ID</td>
+<td>store_id</td>
+<td>是</td>
+<td>String(50)</td>
+<td>門店ID</td>
+</tr>
+<tr>
+<td>提交時間</td>
+<td>submit_time</td>
+<td>是</td>
+<td>String(32)</td>
+<td>格式為 yyyyMMddhhmmss</td>
+</tr>
+<tr>
+<td>交易狀態</td>
+<td>trade_state</td>
+<td>是</td>
+<td>String(32)</td>
+<td>SUCCESS—支付成功
+PROCESSING—處理中
+CANCEL—關閉
+FAIL—失敗</td>
+</tr>
+<tr>
+<td>訂單金額</td>
+<td>amount</td>
+<td>是</td>
+<td>Double</td>
+<td>訂單總金額（必須大於 0），單位為人民幣為元。如訂單總金額為 1 元，amount 為 1。</td>
+</tr>
+<tr>
+<td>訂單幣種</td>
+<td>currency</td>
+<td>是</td>
+<td>String(3)</td>
+<td>3 位元 ISO 貨幣代碼，大寫字母，人民幣為 CNY。</td>
+</tr>
+<tr>
+<td>付款方</td>
+<td>payer</td>
+<td>是</td>
+<td>String(50)</td>
+<td>付款方</td>
+</tr>
+<tr>
+<td>支付完成時間</td>
+<td>pay_finish_time</td>
+<td>是</td>
+<td>String(32)</td>
+<td>支付完成時間，格式為 yyyyMMddhhmmss， 如2009 年 12 月 27 日 9 點 10 分 10 秒錶示為20091227091010。 時區為 GMT+8 beijing。</td>
+</tr>
+<tr>
+<td>附加信息</td>
+<td>attach</td>
+<td>否</td>
+<td>String(127)</td>
+<td>商家數據包，原樣返回</td>
+</tr>
+<tr>
+<td>交易類型</td>
+<td>trade_type</td>
+<td>是</td>
+<td>String(32)</td>
+<td>固定：pay.master.Fintech Payment.online</td>
+</tr>
+<tr>
+<td>支付幣種</td>
+<td>pay_currency</td>
+<td>否</td>
+<td>String(32)</td>
+<td>支付幣種，需要根據實際情況返回</td>
+</tr>
+<tr>
+<td>結果信息</td>
+<td>message</td>
+<td>是</td>
+<td>String(500)</td>
+<td>描述查詢結果，SUCCESS表示成功，否則返回其他錯誤信息</td>
+<td>描述查詢結果，SUCCESS表示成功，否則返回其他錯誤信息</td>
+</tr>
+<tr>
+<td>隨機字串</td>
+<td>nonce_str</td>
+<td>是</td>
+<td>String(32)</td>
+<td>隨機字串，不長於 32 位</td>
+</tr>
+<tr>
+<td>簽名</td>
+<td>sign</td>
+<td>是</td>
+<td>String(32)</td>
+<td>詳見第 4 章 “簽名規則”</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="554測試用例">5.5.4測試用例</h3>
+<p>提供了測試用例方便調用</p>
+<p>發起提交的數據：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+&quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;order_no&quot;:&quot;432259d302bc486d898d139431869e6b&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181653320001&quot;,
+    &quot;out_transaction_id&quot;:&quot;2020111022001311413118431156&quot;,
+    &quot;store_id&quot;:&quot;1001002&quot;,
+    &quot;submit_time&quot;:&quot;20201218165332&quot;,
+    &quot;trade_state&quot;:&quot;SUCCESS&quot;,
+    &quot;amount&quot;:1,
+    &quot;currency&quot;:&quot;HKD&quot;,
+    &quot;payer&quot;:&quot;oAOWGsyf4fjHHMzS_wAzfEzGoyWQ&quot;,
+    &quot;pay_finish_time&quot;:&quot;20201110111036&quot;,
+    &quot;nonce_str&quot;:&quot;g1iwi4fg&quot;,
+    &quot;trade_type&quot;:&quot;pay.master.Fintech Payment.online&quot;,
+    &quot;sign&quot;:&quot;9983066974A7779BD16505AE7D6752C5&quot;,
+&quot;pay_currency&quot;:&quot;HKD&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="6-錯誤碼說明">6 錯誤碼說明</h1>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>錯誤碼</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>MISSING_FIELD</td>
+<td>字段未傳入</td>
+</tr>
+<tr>
+<td>INVALID_FIELD</td>
+<td>字段校驗錯誤</td>
+</tr>
+<tr>
+<td>NO_EXISTS</td>
+<td>數據不存在</td>
+</tr>
+<tr>
+<td>OTHER</td>
+<td>其他錯誤</td>
+</tr>
+<tr>
+<td>INVALID_SCOPE</td>
+<td>數據超出範圍</td>
+</tr>
+<tr>
+<td>INVALID_LENGTH</td>
+<td>數據長度超過限制</td>
+</tr>
+<tr>
+<td>INCORRECT_SIGNATURE</td>
+<td>無效簽名</td>
+</tr>
+<tr>
+<td>EXPIRED_ORDER</td>
+<td>訂單已過期</td>
+</tr>
+<tr>
+<td>PAY_GATEWAY_FAIL</td>
+<td>支付網關異常</td>
+</tr>
+<tr>
+<td>UNKNOWN_ERROR</td>
+<td>未知錯誤</td>
+</tr>
+<tr>
+<td>XML_FORMAT_ERROR</td>
+<td>XML格式錯誤</td>
+</tr>
+<tr>
+<td>REQUIRE_POST_METHOD</td>
+<td>請使用post方法</td>
+</tr>
+<tr>
+<td>ACCESS_DENIED</td>
+<td>拒絕訪問</td>
+</tr>
+<tr>
+<td>POST_DATA_EMPTY</td>
+<td>post數據爲空</td>
+</tr>
+<tr>
+<td>NOT_UTF8</td>
+<td>編碼格式錯誤</td>
+</tr>
+<tr>
+<td>ORDER_CLOSED</td>
+<td>訂單已關閉</td>
+</tr>
+<tr>
+<td>NO_AUTH</td>
+<td>權限不足</td>
+</tr>
+<tr>
+<td>LACK_PARAMS</td>
+<td>缺少參數</td>
+</tr>
+<tr>
+<td>INVALID_STATUS</td>
+<td>非法狀態</td>
+</tr>
+<tr>
+<td>INVALID_SERVICE</td>
+<td>非法接口類型</td>
+</tr>
+<tr>
+<td>SN_IS_EXISTS</td>
+<td>編號已存在</td>
+</tr>
+<tr>
+<td>NOTIFY_FAIL</td>
+<td>通知異常</td>
+</tr>
+<tr>
+<td>URL_FORMAT_ERROR</td>
+<td>URL格式不正確</td>
+</tr>
+<tr>
+<td>IP_FORMAT_ERROR</td>
+<td>IP格式不正確</td>
+</tr>
+<tr>
+<td>DATE_FORMAT_ERROR</td>
+<td>日期格式不正確</td>
+</tr>
+<tr>
+<td>TRADE_NOT_EXIST</td>
+<td>交易不存在</td>
+</tr>
+<tr>
+<td>TRADE_HAS_SUCCESS</td>
+<td>交易已被支付</td>
+</tr>
+<tr>
+<td>TRADE_FAILED</td>
+<td>交易失敗</td>
+</tr>
+<tr>
+<td>TRADE_TIMEOUT</td>
+<td>交易超時</td>
+</tr>
+<tr>
+<td>INVALID_ORDER_STATUS</td>
+<td>無效的訂單狀態</td>
+</tr>
+<tr>
+<td>REVERSE_FAILED</td>
+<td>撤銷授權失敗</td>
+</tr>
+<tr>
+<td>DEDUCTIONS_FAILED</td>
+<td>扣款失敗</td>
+</tr>
+<tr>
+<td>REFUND_FAILED</td>
+<td>扣款失敗</td>
+</tr>
+<tr>
+<td>INVALID_CLIENT_ID</td>
+<td>無效客戶端ID</td>
+</tr>
+<tr>
+<td>INVALID_STORE_ID</td>
+<td>無效門店ID</td>
+</tr>
+<tr>
+<td>INVALID_AMOUNT</td>
+<td>交易金額不正確</td>
+</tr>
+<tr>
+<td>INVALID_REFUND_FEE</td>
+<td>退款金額不正確</td>
+</tr>
+<tr>
+<td>VALID_FLOW_FAIL</td>
+<td>請求過於頻繁</td>
+</tr>
+<tr>
+<td>UNSUPPORTED_SERVICE</td>
+<td>不支持的接口類型</td>
+</tr>
+<tr>
+<td>DATA_NOT_EXIST</td>
+<td>查詢的數據不存在</td>
+</tr>
+<tr>
+<td>ACCOUNT_LOCKED</td>
+<td>商戶或門店的賬號被鎖定</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="附錄">附錄</h1>
+<h2 id="1-iso國家地區表">1、ISO國家/地區表</h2>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>國家中文名稱</th>
+<th>國家英文名稱</th>
+<th>3位字母代碼</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>中國</td>
+<td>China</td>
+<td>CHN</td>
+</tr>
+<tr>
+<td>蒙古</td>
+<td>Mongolia</td>
+<td>MNG</td>
+</tr>
+<tr>
+<td>朝鮮</td>
+<td>North Korea</td>
+<td>PRK</td>
+</tr>
+<tr>
+<td>韓國</td>
+<td>South Korea</td>
+<td>KOR</td>
+</tr>
+<tr>
+<td>日本</td>
+<td>Japan</td>
+<td>JPN</td>
+</tr>
+<tr>
+<td>菲律賓</td>
+<td>Philippines</td>
+<td>PHL</td>
+</tr>
+<tr>
+<td>越南</td>
+<td>Vietnam</td>
+<td>VNM</td>
+</tr>
+<tr>
+<td>老撾</td>
+<td>Laos</td>
+<td>LAO</td>
+</tr>
+<tr>
+<td>柬埔寨</td>
+<td>Cambodia</td>
+<td>KHM</td>
+</tr>
+<tr>
+<td>緬甸</td>
+<td>Myanmar</td>
+<td>MMR</td>
+</tr>
+<tr>
+<td>泰國</td>
+<td>Thailand</td>
+<td>THA</td>
+</tr>
+<tr>
+<td>馬來西亞</td>
+<td>Malaysia</td>
+<td>MYS</td>
+</tr>
+<tr>
+<td>文萊</td>
+<td>Brunei Darussalam</td>
+<td>BRN</td>
+</tr>
+<tr>
+<td>新加坡</td>
+<td>Singapore</td>
+<td>SGP</td>
+</tr>
+<tr>
+<td>印度尼西亞</td>
+<td>Indonesia</td>
+<td>IDN</td>
+</tr>
+<tr>
+<td>東帝汶</td>
+<td>east Timor</td>
+<td>TLS</td>
+</tr>
+<tr>
+<td>尼泊爾</td>
+<td>Nepal</td>
+<td>NPL</td>
+</tr>
+<tr>
+<td>不丹</td>
+<td>Bhutan</td>
+<td>BTN</td>
+</tr>
+<tr>
+<td>孟加拉國</td>
+<td>Bengal</td>
+<td>BGD</td>
+</tr>
+<tr>
+<td>印度</td>
+<td>India</td>
+<td>IND</td>
+</tr>
+<tr>
+<td>巴基斯坦</td>
+<td>Pakistan</td>
+<td>PAK</td>
+</tr>
+<tr>
+<td>斯里蘭卡</td>
+<td>Sri Lanka</td>
+<td>LKA</td>
+</tr>
+<tr>
+<td>馬爾代夫</td>
+<td>Maldives</td>
+<td>MDV</td>
+</tr>
+<tr>
+<td>哈薩克斯坦</td>
+<td>Kazakhstan</td>
+<td>KAZ</td>
+</tr>
+<tr>
+<td>吉爾吉斯斯坦</td>
+<td>Kyrgyzstan</td>
+<td>KGZ</td>
+</tr>
+<tr>
+<td>塔吉克斯坦</td>
+<td>Tajikistan</td>
+<td>TJK</td>
+</tr>
+<tr>
+<td>烏茲別克斯坦</td>
+<td>Uzbekistan</td>
+<td>UZB</td>
+</tr>
+<tr>
+<td>土庫曼斯坦</td>
+<td>Turkmenistan</td>
+<td>TKM</td>
+</tr>
+<tr>
+<td>阿富汗</td>
+<td>Afghanistan</td>
+<td>AFG</td>
+</tr>
+<tr>
+<td>伊拉克</td>
+<td>Iraq</td>
+<td>IRQ</td>
+</tr>
+<tr>
+<td>伊朗</td>
+<td>Iran</td>
+<td>IRN</td>
+</tr>
+<tr>
+<td>敘利亞</td>
+<td>Syria</td>
+<td>SYR</td>
+</tr>
+<tr>
+<td>約旦</td>
+<td>Jordan</td>
+<td>JOR</td>
+</tr>
+<tr>
+<td>黎巴嫩</td>
+<td>Lebanon</td>
+<td>LBN</td>
+</tr>
+<tr>
+<td>以色列</td>
+<td>Israel</td>
+<td>ISR</td>
+</tr>
+<tr>
+<td>巴勒斯坦</td>
+<td>Palestine</td>
+<td>PSE</td>
+</tr>
+<tr>
+<td>沙特阿拉伯</td>
+<td>Saudi Arabia</td>
+<td>SAU</td>
+</tr>
+<tr>
+<td>巴林</td>
+<td>Bahrain</td>
+<td>BHR</td>
+</tr>
+<tr>
+<td>卡塔爾</td>
+<td>Qatar</td>
+<td>QAT</td>
+</tr>
+<tr>
+<td>科威特</td>
+<td>Kuwait</td>
+<td>KWT</td>
+</tr>
+<tr>
+<td>阿拉伯聯合酋長國（阿聯酋）</td>
+<td>United Arab Emirates</td>
+<td>UAE</td>
+</tr>
+<tr>
+<td>阿曼</td>
+<td>Oman</td>
+<td>OMN</td>
+</tr>
+<tr>
+<td>也門</td>
+<td>Yemen</td>
+<td>YEM</td>
+</tr>
+<tr>
+<td>格魯吉亞</td>
+<td>Georgia</td>
+<td>GEO</td>
+</tr>
+<tr>
+<td>亞美尼亞</td>
+<td>Armenia</td>
+<td>ARM</td>
+</tr>
+<tr>
+<td>阿塞拜疆</td>
+<td>Azerbaijan</td>
+<td>AZE</td>
+</tr>
+<tr>
+<td>土耳其</td>
+<td>Turkey</td>
+<td>TUR</td>
+</tr>
+<tr>
+<td>塞浦路斯</td>
+<td>Cyprus</td>
+<td>CYP</td>
+</tr>
+<tr>
+<td>芬蘭</td>
+<td>Finland</td>
+<td>FIN</td>
+</tr>
+<tr>
+<td>瑞典</td>
+<td>Sweden</td>
+<td>SWE</td>
+</tr>
+<tr>
+<td>挪威</td>
+<td>Norway</td>
+<td>NOR</td>
+</tr>
+<tr>
+<td>冰島</td>
+<td>Iceland</td>
+<td>ISL</td>
+</tr>
+<tr>
+<td>丹麥</td>
+<td>Danmark</td>
+<td>DNK</td>
+</tr>
+<tr>
+<td>法羅羣島</td>
+<td>Faroe Islands（丹）</td>
+<td>FRO</td>
+</tr>
+<tr>
+<td>愛沙尼亞</td>
+<td>Estonia</td>
+<td>EST</td>
+</tr>
+<tr>
+<td>拉脫維亞</td>
+<td>Latvia</td>
+<td>LVA</td>
+</tr>
+<tr>
+<td>立陶宛</td>
+<td>Lithuania</td>
+<td>LTU</td>
+</tr>
+<tr>
+<td>白俄羅斯</td>
+<td>Belarus</td>
+<td>BLR</td>
+</tr>
+<tr>
+<td>俄羅斯</td>
+<td>Russia</td>
+<td>RUS</td>
+</tr>
+<tr>
+<td>烏克蘭</td>
+<td>Ukraine</td>
+<td>UKR</td>
+</tr>
+<tr>
+<td>摩爾多瓦</td>
+<td>Moldova</td>
+<td>MDA</td>
+</tr>
+<tr>
+<td>波蘭</td>
+<td>Poland</td>
+<td>POL</td>
+</tr>
+<tr>
+<td>捷克</td>
+<td>Czech</td>
+<td>CZE</td>
+</tr>
+<tr>
+<td>斯洛伐克</td>
+<td>Slovakia</td>
+<td>SVK</td>
+</tr>
+<tr>
+<td>匈牙利</td>
+<td>Hungary</td>
+<td>HUN</td>
+</tr>
+<tr>
+<td>德國</td>
+<td>Germany</td>
+<td>DEU</td>
+</tr>
+<tr>
+<td>奧地利</td>
+<td>Austria</td>
+<td>AUT</td>
+</tr>
+<tr>
+<td>瑞士</td>
+<td>Switzerland</td>
+<td>CHE</td>
+</tr>
+<tr>
+<td>列支敦士登</td>
+<td>Liechtenstein(LIE)</td>
+<td>LIE</td>
+</tr>
+<tr>
+<td>英國</td>
+<td>Britain</td>
+<td>GBR</td>
+</tr>
+<tr>
+<td>愛爾蘭</td>
+<td>Ireland</td>
+<td>IRL</td>
+</tr>
+<tr>
+<td>荷蘭</td>
+<td>Holand</td>
+<td>NLD</td>
+</tr>
+<tr>
+<td>比利時</td>
+<td>Belgium</td>
+<td>BEL</td>
+</tr>
+<tr>
+<td>盧森堡</td>
+<td>Luxemburg</td>
+<td>LUX</td>
+</tr>
+<tr>
+<td>法國</td>
+<td>France</td>
+<td>FRA</td>
+</tr>
+<tr>
+<td>摩納哥</td>
+<td>Monaco</td>
+<td>MCO</td>
+</tr>
+<tr>
+<td>羅馬尼亞</td>
+<td>Romania</td>
+<td>ROU</td>
+</tr>
+<tr>
+<td>保加利亞</td>
+<td>Bulgaria</td>
+<td>BGR</td>
+</tr>
+<tr>
+<td>塞爾維亞</td>
+<td>Serbia</td>
+<td>SRB</td>
+</tr>
+<tr>
+<td>馬其頓</td>
+<td>Macedonia</td>
+<td>MKD</td>
+</tr>
+<tr>
+<td>阿爾巴尼亞</td>
+<td>Albania</td>
+<td>ALB</td>
+</tr>
+<tr>
+<td>希臘</td>
+<td>Greece</td>
+<td>GRC</td>
+</tr>
+<tr>
+<td>斯洛文尼亞</td>
+<td>Slovenia</td>
+<td>SVN</td>
+</tr>
+<tr>
+<td>克羅地亞</td>
+<td>Croatia</td>
+<td>HRV</td>
+</tr>
+<tr>
+<td>波斯尼亞Bosnia和墨塞哥維那Herzegovina(波黑)</td>
+<td>Bosnia</td>
+<td>BIH</td>
+</tr>
+<tr>
+<td>意大利</td>
+<td>Italy</td>
+<td>ITA</td>
+</tr>
+<tr>
+<td>梵蒂岡</td>
+<td>Vatican</td>
+<td>VAT</td>
+</tr>
+<tr>
+<td>聖馬力諾</td>
+<td>San Marino</td>
+<td>SMR</td>
+</tr>
+<tr>
+<td>馬耳他</td>
+<td>Malta</td>
+<td>MLT</td>
+</tr>
+<tr>
+<td>西班牙</td>
+<td>Spain</td>
+<td>ESP</td>
+</tr>
+<tr>
+<td>葡萄牙</td>
+<td>Portugal</td>
+<td>PRT</td>
+</tr>
+<tr>
+<td>安道爾</td>
+<td>Andorra</td>
+<td>AND</td>
+</tr>
+<tr>
+<td>埃及</td>
+<td>Egypt</td>
+<td>EGY</td>
+</tr>
+<tr>
+<td>利比亞</td>
+<td>Libya</td>
+<td>LBY</td>
+</tr>
+<tr>
+<td>蘇丹</td>
+<td>Sudan</td>
+<td>SDN</td>
+</tr>
+<tr>
+<td>突尼斯</td>
+<td>Tunis</td>
+<td>TUN</td>
+</tr>
+<tr>
+<td>阿爾及利亞</td>
+<td>Algeria</td>
+<td>DZA</td>
+</tr>
+<tr>
+<td>摩洛哥</td>
+<td>Morocco</td>
+<td>MAR</td>
+</tr>
+<tr>
+<td>埃塞俄比亞</td>
+<td>Ethiopia</td>
+<td>ETH</td>
+</tr>
+<tr>
+<td>厄立特里亞</td>
+<td>Eritrea</td>
+<td>ERI</td>
+</tr>
+<tr>
+<td>索馬里</td>
+<td>Somalia</td>
+<td>SOM</td>
+</tr>
+<tr>
+<td>吉布提</td>
+<td>Djibouti</td>
+<td>DJI</td>
+</tr>
+<tr>
+<td>肯尼亞</td>
+<td>Kenya</td>
+<td>KEN</td>
+</tr>
+<tr>
+<td>坦桑尼亞</td>
+<td>Tanzania</td>
+<td>TZA</td>
+</tr>
+<tr>
+<td>烏干達</td>
+<td>Uganda</td>
+<td>UGA</td>
+</tr>
+<tr>
+<td>盧旺達</td>
+<td>Rwanda</td>
+<td>RWA</td>
+</tr>
+<tr>
+<td>布隆迪</td>
+<td>Burundi</td>
+<td>BDI</td>
+</tr>
+<tr>
+<td>塞舌爾</td>
+<td>Seychelles</td>
+<td>SYC</td>
+</tr>
+<tr>
+<td>乍得</td>
+<td>Chad</td>
+<td>TCD</td>
+</tr>
+<tr>
+<td>中非</td>
+<td>Central Africa</td>
+<td>CAF</td>
+</tr>
+<tr>
+<td>喀麥隆</td>
+<td>Cameroon</td>
+<td>CMR</td>
+</tr>
+<tr>
+<td>赤道幾內亞</td>
+<td>Equatorial Guinea</td>
+<td>GNQ</td>
+</tr>
+<tr>
+<td>加蓬</td>
+<td>Gabon</td>
+<td>GAB</td>
+</tr>
+<tr>
+<td>剛果共和國</td>
+<td>Republic of Congo</td>
+<td>COG</td>
+</tr>
+<tr>
+<td>剛果民主共和國</td>
+<td>Democratic Republic of Congo</td>
+<td>COD</td>
+</tr>
+<tr>
+<td>聖多美及普林西比</td>
+<td>Sao Tome and Principe</td>
+<td>STP</td>
+</tr>
+<tr>
+<td>毛里塔尼亞</td>
+<td>Mauritania</td>
+<td>MRT</td>
+</tr>
+<tr>
+<td>西撒哈拉</td>
+<td>Western Sahara</td>
+<td>ESH</td>
+</tr>
+<tr>
+<td>塞內加爾</td>
+<td>Senegal</td>
+<td>SEN</td>
+</tr>
+<tr>
+<td>岡比亞</td>
+<td>Gambian</td>
+<td>GMB</td>
+</tr>
+<tr>
+<td>馬裏</td>
+<td>Mali</td>
+<td>MLI</td>
+</tr>
+<tr>
+<td>布基納法索</td>
+<td>Burkina Faso</td>
+<td>BFA</td>
+</tr>
+<tr>
+<td>幾內亞</td>
+<td>Guinea</td>
+<td>GIN</td>
+</tr>
+<tr>
+<td>幾內亞比紹</td>
+<td>Guinea-Bissau</td>
+<td>GNB</td>
+</tr>
+<tr>
+<td>佛得角</td>
+<td>Cape-Verde</td>
+<td>CPV</td>
+</tr>
+<tr>
+<td>塞拉利昂</td>
+<td>Sierra Leone</td>
+<td>SLE</td>
+</tr>
+<tr>
+<td>利比里亞</td>
+<td>Liberia</td>
+<td>LBR</td>
+</tr>
+<tr>
+<td>科特迪瓦</td>
+<td>Cote d&#x27;Ivoire</td>
+<td>CIV</td>
+</tr>
+<tr>
+<td>加納</td>
+<td>Ghana</td>
+<td>GHA</td>
+</tr>
+<tr>
+<td>多哥</td>
+<td>Togo</td>
+<td>TGO</td>
+</tr>
+<tr>
+<td>貝寧</td>
+<td>Benin</td>
+<td>BEN</td>
+</tr>
+<tr>
+<td>尼日爾</td>
+<td>Niger</td>
+<td>NER</td>
+</tr>
+<tr>
+<td>贊比亞</td>
+<td>Zambia</td>
+<td>ZMB</td>
+</tr>
+<tr>
+<td>安哥拉</td>
+<td>Angola</td>
+<td>AGO</td>
+</tr>
+<tr>
+<td>津巴布韋</td>
+<td>Zimbabwe</td>
+<td>ZWE</td>
+</tr>
+<tr>
+<td>馬拉維</td>
+<td>Malawi</td>
+<td>MWI</td>
+</tr>
+<tr>
+<td>莫桑比克</td>
+<td>Mozambique</td>
+<td>MOZ</td>
+</tr>
+<tr>
+<td>博茨瓦納</td>
+<td>Botswana</td>
+<td>BWA</td>
+</tr>
+<tr>
+<td>納米比亞</td>
+<td>Namibia</td>
+<td>NAM</td>
+</tr>
+<tr>
+<td>南非</td>
+<td>South Africa</td>
+<td>ZAF</td>
+</tr>
+<tr>
+<td>斯威士蘭</td>
+<td>Swaziland</td>
+<td>SWZ</td>
+</tr>
+<tr>
+<td>萊索托</td>
+<td>Lesotho</td>
+<td>LSO</td>
+</tr>
+<tr>
+<td>馬達加斯加</td>
+<td>Madagascan</td>
+<td>MDG</td>
+</tr>
+<tr>
+<td>科摩羅</td>
+<td>Comorin</td>
+<td>COM</td>
+</tr>
+<tr>
+<td>毛里求斯</td>
+<td>Mauritius</td>
+<td>MUS</td>
+</tr>
+<tr>
+<td>聖赫勒拿</td>
+<td>Saint Helena（英）</td>
+<td>SHN</td>
+</tr>
+<tr>
+<td>澳大利亞</td>
+<td>Australia</td>
+<td>AUS</td>
+</tr>
+<tr>
+<td>新西蘭</td>
+<td>New Zealand</td>
+<td>NZL</td>
+</tr>
+<tr>
+<td>巴布亞新幾內亞</td>
+<td>Guinea</td>
+<td>PNG</td>
+</tr>
+<tr>
+<td>所羅門羣島</td>
+<td>Archipelago</td>
+<td>SLB</td>
+</tr>
+<tr>
+<td>瓦努阿圖</td>
+<td>Vanuatu</td>
+<td>VUT</td>
+</tr>
+<tr>
+<td>密克羅尼西亞</td>
+<td>Micronesia</td>
+<td>FSM</td>
+</tr>
+<tr>
+<td>馬紹爾羣島</td>
+<td>Marshall Islands</td>
+<td>MHL</td>
+</tr>
+<tr>
+<td>帕勞</td>
+<td>Palau</td>
+<td>PLW</td>
+</tr>
+<tr>
+<td>瑙魯</td>
+<td>Nauru</td>
+<td>NRU</td>
+</tr>
+<tr>
+<td>基里巴斯</td>
+<td>Kiribati</td>
+<td>KIR</td>
+</tr>
+<tr>
+<td>圖瓦盧</td>
+<td>Tuvalu TV</td>
+<td>TUV</td>
+</tr>
+<tr>
+<td>薩摩亞</td>
+<td>Samoa</td>
+<td>WSM</td>
+</tr>
+<tr>
+<td>斐濟羣島</td>
+<td>Fiji Islands</td>
+<td>FJI</td>
+</tr>
+<tr>
+<td>湯加</td>
+<td>Tonga</td>
+<td>TON</td>
+</tr>
+<tr>
+<td>庫克羣島</td>
+<td>Cook Islands（新）</td>
+<td>COK</td>
+</tr>
+<tr>
+<td>關島</td>
+<td>Guam（美）</td>
+<td>GUM</td>
+</tr>
+<tr>
+<td>新喀里多尼亞</td>
+<td>New Caledonia（法）</td>
+<td>NCL</td>
+</tr>
+<tr>
+<td>法屬玻利尼西亞</td>
+<td>French Polynesia</td>
+<td>PYF</td>
+</tr>
+<tr>
+<td>皮特凱恩羣島</td>
+<td>Pitcairn Island</td>
+<td>PCN</td>
+</tr>
+<tr>
+<td>瓦利斯與富圖納</td>
+<td>Wallis/Futuna</td>
+<td>WLF</td>
+</tr>
+<tr>
+<td>紐埃</td>
+<td>Niue</td>
+<td>NIU</td>
+</tr>
+<tr>
+<td>托克勞</td>
+<td>Tokelau</td>
+<td>TKL</td>
+</tr>
+<tr>
+<td>美屬薩摩亞</td>
+<td>American Samoa</td>
+<td>ASM</td>
+</tr>
+<tr>
+<td>北马里亞納</td>
+<td>Mariana（美）</td>
+<td>MNP</td>
+</tr>
+<tr>
+<td>加拿大</td>
+<td>Canada</td>
+<td>CAN</td>
+</tr>
+<tr>
+<td>美國</td>
+<td>America</td>
+<td>USA</td>
+</tr>
+<tr>
+<td>墨西哥</td>
+<td>Mexico</td>
+<td>MEX</td>
+</tr>
+<tr>
+<td>格陵蘭</td>
+<td>Greenland</td>
+<td>GRL</td>
+</tr>
+<tr>
+<td>危地馬拉</td>
+<td>Guatemala</td>
+<td>GTM</td>
+</tr>
+<tr>
+<td>伯利茲</td>
+<td>Belize</td>
+<td>BLZ</td>
+</tr>
+<tr>
+<td>薩爾瓦多</td>
+<td>Salvador</td>
+<td>SLV</td>
+</tr>
+<tr>
+<td>洪都拉斯</td>
+<td>Honduras</td>
+<td>HND</td>
+</tr>
+<tr>
+<td>尼加拉瓜</td>
+<td>Nicaragua</td>
+<td>NIC</td>
+</tr>
+<tr>
+<td>哥斯達黎加</td>
+<td>Costarica(另Costa Rica)</td>
+<td>CRI</td>
+</tr>
+<tr>
+<td>巴拿馬</td>
+<td>Panama</td>
+<td>PAN</td>
+</tr>
+<tr>
+<td>巴哈馬</td>
+<td>Bahamas</td>
+<td>BHS</td>
+</tr>
+<tr>
+<td>古巴</td>
+<td>Cuba</td>
+<td>CUB</td>
+</tr>
+<tr>
+<td>牙買加</td>
+<td>Jamaica</td>
+<td>JAM</td>
+</tr>
+<tr>
+<td>海地</td>
+<td>Haiti</td>
+<td>HTI</td>
+</tr>
+<tr>
+<td>多米尼加共和國</td>
+<td>Dominican Republic</td>
+<td>DOM</td>
+</tr>
+<tr>
+<td>安提瓜和巴布達</td>
+<td>Antigua and Barbuda</td>
+<td>ATG</td>
+</tr>
+<tr>
+<td>聖基茨和尼維斯</td>
+<td>Saint Kitts and Nevis</td>
+<td>KNA</td>
+</tr>
+<tr>
+<td>多米尼克</td>
+<td>Dominica</td>
+<td>DMA</td>
+</tr>
+<tr>
+<td>聖盧西亞</td>
+<td>Saint Lucia</td>
+<td>LCA</td>
+</tr>
+<tr>
+<td>聖文森特和格林納丁斯</td>
+<td>Saint Vincent and the Grenadines</td>
+<td>VCT</td>
+</tr>
+<tr>
+<td>格林納達</td>
+<td>Grenada</td>
+<td>GRD</td>
+</tr>
+<tr>
+<td>巴巴多斯</td>
+<td>Barbados</td>
+<td>BRB</td>
+</tr>
+<tr>
+<td>特立尼達和多巴哥</td>
+<td>Trinidad and Tobago</td>
+<td>TTO</td>
+</tr>
+<tr>
+<td>波多黎各</td>
+<td>Porto Rico（美）</td>
+<td>PRI</td>
+</tr>
+<tr>
+<td>英屬維爾京羣島</td>
+<td>British Virgin Islands</td>
+<td>VGB</td>
+</tr>
+<tr>
+<td>美屬維爾京羣島</td>
+<td>Virgin Islands of the United States</td>
+<td>VIR</td>
+</tr>
+<tr>
+<td>安圭拉</td>
+<td>Anguilla（英）</td>
+<td>AIA</td>
+</tr>
+<tr>
+<td>蒙特塞拉特</td>
+<td>Montserrat（英）</td>
+<td>MSR</td>
+</tr>
+<tr>
+<td>瓜德羅普</td>
+<td>Guadeloupe（法）</td>
+<td>GLP</td>
+</tr>
+<tr>
+<td>馬提尼克</td>
+<td>Martinique</td>
+<td>MTQ</td>
+</tr>
+<tr>
+<td>阿魯巴</td>
+<td>Aruba</td>
+<td>ABW</td>
+</tr>
+<tr>
+<td>特克斯和凱科斯羣島</td>
+<td>Turks And Caicos Islands</td>
+<td>TCA</td>
+</tr>
+<tr>
+<td>開曼羣島</td>
+<td>Cayman Islands</td>
+<td>CYM</td>
+</tr>
+<tr>
+<td>百慕大</td>
+<td>Bermuda</td>
+<td>BMU</td>
+</tr>
+<tr>
+<td>哥倫比亞</td>
+<td>Colombia</td>
+<td>COL</td>
+</tr>
+<tr>
+<td>委內瑞拉</td>
+<td>Venezuela</td>
+<td>VEN</td>
+</tr>
+<tr>
+<td>圭亞那</td>
+<td>Guyana</td>
+<td>GUY</td>
+</tr>
+<tr>
+<td>法屬圭亞那</td>
+<td>French Guiana</td>
+<td>GUF</td>
+</tr>
+<tr>
+<td>蘇里南</td>
+<td>Suriname</td>
+<td>SUR</td>
+</tr>
+<tr>
+<td>厄瓜多爾</td>
+<td>Ecuador</td>
+<td>ECU</td>
+</tr>
+<tr>
+<td>祕魯</td>
+<td>Peru</td>
+<td>PER</td>
+</tr>
+<tr>
+<td>玻利維亞</td>
+<td>Bolivia</td>
+<td>BOL</td>
+</tr>
+<tr>
+<td>巴西</td>
+<td>Brazil</td>
+<td>BRA</td>
+</tr>
+<tr>
+<td>智利</td>
+<td>Chile</td>
+<td>CHL</td>
+</tr>
+<tr>
+<td>阿根廷</td>
+<td>Argentina</td>
+<td>ARG</td>
+</tr>
+<tr>
+<td>烏拉圭</td>
+<td>Uruguay</td>
+<td>URY</td>
+</tr>
+<tr>
+<td>巴拉圭</td>
+<td>Paraguay</td>
+<td>PRY</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </main>
+
+    <nav class="toc-nav">
+<div class="toc-nav-title">本頁目錄</div>
+<ul>
+  <li><a href="#11文檔概述" class="toc-h2">1.1文檔概述</a></li>
+  <li><a href="#12閱讀對象" class="toc-h2">1.2閱讀對象</a></li>
+  <li><a href="#21-業務實現流程" class="toc-h2">2.1 業務實現流程</a></li>
+  <li><a href="#31-提交數據" class="toc-h2">3.1 提交數據</a></li>
+  <li><a href="#32-返回結果數據格式" class="toc-h2">3.2 返回結果數據格式</a></li>
+  <li><a href="#41-簽名原始串" class="toc-h2">4.1 簽名原始串</a></li>
+  <li><a href="#42-簽名演算法" class="toc-h2">4.2 簽名演算法</a></li>
+  <li><a href="#43-請求頭說明" class="toc-h2">4.3 請求頭說明</a></li>
+  <li><a href="#51-下單接口" class="toc-h2">5.1 下單接口</a></li>
+  <li><a href="#511-業務功能" class="toc-h3">5.1.1 業務功能</a></li>
+  <li><a href="#512-交互模式" class="toc-h3">5.1.2 交互模式</a></li>
+  <li><a href="#513-請求參數列表" class="toc-h3">5.1.3 請求參數列表</a></li>
+  <li><a href="#514-返回結果" class="toc-h3">5.1.4 返回結果</a></li>
+  <li><a href="#515測試用例" class="toc-h3">5.1.5測試用例</a></li>
+  <li><a href="#52-訂單查詢接口" class="toc-h2">5.2 訂單查詢接口</a></li>
+  <li><a href="#521-業務功能" class="toc-h3">5.2.1 業務功能</a></li>
+  <li><a href="#522-交互模式" class="toc-h3">5.2.2 交互模式</a></li>
+  <li><a href="#523-請求參數列表" class="toc-h3">5.2.3 請求參數列表</a></li>
+  <li><a href="#524-返回結果" class="toc-h3">5.2.4 返回結果</a></li>
+  <li><a href="#525測試用例" class="toc-h3">5.2.5測試用例</a></li>
+  <li><a href="#53-退款接口接口" class="toc-h2">5.3 退款接口接口</a></li>
+  <li><a href="#531-業務功能" class="toc-h3">5.3.1 業務功能</a></li>
+  <li><a href="#532-交互模式" class="toc-h3">5.3.2 交互模式</a></li>
+  <li><a href="#533-請求參數列表" class="toc-h3">5.3.3 請求參數列表</a></li>
+  <li><a href="#534-返回結果" class="toc-h3">5.3.4 返回結果</a></li>
+  <li><a href="#535測試用例" class="toc-h3">5.3.5測試用例</a></li>
+  <li><a href="#54退款查詢接口" class="toc-h2">5.4退款查詢接口</a></li>
+  <li><a href="#541-業務功能" class="toc-h3">5.4.1 業務功能</a></li>
+  <li><a href="#542-交互模式" class="toc-h3">5.4.2 交互模式</a></li>
+  <li><a href="#543-請求參數列表" class="toc-h3">5.4.3 請求參數列表</a></li>
+  <li><a href="#544-返回結果" class="toc-h3">5.4.4 返回結果</a></li>
+  <li><a href="#545測試用例" class="toc-h3">5.4.5測試用例</a></li>
+  <li><a href="#55-支付通知接口" class="toc-h2">5.5 支付通知接口</a></li>
+  <li><a href="#551-業務功能" class="toc-h3">5.5.1 業務功能</a></li>
+  <li><a href="#552-交互模式" class="toc-h3">5.5.2 交互模式</a></li>
+  <li><a href="#553-返回參數列表" class="toc-h3">5.5.3 返回參數列表</a></li>
+  <li><a href="#554測試用例" class="toc-h3">5.5.4測試用例</a></li>
+  <li><a href="#1-iso國家地區表" class="toc-h2">1、ISO國家/地區表</a></li>
+</ul>
+</nav>
+  </div>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

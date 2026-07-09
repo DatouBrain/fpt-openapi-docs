@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FTP 外幣支付 | Fintech Payment OpenAPI 文檔</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo">
+        <span class="logo-icon">FP</span>
+        <span class="logo-text">Fintech Payment <span class="logo-sub">OpenAPI</span></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../../index.html">首頁</a>
+        <a href="../../common/quick-start.html">接入指引</a>
+        <a href="../../common/data-format.html">通用規則</a>
+        <a href="../../payments/card-online/global-payments-online.html">產品文檔</a>
+      </nav>
+      <button class="menu-toggle" aria-label="選單">☰</button>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="sidebar">
+<div class="sidebar-group" data-group="common">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>通用規則</div>
+  <ul class="sidebar-links">
+    <li><a href="../../common/quick-start.html" class="sub-link">快速入門</a></li>
+    <li><a href="../../common/endpoints.html" class="sub-link">API 調用地址</a></li>
+    <li><a href="../../common/data-format.html" class="sub-link">數據格式</a></li>
+    <li><a href="../../common/signature.html" class="sub-link">數字簽名</a></li>
+    <li><a href="../../common/request-headers.html" class="sub-link">請求頭說明</a></li>
+    <li><a href="../../common/error-codes.html" class="sub-link">錯誤碼說明</a></li>
+    <li><a href="../../common/notification.html" class="sub-link">支付通知說明</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online 無卡支付</a></li>
+    <li><a href="../../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online 支付</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../payments/card-offline/global-payments-offline.html" class="sub-link">Global Payments Offline 物理卡支付 <span class="status-tag upcoming">暫未開放</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP 支付</a></li>
+    <li><a href="../../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB 支付</a></li>
+    <li><a href="../../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP 支付</a></li>
+    <li><a href="../../payments/qr-online/alipay-plus.html" class="sub-link">Alipay Plus+ 支付</a></li>
+    <li><a href="../../payments/qr-online/wechat-web.html" class="sub-link">Wechat WEB 支付</a></li>
+    <li><a href="../../payments/qr-online/wechat-wap.html" class="sub-link">Wechat WAP 支付</a></li>
+    <li><a href="../../payments/qr-online/wechat-miniprogram.html" class="sub-link">Wechat 公眾帳號和小程序支付</a></li>
+    <li><a href="../../payments/qr-online/wechat-app.html" class="sub-link">Wechat APP 支付</a></li>
+    <li><a href="../../payments/qr-online/qr-code.html" class="sub-link">掃碼支付</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../payments/qr-offline/barcode.html" class="sub-link">付款碼支付</a></li>
+    <li><a href="../../payments/qr-offline/cash-api.html" class="sub-link">CashAPI 支付</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="other">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>⚙️ Other Pay</div>
+  <ul class="sidebar-links">
+    <li><a href="../../payments/other/ftp-foreign.html" class="sub-link active">FTP 外幣支付 <span class="status-tag upcoming">暫未開放</span></a></li>
+  </ul>
+</div>
+</aside>
+
+
+    <main class="main-content">
+      <h1 id="overview">FTP 外幣支付
+<span class="subtitle">Other Pay</span>
+<span class="status-badge upcoming">暫未開放</span>
+</h1>
+<div class="page-meta">
+<span class="page-meta-item">文檔版本：V1.0</span>
+<span class="page-meta-item">接口版本：V1.0</span>
+</div>
+<div class="callout warning">
+<div class="callout-title">⚠️ 提示</div>
+本接口暫未開放使用，僅供參考。具體上線時間請聯繫平臺客服。
+</div>
+<h1 id="特殊支付">特殊支付</h1>
+<h1 id="ftp外幣支付接口文檔">FTP外幣支付接口文檔</h1>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>時間</th>
+<th>版本</th>
+<th>修改內容</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>2025-12-19</td>
+<td>1.0</td>
+<td>初稿</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="1引言">1引言</h1>
+<h2 id="11文檔概述">1.1文檔概述</h2>
+<p>因需向海關展示小金的外幣支付對接能力，故增加一種“外幣支付”的支付類型，供客戶對接至其自己的商城，以便向海關展示外幣支付的對接能力</p>
+<p>外幣支付支付流程：</p>
+<p>步驟（1）：選擇小金支付的【外幣支付】方式；</p>
+<p>步驟（2）：點擊確認結算，進入外幣支付賬戶登錄界面</p>
+<p>步驟（3）：進入外幣支付應用確認支付界面，點擊最後確認支付後跳轉支付成功該頁面</p>
+<h2 id="12閱讀對象">1.2閱讀對象</h2>
+<p>供商戶平臺服務方技術或業務人員參考和查詢。</p>
+<h1 id="2方案概述">2方案概述</h1>
+<h2 id="21-業務實現流程">2.1 業務實現流程</h2>
+<p>接口調用時序：</p>
+<p>下單接口 API、支付通知接口API和查詢訂單API等都涉及簽名過程，調用都必須在商戶伺服器端完成。
+時序圖如下：</p>
+<div class="doc-image"><img src="../../assets/images/ftp-foreign_1.png" alt="文檔圖片" loading="lazy"></div>
+<h1 id="3數據格式">3數據格式</h1>
+<h2 id="31-提交數據">3.1 提交數據</h2>
+<p>採用 HTTPS 標準的 POST 協議， 為了保證接收方接收數據正確,傳輸數據必須簽名。</p>
+<pre><span class="code-label">JSON</span><code class="language-json">{
+  &quot;amount&quot;: 1,
+  &quot;attach&quot;: &quot;&quot;,
+  &quot;body&quot;: &quot;測試外幣支付&quot;,
+  &quot;client_id&quot;: &quot;1618816471353tv2&quot;,
+  &quot;client_ip&quot;: &quot;127.0.0.1&quot;,
+  &quot;notify_url&quot;: &quot;http://59.110.228.143:9050/pima-pay/v1/notify/feedbackTest&quot;,
+  &quot;order_no&quot;: &quot;b17f24ff026d40949c85a24f4f375d42&quot;,
+  &quot;service&quot;: &quot;pay.foreign.intl&quot;,</code></pre>
+<p>&quot;nonce_str&quot;:&quot;qj1g38h3&quot;,</p>
+<p>&quot;sign&quot;:&quot;DBB695DEBA231E9D96014042A45C2201&quot;,
+  &quot;store_id&quot;: &quot;HKG-001-411-040-24411122-001&quot;
+}</p>
+<h2 id="32-返回結果數據格式">3.2 返回結果數據格式</h2>
+<p>正確返回：</p>
+<p>{</p>
+<p>&quot;message&quot;:&quot;SUCCESS&quot;,</p>
+<p>&quot;order_no&quot;:&quot;55b45c52781147fea231374429006675&quot;,</p>
+<p>&quot;transaction_id&quot;:&quot;FTP202304191810200001&quot;,</p>
+<p>&quot;submit_time&quot;:&quot;20230419181020&quot;,</p>
+<p>&quot;nonce_str&quot;:&quot;qj1g38h3&quot;,</p>
+<p>&quot;sign&quot;:&quot;DBB695DEBA231E9D96014042A45C2201&quot;</p>
+<p>}</p>
+<p>錯誤返回：</p>
+<p>{</p>
+<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
+<pre><span class="code-label">JSON</span><code class="language-json">&quot;errors&quot;:[</code></pre>
+<p>{</p>
+<p>&quot;field&quot;:&quot;mch_id&quot;,</p>
+<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
+<p>&quot;code&quot;:&quot;MISSING_FIELD&quot;</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>message返回非SUCCESS時表示接口調用出錯。</p>
+<h1 id="4數字簽名">4數字簽名</h1>
+<p>為了保證資料傳輸過程中的資料真實性和完整性， 我們需要對資料進行數字簽名， 在接收簽名資料之後進行簽名校驗。</p>
+<p>數字簽名有兩個步驟， 先按一定規則拼接要簽名的原始串， 再選擇具體的演算法和密鑰計算出簽名結果。</p>
+<h2 id="41-簽名原始串">4.1 簽名原始串</h2>
+<p>無論是請求還是應答， 簽名原始串按以下方式組裝成字串：
+1、 除 sign 欄位外， 所有參數按照欄位名的 ascii 碼從小到大排序後使用 QueryString 的格式（即key1=value1&amp;key2=value2…） 拼接而成， 空值不傳遞， 不參與簽名組串。
+2、 簽名原始串中， 欄位名和欄位值都採用原始值， 不進行 URL Encode。</p>
+<p>3、 平臺返回的應答或通知消息可能會由於升級增加參數， 請驗證應答簽名時注意允許這種情況。</p>
+<p>舉例：</p>
+<p>調用某個接口， 接口有如下欄位：</p>
+<p>{</p>
+<p>&quot;client_id&quot;:&quot;1001&quot;,</p>
+<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
+<p>&quot;service&quot;:&quot;pay.alipay.wappay.intl&quot;,</p>
+<p>&quot;order_no&quot;:&quot;Me08772e914454656bf26ec8996e35bb&quot;,</p>
+<p>&quot;amount&quot;:&quot;1&quot;,</p>
+<p>&quot;body&quot;:&quot;a chair&quot;,</p>
+<p>&quot;notify_url&quot;:&quot;2031&quot;,</p>
+<p>&quot;payment_inst&quot;:&quot;ALIPAYHK&quot;,</p>
+<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
+<p>&quot;nonce_str&quot;:&quot;1409196838&quot;,</p>
+<p>&quot;sign&quot;:&quot;22C9835251DCF58BB70C78FA8D6448BD&quot;</p>
+<p>}</p>
+<p>正確的簽名欄位排序為：</p>
+<p>amount=1&amp;body=a chair&amp;client_ip=127.0.0.1&amp;mch_id=1001&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;payment_inst=ALIPAYHK&amp;service=pay.alipay.wappay.intl&amp;store_id=1001001</p>
+<h2 id="42-簽名演算法">4.2 簽名演算法</h2>
+<p>MD5 簽名
+MD5 是一種摘要生成演算法， 通過在簽名原始串後加上商戶通信金鑰的內容， 進行 MD5 運算， 形成的摘要
+字串即為簽名結果。 為了方便比較， 簽名結果統一轉換為大寫字元。</p>
+<p>注意： 簽名時將字串轉化成位元組流時指定的編碼字元集應與參數 charset 一致。
+MD5 簽名計算公式：
+sign = MD5 (原字串+&amp;key=商戶祕鑰). toUpperCase</p>
+<p>假設商戶祕鑰為：MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=</p>
+<p>如：
+假設以下為 JSON傳入參數：
+i： 經過 a 過程 URL 鍵值對字典序排序後的字串 string1 為：
+amount=1&amp;body=a chair&amp;client_ip=127.0.0.1&amp;mch_id=1001&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;payment_inst=ALIPAYHK&amp;service=pay.alipay.wappay.intl&amp;store_id=1001001
+ii： 經過 b 過程後得到 sign 為：</p>
+<p>sign = md5(string1+&amp;key=商戶祕鑰).toUpperCase</p>
+<p>實際加密字符串為：</p>
+<p>sign = md5(amount=1&amp;body=a chair&amp;client_ip=127.0.0.1&amp;mch_id=1001&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;payment_inst=ALIPAYHK&amp;service=pay.alipay.wappay.intl&amp;store_id=1001001&amp;key=MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=).toUpperCase</p>
+<p>最終得到的簽名為：22C9835251DCF58BB70C78FA8D6448BD</p>
+<p>sign與 lang字段不參與接口簽名，接口返回參數解密規則同理</p>
+<h2 id="43-請求頭說明">4.3 請求頭說明</h2>
+<p>請求參數：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>內容類型</td>
+<td>Content-Type</td>
+<td>是</td>
+<td>String(32)</td>
+<td>值：application/json，請求內容類別型</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="5-接口描述">5 接口描述</h1>
+<h2 id="51-下單接口">5.1 下單接口</h2>
+<h3 id="511-業務功能">5.1.1 業務功能</h3>
+<p>初始化下單請求， 通過該請求生成後臺訂單。</p>
+<h3 id="512-交互模式">5.1.2 交互模式</h3>
+<p>請求：後臺同步請求模式</p>
+<h3 id="返回結果通知-後臺請求交互模式後臺通知交互模式">返回結果+通知： 後臺請求交互模式+後臺通知交互模式</h3>
+<h3 id="513-請求參數列表">5.1.3 請求參數列表</h3>
+<p>請求 url：https://api.fintechpaymenthub.com/openapi/v1/pay</p>
+<p>通過 POST JSON 內容體進行請求接口</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>接口類型</td>
+<td>service</td>
+<td>是</td>
+<td>String(40)</td>
+<td>固定: pay.foreign.intl</td>
+</tr>
+<tr>
+<td>客戶端ID</td>
+<td>client_id</td>
+<td>是</td>
+<td>String(32)</td>
+<td>商戶客戶端ID</td>
+</tr>
+<tr>
+<td>門店ID</td>
+<td>store_id</td>
+<td>是</td>
+<td>String(50)</td>
+<td>門店ID</td>
+</tr>
+<tr>
+<td>商戶訂單號</td>
+<td>order_no</td>
+<td>是</td>
+<td>String(32)</td>
+<td>商戶系統內部的訂單號 32 個字元內、 可包含字母 確保在商戶系統唯一</td>
+</tr>
+<tr>
+<td>商品描述</td>
+<td>body</td>
+<td>是</td>
+<td>String(127)</td>
+<td>商品描述資訊</td>
+</tr>
+<tr>
+<td>金額</td>
+<td>amount</td>
+<td>是</td>
+<td>String(15)</td>
+<td>訂單總金額（必須大於 0），單位為元。</td>
+</tr>
+<tr>
+<td>終端IP</td>
+<td>client_ip</td>
+<td>是</td>
+<td>String(16)</td>
+<td>訂單生成的機器 IP</td>
+</tr>
+<tr>
+<td>附加信息</td>
+<td>attach</td>
+<td>否</td>
+<td>String(127)</td>
+<td>商戶附加信息，可做擴展參數</td>
+</tr>
+<tr>
+<td>隨機字串</td>
+<td>nonce_str</td>
+<td>是</td>
+<td>String(32)</td>
+<td>隨機字串，不長於 32 位，每次提交需傳不同的值</td>
+</tr>
+<tr>
+<td>簽名</td>
+<td>sign</td>
+<td>是</td>
+<td>String(32)</td>
+<td>詳見第 4 章 “簽名規則”</td>
+</tr>
+<tr>
+<td>語言</td>
+<td>lang</td>
+<td>否</td>
+<td>String(32)</td>
+<td>語言</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="514-返回結果">5.1.4 返回結果</h3>
+<p>數據按 JSON 的格式即時返回</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>商戶訂單號</td>
+<td>order_no</td>
+<td>是</td>
+<td>String(32）</td>
+<td>商戶生成的訂單號</td>
+</tr>
+<tr>
+<td>FTP訂單號</td>
+<td>transaction_id</td>
+<td>是</td>
+<td>String(26）</td>
+<td>FTP生成的訂單號</td>
+</tr>
+<tr>
+<td>提交時間</td>
+<td>submit_time</td>
+<td>是</td>
+<td>String(50）</td>
+<td>格式為 yyyyMMddhhmmss</td>
+</tr>
+<tr>
+<td>結果信息</td>
+<td>message</td>
+<td>是</td>
+<td>String(500)</td>
+<td>描述查詢結果，SUCCESS表示成功，否則返回其他錯誤信息</td>
+</tr>
+<tr>
+<td>隨機字串</td>
+<td>nonce_str</td>
+<td>是</td>
+<td>String(32)</td>
+<td>隨機字串，不長於 32 位</td>
+</tr>
+<tr>
+<td>簽名</td>
+<td>sign</td>
+<td>是</td>
+<td>String(32)</td>
+<td>詳見第 4 章 “簽名規則”</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="515測試用例">5.1.5測試用例</h3>
+<p>提供了測試用例方便調用</p>
+<p>發起提交的數據：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+  &quot;amount&quot;: 1,
+  &quot;attach&quot;: &quot;&quot;,
+  &quot;body&quot;: &quot;測試外幣支付&quot;,
+  &quot;client_id&quot;: &quot;1618816471353tv2&quot;,
+  &quot;client_ip&quot;: &quot;127.0.0.1&quot;,
+  &quot;notify_url&quot;: &quot;http://59.110.228.143:9050/pima-pay/v1/notify/feedbackTest&quot;,
+  &quot;order_no&quot;: &quot;b17f24ff026d40949c85a24f4f375d42&quot;,
+  &quot;service&quot;: &quot;pay.foreign.intl&quot;,
+&quot;nonce_str&quot;:&quot;qj1g38h3&quot;,
+&quot;sign&quot;:&quot;DBB695DEBA231E9D96014042A45C2201&quot;,
+  &quot;store_id&quot;: &quot;HKG-001-411-040-24411122-001&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>成功返回的數據：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;order_no&quot;:&quot;55b45c52781147fea231374429006675&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202304191810200001&quot;,
+    &quot;submit_time&quot;:&quot;20230419181020&quot;,
+    &quot;nonce_str&quot;:&quot;qj1g38h3&quot;,
+    &quot;sign&quot;:&quot;DBB695DEBA231E9D96014042A45C2201&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="52-訂單查詢接口">5.2 訂單查詢接口</h2>
+<h3 id="521-業務功能">5.2.1 業務功能</h3>
+<p>根據商戶訂單號或者FTP訂單號查詢平臺的具體訂單資訊。</p>
+<h3 id="522-交互模式">5.2.2 交互模式</h3>
+<p>後臺系統調用交互模式</p>
+<h3 id="523-請求參數列表">5.2.3 請求參數列表</h3>
+<p>請求 url：https://api.fintechpaymenthub.com/openapi/v1/query
+通過 POST JSON 內容體進行請求</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>接口類型</td>
+<td>service</td>
+<td>是</td>
+<td>String(40)</td>
+<td>固定: pay.foreign.intl</td>
+</tr>
+<tr>
+<td>客戶端ID</td>
+<td>client_id</td>
+<td>是</td>
+<td>String(32)</td>
+<td>商戶客戶端ID</td>
+</tr>
+<tr>
+<td>門店ID</td>
+<td>store_id</td>
+<td>是</td>
+<td>String(50)</td>
+<td>門店ID</td>
+</tr>
+<tr>
+<td>商戶訂單號</td>
+<td>order_no</td>
+<td>否</td>
+<td>String(32）</td>
+<td>商戶生成的訂單號</td>
+</tr>
+<tr>
+<td>FTP訂單號</td>
+<td>transaction_id</td>
+<td>否</td>
+<td>String(26）</td>
+<td>FTP訂單號, order_no 和 transaction_id 至少一個必填，同時存在時 transaction_id 優先</td>
+</tr>
+<tr>
+<td>隨機字串</td>
+<td>nonce_str</td>
+<td>是</td>
+<td>String(32)</td>
+<td>隨機字串，不長於 32 位</td>
+</tr>
+<tr>
+<td>簽名</td>
+<td>sign</td>
+<td>是</td>
+<td>String(32)</td>
+<td>詳見第 4 章 “簽名規則”</td>
+</tr>
+<tr>
+<td>語言</td>
+<td>lang</td>
+<td>否</td>
+<td>String(32)</td>
+<td>語言</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="524-返回結果">5.2.4 返回結果</h3>
+<p>數據按 JSON 的格式即時返回</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>欄位名</th>
+<th>變數名</th>
+<th>必填</th>
+<th>類型</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>FTP訂單號</td>
+<td>transaction_id</td>
+<td>是</td>
+<td>String(26)</td>
+<td>FTP生成的訂單號</td>
+</tr>
+<tr>
+<td>商戶訂單號</td>
+<td>order_no</td>
+<td>是</td>
+<td>String(32)</td>
+<td>商戶生成的訂單號</td>
+</tr>
+<tr>
+<td>門店ID</td>
+<td>store_id</td>
+<td>是</td>
+<td>String(50)</td>
+<td>門店ID</td>
+</tr>
+<tr>
+<td>提交時間</td>
+<td>submit_time</td>
+<td>是</td>
+<td>String(32)</td>
+<td>格式為 yyyyMMddhhmmss</td>
+</tr>
+<tr>
+<td>交易狀態</td>
+<td>trade_state</td>
+<td>是</td>
+<td>String(32)</td>
+<td>SUCCESS—支付成功
+NOTPAY—待付款
+PROCESSING—處理中
+REFUND—退款
+CANCEL—關閉
+FAIL—失敗</td>
+</tr>
+<tr>
+<td>金額</td>
+<td>amount</td>
+<td>是</td>
+<td>Double</td>
+<td>訂單總金額（必須大於 0），單位為人民幣為元。如訂單總金額為 1 元，amount 為 1。</td>
+</tr>
+<tr>
+<td>幣種</td>
+<td>currency</td>
+<td>是</td>
+<td>String(3)</td>
+<td>3 位元 ISO 貨幣代碼，大寫字母，人民幣為 CNY。</td>
+</tr>
+<tr>
+<td>付款方</td>
+<td>payer</td>
+<td>是</td>
+<td>String(50)</td>
+<td>付款方</td>
+</tr>
+<tr>
+<td>支付完成時間</td>
+<td>pay_finish_time</td>
+<td>是</td>
+<td>String(32)</td>
+<td>支付完成時間，格式為 yyyyMMddhhmmss， 如2009 年 12 月 27 日 9 點 10 分 10 秒錶示為20091227091010。 時區為 GMT+8 beijing。</td>
+</tr>
+<tr>
+<td>商品描述</td>
+<td>body</td>
+<td>是</td>
+<td>String(127)</td>
+<td>商品描述資訊</td>
+</tr>
+<tr>
+<td>退款金額</td>
+<td>refund_amount</td>
+<td>是</td>
+<td>Double</td>
+<td>退款金額，單位為人民幣為元。如訂單總金額為 1 元，amount 為 1。</td>
+</tr>
+<tr>
+<td>第三方商戶號</td>
+<td>out_transaction_id</td>
+<td>是</td>
+<td>String(32)</td>
+<td>對應支付寶交易記錄賬單詳情中的交易號</td>
+</tr>
+<tr>
+<td>附加信息</td>
+<td>attach</td>
+<td>否</td>
+<td>String(127)</td>
+<td>商家數據包，原樣返回</td>
+</tr>
+<tr>
+<td>結果信息</td>
+<td>message</td>
+<td>是</td>
+<td>String(500)</td>
+<td>描述查詢結果，SUCCESS表示成功，否則返回其他錯誤信息</td>
+<td>描述查詢結果，SUCCESS表示成功，否則返回其他錯誤信息</td>
+</tr>
+<tr>
+<td>隨機字串</td>
+<td>nonce_str</td>
+<td>是</td>
+<td>String(32)</td>
+<td>隨機字串，不長於 32 位</td>
+</tr>
+<tr>
+<td>簽名</td>
+<td>sign</td>
+<td>是</td>
+<td>String(32)</td>
+<td>詳見第 4 章 “簽名規則”</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="525測試用例">5.2.5測試用例</h3>
+<p>提供了測試用例方便調用</p>
+<p>發起提交的數據：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;service&quot;:&quot;pay.foreign.intl&quot;,
+    &quot;order_no&quot;:&quot;&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181701310001&quot;,
+    &quot;client_id&quot;:&quot;1001&quot;,
+    &quot;store_id&quot;:&quot;1001001&quot;,
+    &quot;nonce_str&quot;:&quot;hsdrb9d2&quot;,
+&quot;sign&quot;:&quot;DA4D25974E14EC74A0D180101A291B96&quot;，
+&quot;lang&quot;:&quot;en_US&quot;
+
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>成功返回的數據：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181701310001&quot;,
+    &quot;order_no&quot;:&quot;aa95f4d66f4440268b3e168053eee75a&quot;,
+    &quot;store_id&quot;:&quot;1001001&quot;,
+    &quot;submit_time&quot;:&quot;20201218170131&quot;,
+    &quot;trade_state&quot;:&quot;SUCCESS&quot;,
+    &quot;amount&quot;:1,
+    &quot;currency&quot;:&quot;HKD&quot;,
+    &quot;payer&quot;:&quot;-&quot;,
+    &quot;pay_finish_time&quot;:&quot;20201028120557&quot;,
+    &quot;body&quot;:&quot;測試外幣支付&quot;,
+    &quot;refund_amount&quot;:0,
+    &quot;nonce_str&quot;:&quot;wdur19hg&quot;,
+    &quot;sign&quot;:&quot;D0A9E5585FF49C0CB138AFD31B35EF6C&quot;,
+    &quot;out_transaction_id&quot;:&quot;127500000158202011100364937974&quot;,
+    &quot;attach&quot;:&quot;&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="6錯誤碼說明">6錯誤碼說明</h1>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>錯誤碼</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>MISSING_FIELD</td>
+<td>字段未傳入</td>
+</tr>
+<tr>
+<td>INVALID_FIELD</td>
+<td>字段校驗錯誤</td>
+</tr>
+<tr>
+<td>NO_EXISTS</td>
+<td>數據不存在</td>
+</tr>
+<tr>
+<td>OTHER</td>
+<td>其他錯誤</td>
+</tr>
+<tr>
+<td>INVALID_SCOPE</td>
+<td>數據超出範圍</td>
+</tr>
+<tr>
+<td>INVALID_LENGTH</td>
+<td>數據長度超過限制</td>
+</tr>
+<tr>
+<td>INCORRECT_SIGNATURE</td>
+<td>無效簽名</td>
+</tr>
+<tr>
+<td>EXPIRED_ORDER</td>
+<td>訂單已過期</td>
+</tr>
+<tr>
+<td>PAY_GATEWAY_FAIL</td>
+<td>支付網關異常</td>
+</tr>
+<tr>
+<td>UNKNOWN_ERROR</td>
+<td>未知錯誤</td>
+</tr>
+<tr>
+<td>XML_FORMAT_ERROR</td>
+<td>XML格式錯誤</td>
+</tr>
+<tr>
+<td>REQUIRE_POST_METHOD</td>
+<td>請使用post方法</td>
+</tr>
+<tr>
+<td>ACCESS_DENIED</td>
+<td>拒絕訪問</td>
+</tr>
+<tr>
+<td>POST_DATA_EMPTY</td>
+<td>post數據爲空</td>
+</tr>
+<tr>
+<td>NOT_UTF8</td>
+<td>編碼格式錯誤</td>
+</tr>
+<tr>
+<td>ORDER_CLOSED</td>
+<td>訂單已關閉</td>
+</tr>
+<tr>
+<td>NO_AUTH</td>
+<td>權限不足</td>
+</tr>
+<tr>
+<td>LACK_PARAMS</td>
+<td>缺少參數</td>
+</tr>
+<tr>
+<td>INVALID_STATUS</td>
+<td>非法狀態</td>
+</tr>
+<tr>
+<td>INVALID_SERVICE</td>
+<td>非法接口類型</td>
+</tr>
+<tr>
+<td>SN_IS_EXISTS</td>
+<td>編號已存在</td>
+</tr>
+<tr>
+<td>NOTIFY_FAIL</td>
+<td>通知異常</td>
+</tr>
+<tr>
+<td>URL_FORMAT_ERROR</td>
+<td>URL格式不正確</td>
+</tr>
+<tr>
+<td>IP_FORMAT_ERROR</td>
+<td>IP格式不正確</td>
+</tr>
+<tr>
+<td>DATE_FORMAT_ERROR</td>
+<td>日期格式不正確</td>
+</tr>
+<tr>
+<td>TRADE_NOT_EXIST</td>
+<td>交易不存在</td>
+</tr>
+<tr>
+<td>TRADE_HAS_SUCCESS</td>
+<td>交易已被支付</td>
+</tr>
+<tr>
+<td>TRADE_FAILED</td>
+<td>交易失敗</td>
+</tr>
+<tr>
+<td>TRADE_TIMEOUT</td>
+<td>交易超時</td>
+</tr>
+<tr>
+<td>INVALID_ORDER_STATUS</td>
+<td>無效的訂單狀態</td>
+</tr>
+<tr>
+<td>REVERSE_FAILED</td>
+<td>撤銷授權失敗</td>
+</tr>
+<tr>
+<td>DEDUCTIONS_FAILED</td>
+<td>扣款失敗</td>
+</tr>
+<tr>
+<td>REFUND_FAILED</td>
+<td>扣款失敗</td>
+</tr>
+<tr>
+<td>INVALID_CLIENT_ID</td>
+<td>無效客戶端ID</td>
+</tr>
+<tr>
+<td>INVALID_STORE_ID</td>
+<td>無效門店ID</td>
+</tr>
+<tr>
+<td>INVALID_AMOUNT</td>
+<td>交易金額不正確</td>
+</tr>
+<tr>
+<td>INVALID_REFUND_FEE</td>
+<td>退款金額不正確</td>
+</tr>
+<tr>
+<td>VALID_FLOW_FAIL</td>
+<td>請求過於頻繁</td>
+</tr>
+<tr>
+<td>UNSUPPORTED_SERVICE</td>
+<td>不支持的接口類型</td>
+</tr>
+<tr>
+<td>DATA_NOT_EXIST</td>
+<td>查詢的數據不存在</td>
+</tr>
+<tr>
+<td>ACCOUNT_LOCKED</td>
+<td>商戶或門店的賬號被鎖定</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </main>
+
+    <nav class="toc-nav">
+<div class="toc-nav-title">本頁目錄</div>
+<ul>
+  <li><a href="#11文檔概述" class="toc-h2">1.1文檔概述</a></li>
+  <li><a href="#12閱讀對象" class="toc-h2">1.2閱讀對象</a></li>
+  <li><a href="#21-業務實現流程" class="toc-h2">2.1 業務實現流程</a></li>
+  <li><a href="#31-提交數據" class="toc-h2">3.1 提交數據</a></li>
+  <li><a href="#32-返回結果數據格式" class="toc-h2">3.2 返回結果數據格式</a></li>
+  <li><a href="#41-簽名原始串" class="toc-h2">4.1 簽名原始串</a></li>
+  <li><a href="#42-簽名演算法" class="toc-h2">4.2 簽名演算法</a></li>
+  <li><a href="#43-請求頭說明" class="toc-h2">4.3 請求頭說明</a></li>
+  <li><a href="#51-下單接口" class="toc-h2">5.1 下單接口</a></li>
+  <li><a href="#511-業務功能" class="toc-h3">5.1.1 業務功能</a></li>
+  <li><a href="#512-交互模式" class="toc-h3">5.1.2 交互模式</a></li>
+  <li><a href="#返回結果通知-後臺請求交互模式後臺通知交互模式" class="toc-h3">返回結果+通知： 後臺請求交互模式+後臺通知交互模式</a></li>
+  <li><a href="#513-請求參數列表" class="toc-h3">5.1.3 請求參數列表</a></li>
+  <li><a href="#514-返回結果" class="toc-h3">5.1.4 返回結果</a></li>
+  <li><a href="#515測試用例" class="toc-h3">5.1.5測試用例</a></li>
+  <li><a href="#52-訂單查詢接口" class="toc-h2">5.2 訂單查詢接口</a></li>
+  <li><a href="#521-業務功能" class="toc-h3">5.2.1 業務功能</a></li>
+  <li><a href="#522-交互模式" class="toc-h3">5.2.2 交互模式</a></li>
+  <li><a href="#523-請求參數列表" class="toc-h3">5.2.3 請求參數列表</a></li>
+  <li><a href="#524-返回結果" class="toc-h3">5.2.4 返回結果</a></li>
+  <li><a href="#525測試用例" class="toc-h3">5.2.5測試用例</a></li>
+</ul>
+</nav>
+  </div>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

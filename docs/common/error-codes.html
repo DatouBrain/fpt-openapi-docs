@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>錯誤碼說明 | Fintech Payment OpenAPI 文檔</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon">FP</span>
+        <span class="logo-text">Fintech Payment <span class="logo-sub">OpenAPI</span></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html">首頁</a>
+        <a href="../common/quick-start.html">接入指引</a>
+        <a href="../common/data-format.html">通用規則</a>
+        <a href="../payments/card-online/global-payments-online.html">產品文檔</a>
+      </nav>
+      <button class="menu-toggle" aria-label="選單">☰</button>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="sidebar">
+<div class="sidebar-group" data-group="common">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>通用規則</div>
+  <ul class="sidebar-links">
+    <li><a href="../common/quick-start.html" class="sub-link">快速入門</a></li>
+    <li><a href="../common/endpoints.html" class="sub-link">API 調用地址</a></li>
+    <li><a href="../common/data-format.html" class="sub-link">數據格式</a></li>
+    <li><a href="../common/signature.html" class="sub-link">數字簽名</a></li>
+    <li><a href="../common/request-headers.html" class="sub-link">請求頭說明</a></li>
+    <li><a href="../common/error-codes.html" class="sub-link active">錯誤碼說明</a></li>
+    <li><a href="../common/notification.html" class="sub-link">支付通知說明</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online 無卡支付</a></li>
+    <li><a href="../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online 支付 <span class="status-tag upcoming">暫未開放</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-offline/global-payments-offline.html" class="sub-link">Global Payments Offline 物理卡支付 <span class="status-tag upcoming">暫未開放</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP 支付</a></li>
+    <li><a href="../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB 支付</a></li>
+    <li><a href="../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP 支付</a></li>
+    <li><a href="../payments/qr-online/alipay-plus.html" class="sub-link">Alipay Plus+ 支付</a></li>
+    <li><a href="../payments/qr-online/wechat-web.html" class="sub-link">Wechat WEB 支付</a></li>
+    <li><a href="../payments/qr-online/wechat-wap.html" class="sub-link">Wechat WAP 支付</a></li>
+    <li><a href="../payments/qr-online/wechat-miniprogram.html" class="sub-link">Wechat 公眾帳號和小程序支付</a></li>
+    <li><a href="../payments/qr-online/wechat-app.html" class="sub-link">Wechat APP 支付</a></li>
+    <li><a href="../payments/qr-online/qr-code.html" class="sub-link">掃碼支付</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-offline/barcode.html" class="sub-link">付款碼支付</a></li>
+    <li><a href="../payments/qr-offline/cash-api.html" class="sub-link">CashAPI 支付</a></li>
+  </ul>
+</div>
+</aside>
+
+
+    <main class="main-content">
+      <h1 id="overview">錯誤碼說明</h1>
+<div class="page-meta">
+  <span class="page-meta-item">文檔版本：V1.0</span>
+</div>
+<p>本頁面列出 Fintech Payment OpenAPI 可能返回的所有錯誤碼，分為通用錯誤碼和卡支付專屬錯誤碼。</p>
+
+<h2 id="error-structure">錯誤響應結構</h2>
+<p>當接口調用出錯時，返回以下 JSON 結構：</p>
+<pre><span class="code-label">JSON</span><code class="language-json">{
+  "message": "錯誤描述信息",
+  "errors": [
+    {
+      "field": "出錯字段名",
+      "message": "字段錯誤描述",
+      "code": "錯誤碼"
+    }
+  ]
+}</code></pre>
+<p><code>message</code> 返回非 <code>SUCCESS</code> 時表示接口調用出錯。</p>
+
+<h2 id="common-errors">通用錯誤碼</h2>
+<p>以下錯誤碼在所有支付渠道中通用（共 41 個）：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr><th>錯誤碼</th><th>說明</th></tr></thead>
+<tbody>
+<tr><td><code>MISSING_FIELD</code></td><td>字段未傳入</td></tr>
+<tr><td><code>INVALID_FIELD</code></td><td>字段校驗錯誤</td></tr>
+<tr><td><code>NO_EXISTS</code></td><td>數據不存在</td></tr>
+<tr><td><code>OTHER</code></td><td>其他錯誤</td></tr>
+<tr><td><code>INVALID_SCOPE</code></td><td>數據超出範圍</td></tr>
+<tr><td><code>INVALID_LENGTH</code></td><td>數據長度超過限制</td></tr>
+<tr><td><code>INCORRECT_SIGNATURE</code></td><td>無效簽名</td></tr>
+<tr><td><code>EXPIRED_ORDER</code></td><td>訂單已過期</td></tr>
+<tr><td><code>PAY_GATEWAY_FAIL</code></td><td>支付網關異常</td></tr>
+<tr><td><code>INVALID_SERVICE</code></td><td>非法接口類型</td></tr>
+<tr><td><code>INVALID_CLIENT_ID</code></td><td>無效客戶端ID</td></tr>
+<tr><td><code>INVALID_STORE_ID</code></td><td>無效門店ID</td></tr>
+<tr><td><code>INVALID_AMOUNT</code></td><td>交易金額不正確</td></tr>
+<tr><td><code>INVALID_ORDER_STATUS</code></td><td>無效的訂單狀態</td></tr>
+<tr><td><code>INVALID_STATUS</code></td><td>非法狀態</td></tr>
+<tr><td><code>INVALID_REFUND_FEE</code></td><td>退款金額不正確</td></tr>
+<tr><td><code>LACK_PARAMS</code></td><td>缺少參數</td></tr>
+<tr><td><code>REQUIRE_POST_METHOD</code></td><td>請使用POST方法</td></tr>
+<tr><td><code>POST_DATA_EMPTY</code></td><td>POST數據為空</td></tr>
+<tr><td><code>NOT_UTF8</code></td><td>編碼格式錯誤</td></tr>
+<tr><td><code>URL_FORMAT_ERROR</code></td><td>URL格式不正確</td></tr>
+<tr><td><code>IP_FORMAT_ERROR</code></td><td>IP格式不正確</td></tr>
+<tr><td><code>XML_FORMAT_ERROR</code></td><td>XML格式錯誤</td></tr>
+<tr><td><code>DATE_FORMAT_ERROR</code></td><td>日期格式不正確</td></tr>
+<tr><td><code>NO_AUTH</code></td><td>權限不足</td></tr>
+<tr><td><code>ACCESS_DENIED</code></td><td>拒絕訪問</td></tr>
+<tr><td><code>ACCOUNT_LOCKED</code></td><td>商戶或門店的賬號被鎖定</td></tr>
+<tr><td><code>SN_IS_EXISTS</code></td><td>編號已存在</td></tr>
+<tr><td><code>TRADE_NOT_EXIST</code></td><td>交易不存在</td></tr>
+<tr><td><code>TRADE_FAILED</code></td><td>交易失敗</td></tr>
+<tr><td><code>TRADE_TIMEOUT</code></td><td>交易超時</td></tr>
+<tr><td><code>TRADE_HAS_SUCCESS</code></td><td>交易已被支付</td></tr>
+<tr><td><code>REFUND_FAILED</code></td><td>退款失敗</td></tr>
+<tr><td><code>DEDUCTIONS_FAILED</code></td><td>扣款失敗</td></tr>
+<tr><td><code>REVERSE_FAILED</code></td><td>撤銷授權失敗</td></tr>
+<tr><td><code>NOTIFY_FAIL</code></td><td>通知異常</td></tr>
+<tr><td><code>ORDER_CLOSED</code></td><td>訂單已關閉</td></tr>
+<tr><td><code>DATA_NOT_EXIST</code></td><td>查詢的數據不存在</td></tr>
+<tr><td><code>UNSUPPORTED_SERVICE</code></td><td>不支持的接口類型</td></tr>
+<tr><td><code>VALID_FLOW_FAIL</code></td><td>請求過於頻繁</td></tr>
+<tr><td><code>UNKNOWN_ERROR</code></td><td>未知錯誤</td></tr>
+
+</tbody>
+</table>
+</div>
+
+<h2 id="card-errors">卡支付專屬錯誤碼</h2>
+<p>以下錯誤碼僅在 Card Pay（Visa/Mastercard/銀聯等卡支付）場景中出現（共 74 個）：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr><th>錯誤碼</th><th>說明</th></tr></thead>
+<tbody>
+<tr><td><code>DECLINED</code></td><td>拒絕處理</td></tr>
+<tr><td><code>GENERAL_DECLINE</code></td><td>拒絕處理</td></tr>
+<tr><td><code>INVALID_CARD</code></td><td>無效帳號</td></tr>
+<tr><td><code>INVALID_CARD_TYPE</code></td><td>卡類型無效</td></tr>
+<tr><td><code>CARD_TYPE_NOT_ACCEPTED</code></td><td>不支持卡類型</td></tr>
+<tr><td><code>EXPIRED_CARD</code></td><td>已過期的卡</td></tr>
+<tr><td><code>INVALID_CVN</code></td><td>無效CVN</td></tr>
+<tr><td><code>CVN_NOT_MATCH</code></td><td>CVN不匹配</td></tr>
+<tr><td><code>CV_FAILED</code></td><td>CVN檢查被拒絕</td></tr>
+<tr><td><code>AVS_FAILED</code></td><td>AVS檢查被拒絕</td></tr>
+<tr><td><code>INSUFFICIENT_FUND</code></td><td>帳戶資金不足</td></tr>
+<tr><td><code>EXCEEDS_CREDIT_LIMIT</code></td><td>該卡已達到信用額度</td></tr>
+<tr><td><code>STOLEN_LOST_CARD</code></td><td>卡失竊或遺失</td></tr>
+<tr><td><code>UNAUTHORIZED_CARD</code></td><td>無效的卡或未經授權的無卡交易</td></tr>
+<tr><td><code>PROCESSOR_DECLINED</code></td><td>發卡行拒絕支付</td></tr>
+<tr><td><code>PROCESSOR_TIMEOUT</code></td><td>支付處理超時</td></tr>
+<tr><td><code>PROCESSOR_UNAVAILABLE</code></td><td>銀行故障</td></tr>
+<tr><td><code>ISSUER_UNAVAILABLE</code></td><td>發卡行不可用</td></tr>
+<tr><td><code>CONTACT_PROCESSOR</code></td><td>發卡銀行對請求有疑問</td></tr>
+<tr><td><code>AUTHENTICATION_FAILED</code></td><td>身份驗證失敗</td></tr>
+<tr><td><code>CONSUMER_AUTHENTICATION_FAILED</code></td><td>付款人無法驗證</td></tr>
+<tr><td><code>CONSUMER_AUTHENTICATION_REQUIRED</code></td><td>未驗證身份信息</td></tr>
+<tr><td><code>PENDING_AUTHENTICATION</code></td><td>等待身份驗證</td></tr>
+<tr><td><code>PENDING_REVIEW</code></td><td>等待審查</td></tr>
+<tr><td><code>AUTHORIZED_PENDING_REVIEW</code></td><td>待授權處理審查</td></tr>
+<tr><td><code>AUTHORIZED_RISK_DECLINED</code></td><td>拒絕風險授權</td></tr>
+<tr><td><code>AUTH_ALREADY_REVERSED</code></td><td>授權已經撤銷</td></tr>
+<tr><td><code>CAPTURE_ALREADY_VOIDED</code></td><td>扣款已失效</td></tr>
+<tr><td><code>NOT_VOIDABLE</code></td><td>扣款無效</td></tr>
+<tr><td><code>VOIDED</code></td><td>已廢棄</td></tr>
+<tr><td><code>TRANSACTION_ALREADY_SETTLED</code></td><td>交易已結算</td></tr>
+<tr><td><code>TRANSACTION_ALREADY_REVERSED_OR_SETTLED</code></td><td>交易已經結算或撤銷</td></tr>
+<tr><td><code>EXCEEDS_AUTH_AMOUNT</code></td><td>金額不正確</td></tr>
+<tr><td><code>INVALID_ACCOUNT</code></td><td>無效的帳號</td></tr>
+<tr><td><code>SUSPENDED_ACCOUNT</code></td><td>帳戶被凍結</td></tr>
+<tr><td><code>BLACKLISTED_CUSTOMER</code></td><td>訂單信息不匹配</td></tr>
+<tr><td><code>CUSTOMER_WATCHLIST_MATCH</code></td><td>客戶實體信息被限制</td></tr>
+<tr><td><code>IP_COUNTRY_WATCHLIST_MATCH</code></td><td>IP被限制</td></tr>
+<tr><td><code>EMAIL_COUNTRY_WATCHLIST_MATCH</code></td><td>電子郵件被限制</td></tr>
+<tr><td><code>ADDRESS_COUNTRY_WATCHLIST_MATCH</code></td><td>訂單被限制</td></tr>
+<tr><td><code>SCORE_EXCEEDS_THRESHOLD</code></td><td>安全檢查不通過</td></tr>
+<tr><td><code>DECISION_PROFILE_REJECT</code></td><td>卡審核失敗</td></tr>
+<tr><td><code>DECISION_PROFILE_REVIEW</code></td><td>卡待審核</td></tr>
+<tr><td><code>DECISION_PROFILE_CHALLENGE</code></td><td>存在風險交易</td></tr>
+<tr><td><code>CHALLENGE</code></td><td>風險交易</td></tr>
+<tr><td><code>PAYMENT_REFUSED</code></td><td>拒絕支付</td></tr>
+<tr><td><code>REJECTED</code></td><td>已拒絕</td></tr>
+<tr><td><code>DUPLICATE_REQUEST</code></td><td>重複請求</td></tr>
+<tr><td><code>INVALID_REQUEST</code></td><td>非法請求</td></tr>
+<tr><td><code>INVALID_DATA</code></td><td>無效數據</td></tr>
+<tr><td><code>INVALID_PAYMENT_ID</code></td><td>請求ID無效</td></tr>
+<tr><td><code>INVALID_MERCHANT_CONFIGURATION</code></td><td>商戶配置異常</td></tr>
+<tr><td><code>INVALID_OR_MISSING_CONFIG</code></td><td>商戶配置異常</td></tr>
+<tr><td><code>MISSING_AUTH</code></td><td>未授權異常</td></tr>
+<tr><td><code>SERVER_ERROR</code></td><td>服務錯誤</td></tr>
+<tr><td><code>SERVER_TIMEOUT</code></td><td>服務響應超時</td></tr>
+<tr><td><code>SERVICE_TIMEOUT</code></td><td>服務響應超時</td></tr>
+<tr><td><code>SYSTEM_ERROR</code></td><td>系統故障</td></tr>
+<tr><td><code>ROUTE_SERVICE_NOT_FOUND</code></td><td>路由服務標識無效</td></tr>
+<tr><td><code>UNSUPPORTED_CHARACTER_SET</code></td><td>地址驗證服務不支持</td></tr>
+<tr><td><code>BOLETO_DECLINED</code></td><td>boleto請求被拒絕</td></tr>
+<tr><td><code>DECLINED_CHECK</code></td><td>支付被拒絕</td></tr>
+<tr><td><code>DEBIT_CARD_USAGE_LIMIT_EXCEEDED</code></td><td>卡使用次數過多</td></tr>
+<tr><td><code>ACCOUNT_NOT_ALLOWED_CREDIT</code></td><td>退款被禁止</td></tr>
+<tr><td><code>INSUFFICIENT_ADDRESS_INFORMATION</code></td><td>地址信息不足</td></tr>
+<tr><td><code>UNVERIFIABLE_ADDRESS</code></td><td>地址無法驗證</td></tr>
+<tr><td><code>ADDRESS_MATCH_NOT_FOUND</code></td><td>地址無法匹配</td></tr>
+<tr><td><code>MULTIPLE_ADDRESS_MATCHES</code></td><td>存在多個地址匹配</td></tr>
+<tr><td><code>MULTIPLE_ADDRESS_MATCHES_INTERNATIONAL</code></td><td>存在多個地址情況</td></tr>
+<tr><td><code>APARTMENT_NUMBER_NOT_FOUND</code></td><td>地址信息不正確</td></tr>
+<tr><td><code>HOUSE_OR_BOX_NUMBER_NOT_FOUND</code></td><td>門牌號或郵局不正確</td></tr>
+<tr><td><code>BOX_NUMBER_NOT_FOUND</code></td><td>郵政信息無效</td></tr>
+<tr><td><code>STREET_NAME_NOT_FOUND</code></td><td>郵政編碼與街道不對應</td></tr>
+<tr><td><code>POSTAL_CODE_NOT_FOUND</code></td><td>郵政編碼無效</td></tr>
+
+</tbody>
+</table>
+</div>
+
+    </main>
+
+    <nav class="toc-nav">
+<div class="toc-nav-title">本頁目錄</div>
+<ul>
+  <li><a href="#error-structure" class="toc-h2">錯誤響應結構</a></li>
+  <li><a href="#common-errors" class="toc-h2">通用錯誤碼</a></li>
+  <li><a href="#card-errors" class="toc-h2">卡支付專屬錯誤碼</a></li>
+</ul>
+</nav>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
