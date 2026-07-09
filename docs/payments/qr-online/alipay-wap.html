@@ -186,7 +186,7 @@
 <p>&quot;sign&quot;:&quot;22C9835251DCF58BB70C78FA8D6448BD&quot;</p>
 <p>}</p>
 <p>正確的簽名欄位排序為：</p>
-<p>amount=1&amp;body=a chair&amp;client_ip=127.0.0.1&amp;mch_id=1001&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;payment_inst=ALIPAYHK&amp;service=pay.alipay.wappay.intl&amp;store_id=1001001</p>
+<p>amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;payment_inst=ALIPAYHK&amp;service=pay.alipay.wappay.intl&amp;store_id=1001001</p>
 <h2 id="42-簽名演算法">4.2 簽名演算法</h2>
 <p>MD5 簽名
 MD5 是一種摘要生成演算法， 通過在簽名原始串後加上商戶通信金鑰的內容， 進行 MD5 運算， 形成的摘要
@@ -198,11 +198,11 @@ sign = MD5 (原字串+&amp;key=商戶祕鑰). toUpperCase</p>
 <p>如：
 假設以下為 JSON傳入參數：
 i： 經過 a 過程 URL 鍵值對字典序排序後的字串 string1 為：
-amount=1&amp;body=a chair&amp;client_ip=127.0.0.1&amp;mch_id=1001&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;payment_inst=ALIPAYHK&amp;service=pay.alipay.wappay.intl&amp;store_id=1001001
+amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;payment_inst=ALIPAYHK&amp;service=pay.alipay.wappay.intl&amp;store_id=1001001
 ii： 經過 b 過程後得到 sign 為：</p>
 <p>sign = md5(string1+&amp;key=商戶祕鑰).toUpperCase</p>
 <p>實際加密字符串為：</p>
-<p>sign = md5(amount=1&amp;body=a chair&amp;client_ip=127.0.0.1&amp;mch_id=1001&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;payment_inst=ALIPAYHK&amp;service=pay.alipay.wappay.intl&amp;store_id=1001001&amp;key=MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=).toUpperCase</p>
+<p>sign = md5(amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;payment_inst=ALIPAYHK&amp;service=pay.alipay.wappay.intl&amp;store_id=1001001&amp;key=MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=).toUpperCase</p>
 <p>最終得到的簽名為：A07724CDB9D232A3B9AA7DD68CD26FAE</p>
 <p>sign與 lang字段不參與接口簽名，接口返回參數解密規則同理</p>
 <h2 id="43-請求頭說明">4.3 請求頭說明</h2>
