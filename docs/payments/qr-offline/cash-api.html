@@ -82,8 +82,8 @@
 <span class="page-meta-item">文檔版本：V1.0</span>
 <span class="page-meta-item">接口版本：V1.0</span>
 </div>
-<h1 id="線下支付">線下支付</h1>
-<h1 id="cashapi支付接口文檔">CashAPI支付接口文檔</h1>
+<h2 id="線下支付">線下支付</h2>
+<h2 id="cashapi支付接口文檔">CashAPI支付接口文檔</h2>
 <div class="table-wrapper">
 <table>
 <thead><tr>
@@ -464,12 +464,8 @@ ii： 經過 b 過程後得到 sign 為：</p>
 <thead><tr>
 <th>欄位名</th>
 <th>變數名</th>
-<th>變數名</th>
-<th>必填</th>
 <th>必填</th>
 <th>類型</th>
-<th>類型</th>
-<th>說明</th>
 <th>說明</th>
 </tr></thead>
 <tbody>
@@ -477,171 +473,108 @@ ii： 經過 b 過程後得到 sign 為：</p>
 <td>接口類型</td>
 <td>service</td>
 <td>是</td>
-<td>是</td>
 <td>String(40)</td>
-<td>String(40)</td>
-<td>現金支付: pay.cash.intl
-八達通支付: pay.octopus.intl</td>
-<td>現金支付: pay.cash.intl
-八達通支付: pay.octopus.intl</td>
 <td>現金支付: pay.cash.intl
 八達通支付: pay.octopus.intl</td>
 </tr>
 <tr>
 <td>客戶端ID</td>
 <td>client_id</td>
-<td>client_id</td>
 <td>是</td>
-<td>是</td>
-<td>String(32)</td>
 <td>String(32)</td>
 <td>商戶客戶端ID</td>
 </tr>
 <tr>
 <td>門店ID</td>
 <td>store_id</td>
-<td>store_id</td>
-<td>是</td>
 <td>是</td>
 <td>String(50)</td>
-<td>String(50)</td>
-<td>門店ID</td>
 <td>門店ID</td>
 </tr>
 <tr>
 <td>商戶訂單號</td>
 <td>order_no</td>
-<td>order_no</td>
-<td>是</td>
 <td>是</td>
 <td>String(32）</td>
-<td>String(32）</td>
-<td>原商戶生成的訂單號</td>
 <td>原商戶生成的訂單號</td>
 </tr>
 <tr>
 <td>FTP訂單號</td>
 <td>transaction_id</td>
-<td>transaction_id</td>
-<td>是</td>
 <td>是</td>
 <td>String(26）</td>
-<td>String(26）</td>
-<td>原訂單FTP生成的訂單號</td>
 <td>原訂單FTP生成的訂單號</td>
 </tr>
 <tr>
 <td>商戶退款單號</td>
 <td>out_refund_no</td>
-<td>out_refund_no</td>
-<td>是</td>
 <td>是</td>
 <td>String(32）</td>
-<td>String(32）</td>
-<td>商戶退款單號，32 個字元內、可包含字母,確保在商戶系統唯一。同個退款單號多次請求，
-平臺當一個單處理，只會退一次款。如果出現退款不成功，請採用原退款單號重新發起，避免出現重複退款。</td>
 <td>商戶退款單號，32 個字元內、可包含字母,確保在商戶系統唯一。同個退款單號多次請求，
 平臺當一個單處理，只會退一次款。如果出現退款不成功，請採用原退款單號重新發起，避免出現重複退款。</td>
 </tr>
 <tr>
 <td>備註</td>
 <td>remarks</td>
-<td>remarks</td>
-<td>否</td>
 <td>否</td>
 <td>String(255)</td>
-<td>String(255)</td>
-<td>退款備註</td>
 <td>退款備註</td>
 </tr>
 <tr>
 <td>退款金額</td>
 <td>refund_fee</td>
-<td>refund_fee</td>
-<td>是</td>
 <td>是</td>
 <td>String(15)</td>
-<td>String(15)</td>
-<td>退款總金額,單位為元,可以做部分退款</td>
 <td>退款總金額,單位為元,可以做部分退款</td>
 </tr>
 <tr>
 <td>八達通卡號</td>
 <td>octopus_no</td>
-<td>octopus_no</td>
-<td>否</td>
 <td>否</td>
 <td>String(32)</td>
-<td>String(32)</td>
-<td>八達通卡號</td>
 <td>八達通卡號</td>
 </tr>
 <tr>
 <td>退款完成時間</td>
 <td>refund_finish_time</td>
-<td>refund_finish_time</td>
-<td>否</td>
 <td>否</td>
 <td>String(32)</td>
-<td>String(32)</td>
-<td>格式：yyyy/MM/dd HH:mm:ss</td>
 <td>格式：yyyy/MM/dd HH:mm:ss</td>
 </tr>
 <tr>
 <td>退款狀態</td>
 <td>refund_status</td>
-<td>refund_status</td>
-<td>否</td>
 <td>否</td>
 <td>String(32)</td>
-<td>String(32)</td>
-<td>成功：SUCCESS
-失敗：FAIL</td>
 <td>成功：SUCCESS
 失敗：FAIL</td>
 </tr>
 <tr>
 <td>支付渠道單號</td>
 <td>trans_sn</td>
-<td>trans_sn</td>
-<td>否</td>
 <td>否</td>
 <td>String(32)</td>
-<td>String(32)</td>
-<td>傳什麼顯示什麼</td>
 <td>傳什麼顯示什麼</td>
 </tr>
 <tr>
 <td>隨機字串</td>
 <td>nonce_str</td>
-<td>nonce_str</td>
-<td>是</td>
 <td>是</td>
 <td>String(32)</td>
-<td>String(32)</td>
-<td>隨機字串，不長於 32 位</td>
 <td>隨機字串，不長於 32 位</td>
 </tr>
 <tr>
 <td>簽名</td>
 <td>sign</td>
-<td>sign</td>
-<td>是</td>
 <td>是</td>
 <td>String(32)</td>
-<td>String(32)</td>
-<td>詳見第 4 章 “簽名規則”</td>
 <td>詳見第 4 章 “簽名規則”</td>
 </tr>
 <tr>
 <td>語言</td>
 <td>lang</td>
-<td>lang</td>
-<td>否</td>
 <td>否</td>
 <td>String(32)</td>
-<td>String(32)</td>
-<td>語言zh_HK、zh_CN、en_US</td>
 <td>語言zh_HK、zh_CN、en_US</td>
 </tr>
 </tbody>
@@ -799,7 +732,6 @@ ii： 經過 b 過程後得到 sign 為：</p>
 <th>必填</th>
 <th>類型</th>
 <th>說明</th>
-<th>說明</th>
 </tr></thead>
 <tbody>
 <tr>
@@ -815,14 +747,12 @@ ii： 經過 b 過程後得到 sign 為：</p>
 <td>是</td>
 <td>String(50)</td>
 <td>門店ID</td>
-<td>門店ID</td>
 </tr>
 <tr>
 <td>商戶訂單號</td>
 <td>order_no</td>
 <td>是</td>
 <td>String(32）</td>
-<td>原商戶生成的訂單號</td>
 <td>原商戶生成的訂單號</td>
 </tr>
 <tr>
@@ -831,7 +761,6 @@ ii： 經過 b 過程後得到 sign 為：</p>
 <td>是</td>
 <td>String(32)</td>
 <td>隨機字串，不長於 32 位</td>
-<td>隨機字串，不長於 32 位</td>
 </tr>
 <tr>
 <td>簽名</td>
@@ -839,14 +768,12 @@ ii： 經過 b 過程後得到 sign 為：</p>
 <td>是</td>
 <td>String(32)</td>
 <td>詳見第 4 章 “簽名規則”</td>
-<td>詳見第 4 章 “簽名規則”</td>
 </tr>
 <tr>
 <td>語言</td>
 <td>lang</td>
 <td>否</td>
 <td>String(32)</td>
-<td>語言</td>
 <td>語言</td>
 </tr>
 </tbody>

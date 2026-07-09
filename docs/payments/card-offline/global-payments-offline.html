@@ -88,7 +88,7 @@
 本接口暫未開放使用，僅供參考。具體上線時間請聯繫平臺客服。
 </div>
 <h1 id="卡支付_global-payments-offline">卡支付_Global Payments Offline</h1>
-<h1 id="物理卡支付接口文檔">物理卡支付接口文檔</h1>
+<h2 id="物理卡支付接口文檔">物理卡支付接口文檔</h2>
 <div class="table-wrapper">
 <table>
 <thead><tr>
@@ -196,7 +196,7 @@
 <p>&quot;sign&quot;:&quot;669FA672674AA43A14254A1F9AED5636&quot;</p>
 <p>}</p>
 <p>正確的簽名欄位排序為：</p>
-<p>amount=339.00&amp;body=a chair&amp;card_type=VISA&amp;client_ip=127.0.0.1&amp;currency=USD&amp;entry_mode=contact&amp;expiration_month=12&amp;expiration_year=2031&amp;mch_id=1001&amp;nonce_str=g1pkotyz&amp;number=4111111111111111&amp;order_no=cf8f6d68bbc64be0b871cf670a26e753&amp;service=pay.globalpayment.card.present&amp;store_id=1001001</p>
+<p>amount=339.00&amp;body=a chair&amp;card_type=VISA&amp;client_ip=127.0.0.1&amp;currency=USD&amp;entry_mode=contact&amp;expiration_month=12&amp;expiration_year=2031&amp;client_id=1001&amp;nonce_str=g1pkotyz&amp;number=4111111111111111&amp;order_no=cf8f6d68bbc64be0b871cf670a26e753&amp;service=pay.globalpayment.card.present&amp;store_id=1001001</p>
 <h2 id="42-簽名演算法">4.2 簽名演算法</h2>
 <p>MD5 簽名
 MD5 是一種摘要生成演算法， 通過在簽名原始串後加上商戶通信金鑰的內容， 進行 MD5 運算， 形成的摘要
@@ -208,11 +208,11 @@ sign = MD5 (原字串+&amp;key=商戶祕鑰). toUpperCase</p>
 <p>如：
 假設以下為 JSON傳入參數：
 i： 經過 a 過程 URL 鍵值對字典序排序後的字串 string1 為：
-amount=339.00&amp;body=a chair&amp;card_type=VISA&amp;client_ip=127.0.0.1&amp;currency=USD&amp;entry_mode=contact&amp;expiration_month=12&amp;expiration_year=2031&amp;mch_id=1001&amp;nonce_str=g1pkotyz&amp;number=4111111111111111&amp;order_no=cf8f6d68bbc64be0b871cf670a26e753&amp;service=pay.globalpayment.card.present&amp;store_id=1001001
+amount=339.00&amp;body=a chair&amp;card_type=VISA&amp;client_ip=127.0.0.1&amp;currency=USD&amp;entry_mode=contact&amp;expiration_month=12&amp;expiration_year=2031&amp;client_id=1001&amp;nonce_str=g1pkotyz&amp;number=4111111111111111&amp;order_no=cf8f6d68bbc64be0b871cf670a26e753&amp;service=pay.globalpayment.card.present&amp;store_id=1001001
 ii： 經過 b 過程後得到 sign 為：</p>
 <p>sign = md5(string1+&amp;key=商戶祕鑰).toUpperCase</p>
 <p>實際加密字符串為：</p>
-<p>sign = md5(amount=339.00&amp;body=a chair&amp;card_type=VISA&amp;client_ip=127.0.0.1&amp;currency=USD&amp;entry_mode=contact&amp;expiration_month=12&amp;expiration_year=2031&amp;mch_id=1001&amp;nonce_str=g1pkotyz&amp;number=4111111111111111&amp;order_no=cf8f6d68bbc64be0b871cf670a26e753&amp;service=pay.globalpayment.card.present&amp;store_id=1001001&amp;key=MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=).toUpperCase</p>
+<p>sign = md5(amount=339.00&amp;body=a chair&amp;card_type=VISA&amp;client_ip=127.0.0.1&amp;currency=USD&amp;entry_mode=contact&amp;expiration_month=12&amp;expiration_year=2031&amp;client_id=1001&amp;nonce_str=g1pkotyz&amp;number=4111111111111111&amp;order_no=cf8f6d68bbc64be0b871cf670a26e753&amp;service=pay.globalpayment.card.present&amp;store_id=1001001&amp;key=MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=).toUpperCase</p>
 <p>最終得到的簽名為：3E902B1934765D62F26DB026D25A2773</p>
 <p>sign與 lang字段不參與接口簽名，接口返回參數解密規則同理</p>
 <h2 id="43請求頭說明">4.3請求頭說明</h2>

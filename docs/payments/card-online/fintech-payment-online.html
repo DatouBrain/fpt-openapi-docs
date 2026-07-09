@@ -88,7 +88,7 @@
 本接口暫未開放使用，僅供參考。具體上線時間請聯繫平臺客服。
 </div>
 <h1 id="卡支付">卡支付</h1>
-<h1 id="fintech-payment-online支付接口文檔">Fintech Payment Online支付接口文檔</h1>
+<h2 id="fintech-payment-online支付接口文檔">Fintech Payment Online支付接口文檔</h2>
 <div class="table-wrapper">
 <table>
 <thead><tr>
@@ -653,10 +653,7 @@ pay.unionpay.master.Fintech Payment.online（UnionPay支付）</td>
 <thead><tr>
 <th>欄位名</th>
 <th>變數名</th>
-<th>變數名</th>
 <th>必填</th>
-<th>必填</th>
-<th>類型</th>
 <th>類型</th>
 <th>說明</th>
 </tr></thead>
@@ -665,12 +662,7 @@ pay.unionpay.master.Fintech Payment.online（UnionPay支付）</td>
 <td>接口類型</td>
 <td>service</td>
 <td>是</td>
-<td>是</td>
 <td>String(40)</td>
-<td>String(40)</td>
-<td>固定選擇其中一項：pay.master.Fintech Payment.online（Mastercard支付）
-pay.visa.Fintech Payment.online（Visa支付）
-pay.unionpay.master.Fintech Payment.online（UnionPay支付）</td>
 <td>固定選擇其中一項：pay.master.Fintech Payment.online（Mastercard支付）
 pay.visa.Fintech Payment.online（Visa支付）
 pay.unionpay.master.Fintech Payment.online（UnionPay支付）</td>
@@ -678,70 +670,49 @@ pay.unionpay.master.Fintech Payment.online（UnionPay支付）</td>
 <tr>
 <td>客戶端ID</td>
 <td>client_id</td>
-<td>client_id</td>
 <td>是</td>
-<td>是</td>
-<td>String(32)</td>
 <td>String(32)</td>
 <td>商戶客戶端ID</td>
 </tr>
 <tr>
 <td>門店ID</td>
 <td>store_id</td>
-<td>store_id</td>
 <td>是</td>
-<td>是</td>
-<td>String(50)</td>
 <td>String(50)</td>
 <td>門店ID</td>
 </tr>
 <tr>
 <td>商戶訂單號</td>
 <td>order_no</td>
-<td>order_no</td>
 <td>否</td>
-<td>否</td>
-<td>String(32）</td>
 <td>String(32）</td>
 <td>商戶生成的訂單號（order_no 和 transaction_id 至少一個必填，同時存在時 transaction_id 優先）</td>
 </tr>
 <tr>
 <td>FTP訂單號</td>
 <td>transaction_id</td>
-<td>transaction_id</td>
 <td>否</td>
-<td>否</td>
-<td>String(26）</td>
 <td>String(26）</td>
 <td>FTP訂單號（order_no 和 transaction_id 至少一個必填，同時存在時 transaction_id 優先）</td>
 </tr>
 <tr>
 <td>隨機字串</td>
 <td>nonce_str</td>
-<td>nonce_str</td>
 <td>是</td>
-<td>是</td>
-<td>String(32)</td>
 <td>String(32)</td>
 <td>隨機字串，不長於 32 位</td>
 </tr>
 <tr>
 <td>簽名</td>
 <td>sign</td>
-<td>sign</td>
 <td>是</td>
-<td>是</td>
-<td>String(32)</td>
 <td>String(32)</td>
 <td>詳見第 4 章 “簽名規則”</td>
 </tr>
 <tr>
 <td>語言</td>
 <td>lang</td>
-<td>lang</td>
 <td>否</td>
-<td>否</td>
-<td>String(32)</td>
 <td>String(32)</td>
 <td>語言</td>
 </tr>
@@ -956,12 +927,8 @@ FAIL—失敗</td>
 <thead><tr>
 <th>欄位名</th>
 <th>變數名</th>
-<th>變數名</th>
-<th>必填</th>
 <th>必填</th>
 <th>類型</th>
-<th>類型</th>
-<th>說明</th>
 <th>說明</th>
 </tr></thead>
 <tbody>
@@ -969,15 +936,7 @@ FAIL—失敗</td>
 <td>接口類型</td>
 <td>service</td>
 <td>是</td>
-<td>是</td>
 <td>String(40)</td>
-<td>String(40)</td>
-<td>固定選擇其中一項：pay.master.Fintech Payment.online（Mastercard支付）
-pay.visa.Fintech Payment.online（Visa支付）
-pay.unionpay.master.Fintech Payment.online（UnionPay支付）</td>
-<td>固定選擇其中一項：pay.master.Fintech Payment.online（Mastercard支付）
-pay.visa.Fintech Payment.online（Visa支付）
-pay.unionpay.master.Fintech Payment.online（UnionPay支付）</td>
 <td>固定選擇其中一項：pay.master.Fintech Payment.online（Mastercard支付）
 pay.visa.Fintech Payment.online（Visa支付）
 pay.unionpay.master.Fintech Payment.online（UnionPay支付）</td>
@@ -985,112 +944,72 @@ pay.unionpay.master.Fintech Payment.online（UnionPay支付）</td>
 <tr>
 <td>客戶端ID</td>
 <td>client_id</td>
-<td>client_id</td>
 <td>是</td>
-<td>是</td>
-<td>String(32)</td>
 <td>String(32)</td>
 <td>商戶客戶端ID</td>
 </tr>
 <tr>
 <td>門店ID</td>
 <td>store_id</td>
-<td>store_id</td>
-<td>是</td>
 <td>是</td>
 <td>String(50)</td>
-<td>String(50)</td>
-<td>門店ID</td>
 <td>門店ID</td>
 </tr>
 <tr>
 <td>商戶訂單號</td>
 <td>order_no</td>
-<td>order_no</td>
-<td>是</td>
 <td>是</td>
 <td>String(32）</td>
-<td>String(32）</td>
-<td>原商戶生成的訂單號</td>
 <td>原商戶生成的訂單號</td>
 </tr>
 <tr>
 <td>FTP訂單號</td>
 <td>transaction_id</td>
-<td>transaction_id</td>
-<td>是</td>
 <td>是</td>
 <td>String(26）</td>
-<td>String(26）</td>
-<td>原訂單FTP生成的訂單號</td>
 <td>原訂單FTP生成的訂單號</td>
 </tr>
 <tr>
 <td>商戶退款單號</td>
 <td>out_refund_no</td>
-<td>out_refund_no</td>
-<td>是</td>
 <td>是</td>
 <td>String(32）</td>
-<td>String(32）</td>
-<td>商戶退款單號，32 個字元內、可包含字母,確保在商戶系統唯一。同個退款單號多次請求，
-平臺當一個單處理，只會退一次款。如果出現退款不成功，請採用原退款單號重新發起，避免出現重複退款。</td>
 <td>商戶退款單號，32 個字元內、可包含字母,確保在商戶系統唯一。同個退款單號多次請求，
 平臺當一個單處理，只會退一次款。如果出現退款不成功，請採用原退款單號重新發起，避免出現重複退款。</td>
 </tr>
 <tr>
 <td>備註</td>
 <td>remarks</td>
-<td>remarks</td>
-<td>否</td>
 <td>否</td>
 <td>String(255)</td>
-<td>String(255)</td>
-<td>退款備註</td>
 <td>退款備註</td>
 </tr>
 <tr>
 <td>退款金額</td>
 <td>refund_fee</td>
-<td>refund_fee</td>
-<td>是</td>
 <td>是</td>
 <td>String(15)</td>
-<td>String(15)</td>
-<td>退款總金額,單位為元,可以做部分退款</td>
 <td>退款總金額,單位為元,可以做部分退款</td>
 </tr>
 <tr>
 <td>隨機字串</td>
 <td>nonce_str</td>
-<td>nonce_str</td>
-<td>是</td>
 <td>是</td>
 <td>String(32)</td>
-<td>String(32)</td>
-<td>隨機字串，不長於 32 位</td>
 <td>隨機字串，不長於 32 位</td>
 </tr>
 <tr>
 <td>簽名</td>
 <td>sign</td>
-<td>sign</td>
-<td>是</td>
 <td>是</td>
 <td>String(32)</td>
-<td>String(32)</td>
-<td>詳見第 4 章 “簽名規則”</td>
 <td>詳見第 4 章 “簽名規則”</td>
 </tr>
 <tr>
 <td>語言</td>
 <td>lang</td>
-<td>lang</td>
-<td>否</td>
 <td>否</td>
 <td>String(32)</td>
-<td>String(32)</td>
-<td>語言</td>
 <td>語言</td>
 </tr>
 </tbody>

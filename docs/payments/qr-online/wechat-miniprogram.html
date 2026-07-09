@@ -86,7 +86,7 @@
 <span class="page-meta-item">文檔版本：V1.0</span>
 <span class="page-meta-item">接口版本：V1.0</span>
 </div>
-<h1 id="線上支付">線上支付</h1>
+<h2 id="線上支付">線上支付</h2>
 <h1 id="wechat公眾號和小程序支付">Wechat公眾號和小程序支付</h1>
 <h1 id="接口文檔">接口文檔</h1>
 <div class="table-wrapper">
@@ -972,7 +972,6 @@ FAIL—失敗</td>
 <th>必填</th>
 <th>類型</th>
 <th>說明</th>
-<th>說明</th>
 </tr></thead>
 <tbody>
 <tr>
@@ -980,7 +979,6 @@ FAIL—失敗</td>
 <td>service</td>
 <td>是</td>
 <td>String(40)</td>
-<td>固定: pay.weixin.jspay</td>
 <td>固定: pay.weixin.jspay</td>
 </tr>
 <tr>
@@ -996,7 +994,6 @@ FAIL—失敗</td>
 <td>是</td>
 <td>String(50)</td>
 <td>sid</td>
-<td>sid</td>
 </tr>
 <tr>
 <td>商戶訂單號</td>
@@ -1004,14 +1001,12 @@ FAIL—失敗</td>
 <td>是</td>
 <td>String(32）</td>
 <td>原商戶生成的訂單號</td>
-<td>原商戶生成的訂單號</td>
 </tr>
 <tr>
 <td>FTP訂單號</td>
 <td>transaction_id</td>
 <td>是</td>
 <td>String(26）</td>
-<td>原訂單FTP生成的訂單號</td>
 <td>原訂單FTP生成的訂單號</td>
 </tr>
 <tr>
@@ -1021,15 +1016,12 @@ FAIL—失敗</td>
 <td>String(32）</td>
 <td>商戶退款單號，32 個字元內、可包含字母,確保在商戶系統唯一。同個退款單號多次請求，
 平臺當一個單處理，只會退一次款。如果出現退款不成功，請採用原退款單號重新發起，避免出現重複退款。</td>
-<td>商戶退款單號，32 個字元內、可包含字母,確保在商戶系統唯一。同個退款單號多次請求，
-平臺當一個單處理，只會退一次款。如果出現退款不成功，請採用原退款單號重新發起，避免出現重複退款。</td>
 </tr>
 <tr>
 <td>備註</td>
 <td>remarks</td>
 <td>否</td>
 <td>String(255)</td>
-<td>退款備註</td>
 <td>退款備註</td>
 </tr>
 <tr>
@@ -1038,14 +1030,12 @@ FAIL—失敗</td>
 <td>是</td>
 <td>String(15)</td>
 <td>退款總金額,單位為元,可以做部分退款</td>
-<td>退款總金額,單位為元,可以做部分退款</td>
 </tr>
 <tr>
 <td>隨機字串</td>
 <td>nonce_str</td>
 <td>是</td>
 <td>String(32)</td>
-<td>隨機字串，不長於 32 位</td>
 <td>隨機字串，不長於 32 位</td>
 </tr>
 <tr>
@@ -1054,14 +1044,12 @@ FAIL—失敗</td>
 <td>是</td>
 <td>String(32)</td>
 <td>詳見第 4 章 “簽名規則”</td>
-<td>詳見第 4 章 “簽名規則”</td>
 </tr>
 <tr>
 <td>語言</td>
 <td>lang</td>
 <td>否</td>
 <td>String(32)</td>
-<td>語言</td>
 <td>語言</td>
 </tr>
 </tbody>
@@ -1214,7 +1202,6 @@ FAIL—失敗</td>
 <th>必填</th>
 <th>類型</th>
 <th>說明</th>
-<th>說明</th>
 </tr></thead>
 <tbody>
 <tr>
@@ -1222,7 +1209,6 @@ FAIL—失敗</td>
 <td>service</td>
 <td>是</td>
 <td>String(40)</td>
-<td>固定: pay.weixin.jspay</td>
 <td>固定: pay.weixin.jspay</td>
 </tr>
 <tr>
@@ -1238,14 +1224,12 @@ FAIL—失敗</td>
 <td>是</td>
 <td>String(50)</td>
 <td>sid</td>
-<td>sid</td>
 </tr>
 <tr>
 <td>商戶訂單號</td>
 <td>order_no</td>
 <td>否</td>
 <td>String(32）</td>
-<td>退款返回的商戶訂單號，也是訂單的商戶訂單號</td>
 <td>退款返回的商戶訂單號，也是訂單的商戶訂單號</td>
 </tr>
 <tr>
@@ -1254,14 +1238,12 @@ FAIL—失敗</td>
 <td>否</td>
 <td>String(26）</td>
 <td>退款返回的FTP訂單號</td>
-<td>退款返回的FTP訂單號</td>
 </tr>
 <tr>
 <td>商戶退款單號</td>
 <td>out_refund_no</td>
 <td>否</td>
 <td>String(32）</td>
-<td>商戶生成的退款單號</td>
 <td>商戶生成的退款單號</td>
 </tr>
 <tr>
@@ -1270,14 +1252,12 @@ FAIL—失敗</td>
 <td>否</td>
 <td>String(255)</td>
 <td>第三方退款單號，如果同時存在優先順序為： to_order_sn &gt; out_refund_no &gt; transaction_id &gt; order_no</td>
-<td>第三方退款單號，如果同時存在優先順序為： to_order_sn &gt; out_refund_no &gt; transaction_id &gt; order_no</td>
 </tr>
 <tr>
 <td>隨機字串</td>
 <td>nonce_str</td>
 <td>是</td>
 <td>String(32)</td>
-<td>隨機字串，不長於 32 位</td>
 <td>隨機字串，不長於 32 位</td>
 </tr>
 <tr>
@@ -1286,14 +1266,12 @@ FAIL—失敗</td>
 <td>是</td>
 <td>String(32)</td>
 <td>詳見第 4 章 “簽名規則”</td>
-<td>詳見第 4 章 “簽名規則”</td>
 </tr>
 <tr>
 <td>語言</td>
 <td>lang</td>
 <td>否</td>
 <td>String(32)</td>
-<td>語言</td>
 <td>語言</td>
 </tr>
 </tbody>

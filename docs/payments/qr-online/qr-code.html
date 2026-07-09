@@ -82,8 +82,8 @@
 <span class="page-meta-item">文檔版本：V1.0</span>
 <span class="page-meta-item">接口版本：V1.0</span>
 </div>
-<h1 id="線上支付">線上支付</h1>
-<h1 id="掃碼支付接口文檔">掃碼支付接口文檔</h1>
+<h2 id="線上支付">線上支付</h2>
+<h2 id="掃碼支付接口文檔">掃碼支付接口文檔</h2>
 <div class="table-wrapper">
 <table>
 <thead><tr>
@@ -160,16 +160,16 @@
 <p>&quot;sign&quot;:&quot;CEE0EF3C6F0D37DE5B20000871B68509&quot;</p>
 <p>}</p>
 <p>錯誤返回：</p>
-<p>{</p>
-<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
-<pre><span class="code-label">JSON</span><code class="language-json">&quot;errors&quot;:[</code></pre>
-<p>{</p>
-<p>&quot;field&quot;:&quot;mch_id&quot;,</p>
-<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
-<p>&quot;code&quot;:&quot;MISSING_FIELD&quot;</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+<pre><span class="code-label">JSON</span><code class="language-json">{
+  &quot;message&quot;:&quot;Missing Merchant ID&quot;,
+  &quot;errors&quot;:[
+    {
+      &quot;field&quot;:&quot;mch_id&quot;,
+      &quot;message&quot;:&quot;Missing Merchant ID&quot;,
+      &quot;code&quot;:&quot;MISSING_FIELD&quot;
+    }
+  ]
+}</code></pre>
 <p>message返回非SUCCESS時表示接口調用出錯。</p>
 <h1 id="4數字簽名">4數字簽名</h1>
 <p>為了保證資料傳輸過程中的資料真實性和完整性， 我們需要對資料進行數字簽名， 在接收簽名資料之後進行簽名校驗。</p>
@@ -489,9 +489,7 @@ ii： 經過 b 過程後得到 sign 為：</p>
 <thead><tr>
 <th>欄位名</th>
 <th>變數名</th>
-<th>變數名</th>
 <th>必填</th>
-<th>類型</th>
 <th>類型</th>
 <th>說明</th>
 </tr></thead>
@@ -500,11 +498,7 @@ ii： 經過 b 過程後得到 sign 為：</p>
 <td>接口類型</td>
 <td>service</td>
 <td>是</td>
-<td>是</td>
 <td>String(40)</td>
-<td>微信支付: pay.weixin.native.intl
-支付寶支付: pay.alipay.native.intl
-銀聯支付：pay.upi.native.intl</td>
 <td>微信支付: pay.weixin.native.intl
 支付寶支付: pay.alipay.native.intl
 銀聯支付：pay.upi.native.intl</td>
@@ -512,54 +506,42 @@ ii： 經過 b 過程後得到 sign 為：</p>
 <tr>
 <td>客戶端ID</td>
 <td>client_id</td>
-<td>client_id</td>
 <td>是</td>
-<td>String(32)</td>
 <td>String(32)</td>
 <td>商戶客戶端ID</td>
 </tr>
 <tr>
 <td>門店ID</td>
 <td>store_id</td>
-<td>store_id</td>
 <td>是</td>
-<td>String(50)</td>
 <td>String(50)</td>
 <td>門店ID</td>
 </tr>
 <tr>
 <td>商戶訂單號</td>
 <td>order_no</td>
-<td>order_no</td>
 <td>否</td>
-<td>String(32）</td>
 <td>String(32）</td>
 <td>商戶生成的訂單號</td>
 </tr>
 <tr>
 <td>FTP訂單號</td>
 <td>transaction_id</td>
-<td>transaction_id</td>
 <td>否</td>
-<td>String(26）</td>
 <td>String(26）</td>
 <td>FTP訂單號, order_no 和 transaction_id 至少一個必填，同時存在時 transaction_id 優先</td>
 </tr>
 <tr>
 <td>隨機字串</td>
 <td>nonce_str</td>
-<td>nonce_str</td>
 <td>是</td>
-<td>String(32)</td>
 <td>String(32)</td>
 <td>隨機字串，不長於 32 位</td>
 </tr>
 <tr>
 <td>簽名</td>
 <td>sign</td>
-<td>sign</td>
 <td>是</td>
-<td>String(32)</td>
 <td>String(32)</td>
 <td>詳見第 4 章 “簽名規則”</td>
 </tr>
@@ -695,10 +677,7 @@ ii： 經過 b 過程後得到 sign 為：</p>
 <thead><tr>
 <th>欄位名</th>
 <th>變數名</th>
-<th>變數名</th>
 <th>必填</th>
-<th>必填</th>
-<th>類型</th>
 <th>類型</th>
 <th>說明</th>
 </tr></thead>
@@ -707,12 +686,7 @@ ii： 經過 b 過程後得到 sign 為：</p>
 <td>接口類型</td>
 <td>service</td>
 <td>是</td>
-<td>是</td>
 <td>String(40)</td>
-<td>String(40)</td>
-<td>微信支付: pay.weixin.native.intl
-支付寶支付: pay.alipay.native.intl
-銀聯支付：pay.upi.native.intl</td>
 <td>微信支付: pay.weixin.native.intl
 支付寶支付: pay.alipay.native.intl
 銀聯支付：pay.upi.native.intl</td>
@@ -720,70 +694,49 @@ ii： 經過 b 過程後得到 sign 為：</p>
 <tr>
 <td>客戶端ID</td>
 <td>client_id</td>
-<td>client_id</td>
 <td>是</td>
-<td>是</td>
-<td>String(32)</td>
 <td>String(32)</td>
 <td>商戶客戶端ID</td>
 </tr>
 <tr>
 <td>門店ID</td>
 <td>store_id</td>
-<td>store_id</td>
 <td>是</td>
-<td>是</td>
-<td>String(50)</td>
 <td>String(50)</td>
 <td>門店ID</td>
 </tr>
 <tr>
 <td>商戶訂單號</td>
 <td>order_no</td>
-<td>order_no</td>
 <td>否</td>
-<td>否</td>
-<td>String(32）</td>
 <td>String(32）</td>
 <td>商戶生成的訂單號</td>
 </tr>
 <tr>
 <td>FTP訂單號</td>
 <td>transaction_id</td>
-<td>transaction_id</td>
 <td>否</td>
-<td>否</td>
-<td>String(26）</td>
 <td>String(26）</td>
 <td>FTP訂單號, order_no 和 transaction_id 至少一個必填，同時存在時 transaction_id 優先</td>
 </tr>
 <tr>
 <td>隨機字串</td>
 <td>nonce_str</td>
-<td>nonce_str</td>
 <td>是</td>
-<td>是</td>
-<td>String(32)</td>
 <td>String(32)</td>
 <td>隨機字串，不長於 32 位</td>
 </tr>
 <tr>
 <td>簽名</td>
 <td>sign</td>
-<td>sign</td>
 <td>是</td>
-<td>是</td>
-<td>String(32)</td>
 <td>String(32)</td>
 <td>詳見第 4 章 “簽名規則”</td>
 </tr>
 <tr>
 <td>語言</td>
 <td>lang</td>
-<td>lang</td>
 <td>否</td>
-<td>否</td>
-<td>String(32)</td>
 <td>String(32)</td>
 <td>語言</td>
 </tr>
@@ -1001,12 +954,8 @@ FAIL—失敗</td>
 <thead><tr>
 <th>欄位名</th>
 <th>變數名</th>
-<th>變數名</th>
-<th>必填</th>
 <th>必填</th>
 <th>類型</th>
-<th>類型</th>
-<th>說明</th>
 <th>說明</th>
 </tr></thead>
 <tbody>
@@ -1014,15 +963,7 @@ FAIL—失敗</td>
 <td>接口類型</td>
 <td>service</td>
 <td>是</td>
-<td>是</td>
 <td>String(40)</td>
-<td>String(40)</td>
-<td>微信支付: pay.weixin.native.intl
-支付寶支付: pay.alipay.native.intl
-銀聯支付：pay.upi.native.intl</td>
-<td>微信支付: pay.weixin.native.intl
-支付寶支付: pay.alipay.native.intl
-銀聯支付：pay.upi.native.intl</td>
 <td>微信支付: pay.weixin.native.intl
 支付寶支付: pay.alipay.native.intl
 銀聯支付：pay.upi.native.intl</td>
@@ -1030,112 +971,72 @@ FAIL—失敗</td>
 <tr>
 <td>客戶端ID</td>
 <td>client_id</td>
-<td>client_id</td>
 <td>是</td>
-<td>是</td>
-<td>String(32)</td>
 <td>String(32)</td>
 <td>商戶客戶端ID</td>
 </tr>
 <tr>
 <td>門店ID</td>
 <td>store_id</td>
-<td>store_id</td>
-<td>是</td>
 <td>是</td>
 <td>String(50)</td>
-<td>String(50)</td>
-<td>門店ID</td>
 <td>門店ID</td>
 </tr>
 <tr>
 <td>商戶訂單號</td>
 <td>order_no</td>
-<td>order_no</td>
-<td>是</td>
 <td>是</td>
 <td>String(32）</td>
-<td>String(32）</td>
-<td>原商戶生成的訂單號</td>
 <td>原商戶生成的訂單號</td>
 </tr>
 <tr>
 <td>FTP訂單號</td>
 <td>transaction_id</td>
-<td>transaction_id</td>
-<td>是</td>
 <td>是</td>
 <td>String(26）</td>
-<td>String(26）</td>
-<td>原訂單FTP生成的訂單號</td>
 <td>原訂單FTP生成的訂單號</td>
 </tr>
 <tr>
 <td>商戶退款單號</td>
 <td>out_refund_no</td>
-<td>out_refund_no</td>
-<td>是</td>
 <td>是</td>
 <td>String(32）</td>
-<td>String(32）</td>
-<td>商戶退款單號，32 個字元內、可包含字母,確保在商戶系統唯一。同個退款單號多次請求，
-平臺當一個單處理，只會退一次款。如果出現退款不成功，請採用原退款單號重新發起，避免出現重複退款。</td>
 <td>商戶退款單號，32 個字元內、可包含字母,確保在商戶系統唯一。同個退款單號多次請求，
 平臺當一個單處理，只會退一次款。如果出現退款不成功，請採用原退款單號重新發起，避免出現重複退款。</td>
 </tr>
 <tr>
 <td>備註</td>
 <td>remarks</td>
-<td>remarks</td>
-<td>否</td>
 <td>否</td>
 <td>String(255)</td>
-<td>String(255)</td>
-<td>退款備註</td>
 <td>退款備註</td>
 </tr>
 <tr>
 <td>退款金額</td>
 <td>refund_fee</td>
-<td>refund_fee</td>
-<td>是</td>
 <td>是</td>
 <td>String(15)</td>
-<td>String(15)</td>
-<td>退款總金額,單位為元,可以做部分退款</td>
 <td>退款總金額,單位為元,可以做部分退款</td>
 </tr>
 <tr>
 <td>隨機字串</td>
 <td>nonce_str</td>
-<td>nonce_str</td>
-<td>是</td>
 <td>是</td>
 <td>String(32)</td>
-<td>String(32)</td>
-<td>隨機字串，不長於 32 位</td>
 <td>隨機字串，不長於 32 位</td>
 </tr>
 <tr>
 <td>簽名</td>
 <td>sign</td>
-<td>sign</td>
-<td>是</td>
 <td>是</td>
 <td>String(32)</td>
-<td>String(32)</td>
-<td>詳見第 4 章 “簽名規則”</td>
 <td>詳見第 4 章 “簽名規則”</td>
 </tr>
 <tr>
 <td>語言</td>
 <td>lang</td>
-<td>lang</td>
-<td>否</td>
 <td>否</td>
 <td>String(32)</td>
-<td>String(32)</td>
-<td>語言</td>
 <td>語言</td>
 </tr>
 </tbody>
@@ -1288,7 +1189,6 @@ FAIL—失敗</td>
 <th>必填</th>
 <th>類型</th>
 <th>說明</th>
-<th>說明</th>
 </tr></thead>
 <tbody>
 <tr>
@@ -1313,14 +1213,12 @@ FAIL—失敗</td>
 <td>是</td>
 <td>String(50)</td>
 <td>門店ID</td>
-<td>門店ID</td>
 </tr>
 <tr>
 <td>商戶訂單號</td>
 <td>order_no</td>
 <td>否</td>
 <td>String(32）</td>
-<td>退款返回的商戶訂單號，也是訂單的商戶訂單號</td>
 <td>退款返回的商戶訂單號，也是訂單的商戶訂單號</td>
 </tr>
 <tr>
@@ -1329,14 +1227,12 @@ FAIL—失敗</td>
 <td>否</td>
 <td>String(26）</td>
 <td>退款返回的FTP訂單號</td>
-<td>退款返回的FTP訂單號</td>
 </tr>
 <tr>
 <td>商戶退款單號</td>
 <td>out_refund_no</td>
 <td>否</td>
 <td>String(32）</td>
-<td>商戶生成的退款單號</td>
 <td>商戶生成的退款單號</td>
 </tr>
 <tr>
@@ -1345,14 +1241,12 @@ FAIL—失敗</td>
 <td>否</td>
 <td>String(255)</td>
 <td>第三方退款單號，如果同時存在優先順序為： to_order_sn &gt; out_refund_no &gt; transaction_id &gt; order_no</td>
-<td>第三方退款單號，如果同時存在優先順序為： to_order_sn &gt; out_refund_no &gt; transaction_id &gt; order_no</td>
 </tr>
 <tr>
 <td>隨機字串</td>
 <td>nonce_str</td>
 <td>是</td>
 <td>String(32)</td>
-<td>隨機字串，不長於 32 位</td>
 <td>隨機字串，不長於 32 位</td>
 </tr>
 <tr>
@@ -1361,14 +1255,12 @@ FAIL—失敗</td>
 <td>是</td>
 <td>String(32)</td>
 <td>詳見第 4 章 “簽名規則”</td>
-<td>詳見第 4 章 “簽名規則”</td>
 </tr>
 <tr>
 <td>語言</td>
 <td>lang</td>
 <td>否</td>
 <td>String(32)</td>
-<td>語言</td>
 <td>語言</td>
 </tr>
 </tbody>

@@ -83,7 +83,7 @@
 <span class="page-meta-item">接口版本：V1.0</span>
 </div>
 <h1 id="卡支付_global-payments-online">卡支付_Global Payments Online</h1>
-<h1 id="無卡支付接口文檔-託管">無卡支付接口文檔（託管）</h1>
+<h2 id="無卡支付接口文檔-託管">無卡支付接口文檔（託管）</h2>
 <div class="table-wrapper">
 <table>
 <thead><tr>
@@ -200,7 +200,7 @@
 <p>&quot;sign&quot;:&quot;D8018D80F164A46C53BF1D6ADC8D8EB1&quot;</p>
 <p>}</p>
 <p>正確的簽名欄位排序為：</p>
-<p>address=1 Market St&amp;administrative_area=CA&amp;amount=4244.00&amp;bill_locality=san francisco&amp;body=Office cabinet, good quality, very beautiful&amp;card_type=VISA&amp;client_ip=127.0.0.1&amp;country=GB&amp;currency=USD&amp;email=test@cybs.com&amp;expiration_month=12&amp;expiration_year=2031&amp;first_name=John&amp;last_name=Doe&amp;mch_id=1001&amp;nonce_str=gyej53wz&amp;number=4111111111111111&amp;order_no=43e83019eb1941dba5fa27f97b398627&amp;phone=4158880000&amp;postal_code=94105&amp;service=pay.globalpayment.card.notpresent&amp;store_id=1001001</p>
+<p>address=1 Market St&amp;administrative_area=CA&amp;amount=4244.00&amp;bill_locality=san francisco&amp;body=Office cabinet, good quality, very beautiful&amp;card_type=VISA&amp;client_ip=127.0.0.1&amp;country=GB&amp;currency=USD&amp;email=test@cybs.com&amp;expiration_month=12&amp;expiration_year=2031&amp;first_name=John&amp;last_name=Doe&amp;client_id=1001&amp;nonce_str=gyej53wz&amp;number=4111111111111111&amp;order_no=43e83019eb1941dba5fa27f97b398627&amp;phone=4158880000&amp;postal_code=94105&amp;service=pay.globalpayment.card.notpresent&amp;store_id=1001001</p>
 <h2 id="42-簽名演算法">4.2 簽名演算法</h2>
 <p>MD5 簽名
 MD5 是一種摘要生成演算法，通過在簽名原始串後加上商戶通信金鑰的內容，進行 MD5 運算，形成的摘要
@@ -212,11 +212,11 @@ sign = MD5 (原字串+&amp;key=商戶祕鑰).toUpperCase</p>
 <p>如：
 假設以下為 JSON傳入參數：
 i： 經過 a 過程 URL 鍵值對字典序排序後的字串 string1 為：
-address=1 Market St&amp;administrative_area=CA&amp;amount=4244.00&amp;bill_locality=san francisco&amp;body=Office cabinet, good quality, very beautiful&amp;card_type=VISA&amp;client_ip=127.0.0.1&amp;country=GB&amp;currency=USD&amp;email=test@cybs.com&amp;expiration_month=12&amp;expiration_year=2031&amp;first_name=John&amp;last_name=Doe&amp;mch_id=1001&amp;nonce_str=gyej53wz&amp;number=4111111111111111&amp;order_no=43e83019eb1941dba5fa27f97b398627&amp;phone=4158880000&amp;postal_code=94105&amp;service=pay.globalpayment.card.notpresent&amp;store_id=1001001
+address=1 Market St&amp;administrative_area=CA&amp;amount=4244.00&amp;bill_locality=san francisco&amp;body=Office cabinet, good quality, very beautiful&amp;card_type=VISA&amp;client_ip=127.0.0.1&amp;country=GB&amp;currency=USD&amp;email=test@cybs.com&amp;expiration_month=12&amp;expiration_year=2031&amp;first_name=John&amp;last_name=Doe&amp;client_id=1001&amp;nonce_str=gyej53wz&amp;number=4111111111111111&amp;order_no=43e83019eb1941dba5fa27f97b398627&amp;phone=4158880000&amp;postal_code=94105&amp;service=pay.globalpayment.card.notpresent&amp;store_id=1001001
 ii： 經過 b 過程後得到 sign 為：</p>
 <p>sign = md5(string1+&amp;key=商戶祕鑰).toUpperCase</p>
 <p>實際加密字符串為：</p>
-<p>sign = md5(address=1 Market St&amp;administrative_area=CA&amp;amount=4244.00&amp;bill_locality=san francisco&amp;body=Office cabinet, good quality, very beautiful&amp;card_type=VISA&amp;client_ip=127.0.0.1&amp;country=GB&amp;currency=USD&amp;email=test@cybs.com&amp;expiration_month=12&amp;expiration_year=2031&amp;first_name=John&amp;last_name=Doe&amp;mch_id=1001&amp;nonce_str=gyej53wz&amp;number=4111111111111111&amp;order_no=43e83019eb1941dba5fa27f97b398627&amp;phone=4158880000&amp;postal_code=94105&amp;service=pay.globalpayment.card.notpresent&amp;store_id=1001001&amp;key=MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=).toUpperCase</p>
+<p>sign = md5(address=1 Market St&amp;administrative_area=CA&amp;amount=4244.00&amp;bill_locality=san francisco&amp;body=Office cabinet, good quality, very beautiful&amp;card_type=VISA&amp;client_ip=127.0.0.1&amp;country=GB&amp;currency=USD&amp;email=test@cybs.com&amp;expiration_month=12&amp;expiration_year=2031&amp;first_name=John&amp;last_name=Doe&amp;client_id=1001&amp;nonce_str=gyej53wz&amp;number=4111111111111111&amp;order_no=43e83019eb1941dba5fa27f97b398627&amp;phone=4158880000&amp;postal_code=94105&amp;service=pay.globalpayment.card.notpresent&amp;store_id=1001001&amp;key=MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=).toUpperCase</p>
 <p>最終得到的簽名為：450D4C7163D44302BAD0C75A7EDE38AF</p>
 <p>sign與 lang字段不參與接口簽名，接口返回參數解密規則同理</p>
 <h1 id="5-接口描述">5 接口描述</h1>
