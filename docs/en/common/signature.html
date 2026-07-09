@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Signature | Fintech Payment OpenAPI Docs</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon">FP</span>
+        <span class="logo-text">Fintech Payment <span class="logo-sub">OpenAPI</span></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html">Home</a>
+        <a href="../common/quick-start.html">Getting Started</a>
+        <a href="../common/data-format.html">General Rules</a>
+        <a href="../payments/card-online/global-payments-online.html">Product Docs</a>
+      </nav>
+      <div class="lang-switcher"><a href="../../common/signature.html" class="lang-zh">繁中</a><span class="lang-sep">/</span><span class="lang-current">EN</span></div>
+      <button class="menu-toggle" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="sidebar">
+<div class="sidebar-group" data-group="common">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>General Rules</div>
+  <ul class="sidebar-links">
+    <li><a href="../common/quick-start.html" class="sub-link">Quick Start</a></li>
+    <li><a href="../common/endpoints.html" class="sub-link">API Endpoints</a></li>
+    <li><a href="../common/data-format.html" class="sub-link">Data Format</a></li>
+    <li><a href="../common/signature.html" class="sub-link active">Digital Signature</a></li>
+    <li><a href="../common/request-headers.html" class="sub-link">Request Headers</a></li>
+    <li><a href="../common/error-codes.html" class="sub-link">Error Codes</a></li>
+    <li><a href="../common/notification.html" class="sub-link">Payment Notification</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online (Card-not-present)</a></li>
+    <li><a href="../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online <span class="status-tag upcoming">Coming Soon</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-offline/global-payments-offline.html" class="sub-link">Global Payments Offline (Physical Card) <span class="status-tag upcoming">Coming Soon</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP Payment</a></li>
+    <li><a href="../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB Payment</a></li>
+    <li><a href="../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP Payment</a></li>
+    <li><a href="../payments/qr-online/alipay-plus.html" class="sub-link">Alipay Plus+ Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-web.html" class="sub-link">WeChat WEB Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-wap.html" class="sub-link">WeChat WAP Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-miniprogram.html" class="sub-link">WeChat Official Account &amp; Mini Program Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-app.html" class="sub-link">WeChat APP Payment</a></li>
+    <li><a href="../payments/qr-online/qr-code.html" class="sub-link">Dynamic QR Code Payment</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-offline/barcode.html" class="sub-link">Barcode Payment</a></li>
+    </ul>
+</div>
+</aside>
+
+
+    <main class="main-content">
+      <h1 id="overview">Digital Signature</h1>
+<div class="page-meta">
+  <span class="page-meta-item">Doc Version: V1.0</span>
+</div>
+<p>To ensure authenticity and integrity during data transmission, all API requests and responses must be digitally signed. Signing is a two-step process: first assemble the raw signature string according to the rules, then compute the signature result using the MD5 algorithm.</p>
+
+<h2 id="sign-string">Signature Raw String</h2>
+<p>For both requests and responses, the raw signature string is assembled as follows:</p>
+<ol>
+  <li>Except for the <code>sign</code> and <code>lang</code> fields, all parameters are sorted by the ASCII code of the field name in ascending order and concatenated in QueryString format (i.e. <code>key1=value1&amp;key2=value2&amp;...</code>)</li>
+  <li>Empty values are not transmitted and do not participate in signature string assembly</li>
+  <li>Both field names and field values use their original values without URL Encode</li>
+  <li>The platform's response or notification may add parameters due to upgrades; please allow for this when verifying the response signature</li>
+</ol>
+
+<h3>Example</h3>
+<p>Assume the following request parameters:</p>
+<pre><span class="code-label">JSON</span><code class="language-json">{
+  "client_id": "1001",
+  "store_id": "1001001",
+  "service": "pay.weixin.web.intl",
+  "order_no": "Me08772e914454656bf26ec8996e35bb",
+  "amount": "1",
+  "body": "a chair",
+  "notify_url": "2031",
+  "client_ip": "127.0.0.1",
+  "nonce_str": "1409196838",
+  "sign": "22C9835251DCF58BB70C78FA8D6448BD"
+}</code></pre>
+<p>The correct sorted signature result (excluding <code>sign</code> and <code>lang</code>) is:</p>
+<pre><span class="code-label">TEXT</span><code class="language-text">amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.weixin.web.intl&amp;store_id=1001001</code></pre>
+
+<h2 id="sign-algorithm">Signature Algorithm</h2>
+<p>Use the MD5 digest algorithm, appending the merchant communication key to the raw signature string for computation, then convert the result to uppercase:</p>
+<div class="callout info">
+  <div class="callout-title">📐 Signature Formula</div>
+  <p><code>sign = MD5(raw signature string + "&key=" + merchant key).toUpperCase()</code></p>
+</div>
+<p>Note: The character encoding specified when converting the string to a byte stream must be <code>UTF-8</code>.</p>
+
+<h2 id="full-example">Full Example</h2>
+<p>Assume the merchant key is <code>MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=</code>:</p>
+<pre><span class="code-label">TEXT</span><code class="language-text">Raw signature string:
+amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.weixin.web.intl&amp;store_id=1001001
+
+After appending the key:
+amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.weixin.web.intl&amp;store_id=1001001&amp;key=MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=
+
+MD5 result in uppercase:
+D89E5E3DF1447F61F6AC1EC4AB8B177E</code></pre>
+
+<h2 id="code-examples">Multi-language Code Examples</h2>
+
+<h3>Python</h3>
+<pre><span class="code-label">PYTHON</span><code class="language-python">import hashlib
+
+def generate_sign(params, merchant_key):
+    # Exclude sign and lang, sort by key ASCII code
+    filtered = {k: v for k, v in params.items()
+                if k not in ("sign", "lang") and v}
+    sorted_params = sorted(filtered.items())
+    # Concatenate as key=value&key=value
+    sign_str = "&".join(f"{k}={v}" for k, v in sorted_params)
+    # Append merchant key
+    sign_str += f"&key={merchant_key}"
+    # MD5 and convert to uppercase
+    return hashlib.md5(sign_str.encode("utf-8")).hexdigest().upper()</code></pre>
+
+<h3>Java</h3>
+<pre><span class="code-label">JAVA</span><code class="language-java">import java.security.MessageDigest;
+import java.util.*;
+
+public String generateSign(Map&lt;String, String&gt; params, String merchantKey) throws Exception {
+    // Exclude sign and lang
+    params.remove("sign");
+    params.remove("lang");
+    // Sort by key
+    List&lt;String&gt; keys = new ArrayList&lt;&gt;(params.keySet());
+    Collections.sort(keys);
+    // Concatenate
+    StringBuilder sb = new StringBuilder();
+    for (String key : keys) {
+        String val = params.get(key);
+        if (val != null && !val.isEmpty()) {
+            if (sb.length() > 0) sb.append("&amp;");
+            sb.append(key).append("=").append(val);
+        }
+    }
+    sb.append("&amp;key=").append(merchantKey);
+    // MD5
+    MessageDigest md = MessageDigest.getInstance("MD5");
+    byte[] digest = md.digest(sb.toString().getBytes("UTF-8"));
+    StringBuilder hex = new StringBuilder();
+    for (byte b : digest) hex.append(String.format("%02X", b));
+    return hex.toString();
+}</code></pre>
+
+<h3>PHP</h3>
+<pre><span class="code-label">PHP</span><code class="language-php">&lt;?php
+function generateSign($params, $merchantKey) {
+    // Exclude sign and lang
+    unset($params['sign'], $params['lang']);
+    // Sort by key
+    ksort($params);
+    // Concatenate
+    $parts = [];
+    foreach ($params as $k =&gt; $v) {
+        if ($v !== '' &amp;&amp; $v !== null) {
+            $parts[] = "{$k}={$v}";
+        }
+    }
+    $signStr = implode('&amp;', $parts) . "&amp;key={$merchantKey}";
+    // MD5 and convert to uppercase
+    return strtoupper(md5($signStr));
+}</code></pre>
+
+<h3>Node.js</h3>
+<pre><span class="code-label">JAVASCRIPT</span><code class="language-javascript">const crypto = require("crypto");
+
+function generateSign(params, merchantKey) {
+    // Exclude sign and lang
+    const { sign, lang, ...rest } = params;
+    // Sort by key
+    const sortedKeys = Object.keys(rest).sort();
+    // Concatenate
+    const signStr = sortedKeys
+        .filter(k => rest[k])
+        .map(k => `${k}=${rest[k]}`)
+        .join("&") + `&key=${merchantKey}`;
+    // MD5 and convert to uppercase
+    return crypto.createHash("md5").update(signStr, "utf8").digest("hex").toUpperCase();
+}</code></pre>
+
+    </main>
+
+    <nav class="toc-nav">
+<div class="toc-nav-title">On this page</div>
+<ul>
+  <li><a href="#sign-string" class="toc-h2">Signature Raw String</a></li>
+  <li><a href="#sign-algorithm" class="toc-h2">Signature Algorithm</a></li>
+  <li><a href="#full-example" class="toc-h2">Full Example</a></li>
+  <li><a href="#code-examples" class="toc-h2">Multi-language Code Examples</a></li>
+</ul>
+</nav>
+  </div>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

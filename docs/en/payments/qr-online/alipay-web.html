@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alipay WEB Payment | Fintech Payment OpenAPI Docs</title>
+  <link rel="stylesheet" href="../../../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo">
+        <span class="logo-icon">FP</span>
+        <span class="logo-text">Fintech Payment <span class="logo-sub">OpenAPI</span></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../../index.html">Home</a>
+        <a href="../../common/quick-start.html">Getting Started</a>
+        <a href="../../common/data-format.html">General Rules</a>
+        <a href="../../payments/card-online/global-payments-online.html">Product Docs</a>
+      </nav>
+      <div class="lang-switcher"><a href="../../../payments/qr-online/alipay-web.html" class="lang-zh">繁中</a><span class="lang-sep">/</span><span class="lang-current">EN</span></div>
+
+
+      <button class="menu-toggle" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="sidebar">
+<div class="sidebar-group" data-group="common">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>General Rules</div>
+  <ul class="sidebar-links">
+    <li><a href="../../common/quick-start.html" class="sub-link">Quick Start</a></li>
+    <li><a href="../../common/endpoints.html" class="sub-link">API Endpoints</a></li>
+    <li><a href="../../common/data-format.html" class="sub-link">Data Format</a></li>
+    <li><a href="../../common/signature.html" class="sub-link">Digital Signature</a></li>
+    <li><a href="../../common/request-headers.html" class="sub-link">Request Headers</a></li>
+    <li><a href="../../common/error-codes.html" class="sub-link">Error Codes</a></li>
+    <li><a href="../../common/notification.html" class="sub-link">Payment Notification</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online (Card-not-present)</a></li>
+    <li><a href="../../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online <span class="status-tag upcoming">Coming Soon</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../payments/card-offline/global-payments-offline.html" class="sub-link">Global Payments Offline (Physical Card) <span class="status-tag upcoming">Coming Soon</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP Payment</a></li>
+    <li><a href="../../payments/qr-online/alipay-web.html" class="sub-link active">Alipay WEB Payment</a></li>
+    <li><a href="../../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP Payment</a></li>
+    <li><a href="../../payments/qr-online/alipay-plus.html" class="sub-link">Alipay Plus+ Payment</a></li>
+    <li><a href="../../payments/qr-online/wechat-web.html" class="sub-link">WeChat WEB Payment</a></li>
+    <li><a href="../../payments/qr-online/wechat-wap.html" class="sub-link">WeChat WAP Payment</a></li>
+    <li><a href="../../payments/qr-online/wechat-miniprogram.html" class="sub-link">WeChat Official Account &amp; Mini Program Payment</a></li>
+    <li><a href="../../payments/qr-online/wechat-app.html" class="sub-link">WeChat APP Payment</a></li>
+    <li><a href="../../payments/qr-online/qr-code.html" class="sub-link">Dynamic QR Code Payment</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../payments/qr-offline/barcode.html" class="sub-link">Barcode Payment</a></li>
+    </ul>
+</div>
+</aside>
+
+
+    <main class="main-content">
+      <h1 id="overview">Alipay WEB Payment
+<span class="subtitle">QR Pay（Online）</span>
+</h1>
+<div class="page-meta">
+<span class="page-meta-item">Doc Version: V1.0</span>
+<span class="page-meta-item">API Version: V1.0</span>
+</div>
+<h2 id="online-payment">Online Payment</h2>
+<h2 id="alipay-web-payment-api-document">Alipay WEB Payment API Document</h2>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Date</th>
+<th>Version</th>
+<th>Changes</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>2025-12-19</td>
+<td>1.0</td>
+<td>Initial draft</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="1introduction">1 Introduction</h1>
+<h2 id="11-document-overview">1.1 Document Overview</h2>
+<p>Alipay WEB Payment is a payment method where the merchant displays a QR code in a desktop web application and the user scans the code to complete the transaction.</p>
+<p>Through the PC website payment function, after the user consumes on the merchant's PC website, the interface will automatically redirect to the PC website checkout to complete the payment. The transaction funds are directly deposited into the merchant's Alipay account and arrive in real time. The user's transaction funds arrive instantly, the transaction order can be refunded within three months, and supporting services such as refund, clearing and settlement, and reconciliation are provided.</p>
+<p>Payment flow:</p>
+<p>The following flow is for reference only, developers can adjust it according to their own website:</p>
+<p>Step (1): The buyer selects the product to be purchased on the merchant's website, fills in the order information, and clicks Buy Now, as shown in the figure below.</p>
+<div class="doc-image"><img src="../../../assets/images/alipay-web_1.png" alt="Document image" loading="lazy"></div>
+<p>Step (2): The page redirects to the PC checkout page. At this point, there are two payment methods for the user to choose:</p>
+<p>The user can use the Alipay APP to scan the QR code on the screen. After the phone prompts for payment, select the payment tool and enter the password to complete the payment, as shown in Figure 1;</p>
+<div class="doc-image"><img src="../../../assets/images/alipay-web_2.png" alt="Document image" loading="lazy"></div>
+<p>Step (3): After the user scans the code with the Alipay APP and selects the payment method, enters the payment password and clicks Confirm Payment, redirecting to the payment success page indicates the payment is successful.</p>
+<h2 id="12-intended-audience">1.2 Intended Audience</h2>
+<p>For technical or business personnel of the merchant platform service provider to reference and query.</p>
+<h1 id="2solution-overview">2 Solution Overview</h1>
+<h2 id="21-business-implementation-flow">2.1 Business Implementation Flow</h2>
+<p>API call sequence:</p>
+<p>The Order API, Payment Notification API, and Query Order API all involve the signing process, and the calls must be completed on the merchant server side.
+The sequence diagram is as follows:</p>
+<div class="doc-image"><img src="../../../assets/images/alipay-web_3.png" alt="Document image" loading="lazy"></div>
+<h1 id="3data-format">3 Data Format</h1>
+<h2 id="31-submitted-data">3.1 Submitted Data</h2>
+<p>Uses HTTPS standard POST protocol. To ensure the receiver correctly receives the data, the transmitted data must be signed.</p>
+<p>{</p>
+<p>&quot;service&quot;:&quot;pay.alipay.webpay.intl&quot;,</p>
+<p>&quot;client_id&quot;:&quot;1001&quot;,</p>
+<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
+<p>&quot;order_no&quot;:&quot;306f4f64bade41618b8e6d18b048c890&quot;,</p>
+<p>&quot;body&quot;:&quot;Office cabinet, good quality, very beautiful&quot;,</p>
+<p>&quot;amount&quot;:1.0,</p>
+<p>&quot;notify_url&quot;:&quot;http://localhost/pay/notify&quot;,</p>
+<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
+<p>&quot;payment_inst&quot;:&quot;ALIPAYCN&quot;,</p>
+<p>&quot;attach&quot;:&quot;&quot;,</p>
+<p>&quot;supplier&quot;:&quot;&quot;,</p>
+<p>&quot;callback_url&quot;:&quot;http://localhost/pay/result.html&quot;,</p>
+<p>&quot;nonce_str&quot;:&quot;6fy019ar&quot;,</p>
+<p>&quot;sign&quot;:&quot;41B8025E21ECF017BB37E12D30DFE954&quot;,</p>
+<p>&quot;lang&quot;:&quot;en_US&quot;</p>
+<p>}</p>
+<h2 id="32-return-result-data-format">3.2 Return Result Data Format</h2>
+<p>Successful return:</p>
+<p>{</p>
+<p>&quot;message&quot;:&quot;SUCCESS&quot;,</p>
+<p>&quot;order_no&quot;:&quot;306f4f64bade41618b8e6d18b048c890&quot;,</p>
+<p>&quot;transaction_id&quot;:&quot;FTP202012181643190001&quot;,</p>
+<p>&quot;submit_time&quot;:&quot;20201218164319&quot;,</p>
+<p>&quot;pay_url&quot;:&quot; &quot;,</p>
+<p>&quot;nonce_str&quot;:&quot;i1ykzktz&quot;,</p>
+<p>&quot;sign&quot;:&quot;8D03BC20ADD1040C12837966388C1FA6&quot;</p>
+<p>}</p>
+<p>Error return:</p>
+<p>{</p>
+<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
+<pre><span class="code-label">JSON</span><code class="language-json">&quot;errors&quot;:[</code></pre>
+<p>{</p>
+<p>&quot;field&quot;:&quot;mch_id&quot;,</p>
+<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
+<p>&quot;code&quot;:&quot;MISSING_FIELD&quot;</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>If message returns a value other than SUCCESS, it indicates an API call error.</p>
+<h1 id="4digital-signature">4 Digital Signature</h1>
+<p>To ensure authenticity and integrity of data during transmission, we need to digitally sign the data and verify the signature after receiving the signed data.</p>
+<p>Digital signature has two steps: first concatenate the raw signature string according to certain rules, then select a specific algorithm and key to compute the signature result.</p>
+<h2 id="41-signature-raw-string">4.1 Signature Raw String</h2>
+<p>For both requests and responses, the raw signature string is assembled as follows:
+1. Except for the sign field, all parameters are sorted by the ASCII code of the field name in ascending order and concatenated in QueryString format (i.e. key1=value1&amp;key2=value2…) . Empty values are not transmitted and do not participate in the signature string assembly.
+2. In the raw signature string, both field names and field values use their original values without URL Encode.</p>
+<p>3. The platform's response or notification messages may add parameters due to upgrades. Please allow for this when verifying the response signature.</p>
+<p>Example:</p>
+<p>Call an API with the following fields:</p>
+<p>{</p>
+<p>&quot;client_id&quot;:&quot;1001&quot;,</p>
+<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
+<p>&quot;service&quot;:&quot;pay.alipay.webpay.intl&quot;,</p>
+<p>&quot;order_no&quot;:&quot;Me08772e914454656bf26ec8996e35bb&quot;,</p>
+<p>&quot;amount&quot;:&quot;1&quot;,</p>
+<p>&quot;body&quot;:&quot;a chair&quot;,</p>
+<p>&quot;notify_url&quot;:&quot;2031&quot;,</p>
+<p>&quot;payment_inst&quot;:&quot;ALIPAYHK&quot;,</p>
+<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
+<p>&quot;nonce_str&quot;:&quot;1409196838&quot;,</p>
+<p>&quot;sign&quot;:&quot;22C9835251DCF58BB70C78FA8D6448BD&quot;</p>
+<p>}</p>
+<p>The correct signature field sort order is:</p>
+<p>amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;payment_inst=ALIPAYHK&amp;service=pay.alipay.webpay.intl&amp;store_id=1001001</p>
+<h2 id="42-signature-algorithm">4.2 Signature Algorithm</h2>
+<p>MD5 Signature
+MD5 is a digest generation algorithm. By appending the merchant communication key content to the raw signature string and performing MD5 computation, the resulting digest string is the signature result. For easy comparison, the signature result is uniformly converted to uppercase characters.</p>
+<p>Note: The character encoding specified when converting the string to a byte stream must be consistent with the charset parameter.
+MD5 signature formula:
+sign = MD5 (raw string + &amp;key=merchant key). toUpperCase</p>
+<p>Assume the merchant key is: MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=</p>
+<p>Example:
+Assume the following JSON input parameters:
+i: After process a, the string1 sorted by URL key-value lexicographic order is:
+amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;payment_inst=ALIPAYHK&amp;service=pay.alipay.webpay.intl&amp;store_id=1001001
+ii: After process b, the sign is:</p>
+<p>sign = md5(string1+&amp;key=merchant key).toUpperCase</p>
+<p>The actual encrypted string is:</p>
+<p>sign = md5(amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;payment_inst=ALIPAYHK&amp;service=pay.alipay.webpay.intl&amp;store_id=1001001&amp;key=MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=).toUpperCase</p>
+<p>The final signature is: 22C9835251DCF58BB70C78FA8D6448BD</p>
+<p>The sign and lang fields do not participate in the API signature. The same rule applies to decrypting API response parameters.</p>
+<h2 id="43-request-headers">4.3 Request Headers</h2>
+<p>Request parameters:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field Name</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Content Type</td>
+<td>Content-Type</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Value: application/json, the request content type</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="5-api-description">5 API Description</h1>
+<h2 id="51-order-api">5.1 Order API</h2>
+<h3 id="511-business-function">5.1.1 Business Function</h3>
+<p>Initialize the order request and generate a QR code through this request for QR code scanning payment.</p>
+<h3 id="512-interaction-mode">5.1.2 Interaction Mode</h3>
+<p>Request: Backend synchronous request mode</p>
+<p>Return result + notification: Backend request interaction mode + backend notification interaction mode</p>
+<h3 id="513-request-parameter-list">5.1.3 Request Parameter List</h3>
+<p>Request URL: https://api.fintechpaymenthub.com/openapi/v1/pay</p>
+<p>Request the API via POST JSON body</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field Name</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>API Type</td>
+<td>service</td>
+<td>Yes</td>
+<td>String(40)</td>
+<td>Fixed: pay.alipay.webpay.intl</td>
+</tr>
+<tr>
+<td>Client ID</td>
+<td>client_id</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Merchant client ID</td>
+</tr>
+<tr>
+<td>Store ID</td>
+<td>store_id</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Store ID</td>
+</tr>
+<tr>
+<td>Merchant Order No.</td>
+<td>order_no</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Order number within the merchant system, within 32 characters, may contain letters, ensure it is unique in the merchant system</td>
+</tr>
+<tr>
+<td>Product Description</td>
+<td>body</td>
+<td>Yes</td>
+<td>String(127)</td>
+<td>Product description information</td>
+</tr>
+<tr>
+<td>Amount</td>
+<td>amount</td>
+<td>Yes</td>
+<td>String(15)</td>
+<td>Total order amount (must be greater than 0), in yuan.</td>
+</tr>
+<tr>
+<td>Notification URL</td>
+<td>notify_url</td>
+<td>Yes</td>
+<td>String(255)</td>
+<td>URL to receive platform notifications, must be an absolute path, within 255 characters, format such as: http://wap.tenpay.com/tenpay.asp, ensure the platform can access this address via the internet</td>
+</tr>
+<tr>
+<td>Terminal IP</td>
+<td>client_ip</td>
+<td>Yes</td>
+<td>String(16)</td>
+<td>The IP of the machine that generated the order</td>
+</tr>
+<tr>
+<td>Payment Instance</td>
+<td>payment_inst</td>
+<td>Yes</td>
+<td>String(10)</td>
+<td>Please pass ALIPAYHK/ALIPAYCN, ALIPAYHK: HK wallet; ALIPAYCN: Mainland wallet</td>
+</tr>
+<tr>
+<td>Additional Information</td>
+<td>attach</td>
+<td>No</td>
+<td>String(127)</td>
+<td>Merchant additional information, can be used as extension parameter</td>
+</tr>
+<tr>
+<td>Callback URL</td>
+<td>callback_url</td>
+<td>No</td>
+<td>String(255)</td>
+<td>The merchant-specified page to return to after the transaction payment is completed. Must be an absolute path, within 255 characters, ensure the platform can access this address via the internet</td>
+</tr>
+<tr>
+<td>Random String</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters, each submission must pass a different value</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>lang</td>
+<td>No</td>
+<td>String(32)</td>
+<td>Language</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="514-return-result">5.1.4 Return Result</h3>
+<p>Data is returned immediately in JSON format</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field Name</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Merchant Order No.</td>
+<td>order_no</td>
+<td>Yes</td>
+<td>String(32）</td>
+<td>Order number generated by the merchant</td>
+</tr>
+<tr>
+<td>FTP Order No.</td>
+<td>transaction_id</td>
+<td>Yes</td>
+<td>String(26）</td>
+<td>Order number generated by FTP</td>
+</tr>
+<tr>
+<td>Submit Time</td>
+<td>submit_time</td>
+<td>Yes</td>
+<td>String(50）</td>
+<td>Format is yyyyMMddhhmmss</td>
+</tr>
+<tr>
+<td>QR Code URL</td>
+<td>pay_url</td>
+<td>Yes</td>
+<td>String(64)</td>
+<td>Invoke WEB payment, generate a QR code displayed on the screen for QR code scanning payment</td>
+</tr>
+<tr>
+<td>Result Message</td>
+<td>message</td>
+<td>Yes</td>
+<td>String(500)</td>
+<td>Describes the query result. SUCCESS indicates success, otherwise returns other error messages</td>
+</tr>
+<tr>
+<td>Random String</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="515-test-cases">5.1.5 Test Cases</h3>
+<p>Test cases are provided for convenient invocation</p>
+<p>Submitted data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;service&quot;:&quot;pay.alipay.webpay.intl&quot;,
+    &quot;client_id&quot;:&quot;1001&quot;,
+    &quot;store_id&quot;:&quot;1001001&quot;,
+    &quot;order_no&quot;:&quot;306f4f64bade41618b8e6d18b048c890&quot;,
+    &quot;body&quot;:&quot;Office cabinet, good quality, very beautiful&quot;,
+    &quot;amount&quot;:1.0,
+    &quot;notify_url&quot;:&quot;http://localhost/pay/notify&quot;,
+    &quot;client_ip&quot;:&quot;127.0.0.1&quot;,
+    &quot;payment_inst&quot;:&quot;ALIPAYCN&quot;,
+    &quot;attach&quot;:&quot;sid=1&quot;,
+    &quot;callback_url&quot;:&quot;http://localhost/pay/result.html&quot;,
+    &quot;nonce_str&quot;:&quot;6fy019ar&quot;,
+&quot;sign&quot;:&quot;41B8025E21ECF017BB37E12D30DFE954&quot;,
+&quot;lang&quot;:&quot;en_US&quot;
+
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Successful return data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;order_no&quot;:&quot;306f4f64bade41618b8e6d18b048c890&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181643190001&quot;,
+    &quot;submit_time&quot;:&quot;20201218164319&quot;,
+    &quot;pay_url&quot;:&quot;xxx&quot;,
+    &quot;nonce_str&quot;:&quot;i1ykzktz&quot;,
+    &quot;sign&quot;:&quot;8D03BC20ADD1040C12837966388C1FA6&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="52-invoke-payment-api">5.2 Invoke Payment API</h2>
+<h3 id="521-business-function">5.2.1 Business Function</h3>
+<p>When the merchant has closed the QR code payment page for some reason and needs to use QR code payment again, use this API to invoke payment, generating a QR code through this request for QR code scanning payment.</p>
+<h3 id="522-interaction-mode">5.2.2 Interaction Mode</h3>
+<p>Request: Backend synchronous request mode</p>
+<p>Return result + notification: Backend request interaction mode + backend notification interaction mode</p>
+<h3 id="523-request-parameter-list">5.2.3 Request Parameter List</h3>
+<p>Request URL: https://api.fintechpaymenthub.com/openapi/v1/pay-again</p>
+<p>Request the API via POST JSON body</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field Name</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>API Type</td>
+<td>service</td>
+<td>Yes</td>
+<td>String(40)</td>
+<td>Fixed: pay.alipay.webpay.intl</td>
+</tr>
+<tr>
+<td>Client ID</td>
+<td>client_id</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Merchant client ID</td>
+</tr>
+<tr>
+<td>Store ID</td>
+<td>store_id</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Store ID</td>
+</tr>
+<tr>
+<td>Merchant Order No.</td>
+<td>order_no</td>
+<td>No</td>
+<td>String(32）</td>
+<td>Order number generated by the merchant (at least one of order_no and transaction_id is required, when both exist, transaction_id takes priority)</td>
+</tr>
+<tr>
+<td>FTP Order No.</td>
+<td>transaction_id</td>
+<td>No</td>
+<td>String(26）</td>
+<td>FTP order number (at least one of order_no and transaction_id is required, when both exist, transaction_id takes priority)</td>
+</tr>
+<tr>
+<td>Random String</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="524-return-result">5.2.4 Return Result</h3>
+<p>Data is returned immediately in JSON format</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field Name</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Merchant Order No.</td>
+<td>order_no</td>
+<td>Yes</td>
+<td>String(32）</td>
+<td>Order number generated by the merchant</td>
+</tr>
+<tr>
+<td>FTP Order No.</td>
+<td>transaction_id</td>
+<td>Yes</td>
+<td>String(26）</td>
+<td>Order number generated by FTP</td>
+</tr>
+<tr>
+<td>Submit Time</td>
+<td>submit_time</td>
+<td>Yes</td>
+<td>String(50）</td>
+<td>Format is yyyyMMddhhmmss</td>
+</tr>
+<tr>
+<td>QR Code URL</td>
+<td>pay_url</td>
+<td>Yes</td>
+<td>String(64)</td>
+<td>Invoke WEB payment, generate a QR code displayed on the screen for QR code scanning payment</td>
+</tr>
+<tr>
+<td>Result Message</td>
+<td>message</td>
+<td>Yes</td>
+<td>String(500)</td>
+<td>Describes the query result. SUCCESS indicates success, otherwise returns other error messages</td>
+</tr>
+<tr>
+<td>Random String</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="525-test-cases">5.2.5 Test Cases</h3>
+<p>Test cases are provided for convenient invocation</p>
+<p>Submitted data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;service&quot;:&quot;pay.alipay.webpay.intl&quot;,
+    &quot;order_no&quot;:&quot;&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181643190001&quot;,
+    &quot;client_id&quot;:&quot;1001&quot;,
+    &quot;store_id&quot;:&quot;1001001&quot;,
+    &quot;nonce_str&quot;:&quot;dbl6ox96&quot;,
+    &quot;sign&quot;:&quot;A56EA405682D4F10A61FB269A27F15E2&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Successful return data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;order_no&quot;:&quot;306f4f64bade41618b8e6d18b048c890&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181643190001&quot;,
+    &quot;submit_time&quot;:&quot;20201218164319&quot;,
+    &quot;pay_url&quot;:&quot;xxx&quot;,
+    &quot;nonce_str&quot;:&quot;i1ykzktz&quot;,
+    &quot;sign&quot;:&quot;8D03BC20ADD1040C12837966388C1FA6&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="53-order-query-api">5.3 Order Query API</h2>
+<h3 id="531-business-function">5.3.1 Business Function</h3>
+<p>Query specific order information on the platform by merchant order number or FTP order number.</p>
+<h3 id="532-interaction-mode">5.3.2 Interaction Mode</h3>
+<p>Backend system call interaction mode</p>
+<h3 id="533-request-parameter-list">5.3.3 Request Parameter List</h3>
+<p>Request URL: https://api.fintechpaymenthub.com/openapi/v1/query
+Request via POST JSON body</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field Name</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>API Type</td>
+<td>service</td>
+<td>Yes</td>
+<td>String(40)</td>
+<td>Fixed: pay.alipay.webpay.intl</td>
+</tr>
+<tr>
+<td>Client ID</td>
+<td>client_id</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Merchant client ID</td>
+</tr>
+<tr>
+<td>Store ID</td>
+<td>store_id</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Store ID</td>
+</tr>
+<tr>
+<td>Merchant Order No.</td>
+<td>order_no</td>
+<td>No</td>
+<td>String(32）</td>
+<td>Order number generated by the merchant (at least one of order_no and transaction_id is required, when both exist, transaction_id takes priority)</td>
+</tr>
+<tr>
+<td>FTP Order No.</td>
+<td>transaction_id</td>
+<td>No</td>
+<td>String(26）</td>
+<td>FTP order number (at least one of order_no and transaction_id is required, when both exist, transaction_id takes priority)</td>
+</tr>
+<tr>
+<td>Random String</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>lang</td>
+<td>No</td>
+<td>String(32)</td>
+<td>Language</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="534-return-result">5.3.4 Return Result</h3>
+<p>Data is returned immediately in JSON format</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field Name</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>FTP Order No.</td>
+<td>transaction_id</td>
+<td>Yes</td>
+<td>String(26)</td>
+<td>Order number generated by FTP</td>
+</tr>
+<tr>
+<td>Merchant Order No.</td>
+<td>order_no</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Order number generated by the merchant</td>
+</tr>
+<tr>
+<td>Store ID</td>
+<td>store_id</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Store ID</td>
+</tr>
+<tr>
+<td>Submit Time</td>
+<td>submit_time</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Format is yyyyMMddhhmmss</td>
+</tr>
+<tr>
+<td>Trade State</td>
+<td>trade_state</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>SUCCESS—Payment successful
+NOTPAY—Pending payment
+PROCESSING—Processing
+REFUND—Refunded
+CANCEL—Closed
+FAIL—Failed</td>
+</tr>
+<tr>
+<td>Amount</td>
+<td>amount</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Total order amount (must be greater than 0), in RMB yuan. For example, if the total order amount is 1 yuan, amount is 1.</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>currency</td>
+<td>Yes</td>
+<td>String(3)</td>
+<td>3-digit ISO currency code, uppercase letters, RMB is CNY.</td>
+</tr>
+<tr>
+<td>Payment Completion Time</td>
+<td>pay_finish_time</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Payment completion time, format is yyyyMMddhhmmss, for example, December 27, 2009, 9:10:10 is represented as 20091227091010. Timezone is GMT+8 Beijing.</td>
+</tr>
+<tr>
+<td>Product Description</td>
+<td>body</td>
+<td>Yes</td>
+<td>String(127)</td>
+<td>Product description information</td>
+</tr>
+<tr>
+<td>Refund Amount</td>
+<td>refund_amount</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Refund amount, in RMB yuan. For example, if the total order amount is 1 yuan, amount is 1.</td>
+</tr>
+<tr>
+<td>Third-party Merchant No.</td>
+<td>out_transaction_id</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Corresponds to the transaction number in the Alipay transaction record bill details</td>
+</tr>
+<tr>
+<td>Additional Information</td>
+<td>attach</td>
+<td>No</td>
+<td>String(127)</td>
+<td>Merchant data packet, returned as is</td>
+</tr>
+<tr>
+<td>Result Message</td>
+<td>message</td>
+<td>Yes</td>
+<td>String(500)</td>
+<td>Describes the query result. SUCCESS indicates success, otherwise returns other error messages</td>
+<td>Describes the query result. SUCCESS indicates success, otherwise returns other error messages</td>
+</tr>
+<tr>
+<td>Random String</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="535-test-cases">5.3.5 Test Cases</h3>
+<p>Test cases are provided for convenient invocation</p>
+<p>Submitted data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;service&quot;:&quot;pay.alipay.webpay.intl&quot;,
+    &quot;order_no&quot;:&quot;&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181643190001&quot;,
+    &quot;client_id&quot;:&quot;1001&quot;,
+    &quot;store_id&quot;:&quot;1001001&quot;,
+    &quot;nonce_str&quot;:&quot;dbl6ox96&quot;,
+&quot;sign&quot;:&quot;A56EA405682D4F10A61FB269A27F15E2&quot;,
+&quot;lang&quot;:&quot;en_US&quot;
+
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Successful return data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181643190001&quot;,
+    &quot;order_no&quot;:&quot;306f4f64bade41618b8e6d18b048c890&quot;,
+    &quot;store_id&quot;:&quot;1001001&quot;,
+    &quot;submit_time&quot;:&quot;20201218164319&quot;,
+    &quot;trade_state&quot;:&quot;SUCCESS&quot;,
+    &quot;amount&quot;:1,
+    &quot;currency&quot;:&quot;HKD&quot;,
+    &quot;pay_finish_time&quot;:&quot;20201110111036&quot;,
+    &quot;body&quot;:&quot;Office cabinet, good quality, very beautiful&quot;,
+    &quot;refund_amount&quot;:0,
+    &quot;nonce_str&quot;:&quot;ywhep5pw&quot;,
+    &quot;sign&quot;:&quot;46DD52B899DDD9FD37DE3A9CE4CB3281&quot;,
+    &quot;out_transaction_id&quot;:&quot;127500000158202011108188370093&quot;,
+    &quot;attach&quot;:&quot;&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="54-refund-api">5.4 Refund API</h2>
+<h3 id="541-business-function">5.4.1 Business Function</h3>
+<p>The merchant initiates a refund for an order that has been successfully paid, and the operation result is returned synchronously in the same session.</p>
+<p>1. Refund Method</p>
+<p>Currently only original-route refund is supported.</p>
+<p>Note: Refund to bank card is not instant. Each bank has a different processing speed, and generally the refund arrives within 1-3 working days after the refund is initiated.</p>
+<p>For partial refunds of the same order, the same order number and different out_refund_no must be set. If a refund fails and is resubmitted, the original out_refund_no must be used. The total refund amount cannot exceed the actual amount paid by the user (the voucher amount cannot be refunded).</p>
+<p>2. Refund Restrictions</p>
+<p>Merchants should pay attention to the refund restrictions during refund operations to avoid initiating refund requests that will not succeed. The main refund restrictions are as follows:</p>
+<p>1. On the platform, as long as the cumulative refund amount does not exceed the total payment amount of the transaction order, a transaction order can be refunded multiple times. The refund application number (this parameter exists in the refund API) uniquely determines a refund, rather than the transaction order number determining a refund. The refund application number is generated by the merchant, so the merchant</p>
+<p>must ensure the uniqueness of the refund application number. Merchants should pay special attention during the refund process that another refund can only be re-initiated when it is certain that the refund has failed.</p>
+<p>2. Currently, most banks support full refunds and partial refunds, but a few banks do not support full refunds or partial refunds, or</p>
+<p>do not support refunds. In this case, the merchant can coordinate with the seller to refund to the Alipay account.</p>
+<p>Currently, only the no-key refund API is provided. Merchants who need a key refund API, please contact business for explanation.</p>
+<h3 id="542-interaction-mode">5.4.2 Interaction Mode</h3>
+<p>Backend system call interaction mode</p>
+<h3 id="543-request-parameter-list">5.4.3 Request Parameter List</h3>
+<p>Request URL: https://api.fintechpaymenthub.com/openapi/v1/refund
+Request via POST JSON body</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field Name</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>API Type</td>
+<td>service</td>
+<td>Yes</td>
+<td>String(40)</td>
+<td>Fixed: pay.alipay.webpay.intl</td>
+</tr>
+<tr>
+<td>Client ID</td>
+<td>client_id</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Merchant client ID</td>
+</tr>
+<tr>
+<td>Store ID</td>
+<td>store_id</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Store ID</td>
+</tr>
+<tr>
+<td>Merchant Order No.</td>
+<td>order_no</td>
+<td>Yes</td>
+<td>String(32）</td>
+<td>Original order number generated by the merchant</td>
+</tr>
+<tr>
+<td>FTP Order No.</td>
+<td>transaction_id</td>
+<td>Yes</td>
+<td>String(26）</td>
+<td>FTP order number of the original order</td>
+</tr>
+<tr>
+<td>Merchant Refund No.</td>
+<td>out_refund_no</td>
+<td>Yes</td>
+<td>String(32）</td>
+<td>Merchant refund number, within 32 characters, may contain letters, ensure it is unique in the merchant system. Multiple requests with the same refund number,
+the platform will process as one order and only refund once. If the refund is unsuccessful, please re-initiate with the original refund number to avoid duplicate refunds.</td>
+</tr>
+<tr>
+<td>Remarks</td>
+<td>remarks</td>
+<td>No</td>
+<td>String(255)</td>
+<td>Refund remarks</td>
+</tr>
+<tr>
+<td>Refund Amount</td>
+<td>refund_fee</td>
+<td>Yes</td>
+<td>String(15)</td>
+<td>Total refund amount, in yuan, partial refund is allowed</td>
+</tr>
+<tr>
+<td>Random String</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>lang</td>
+<td>No</td>
+<td>String(32)</td>
+<td>Language</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="544-return-result">5.4.4 Return Result</h3>
+<p>Data is returned immediately in JSON format</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field Name</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>FTP Order No.</td>
+<td>transaction_id</td>
+<td>Yes</td>
+<td>String(26)</td>
+<td>Order number generated by FTP</td>
+</tr>
+<tr>
+<td>Merchant Order No.</td>
+<td>order_no</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Order number generated by the merchant</td>
+</tr>
+<tr>
+<td>Merchant Refund No.</td>
+<td>out_refund_no</td>
+<td>Yes</td>
+<td>String(32）</td>
+<td>Merchant refund number, within 32 characters, may contain letters, ensure it is unique in the merchant system. Multiple requests with the same refund number,
+the platform will process as one order and only refund once. If the refund is unsuccessful, please re-initiate with the original refund number to avoid duplicate refunds.</td>
+</tr>
+<tr>
+<td>Submit Time</td>
+<td>submit_time</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Format is yyyyMMddhhmmss</td>
+</tr>
+<tr>
+<td>Order Amount</td>
+<td>amount</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Order amount, in yuan</td>
+</tr>
+<tr>
+<td>Refund Amount</td>
+<td>refund_amount</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Refund amount, in yuan</td>
+</tr>
+<tr>
+<td>Result Message</td>
+<td>message</td>
+<td>Yes</td>
+<td>String(500)</td>
+<td>Describes the query result. SUCCESS indicates success, otherwise returns other error messages</td>
+<td>Describes the query result. SUCCESS indicates success, otherwise returns other error messages</td>
+</tr>
+<tr>
+<td>Random String</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="545-test-cases">5.4.5 Test Cases</h3>
+<p>Test cases are provided for convenient invocation</p>
+<p>Submitted data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;service&quot;:&quot;pay.alipay.webpay.intl&quot;,
+    &quot;client_id&quot;:&quot;1001&quot;,
+    &quot;store_id&quot;:&quot;1001001&quot;,
+    &quot;order_no&quot;:&quot;&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181643190001&quot;,
+    &quot;out_refund_no&quot;:&quot;T1608281094423&quot;,
+    &quot;remarks&quot;:&quot;Test Pay Orders&quot;,
+    &quot;refund_fee&quot;:1.0,
+    &quot;nonce_str&quot;:&quot;f58spdlb&quot;,
+&quot;sign&quot;:&quot;67482CCCB05D9A943653A01B0AED1516&quot;,
+&quot;lang&quot;:&quot;en_US&quot;
+
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Successful return data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;order_no&quot;:&quot;306f4f64bade41618b8e6d18b048c890&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181643190001&quot;,
+    &quot;out_refund_no&quot;:&quot;T1608281094423&quot;,
+    &quot;submit_time&quot;:&quot;20201218164454&quot;,
+    &quot;amount&quot;:1,
+    &quot;refund_amount&quot;:1,
+    &quot;nonce_str&quot;:&quot;cmk6nemf&quot;,
+    &quot;sign&quot;:&quot;D41D8CD98F00B204E9800998ECF8427E&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="55-refund-query-api">5.5 Refund Query API</h2>
+<h3 id="551-business-function">5.5.1 Business Function</h3>
+<p>After submitting a refund application, query the refund status by calling this API.</p>
+<h3 id="552-interaction-mode">5.5.2 Interaction Mode</h3>
+<p>Backend system call interaction mode</p>
+<h3 id="553-request-parameter-list">5.5.3 Request Parameter List</h3>
+<p>Request URL: https://api.fintechpaymenthub.com/openapi/v1/refundQuery
+Request via POST JSON body</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field Name</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>API Type</td>
+<td>service</td>
+<td>Yes</td>
+<td>String(40)</td>
+<td>Fixed: pay.alipay.webpay.intl</td>
+</tr>
+<tr>
+<td>Client ID</td>
+<td>client_id</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Merchant client ID</td>
+</tr>
+<tr>
+<td>Store ID</td>
+<td>store_id</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Store ID</td>
+</tr>
+<tr>
+<td>Merchant Order No.</td>
+<td>order_no</td>
+<td>No</td>
+<td>String(32）</td>
+<td>Merchant order number returned by refund, also the merchant order number of the order</td>
+</tr>
+<tr>
+<td>FTP Order No.</td>
+<td>transaction_id</td>
+<td>No</td>
+<td>String(26）</td>
+<td>FTP order number returned by refund</td>
+</tr>
+<tr>
+<td>Merchant Refund No.</td>
+<td>out_refund_no</td>
+<td>No</td>
+<td>String(32）</td>
+<td>Refund number generated by the merchant</td>
+</tr>
+<tr>
+<td>Third-party Refund No.</td>
+<td>to_order_sn</td>
+<td>No</td>
+<td>String(255)</td>
+<td>Third-party refund number. If multiple exist simultaneously, the priority is: to_order_sn &gt; out_refund_no &gt; transaction_id &gt; order_no</td>
+</tr>
+<tr>
+<td>Random String</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>lang</td>
+<td>No</td>
+<td>String(32)</td>
+<td>Language</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="554-return-result">5.5.4 Return Result</h3>
+<p>Data is returned immediately in JSON format</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field Name</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>FTP Order No.</td>
+<td>transaction_id</td>
+<td>Yes</td>
+<td>String(26)</td>
+<td>FTP order number of the corresponding order</td>
+</tr>
+<tr>
+<td>Merchant Order No.</td>
+<td>order_no</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Merchant order number of the corresponding order</td>
+</tr>
+<tr>
+<td>Refund Amount</td>
+<td>total_fee</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Total refund amount, in yuan</td>
+</tr>
+<tr>
+<td>Refund Count</td>
+<td>refund_count</td>
+<td>Yes</td>
+<td>Int</td>
+<td>Number of refund records</td>
+</tr>
+<tr>
+<td>Merchant Refund No.</td>
+<td>out_refund_no_n</td>
+<td>Yes</td>
+<td>String(32）</td>
+<td>Merchant refund number, within 32 characters, may contain letters, ensure it is unique in the merchant system. Multiple requests with the same refund number,
+the platform will process as one order and only refund once. If the refund is unsuccessful, please re-initiate with the original refund number to avoid duplicate refunds.
+The first refund return field: out_refund_no_1,
+the second refund return field: out_refund_no_2,
+and so on.</td>
+</tr>
+<tr>
+<td>FTP Refund Order No.</td>
+<td>refund_id_n</td>
+<td>Yes</td>
+<td>String(32）</td>
+<td>FTP refund order number</td>
+</tr>
+<tr>
+<td>Third-party Refund No.</td>
+<td>to_order_sn_n</td>
+<td>Yes</td>
+<td>String(32）</td>
+<td>Third-party refund number</td>
+</tr>
+<tr>
+<td>Refund Amount</td>
+<td>refund_amount_n</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Refund amount, in yuan</td>
+</tr>
+<tr>
+<td>Refund Time</td>
+<td>refund_time_n</td>
+<td>Yes</td>
+<td>String(14)</td>
+<td>yyyyMMddHHmmss</td>
+</tr>
+<tr>
+<td>Refund Status</td>
+<td>refund_status_n</td>
+<td>Yes</td>
+<td>String(16)</td>
+<td>Refund status:
+SUCCESS—Refund successful
+FAIL—Refund failed
+PROCESSING—Refund processing
+NOTSURE—Undetermined, the merchant needs to re-initiate with the original refund number. CHANGE—Transferred to disbursement. When refunding to the bank, the user's bank account is found to be invalidated or frozen, causing the original-route refund to the bank card to fail. The funds flow back to the merchant's cash account, requiring manual intervention by the merchant to refund via offline or platform transfer.</td>
+</tr>
+<tr>
+<td>Result Message</td>
+<td>message</td>
+<td>Yes</td>
+<td>String(500)</td>
+<td>Describes the query result. SUCCESS indicates success, otherwise returns other error messages</td>
+</tr>
+<tr>
+<td>Random String</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="555-test-cases">5.5.5 Test Cases</h3>
+<p>Test cases are provided for convenient invocation</p>
+<p>Submitted data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;service&quot;:&quot;pay.alipay.webpay.intl&quot;,
+    &quot;client_id&quot;:&quot;1001&quot;,
+    &quot;store_id&quot;:&quot;1001001&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181643190001&quot;,
+    &quot;order_no&quot;:&quot;&quot;,
+    &quot;out_refund_no&quot;:&quot;&quot;,
+    &quot;to_order_sn&quot;:&quot;&quot;,
+    &quot;nonce_str&quot;:&quot;f5dzux6u&quot;,
+&quot;sign&quot;:&quot;5F2C7E8634D912ACDE257B7E3A8F2337&quot;,
+&quot;lang&quot;:&quot;en_US&quot;
+
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Successful return data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181624320001&quot;,
+    &quot;order_no&quot;:&quot;TALWEBO20210514114611632&quot;,
+    &quot;total_fee&quot;:1,
+    &quot;refund_count&quot;:1,
+    &quot;nonce_str&quot;:&quot;401n5buh&quot;,
+    &quot;out_refund_no_1&quot;:&quot;T9802e9e18ff340548357bfba730d407&quot;,
+    &quot;refund_id_1&quot;:&quot;FTP202105141152540001&quot;,
+    &quot;refund_amount_1&quot;:1,
+    &quot;to_order_sn_1&quot;:&quot;121500000214202105141132335702&quot;,
+    &quot;refund_time_1&quot;:&quot;20210514115254&quot;,
+    &quot;refund_status_1&quot;:&quot;SUCCESS&quot;,
+    &quot;sign&quot;:&quot;7A5CA8D8BD0F4E9F78641F9433FD3A4D&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="56-payment-notification-api">5.6 Payment Notification API</h2>
+<h3 id="561-business-function">5.6.1 Business Function</h3>
+<p>After payment is completed, the system will notify the relevant data to the notify_url filled in when placing the order. The notification URL is the parameter notify_url submitted in the payment API. After payment is completed, the platform will send the relevant payment and user information to the URL,</p>
+<p>and the merchant needs to receive and process the information.</p>
+<p>For backend notification interaction, if the platform receives a response from the merchant that is not the pure string success or returns after more than 5 seconds, the platform considers the notification failed. The platform will indirectly re-initiate the notification through a certain strategy (notification frequency is 0/15/15/30/180/1800/1800/1800/1800/3600, unit: seconds) to maximize the success rate of the notification, but does not guarantee that the notification will ultimately succeed.</p>
+<p>Due to the possibility of resending backend notifications, the same notification may be sent to the merchant system multiple times. The merchant system must be able to correctly handle duplicate notifications.</p>
+<p>The recommended approach is, when receiving a notification for processing, to first check the status of the corresponding business data to determine whether the notification has already been processed. If it has not been processed, process it; if it has been processed, directly return a success result. Before checking and processing the status of the business data, a data lock should be used for concurrency control to avoid data confusion caused by function reentry.</p>
+<p>Special attention: After the merchant backend receives the notification parameters, it must verify the order number order_no and order amount amount in the received notification parameters against the order and amount in its own business system. Only after the verification is consistent can the database order status be updated. The backend notification is performed through the notify_url in the request, and the data stream is returned via POST. The specific information is a string in xml format (merchants should pay attention when processing).</p>
+<h3 id="562-interaction-mode">5.6.2 Interaction Mode</h3>
+<p>Backend notification mode</p>
+<h3 id="563-return-parameter-list">5.6.3 Return Parameter List</h3>
+<p>Data is returned immediately in JSON format</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field Name</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>FTP Order No.</td>
+<td>transaction_id</td>
+<td>Yes</td>
+<td>String(26)</td>
+<td>Order number generated by FTP</td>
+</tr>
+<tr>
+<td>Merchant Order No.</td>
+<td>order_no</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Order number generated by the merchant</td>
+</tr>
+<tr>
+<td>Third-party Merchant No.</td>
+<td>out_transaction_id</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Corresponds to the transaction number in the Alipay transaction record bill details</td>
+</tr>
+<tr>
+<td>Store ID</td>
+<td>store_id</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Store ID</td>
+</tr>
+<tr>
+<td>Submit Time</td>
+<td>submit_time</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Format is yyyyMMddhhmmss</td>
+</tr>
+<tr>
+<td>Trade State</td>
+<td>trade_state</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>SUCCESS—Payment successful
+PROCESSING—Processing
+CANCEL—Closed
+FAIL—Failed</td>
+</tr>
+<tr>
+<td>Order Amount</td>
+<td>amount</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Total order amount (must be greater than 0), in RMB yuan. For example, if the total order amount is 1 yuan, amount is 1.</td>
+</tr>
+<tr>
+<td>Order Currency</td>
+<td>currency</td>
+<td>Yes</td>
+<td>String(3)</td>
+<td>3-digit ISO currency code, uppercase letters, RMB is CNY.</td>
+</tr>
+<tr>
+<td>Payer</td>
+<td>payer</td>
+<td>No</td>
+<td>String(50)</td>
+<td>Payer</td>
+</tr>
+<tr>
+<td>Payment Completion Time</td>
+<td>pay_finish_time</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Payment completion time, format is yyyyMMddhhmmss, for example, December 27, 2009, 9:10:10 is represented as 20091227091010. Timezone is GMT+8 Beijing.</td>
+</tr>
+<tr>
+<td>User ID</td>
+<td>openid</td>
+<td>No</td>
+<td>String(128)</td>
+<td>The user's Alipay account</td>
+</tr>
+<tr>
+<td>Additional Information</td>
+<td>attach</td>
+<td>No</td>
+<td>String(127)</td>
+<td>Merchant data packet, returned as is</td>
+</tr>
+<tr>
+<td>Trade Type</td>
+<td>trade_type</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Fixed: pay.alipay.webpay.intl</td>
+</tr>
+<tr>
+<td>Payment Currency</td>
+<td>pay_currency</td>
+<td>No</td>
+<td>String(32)</td>
+<td>Payment currency, needs to be returned based on the actual situation</td>
+</tr>
+<tr>
+<td>Result Message</td>
+<td>message</td>
+<td>Yes</td>
+<td>String(500)</td>
+<td>Describes the query result. SUCCESS indicates success, otherwise returns other error messages</td>
+<td>Describes the query result. SUCCESS indicates success, otherwise returns other error messages</td>
+</tr>
+<tr>
+<td>Random String</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="564-test-cases">5.6.4 Test Cases</h3>
+<p>Test cases are provided for convenient invocation</p>
+<p>Submitted data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+&quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;order_no&quot;:&quot;20f410d9b65741f380ce4cc56cb220b6&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181646490001&quot;,
+    &quot;out_transaction_id&quot;:&quot;2020111022001311418632678595&quot;,
+    &quot;store_id&quot;:&quot;1001001&quot;,
+    &quot;submit_time&quot;:&quot;20201218164649&quot;,
+    &quot;trade_state&quot;:&quot;SUCCESS&quot;,
+    &quot;amount&quot;:1,
+    &quot;currency&quot;:&quot;HKD&quot;,
+    &quot;pay_finish_time&quot;:&quot;20201110111036&quot;,
+    &quot;nonce_str&quot;:&quot;2074xi9v&quot;,
+    &quot;trade_type&quot;:&quot;pay.alipay.webpay.intl&quot;,
+    &quot;sign&quot;:&quot;8706AC26F6BC4B8AE0380CE85C5B33C2&quot;,
+&quot;pay_currency&quot;:&quot;HKD&quot;,
+&quot;openid&quot;:&quot;2088802397211412&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="6error-codes">6 Error Codes</h1>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Error Code</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>MISSING_FIELD</td>
+<td>Field not provided</td>
+</tr>
+<tr>
+<td>INVALID_FIELD</td>
+<td>Field validation error</td>
+</tr>
+<tr>
+<td>NO_EXISTS</td>
+<td>Data does not exist</td>
+</tr>
+<tr>
+<td>OTHER</td>
+<td>Other error</td>
+</tr>
+<tr>
+<td>INVALID_SCOPE</td>
+<td>Data out of range</td>
+</tr>
+<tr>
+<td>INVALID_LENGTH</td>
+<td>Data length exceeds limit</td>
+</tr>
+<tr>
+<td>INCORRECT_SIGNATURE</td>
+<td>Invalid signature</td>
+</tr>
+<tr>
+<td>EXPIRED_ORDER</td>
+<td>Order has expired</td>
+</tr>
+<tr>
+<td>PAY_GATEWAY_FAIL</td>
+<td>Payment gateway exception</td>
+</tr>
+<tr>
+<td>UNKNOWN_ERROR</td>
+<td>Unknown error</td>
+</tr>
+<tr>
+<td>XML_FORMAT_ERROR</td>
+<td>XML format error</td>
+</tr>
+<tr>
+<td>REQUIRE_POST_METHOD</td>
+<td>Please use POST method</td>
+</tr>
+<tr>
+<td>ACCESS_DENIED</td>
+<td>Access denied</td>
+</tr>
+<tr>
+<td>POST_DATA_EMPTY</td>
+<td>POST data is empty</td>
+</tr>
+<tr>
+<td>NOT_UTF8</td>
+<td>Encoding format error</td>
+</tr>
+<tr>
+<td>ORDER_CLOSED</td>
+<td>Order has been closed</td>
+</tr>
+<tr>
+<td>NO_AUTH</td>
+<td>Insufficient permissions</td>
+</tr>
+<tr>
+<td>LACK_PARAMS</td>
+<td>Missing parameters</td>
+</tr>
+<tr>
+<td>INVALID_STATUS</td>
+<td>Invalid status</td>
+</tr>
+<tr>
+<td>INVALID_SERVICE</td>
+<td>Invalid API type</td>
+</tr>
+<tr>
+<td>SN_IS_EXISTS</td>
+<td>Number already exists</td>
+</tr>
+<tr>
+<td>NOTIFY_FAIL</td>
+<td>Notification exception</td>
+</tr>
+<tr>
+<td>URL_FORMAT_ERROR</td>
+<td>URL format is incorrect</td>
+</tr>
+<tr>
+<td>IP_FORMAT_ERROR</td>
+<td>IP format is incorrect</td>
+</tr>
+<tr>
+<td>DATE_FORMAT_ERROR</td>
+<td>Date format is incorrect</td>
+</tr>
+<tr>
+<td>TRADE_NOT_EXIST</td>
+<td>Transaction does not exist</td>
+</tr>
+<tr>
+<td>TRADE_HAS_SUCCESS</td>
+<td>Transaction has been paid</td>
+</tr>
+<tr>
+<td>TRADE_FAILED</td>
+<td>Transaction failed</td>
+</tr>
+<tr>
+<td>TRADE_TIMEOUT</td>
+<td>Transaction timeout</td>
+</tr>
+<tr>
+<td>INVALID_ORDER_STATUS</td>
+<td>Invalid order status</td>
+</tr>
+<tr>
+<td>REVERSE_FAILED</td>
+<td>Authorization reversal failed</td>
+</tr>
+<tr>
+<td>DEDUCTIONS_FAILED</td>
+<td>Deduction failed</td>
+</tr>
+<tr>
+<td>REFUND_FAILED</td>
+<td>Deduction failed</td>
+</tr>
+<tr>
+<td>INVALID_CLIENT_ID</td>
+<td>Invalid client ID</td>
+</tr>
+<tr>
+<td>INVALID_STORE_ID</td>
+<td>Invalid store ID</td>
+</tr>
+<tr>
+<td>INVALID_AMOUNT</td>
+<td>Transaction amount is incorrect</td>
+</tr>
+<tr>
+<td>INVALID_REFUND_FEE</td>
+<td>Refund amount is incorrect</td>
+</tr>
+<tr>
+<td>VALID_FLOW_FAIL</td>
+<td>Requests too frequent</td>
+</tr>
+<tr>
+<td>UNSUPPORTED_SERVICE</td>
+<td>Unsupported API type</td>
+</tr>
+<tr>
+<td>DATA_NOT_EXIST</td>
+<td>Queried data does not exist</td>
+</tr>
+<tr>
+<td>ACCOUNT_LOCKED</td>
+<td>Merchant or store account is locked</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </main>
+
+    <nav class="toc-nav">
+<div class="toc-nav-title">On this page</div>
+<ul>
+  <li><a href="#11-document-overview" class="toc-h2">1.1 Document Overview</a></li>
+  <li><a href="#12-intended-audience" class="toc-h2">1.2 Intended Audience</a></li>
+  <li><a href="#21-business-implementation-flow" class="toc-h2">2.1 Business Implementation Flow</a></li>
+  <li><a href="#31-submitted-data" class="toc-h2">3.1 Submitted Data</a></li>
+  <li><a href="#32-return-result-data-format" class="toc-h2">3.2 Return Result Data Format</a></li>
+  <li><a href="#41-signature-raw-string" class="toc-h2">4.1 Signature Raw String</a></li>
+  <li><a href="#42-signature-algorithm" class="toc-h2">4.2 Signature Algorithm</a></li>
+  <li><a href="#43-request-headers" class="toc-h2">4.3 Request Headers</a></li>
+  <li><a href="#51-order-api" class="toc-h2">5.1 Order API</a></li>
+  <li><a href="#511-business-function" class="toc-h3">5.1.1 Business Function</a></li>
+  <li><a href="#512-interaction-mode" class="toc-h3">5.1.2 Interaction Mode</a></li>
+  <li><a href="#513-request-parameter-list" class="toc-h3">5.1.3 Request Parameter List</a></li>
+  <li><a href="#514-return-result" class="toc-h3">5.1.4 Return Result</a></li>
+  <li><a href="#515-test-cases" class="toc-h3">5.1.5 Test Cases</a></li>
+  <li><a href="#52-invoke-payment-api" class="toc-h2">5.2 Invoke Payment API</a></li>
+  <li><a href="#521-business-function" class="toc-h3">5.2.1 Business Function</a></li>
+  <li><a href="#522-interaction-mode" class="toc-h3">5.2.2 Interaction Mode</a></li>
+  <li><a href="#523-request-parameter-list" class="toc-h3">5.2.3 Request Parameter List</a></li>
+  <li><a href="#524-return-result" class="toc-h3">5.2.4 Return Result</a></li>
+  <li><a href="#525-test-cases" class="toc-h3">5.2.5 Test Cases</a></li>
+  <li><a href="#53-order-query-api" class="toc-h2">5.3 Order Query API</a></li>
+  <li><a href="#531-business-function" class="toc-h3">5.3.1 Business Function</a></li>
+  <li><a href="#532-interaction-mode" class="toc-h3">5.3.2 Interaction Mode</a></li>
+  <li><a href="#533-request-parameter-list" class="toc-h3">5.3.3 Request Parameter List</a></li>
+  <li><a href="#534-return-result" class="toc-h3">5.3.4 Return Result</a></li>
+  <li><a href="#535-test-cases" class="toc-h3">5.3.5 Test Cases</a></li>
+  <li><a href="#54-refund-api" class="toc-h2">5.4 Refund API</a></li>
+  <li><a href="#541-business-function" class="toc-h3">5.4.1 Business Function</a></li>
+  <li><a href="#542-interaction-mode" class="toc-h3">5.4.2 Interaction Mode</a></li>
+  <li><a href="#543-request-parameter-list" class="toc-h3">5.4.3 Request Parameter List</a></li>
+  <li><a href="#544-return-result" class="toc-h3">5.4.4 Return Result</a></li>
+  <li><a href="#545-test-cases" class="toc-h3">5.4.5 Test Cases</a></li>
+  <li><a href="#55-refund-query-api" class="toc-h2">5.5 Refund Query API</a></li>
+  <li><a href="#551-business-function" class="toc-h3">5.5.1 Business Function</a></li>
+  <li><a href="#552-interaction-mode" class="toc-h3">5.5.2 Interaction Mode</a></li>
+  <li><a href="#553-request-parameter-list" class="toc-h3">5.5.3 Request Parameter List</a></li>
+  <li><a href="#554-return-result" class="toc-h3">5.5.4 Return Result</a></li>
+  <li><a href="#555-test-cases" class="toc-h3">5.5.5 Test Cases</a></li>
+  <li><a href="#56-payment-notification-api" class="toc-h2">5.6 Payment Notification API</a></li>
+  <li><a href="#561-business-function" class="toc-h3">5.6.1 Business Function</a></li>
+  <li><a href="#562-interaction-mode" class="toc-h3">5.6.2 Interaction Mode</a></li>
+  <li><a href="#563-return-parameter-list" class="toc-h3">5.6.3 Return Parameter List</a></li>
+  <li><a href="#564-test-cases" class="toc-h3">5.6.4 Test Cases</a></li>
+</ul>
+</nav>
+  </div>
+
+  <script src="../../../assets/js/main.js"></script></body></html>

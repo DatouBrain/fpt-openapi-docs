@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error Codes | Fintech Payment OpenAPI Docs</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon">FP</span>
+        <span class="logo-text">Fintech Payment <span class="logo-sub">OpenAPI</span></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html">Home</a>
+        <a href="../common/quick-start.html">Getting Started</a>
+        <a href="../common/data-format.html">General Rules</a>
+        <a href="../payments/card-online/global-payments-online.html">Product Docs</a>
+      </nav>
+      <div class="lang-switcher"><a href="../../common/error-codes.html" class="lang-zh">繁中</a><span class="lang-sep">/</span><span class="lang-current">EN</span></div>
+      <button class="menu-toggle" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="sidebar">
+<div class="sidebar-group" data-group="common">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>General Rules</div>
+  <ul class="sidebar-links">
+    <li><a href="../common/quick-start.html" class="sub-link">Quick Start</a></li>
+    <li><a href="../common/endpoints.html" class="sub-link">API Endpoints</a></li>
+    <li><a href="../common/data-format.html" class="sub-link">Data Format</a></li>
+    <li><a href="../common/signature.html" class="sub-link">Digital Signature</a></li>
+    <li><a href="../common/request-headers.html" class="sub-link">Request Headers</a></li>
+    <li><a href="../common/error-codes.html" class="sub-link active">Error Codes</a></li>
+    <li><a href="../common/notification.html" class="sub-link">Payment Notification</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online (Card-not-present)</a></li>
+    <li><a href="../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online <span class="status-tag upcoming">Coming Soon</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-offline/global-payments-offline.html" class="sub-link">Global Payments Offline (Physical Card) <span class="status-tag upcoming">Coming Soon</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP Payment</a></li>
+    <li><a href="../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB Payment</a></li>
+    <li><a href="../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP Payment</a></li>
+    <li><a href="../payments/qr-online/alipay-plus.html" class="sub-link">Alipay Plus+ Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-web.html" class="sub-link">WeChat WEB Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-wap.html" class="sub-link">WeChat WAP Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-miniprogram.html" class="sub-link">WeChat Official Account &amp; Mini Program Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-app.html" class="sub-link">WeChat APP Payment</a></li>
+    <li><a href="../payments/qr-online/qr-code.html" class="sub-link">Dynamic QR Code Payment</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-offline/barcode.html" class="sub-link">Barcode Payment</a></li>
+    </ul>
+</div>
+</aside>
+
+
+    <main class="main-content">
+      <h1 id="overview">Error Codes</h1>
+<div class="page-meta">
+  <span class="page-meta-item">Doc Version: V1.0</span>
+</div>
+<p>This page lists all error codes that may be returned by the Fintech Payment OpenAPI, divided into common error codes and card payment specific error codes.</p>
+
+<h2 id="error-structure">Error Response Structure</h2>
+<p>When an API call fails, the following JSON structure is returned:</p>
+<pre><span class="code-label">JSON</span><code class="language-json">{
+  "message": "錯誤描述信息",
+  "errors": [
+    {
+      "field": "出錯字段名",
+      "message": "字段錯誤描述",
+      "code": "錯誤碼"
+    }
+  ]
+}</code></pre>
+<p>A <code>message</code> other than <code>SUCCESS</code> indicates an API call error.</p>
+
+<h2 id="common-errors">Common Error Codes</h2>
+<p>The following error codes are common to all payment channels (41 in total):</p>
+<div class="table-wrapper">
+<table>
+<thead><tr><th>Error Code</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>MISSING_FIELD</code></td><td>Field not provided</td></tr>
+<tr><td><code>INVALID_FIELD</code></td><td>Field validation error</td></tr>
+<tr><td><code>NO_EXISTS</code></td><td>Data does not exist</td></tr>
+<tr><td><code>OTHER</code></td><td>Other error</td></tr>
+<tr><td><code>INVALID_SCOPE</code></td><td>Data out of range</td></tr>
+<tr><td><code>INVALID_LENGTH</code></td><td>Data length exceeds limit</td></tr>
+<tr><td><code>INCORRECT_SIGNATURE</code></td><td>Invalid signature</td></tr>
+<tr><td><code>EXPIRED_ORDER</code></td><td>Order expired</td></tr>
+<tr><td><code>PAY_GATEWAY_FAIL</code></td><td>Payment gateway error</td></tr>
+<tr><td><code>INVALID_SERVICE</code></td><td>Invalid service type</td></tr>
+<tr><td><code>INVALID_CLIENT_ID</code></td><td>Invalid client ID</td></tr>
+<tr><td><code>INVALID_STORE_ID</code></td><td>Invalid store ID</td></tr>
+<tr><td><code>INVALID_AMOUNT</code></td><td>Invalid transaction amount</td></tr>
+<tr><td><code>INVALID_ORDER_STATUS</code></td><td>Invalid order status</td></tr>
+<tr><td><code>INVALID_STATUS</code></td><td>Invalid status</td></tr>
+<tr><td><code>INVALID_REFUND_FEE</code></td><td>Invalid refund amount</td></tr>
+<tr><td><code>LACK_PARAMS</code></td><td>Missing parameters</td></tr>
+<tr><td><code>REQUIRE_POST_METHOD</code></td><td>Please use POST method</td></tr>
+<tr><td><code>POST_DATA_EMPTY</code></td><td>POST data empty</td></tr>
+<tr><td><code>NOT_UTF8</code></td><td>Encoding format error</td></tr>
+<tr><td><code>URL_FORMAT_ERROR</code></td><td>Invalid URL format</td></tr>
+<tr><td><code>IP_FORMAT_ERROR</code></td><td>Invalid IP format</td></tr>
+<tr><td><code>XML_FORMAT_ERROR</code></td><td>XML format error</td></tr>
+<tr><td><code>DATE_FORMAT_ERROR</code></td><td>Invalid date format</td></tr>
+<tr><td><code>NO_AUTH</code></td><td>Insufficient permissions</td></tr>
+<tr><td><code>ACCESS_DENIED</code></td><td>Access denied</td></tr>
+<tr><td><code>ACCOUNT_LOCKED</code></td><td>Merchant or store account locked</td></tr>
+<tr><td><code>SN_IS_EXISTS</code></td><td>Number already exists</td></tr>
+<tr><td><code>TRADE_NOT_EXIST</code></td><td>Trade does not exist</td></tr>
+<tr><td><code>TRADE_FAILED</code></td><td>Trade failed</td></tr>
+<tr><td><code>TRADE_TIMEOUT</code></td><td>Trade timeout</td></tr>
+<tr><td><code>TRADE_HAS_SUCCESS</code></td><td>Trade already paid</td></tr>
+<tr><td><code>REFUND_FAILED</code></td><td>Refund failed</td></tr>
+<tr><td><code>DEDUCTIONS_FAILED</code></td><td>Deduction failed</td></tr>
+<tr><td><code>REVERSE_FAILED</code></td><td>Reverse authorization failed</td></tr>
+<tr><td><code>NOTIFY_FAIL</code></td><td>Notification error</td></tr>
+<tr><td><code>ORDER_CLOSED</code></td><td>Order closed</td></tr>
+<tr><td><code>DATA_NOT_EXIST</code></td><td>Queried data does not exist</td></tr>
+<tr><td><code>UNSUPPORTED_SERVICE</code></td><td>Unsupported service type</td></tr>
+<tr><td><code>VALID_FLOW_FAIL</code></td><td>Requests too frequent</td></tr>
+<tr><td><code>UNKNOWN_ERROR</code></td><td>Unknown error</td></tr>
+
+</tbody>
+</table>
+</div>
+
+<h2 id="card-errors">Card Payment Specific Error Codes</h2>
+<p>The following error codes only appear in Card Pay scenarios (Visa/Mastercard/UnionPay, etc.) (74 in total):</p>
+<div class="table-wrapper">
+<table>
+<thead><tr><th>Error Code</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>DECLINED</code></td><td>Declined</td></tr>
+<tr><td><code>GENERAL_DECLINE</code></td><td>Declined</td></tr>
+<tr><td><code>INVALID_CARD</code></td><td>Invalid account</td></tr>
+<tr><td><code>INVALID_CARD_TYPE</code></td><td>Invalid card type</td></tr>
+<tr><td><code>CARD_TYPE_NOT_ACCEPTED</code></td><td>Card type not accepted</td></tr>
+<tr><td><code>EXPIRED_CARD</code></td><td>Expired card</td></tr>
+<tr><td><code>INVALID_CVN</code></td><td>Invalid CVN</td></tr>
+<tr><td><code>CVN_NOT_MATCH</code></td><td>CVN not match</td></tr>
+<tr><td><code>CV_FAILED</code></td><td>CVN check declined</td></tr>
+<tr><td><code>AVS_FAILED</code></td><td>AVS check declined</td></tr>
+<tr><td><code>INSUFFICIENT_FUND</code></td><td>Insufficient funds</td></tr>
+<tr><td><code>EXCEEDS_CREDIT_LIMIT</code></td><td>Card reached credit limit</td></tr>
+<tr><td><code>STOLEN_LOST_CARD</code></td><td>Stolen or lost card</td></tr>
+<tr><td><code>UNAUTHORIZED_CARD</code></td><td>Invalid card or unauthorized card-not-present transaction</td></tr>
+<tr><td><code>PROCESSOR_DECLINED</code></td><td>Issuer declined</td></tr>
+<tr><td><code>PROCESSOR_TIMEOUT</code></td><td>Payment processing timeout</td></tr>
+<tr><td><code>PROCESSOR_UNAVAILABLE</code></td><td>Bank error</td></tr>
+<tr><td><code>ISSUER_UNAVAILABLE</code></td><td>Issuer unavailable</td></tr>
+<tr><td><code>CONTACT_PROCESSOR</code></td><td>Issuer query on request</td></tr>
+<tr><td><code>AUTHENTICATION_FAILED</code></td><td>Authentication failed</td></tr>
+<tr><td><code>CONSUMER_AUTHENTICATION_FAILED</code></td><td>Consumer cannot be verified</td></tr>
+<tr><td><code>CONSUMER_AUTHENTICATION_REQUIRED</code></td><td>Identity not verified</td></tr>
+<tr><td><code>PENDING_AUTHENTICATION</code></td><td>Pending authentication</td></tr>
+<tr><td><code>PENDING_REVIEW</code></td><td>Pending review</td></tr>
+<tr><td><code>AUTHORIZED_PENDING_REVIEW</code></td><td>Authorized pending review</td></tr>
+<tr><td><code>AUTHORIZED_RISK_DECLINED</code></td><td>Risk authorization declined</td></tr>
+<tr><td><code>AUTH_ALREADY_REVERSED</code></td><td>Authorization already reversed</td></tr>
+<tr><td><code>CAPTURE_ALREADY_VOIDED</code></td><td>Capture voided</td></tr>
+<tr><td><code>NOT_VOIDABLE</code></td><td>Not voidable</td></tr>
+<tr><td><code>VOIDED</code></td><td>Voided</td></tr>
+<tr><td><code>TRANSACTION_ALREADY_SETTLED</code></td><td>Transaction already settled</td></tr>
+<tr><td><code>TRANSACTION_ALREADY_REVERSED_OR_SETTLED</code></td><td>Transaction already settled or reversed</td></tr>
+<tr><td><code>EXCEEDS_AUTH_AMOUNT</code></td><td>Invalid amount</td></tr>
+<tr><td><code>INVALID_ACCOUNT</code></td><td>Invalid account</td></tr>
+<tr><td><code>SUSPENDED_ACCOUNT</code></td><td>Account suspended</td></tr>
+<tr><td><code>BLACKLISTED_CUSTOMER</code></td><td>Order info mismatch</td></tr>
+<tr><td><code>CUSTOMER_WATCHLIST_MATCH</code></td><td>Customer entity restricted</td></tr>
+<tr><td><code>IP_COUNTRY_WATCHLIST_MATCH</code></td><td>IP restricted</td></tr>
+<tr><td><code>EMAIL_COUNTRY_WATCHLIST_MATCH</code></td><td>Email restricted</td></tr>
+<tr><td><code>ADDRESS_COUNTRY_WATCHLIST_MATCH</code></td><td>Order restricted</td></tr>
+<tr><td><code>SCORE_EXCEEDS_THRESHOLD</code></td><td>Security check failed</td></tr>
+<tr><td><code>DECISION_PROFILE_REJECT</code></td><td>Card review failed</td></tr>
+<tr><td><code>DECISION_PROFILE_REVIEW</code></td><td>Card pending review</td></tr>
+<tr><td><code>DECISION_PROFILE_CHALLENGE</code></td><td>Risk transaction exists</td></tr>
+<tr><td><code>CHALLENGE</code></td><td>Risk transaction</td></tr>
+<tr><td><code>PAYMENT_REFUSED</code></td><td>Payment refused</td></tr>
+<tr><td><code>REJECTED</code></td><td>Rejected</td></tr>
+<tr><td><code>DUPLICATE_REQUEST</code></td><td>Duplicate request</td></tr>
+<tr><td><code>INVALID_REQUEST</code></td><td>Invalid request</td></tr>
+<tr><td><code>INVALID_DATA</code></td><td>Invalid data</td></tr>
+<tr><td><code>INVALID_PAYMENT_ID</code></td><td>Invalid payment ID</td></tr>
+<tr><td><code>INVALID_MERCHANT_CONFIGURATION</code></td><td>Merchant configuration error</td></tr>
+<tr><td><code>INVALID_OR_MISSING_CONFIG</code></td><td>Merchant configuration error</td></tr>
+<tr><td><code>MISSING_AUTH</code></td><td>Unauthorized</td></tr>
+<tr><td><code>SERVER_ERROR</code></td><td>Server error</td></tr>
+<tr><td><code>SERVER_TIMEOUT</code></td><td>Service timeout</td></tr>
+<tr><td><code>SERVICE_TIMEOUT</code></td><td>Service timeout</td></tr>
+<tr><td><code>SYSTEM_ERROR</code></td><td>System error</td></tr>
+<tr><td><code>ROUTE_SERVICE_NOT_FOUND</code></td><td>Route service not found</td></tr>
+<tr><td><code>UNSUPPORTED_CHARACTER_SET</code></td><td>Address verification unsupported</td></tr>
+<tr><td><code>BOLETO_DECLINED</code></td><td>Boleto declined</td></tr>
+<tr><td><code>DECLINED_CHECK</code></td><td>Check declined</td></tr>
+<tr><td><code>DEBIT_CARD_USAGE_LIMIT_EXCEEDED</code></td><td>Debit card usage limit exceeded</td></tr>
+<tr><td><code>ACCOUNT_NOT_ALLOWED_CREDIT</code></td><td>Credit not allowed</td></tr>
+<tr><td><code>INSUFFICIENT_ADDRESS_INFORMATION</code></td><td>Insufficient address info</td></tr>
+<tr><td><code>UNVERIFIABLE_ADDRESS</code></td><td>Address unverifiable</td></tr>
+<tr><td><code>ADDRESS_MATCH_NOT_FOUND</code></td><td>Address match not found</td></tr>
+<tr><td><code>MULTIPLE_ADDRESS_MATCHES</code></td><td>Multiple address matches</td></tr>
+<tr><td><code>MULTIPLE_ADDRESS_MATCHES_INTERNATIONAL</code></td><td>Multiple international address matches</td></tr>
+<tr><td><code>APARTMENT_NUMBER_NOT_FOUND</code></td><td>Apartment number not found</td></tr>
+<tr><td><code>HOUSE_OR_BOX_NUMBER_NOT_FOUND</code></td><td>House or box number not found</td></tr>
+<tr><td><code>BOX_NUMBER_NOT_FOUND</code></td><td>Box number not found</td></tr>
+<tr><td><code>STREET_NAME_NOT_FOUND</code></td><td>Street name not found</td></tr>
+<tr><td><code>POSTAL_CODE_NOT_FOUND</code></td><td>Postal code not found</td></tr>
+
+</tbody>
+</table>
+</div>
+
+    </main>
+
+    <nav class="toc-nav">
+<div class="toc-nav-title">On this page</div>
+<ul>
+  <li><a href="#error-structure" class="toc-h2">Error Response Structure</a></li>
+  <li><a href="#common-errors" class="toc-h2">Common Error Codes</a></li>
+  <li><a href="#card-errors" class="toc-h2">Card Payment Specific Error Codes</a></li>
+</ul>
+</nav>
+  </div>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

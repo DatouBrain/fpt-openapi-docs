@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Endpoints | Fintech Payment OpenAPI Docs</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon">FP</span>
+        <span class="logo-text">Fintech Payment <span class="logo-sub">OpenAPI</span></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html">Home</a>
+        <a href="../common/quick-start.html">Getting Started</a>
+        <a href="../common/data-format.html">General Rules</a>
+        <a href="../payments/card-online/global-payments-online.html">Product Docs</a>
+      </nav>
+      <div class="lang-switcher"><a href="../../common/endpoints.html" class="lang-zh">繁中</a><span class="lang-sep">/</span><span class="lang-current">EN</span></div>
+      <button class="menu-toggle" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="sidebar">
+<div class="sidebar-group" data-group="common">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>General Rules</div>
+  <ul class="sidebar-links">
+    <li><a href="../common/quick-start.html" class="sub-link">Quick Start</a></li>
+    <li><a href="../common/endpoints.html" class="sub-link active">API Endpoints</a></li>
+    <li><a href="../common/data-format.html" class="sub-link">Data Format</a></li>
+    <li><a href="../common/signature.html" class="sub-link">Digital Signature</a></li>
+    <li><a href="../common/request-headers.html" class="sub-link">Request Headers</a></li>
+    <li><a href="../common/error-codes.html" class="sub-link">Error Codes</a></li>
+    <li><a href="../common/notification.html" class="sub-link">Payment Notification</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online (Card-not-present)</a></li>
+    <li><a href="../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online <span class="status-tag upcoming">Coming Soon</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-offline/global-payments-offline.html" class="sub-link">Global Payments Offline (Physical Card) <span class="status-tag upcoming">Coming Soon</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP Payment</a></li>
+    <li><a href="../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB Payment</a></li>
+    <li><a href="../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP Payment</a></li>
+    <li><a href="../payments/qr-online/alipay-plus.html" class="sub-link">Alipay Plus+ Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-web.html" class="sub-link">WeChat WEB Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-wap.html" class="sub-link">WeChat WAP Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-miniprogram.html" class="sub-link">WeChat Official Account &amp; Mini Program Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-app.html" class="sub-link">WeChat APP Payment</a></li>
+    <li><a href="../payments/qr-online/qr-code.html" class="sub-link">Dynamic QR Code Payment</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-offline/barcode.html" class="sub-link">Barcode Payment</a></li>
+    </ul>
+</div>
+</aside>
+
+
+    <main class="main-content">
+      <h1 id="overview">API Endpoints</h1>
+<div class="page-meta">
+  <span class="page-meta-item">Updated: 2026-03-13</span>
+</div>
+<div class="callout info">
+  <div class="callout-title">ℹ️ Base URL</div>
+  <p>All API requests must be prefixed with the following base URL, followed by the specific path of each endpoint.</p>
+</div>
+
+<h2 id="environments">Environment URLs</h2>
+<div class="table-wrapper">
+<table>
+<thead><tr><th>Environment</th><th>Base URL</th></tr></thead>
+<tbody>
+<tr><td>UAT (Test)</td><td><code>https://uat.fintechpaymenthub.com/openapi/v1/</code></td></tr>
+<tr><td>Production</td><td><code>https://api.fintechpaymenthub.com/openapi/v1/</code></td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="endpoint-summary">Endpoint Summary</h2>
+<p>The <strong>Create Order, Query, and Refund</strong> functions for the vast majority of channels all use the same three endpoints, distinguished only by the <code>service</code> parameter for the specific payment channel.</p>
+<div class="table-wrapper">
+<table>
+<thead><tr><th>Function</th><th>Endpoint Path</th><th>Method</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>Create Order</td><td><code>/pay</code></td><td><span class="param-required yes">POST</span></td><td>Create a payment order</td></tr>
+<tr><td>Invoke Payment</td><td><code>/pay-again</code></td><td><span class="param-required yes">POST</span></td><td>Re-obtain payment link (some channels)</td></tr>
+<tr><td>Order Query</td><td><code>/query</code></td><td><span class="param-required yes">POST</span></td><td>Query order status</td></tr>
+<tr><td>Refund</td><td><code>/refund</code></td><td><span class="param-required yes">POST</span></td><td>Initiate refund</td></tr>
+<tr><td>Refund Query</td><td><code>/refundQuery</code></td><td><span class="param-required yes">POST</span></td><td>Query refund status</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="interface-matrix">API Support by Payment Method</h2>
+<p>Different payment methods support different APIs. Please refer to the table below:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr><th>Payment Method</th><th>Order</th><th>Invoke</th><th>Query</th><th>Refund</th><th>Refund Query</th><th>Notification</th></tr></thead>
+<tbody>
+<tr><td><a href="../payments/card-online/global-payments-online.html">GP Online (Card-not-present)</a></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required no">—</span></td><td><span class="param-required no">—</span></td><td><span class="param-required yes">✅</span></td></tr>
+<tr><td><a href="../payments/card-offline/global-payments-offline.html">GP Offline (Physical Card)</a> <span class="status-tag upcoming">Coming Soon</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required no">—</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required no">—</span></td><td><span class="param-required no">—</span></td><td><span class="param-required no">—</span></td></tr>
+<tr><td><a href="../payments/card-online/fintech-payment-online.html">Fintech Payment Online</a> <span class="status-tag upcoming">Coming Soon</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required no">—</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td></tr>
+<tr><td><a href="../payments/qr-online/alipay-wap.html">Alipay WAP</a></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td></tr>
+<tr><td><a href="../payments/qr-online/alipay-web.html">Alipay WEB</a></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td></tr>
+<tr><td><a href="../payments/qr-online/alipay-app.html">Alipay APP</a></td><td><span class="param-required yes">✅</span></td><td><span class="param-required no">—</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td></tr>
+<tr><td><a href="../payments/qr-online/alipay-plus.html">Alipay Plus+</a></td><td><span class="param-required yes">✅</span></td><td><span class="param-required no">—</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td></tr>
+<tr><td><a href="../payments/qr-online/wechat-web.html">WeChat WEB</a></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td></tr>
+<tr><td><a href="../payments/qr-online/wechat-wap.html">WeChat WAP</a></td><td><span class="param-required yes">✅</span></td><td><span class="param-required no">—</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td></tr>
+<tr><td><a href="../payments/qr-online/wechat-app.html">WeChat APP</a></td><td><span class="param-required yes">✅</span></td><td><span class="param-required no">—</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td></tr>
+<tr><td><a href="../payments/qr-online/wechat-miniprogram.html">WeChat Official Account/Mini Program</a></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td></tr>
+<tr><td><a href="../payments/qr-online/qr-code.html">Dynamic QR Code Payment</a></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td></tr>
+<tr><td><a href="../payments/qr-offline/barcode.html">Barcode Payment</a></td><td><span class="param-required yes">✅</span></td><td><span class="param-required no">—</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required yes">✅</span></td><td><span class="param-required no">—</span></td></tr>
+</tbody>
+</table>
+</div>
+
+    </main>
+
+    <nav class="toc-nav">
+<div class="toc-nav-title">On this page</div>
+<ul>
+  <li><a href="#environments" class="toc-h2">Environment URLs</a></li>
+  <li><a href="#endpoint-summary" class="toc-h2">Endpoint Summary</a></li>
+  <li><a href="#interface-matrix" class="toc-h2">API Support by Payment Method</a></li>
+</ul>
+</nav>
+  </div>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

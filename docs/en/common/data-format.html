@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Format | Fintech Payment OpenAPI Docs</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon">FP</span>
+        <span class="logo-text">Fintech Payment <span class="logo-sub">OpenAPI</span></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html">Home</a>
+        <a href="../common/quick-start.html">Getting Started</a>
+        <a href="../common/data-format.html">General Rules</a>
+        <a href="../payments/card-online/global-payments-online.html">Product Docs</a>
+      </nav>
+      <div class="lang-switcher"><a href="../../common/data-format.html" class="lang-zh">繁中</a><span class="lang-sep">/</span><span class="lang-current">EN</span></div>
+      <button class="menu-toggle" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="sidebar">
+<div class="sidebar-group" data-group="common">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>General Rules</div>
+  <ul class="sidebar-links">
+    <li><a href="../common/quick-start.html" class="sub-link">Quick Start</a></li>
+    <li><a href="../common/endpoints.html" class="sub-link">API Endpoints</a></li>
+    <li><a href="../common/data-format.html" class="sub-link active">Data Format</a></li>
+    <li><a href="../common/signature.html" class="sub-link">Digital Signature</a></li>
+    <li><a href="../common/request-headers.html" class="sub-link">Request Headers</a></li>
+    <li><a href="../common/error-codes.html" class="sub-link">Error Codes</a></li>
+    <li><a href="../common/notification.html" class="sub-link">Payment Notification</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online (Card-not-present)</a></li>
+    <li><a href="../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online <span class="status-tag upcoming">Coming Soon</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-offline/global-payments-offline.html" class="sub-link">Global Payments Offline (Physical Card) <span class="status-tag upcoming">Coming Soon</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP Payment</a></li>
+    <li><a href="../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB Payment</a></li>
+    <li><a href="../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP Payment</a></li>
+    <li><a href="../payments/qr-online/alipay-plus.html" class="sub-link">Alipay Plus+ Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-web.html" class="sub-link">WeChat WEB Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-wap.html" class="sub-link">WeChat WAP Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-miniprogram.html" class="sub-link">WeChat Official Account &amp; Mini Program Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-app.html" class="sub-link">WeChat APP Payment</a></li>
+    <li><a href="../payments/qr-online/qr-code.html" class="sub-link">Dynamic QR Code Payment</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-offline/barcode.html" class="sub-link">Barcode Payment</a></li>
+    </ul>
+</div>
+</aside>
+
+
+    <main class="main-content">
+      <h1 id="overview">Data Format</h1>
+<div class="page-meta">
+  <span class="page-meta-item">Doc Version: V1.0</span>
+</div>
+<p>This page describes the data transmission format for the Fintech Payment OpenAPI, including request format, response format, and common parameters.</p>
+
+<h2 id="request-format">Request Format</h2>
+<p>The API supports two request submission modes:</p>
+
+<h3>Standard Mode (JSON POST)</h3>
+<p>The vast majority of payment channels submit data using HTTPS POST + JSON format:</p>
+<ul>
+  <li>Request Method: <code>POST</code></li>
+  <li>Content-Type: <code>application/json</code></li>
+  <li>Character Encoding: <code>UTF-8</code></li>
+  <li>Data must be signed</li>
+</ul>
+<pre><span class="code-label">JSON</span><code class="language-json">{
+  "service": "pay.weixin.web.intl",
+  "order_no": "00f78e479fe74a11a73be0feb9999749",
+  "body": "測試支付",
+  "amount": 1.00,
+  "callback_url": "https://your-domain.com/result",
+  "notify_url": "https://your-domain.com/notify",
+  "client_ip": "127.0.0.1",
+  "client_id": "1002",
+  "store_id": "1001002",
+  "nonce_str": "ptf3tyjv",
+  "sign": "64950ED7B13489114C671EFD24C45AC3",
+  "lang": "en_US"
+}</code></pre>
+
+<h3>Hosted Mode (FORM POST)</h3>
+<p>Global Payments Online hosted mode uses an HTML form submission, suitable for redirecting directly to the payment page in a browser:</p>
+<ul>
+  <li>Request Method: <code>POST</code></li>
+  <li>Content-Type: <code>application/x-www-form-urlencoded</code></li>
+  <li>Character Encoding: <code>UTF-8</code></li>
+  <li>Data must be signed</li>
+</ul>
+<pre><span class="code-label">HTML</span><code class="language-html">&lt;form action="https://uat.fintechpaymenthub.com/openapi/v1/pay" method="post"&gt;
+  &lt;input type="hidden" name="service" value="pay.globalpayment.card.notpresent"&gt;
+  &lt;input type="hidden" name="client_id" value="1001"&gt;
+  &lt;input type="hidden" name="store_id" value="1001001"&gt;
+  &lt;input type="hidden" name="order_no" value="ORDER001"&gt;
+  &lt;input type="hidden" name="amount" value="100"&gt;
+  &lt;input type="hidden" name="sign" value="XXXXX"&gt;
+&lt;/form&gt;</code></pre>
+
+<h2 id="response-format">Response Format</h2>
+<p>All endpoints return JSON format data. Determine whether the request succeeded based on the <code>message</code> field:</p>
+
+<h3>Success Response</h3>
+<pre><span class="code-label">JSON</span><code class="language-json">{
+  "message": "SUCCESS",
+  "order_no": "00f78e479fe74a11a73be0feb9999749",
+  "transaction_id": "FTP202012181649370001",
+  "submit_time": "20201218164937",
+  "nonce_str": "o66w9pft",
+  "sign": "3F6C05280C90E5BB1330524FD61C6121"
+}</code></pre>
+<p>A <code>message</code> of <code>SUCCESS</code> indicates the API call succeeded. The response contains a <code>sign</code> field, which the merchant should verify to ensure data integrity.</p>
+
+<h3>Error Response</h3>
+<pre><span class="code-label">JSON</span><code class="language-json">{
+  "message": "Missing Merchant ID",
+  "errors": [
+    {
+      "field": "mch_id",
+      "message": "Missing Merchant ID",
+      "code": "MISSING_FIELD"
+    }
+  ]
+}</code></pre>
+<p>A <code>message</code> other than <code>SUCCESS</code> indicates an API call error. The <code>errors</code> array contains the specific error fields and error codes.</p>
+
+<h2 id="common-params">Common Request Parameters</h2>
+<p>The following parameters are common to all endpoints:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th><th>In Signature</th></tr></thead>
+<tbody>
+<tr><td><code>service</code></td><td>String(40)</td><td><span class="param-required yes">Required</span></td><td>Payment service identifier, distinguishes payment channels</td><td>✅</td></tr>
+<tr><td><code>client_id</code></td><td>String(32)</td><td><span class="param-required yes">Required</span></td><td>Merchant client ID</td><td>✅</td></tr>
+<tr><td><code>store_id</code></td><td>String(50)</td><td><span class="param-required yes">Required</span></td><td>Store ID</td><td>✅</td></tr>
+<tr><td><code>order_no</code></td><td>String(32)</td><td><span class="param-required yes">Required</span></td><td>Merchant internal order no, must be unique</td><td>✅</td></tr>
+<tr><td><code>nonce_str</code></td><td>String(32)</td><td><span class="param-required yes">Required</span></td><td>Random string, prevents replay attacks</td><td>✅</td></tr>
+<tr><td><code>sign</code></td><td>String(64)</td><td><span class="param-required yes">Required</span></td><td>Digital signature, see <a href="signature.html">Digital Signature</a></td><td>❌</td></tr>
+<tr><td><code>lang</code></td><td>String(10)</td><td><span class="param-required no">Optional</span></td><td>Language setting, e.g. <code>en_US</code>, <code>zh_CN</code></td><td>❌</td></tr>
+</tbody>
+</table>
+</div>
+
+    </main>
+
+    <nav class="toc-nav">
+<div class="toc-nav-title">On this page</div>
+<ul>
+  <li><a href="#request-format" class="toc-h2">Request Format</a></li>
+  <li><a href="#response-format" class="toc-h2">Response Format</a></li>
+  <li><a href="#common-params" class="toc-h2">Common Request Parameters</a></li>
+</ul>
+</nav>
+  </div>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

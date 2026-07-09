@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Start | Fintech Payment OpenAPI Docs</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon">FP</span>
+        <span class="logo-text">Fintech Payment <span class="logo-sub">OpenAPI</span></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html">Home</a>
+        <a href="../common/quick-start.html">Getting Started</a>
+        <a href="../common/data-format.html">General Rules</a>
+        <a href="../payments/card-online/global-payments-online.html">Product Docs</a>
+      </nav>
+      <div class="lang-switcher"><a href="../../common/quick-start.html" class="lang-zh">繁中</a><span class="lang-sep">/</span><span class="lang-current">EN</span></div>
+      <button class="menu-toggle" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="sidebar">
+<div class="sidebar-group" data-group="common">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>General Rules</div>
+  <ul class="sidebar-links">
+    <li><a href="../common/quick-start.html" class="sub-link active">Quick Start</a></li>
+    <li><a href="../common/endpoints.html" class="sub-link">API Endpoints</a></li>
+    <li><a href="../common/data-format.html" class="sub-link">Data Format</a></li>
+    <li><a href="../common/signature.html" class="sub-link">Digital Signature</a></li>
+    <li><a href="../common/request-headers.html" class="sub-link">Request Headers</a></li>
+    <li><a href="../common/error-codes.html" class="sub-link">Error Codes</a></li>
+    <li><a href="../common/notification.html" class="sub-link">Payment Notification</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online (Card-not-present)</a></li>
+    <li><a href="../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online <span class="status-tag upcoming">Coming Soon</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-offline/global-payments-offline.html" class="sub-link">Global Payments Offline (Physical Card) <span class="status-tag upcoming">Coming Soon</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP Payment</a></li>
+    <li><a href="../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB Payment</a></li>
+    <li><a href="../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP Payment</a></li>
+    <li><a href="../payments/qr-online/alipay-plus.html" class="sub-link">Alipay Plus+ Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-web.html" class="sub-link">WeChat WEB Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-wap.html" class="sub-link">WeChat WAP Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-miniprogram.html" class="sub-link">WeChat Official Account &amp; Mini Program Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-app.html" class="sub-link">WeChat APP Payment</a></li>
+    <li><a href="../payments/qr-online/qr-code.html" class="sub-link">Dynamic QR Code Payment</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-offline/barcode.html" class="sub-link">Barcode Payment</a></li>
+    </ul>
+</div>
+</aside>
+
+
+    <main class="main-content">
+      <h1 id="overview">Quick Start</h1>
+<div class="page-meta">
+  <span class="page-meta-item">Doc Version: V1.0</span>
+</div>
+<p>This guide walks you through integrating Fintech Payment OpenAPI from scratch, including environment preparation, signature computation, making payment requests, and handling payment notifications.</p>
+
+<h2 id="prerequisites">Before You Begin</h2>
+<p>Before starting, ensure you have the following:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr><th>Item</th><th>Description</th><th>How to Obtain</th></tr></thead>
+<tbody>
+<tr><td>Merchant Account</td><td>Fintech Payment platform merchant account</td><td>Provided by platform business team</td></tr>
+<tr><td>client_id</td><td>Client ID, identifies merchant</td><td>Provided via merchant portal or business team</td></tr>
+<tr><td>store_id</td><td>Store ID, identifies a specific store</td><td>Provided via merchant portal or business team</td></tr>
+<tr><td>Merchant Key</td><td>Communication key used for digital signatures</td><td>Provided by business team, keep it safe</td></tr>
+<tr><td>Server Environment</td><td>Server supporting HTTPS POST requests</td><td>Prepared by merchant</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="payment-flow">Payment Flow</h2>
+<p>A typical payment flow:</p>
+<div class="callout info">
+  <div class="callout-title">📋 Business Flow</div>
+  <p><strong>1. Create Order</strong> → Merchant server calls <code>/pay</code> to create an order<br>
+  <strong>2. Invoke Payment</strong> → Merchant uses the returned payment link/QR code to guide the user to pay<br>
+  <strong>3. Payment Notification</strong> → Platform asynchronously notifies the merchant's <code>notify_url</code> of the payment result<br>
+  <strong>4. Order Query</strong> → Merchant actively calls <code>/query</code> to confirm order status<br>
+  <strong>5. Refund</strong> (optional) → Merchant calls <code>/refund</code> to initiate a refund</p>
+</div>
+<p>All API calls must be made on the merchant server. Never call them directly from the client.</p>
+
+<h2 id="quick-steps">Quick Integration Steps</h2>
+
+<h3>Step 1: Build Request Parameters</h3>
+<p>Assemble JSON request parameters, including business and common parameters:</p>
+<pre><span class="code-label">JSON</span><code class="language-json">{
+  "service": "pay.weixin.web.intl",
+  "client_id": "1001",
+  "store_id": "1001001",
+  "order_no": "ORDER20260708001",
+  "amount": 1.00,
+  "body": "測試商品",
+  "notify_url": "https://your-domain.com/notify",
+  "callback_url": "https://your-domain.com/result",
+  "client_ip": "127.0.0.1",
+  "nonce_str": "abc123def456",
+  "lang": "en_US"
+}</code></pre>
+
+<h3>Step 2: Compute Signature</h3>
+<p>Sort all parameters (except <code>sign</code> and <code>lang</code>) by ASCII code ascending, concatenate as QueryString, append the merchant key, then compute MD5:</p>
+<pre><span class="code-label">PYTHON</span><code class="language-python">import hashlib
+
+params = {
+    "service": "pay.weixin.web.intl",
+    "client_id": "1001",
+    "store_id": "1001001",
+    "order_no": "ORDER20260708001",
+    "amount": "1.00",
+    "body": "測試商品",
+    "notify_url": "https://your-domain.com/notify",
+    "callback_url": "https://your-domain.com/result",
+    "client_ip": "127.0.0.1",
+    "nonce_str": "abc123def456",
+}
+
+# 1. Sort by ASCII code of key ascending
+sorted_params = sorted(params.items())
+
+# 2. Concatenate as key=value&key=value format (empty values not transmitted)
+sign_str = "&".join(f"{k}={v}" for k, v in sorted_params if v)
+
+# 3. Append merchant key
+merchant_key = "YOUR_MERCHANT_KEY"
+sign_str += f"&key={merchant_key}"
+
+# 4. MD5 and convert to uppercase
+sign = hashlib.md5(sign_str.encode("utf-8")).hexdigest().upper()
+print(sign)</code></pre>
+
+<h3>Step 3: Send API Request</h3>
+<pre><span class="code-label">PYTHON</span><code class="language-python">import requests, json
+
+params["sign"] = sign
+
+url = "https://uat.fintechpaymenthub.com/openapi/v1/pay"
+response = requests.post(url, json=params, headers={"Content-Type": "application/json"})
+result = response.json()
+
+if result.get("message") == "SUCCESS":
+    print("Order created successfully!", result)
+else:
+    print("Order failed:", result)</code></pre>
+
+<h3>Step 4: Handle Payment Notification</h3>
+<p>After payment, the platform sends a POST to <code>notify_url</code> with the result. Merchant should:</p>
+<ul>
+  <li>Verify the signature</li>
+  <li>Verify order no and amount match local system</li>
+  <li>Return the plain string <code>success</code> after processing business logic</li>
+</ul>
+
+<h2 id="code-example">Full Code Example</h2>
+<p>Below is a complete Python example covering order creation, query, and notification handling:</p>
+<pre><span class="code-label">PYTHON</span><code class="language-python">import hashlib, json, requests
+from flask import Flask, request
+
+app = Flask(__name__)
+MERCHANT_KEY = "YOUR_MERCHANT_KEY"
+BASE_URL = "https://uat.fintechpaymenthub.com/openapi/v1"
+
+def sign(params, key=MERCHANT_KEY):
+    sorted_params = sorted(params.items())
+    sign_str = "&".join(f"{k}={v}" for k, v in sorted_params if v)
+    sign_str += f"&key={key}"
+    return hashlib.md5(sign_str.encode("utf-8")).hexdigest().upper()
+
+# Create order
+def create_order():
+    params = {
+        "service": "pay.weixin.web.intl",
+        "client_id": "1001", "store_id": "1001001",
+        "order_no": "ORDER20260708001", "amount": "1.00",
+        "body": "測試商品", "notify_url": "https://your-domain.com/notify",
+        "callback_url": "https://your-domain.com/result",
+        "client_ip": "127.0.0.1", "nonce_str": "abc123def456",
+    }
+    params["sign"] = sign(params)
+    resp = requests.post(f"{BASE_URL}/pay", json=params)
+    return resp.json()
+
+# Query order
+def query_order(order_no):
+    params = {
+        "service": "pay.weixin.web.intl",
+        "client_id": "1001", "store_id": "1001001",
+        "order_no": order_no, "nonce_str": "query123456",
+    }
+    params["sign"] = sign(params)
+    resp = requests.post(f"{BASE_URL}/query", json=params)
+    return resp.json()
+
+# Receive payment notification
+@app.route("/notify", methods=["POST"])
+def notify():
+    data = request.get_json()
+    # Verify signature
+    recv_sign = data.pop("sign", "")
+    if sign(data) != recv_sign:
+        return "FAIL"
+    # Verify order
+    if data.get("message") == "SUCCESS":
+        # Update local order status
+        print(f"Order {data.get('order_no')} paid successfully")
+    return "success"</code></pre>
+<p>For more language examples, see the <a href="signature.html">Digital Signature</a> page.</p>
+
+    </main>
+
+    <nav class="toc-nav">
+<div class="toc-nav-title">On this page</div>
+<ul>
+  <li><a href="#prerequisites" class="toc-h2">Before You Begin</a></li>
+  <li><a href="#payment-flow" class="toc-h2">Payment Flow</a></li>
+  <li><a href="#quick-steps" class="toc-h2">Quick Integration Steps</a></li>
+  <li><a href="#code-example" class="toc-h2">Full Code Example</a></li>
+</ul>
+</nav>
+  </div>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

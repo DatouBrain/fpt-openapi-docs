@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fintech Payment OpenAPI Docs</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">FP</span>
+        <span class="logo-text">Fintech Payment <span class="logo-sub">OpenAPI</span></span>
+      </a>
+      <nav class="header-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="common/quick-start.html">Getting Started</a>
+        <a href="common/data-format.html">General Rules</a>
+        <a href="payments/card-online/global-payments-online.html">Product Docs</a>
+      </nav>
+      <div class="lang-switcher"><span class="lang-current">EN</span><span class="lang-sep">/</span><a href="../index.html" class="lang-zh">繁中</a></div>
+      <button class="menu-toggle" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="sidebar">
+<div class="sidebar-group" data-group="common">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>General Rules</div>
+  <ul class="sidebar-links">
+    <li><a href="common/quick-start.html" class="sub-link">Quick Start</a></li>
+    <li><a href="common/endpoints.html" class="sub-link">API Endpoints</a></li>
+    <li><a href="common/data-format.html" class="sub-link">Data Format</a></li>
+    <li><a href="common/signature.html" class="sub-link">Digital Signature</a></li>
+    <li><a href="common/request-headers.html" class="sub-link">Request Headers</a></li>
+    <li><a href="common/error-codes.html" class="sub-link">Error Codes</a></li>
+    <li><a href="common/notification.html" class="sub-link">Payment Notification</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online (Card-not-present)</a></li>
+    <li><a href="payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online <span class="status-tag upcoming">Coming Soon</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="payments/card-offline/global-payments-offline.html" class="sub-link">Global Payments Offline (Physical Card) <span class="status-tag upcoming">Coming Soon</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP Payment</a></li>
+    <li><a href="payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB Payment</a></li>
+    <li><a href="payments/qr-online/alipay-app.html" class="sub-link">Alipay APP Payment</a></li>
+    <li><a href="payments/qr-online/alipay-plus.html" class="sub-link">Alipay Plus+ Payment</a></li>
+    <li><a href="payments/qr-online/wechat-web.html" class="sub-link">WeChat WEB Payment</a></li>
+    <li><a href="payments/qr-online/wechat-wap.html" class="sub-link">WeChat WAP Payment</a></li>
+    <li><a href="payments/qr-online/wechat-miniprogram.html" class="sub-link">WeChat Official Account &amp; Mini Program Payment</a></li>
+    <li><a href="payments/qr-online/wechat-app.html" class="sub-link">WeChat APP Payment</a></li>
+    <li><a href="payments/qr-online/qr-code.html" class="sub-link">Dynamic QR Code Payment</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="payments/qr-offline/barcode.html" class="sub-link">Barcode Payment</a></li>
+    </ul>
+</div>
+</aside>
+
+
+    <main class="main-content" style="max-width: 1100px;">
+      
+<div class="home-hero">
+  <h1>Fintech Payment OpenAPI</h1>
+  <p>Secure, convenient, multi-channel payment API services supporting card payments, mobile payments, QR code payments, and more.</p>
+  <div class="cta-buttons">
+    <a href="common/quick-start.html" class="btn btn-primary">🚀 Get Started</a>
+    <a href="common/data-format.html" class="btn btn-secondary">📚 View Docs</a>
+  </div>
+</div>
+
+<section class="payment-categories">
+  <h2>Payment Channels Overview</h2>
+  <div class="category-grid">
+    
+<div class="category-card card-pay">
+  <div class="icon">💳</div>
+  <h3>Card Pay（Online）</h3>
+  <p>Online card payments supporting Visa, Mastercard, UnionPay and other card networks</p>
+  <ul class="links">
+    <li><a href="payments/card-online/global-payments-online.html">Global Payments Online (Card-not-present)<span class="arrow">→</span></a></li>
+    <li><a href="payments/card-online/fintech-payment-online.html">Fintech Payment Online <span class="status-tag upcoming">Coming Soon</span><span class="arrow">→</span></a></li>
+  </ul>
+</div>
+
+<div class="category-card card-pay">
+  <div class="icon">💳</div>
+  <h3>Card Pay（Offline）</h3>
+  <p>Offline physical card payments supporting Visa, Mastercard and other card networks</p>
+  <ul class="links">
+    <li><a href="payments/card-offline/global-payments-offline.html">Global Payments Offline (Physical Card) <span class="status-tag upcoming">Coming Soon</span><span class="arrow">→</span></a></li>
+  </ul>
+</div>
+
+<div class="category-card qr-pay">
+  <div class="icon">📱</div>
+  <h3>QR Pay（Online）</h3>
+  <p>Online QR code payments supporting Alipay, WeChat Pay and other mobile wallets</p>
+  <ul class="links">
+    <li><a href="payments/qr-online/alipay-wap.html">Alipay WAP Payment<span class="arrow">→</span></a></li>
+    <li><a href="payments/qr-online/alipay-web.html">Alipay WEB Payment<span class="arrow">→</span></a></li>
+    <li><a href="payments/qr-online/alipay-app.html">Alipay APP Payment<span class="arrow">→</span></a></li>
+    <li><a href="payments/qr-online/alipay-plus.html">Alipay Plus+ Payment<span class="arrow">→</span></a></li>
+    <li><a href="payments/qr-online/wechat-web.html">WeChat WEB Payment<span class="arrow">→</span></a></li>
+    <li><a href="payments/qr-online/wechat-wap.html">WeChat WAP Payment<span class="arrow">→</span></a></li>
+    <li><a href="payments/qr-online/wechat-miniprogram.html">WeChat Official Account &amp; Mini Program Payment<span class="arrow">→</span></a></li>
+    <li><a href="payments/qr-online/wechat-app.html">WeChat APP Payment<span class="arrow">→</span></a></li>
+    <li><a href="payments/qr-online/qr-code.html">Dynamic QR Code Payment<span class="arrow">→</span></a></li>
+  </ul>
+</div>
+
+<div class="category-card qr-pay">
+  <div class="icon">📱</div>
+  <h3>QR Pay（Offline）</h3>
+  <p>Offline QR code payments including barcode</p>
+  <ul class="links">
+    <li><a href="payments/qr-offline/barcode.html">Barcode Payment<span class="arrow">→</span></a></li>
+    </ul>
+</div>
+
+  </div>
+</section>
+
+<section style="padding: 40px 0;">
+  <div class="callout info">
+    <div class="callout-title">ℹ️ Before Integration</div>
+    <p>Before making any API calls, please read <a href="common/quick-start.html">Quick Start</a> and <a href="common/data-format.html">General Rules</a> to ensure correct API usage.</p>
+  </div>
+</section>
+
+
+      <footer class="site-footer">
+        <p>&copy; 2026 Fintech Payment. All rights reserved. | <a href="https://fintechpayment.com" target="_blank">Official Website</a></p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Notification | Fintech Payment OpenAPI Docs</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon">FP</span>
+        <span class="logo-text">Fintech Payment <span class="logo-sub">OpenAPI</span></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html">Home</a>
+        <a href="../common/quick-start.html">Getting Started</a>
+        <a href="../common/data-format.html">General Rules</a>
+        <a href="../payments/card-online/global-payments-online.html">Product Docs</a>
+      </nav>
+      <div class="lang-switcher"><a href="../../common/notification.html" class="lang-zh">繁中</a><span class="lang-sep">/</span><span class="lang-current">EN</span></div>
+      <button class="menu-toggle" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="sidebar">
+<div class="sidebar-group" data-group="common">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>General Rules</div>
+  <ul class="sidebar-links">
+    <li><a href="../common/quick-start.html" class="sub-link">Quick Start</a></li>
+    <li><a href="../common/endpoints.html" class="sub-link">API Endpoints</a></li>
+    <li><a href="../common/data-format.html" class="sub-link">Data Format</a></li>
+    <li><a href="../common/signature.html" class="sub-link">Digital Signature</a></li>
+    <li><a href="../common/request-headers.html" class="sub-link">Request Headers</a></li>
+    <li><a href="../common/error-codes.html" class="sub-link">Error Codes</a></li>
+    <li><a href="../common/notification.html" class="sub-link active">Payment Notification</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online (Card-not-present)</a></li>
+    <li><a href="../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online <span class="status-tag upcoming">Coming Soon</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/card-offline/global-payments-offline.html" class="sub-link">Global Payments Offline (Physical Card) <span class="status-tag upcoming">Coming Soon</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP Payment</a></li>
+    <li><a href="../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB Payment</a></li>
+    <li><a href="../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP Payment</a></li>
+    <li><a href="../payments/qr-online/alipay-plus.html" class="sub-link">Alipay Plus+ Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-web.html" class="sub-link">WeChat WEB Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-wap.html" class="sub-link">WeChat WAP Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-miniprogram.html" class="sub-link">WeChat Official Account &amp; Mini Program Payment</a></li>
+    <li><a href="../payments/qr-online/wechat-app.html" class="sub-link">WeChat APP Payment</a></li>
+    <li><a href="../payments/qr-online/qr-code.html" class="sub-link">Dynamic QR Code Payment</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../payments/qr-offline/barcode.html" class="sub-link">Barcode Payment</a></li>
+    </ul>
+</div>
+</aside>
+
+
+    <main class="main-content">
+      <h1 id="overview">Payment Notification</h1>
+<div class="page-meta">
+  <span class="page-meta-item">Doc Version: V1.0</span>
+</div>
+<p>After payment is completed, the platform asynchronously notifies the merchant of the payment result. This page describes the notification mechanism, retry strategy, and best practices.</p>
+
+<h2 id="mechanism">Notification Mechanism</h2>
+<p>After payment is completed, the system sends the payment result to the <code>notify_url</code> provided when creating the order:</p>
+<ul>
+  <li>Notification Method: <code>POST</code> request, with a JSON data body</li>
+  <li>Notification URL: the <code>notify_url</code> parameter submitted in the create order endpoint</li>
+  <li>Notification content includes order no, transaction id, amount, payment status, etc., with a <code>sign</code> signature</li>
+</ul>
+
+<h2 id="retry-strategy">Retry Strategy</h2>
+<p>If the platform does not receive the plain string <code>success</code> as the merchant's response, or no response is returned within 5 seconds, the platform considers the notification failed and will re-send the notification according to the following strategy:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr><th>Retry Count</th><th>Interval</th></tr></thead>
+<tbody>
+<tr><td>1st</td><td>0 seconds (immediately)</td></tr>
+<tr><td>2nd</td><td>15 seconds</td></tr>
+<tr><td>3rd</td><td>15 seconds</td></tr>
+<tr><td>4th</td><td>30 seconds</td></tr>
+<tr><td>5th</td><td>180 seconds (3 minutes)</td></tr>
+<tr><td>6th</td><td>1800 seconds (30 minutes)</td></tr>
+<tr><td>7-9th</td><td>1800 seconds (30 minutes)</td></tr>
+<tr><td>10th</td><td>3600 seconds (1 hour)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="callout warning">
+  <div class="callout-title">⚠️ Note</div>
+  <p>The platform strives to maximize notification success rate but does not guarantee final delivery. Merchants are advised to also use <strong>active query</strong> (calling the <code>/query</code> endpoint) as a fallback.</p>
+</div>
+
+<h2 id="best-practices">Best Practices</h2>
+<p>Since backend notifications may be re-sent, the same notification may be delivered multiple times. Merchant systems must correctly handle duplicate notifications:</p>
+<ol>
+  <li><strong>Verify Signature</strong>: After receiving a notification, first verify the <code>sign</code> field to prevent forgery</li>
+  <li><strong>Verify Order</strong>: Verify the <code>order_no</code> and <code>amount</code> in the notification match your business system</li>
+  <li><strong>Idempotency</strong>: Check if the order was already processed; if so, return <code>success</code> directly</li>
+  <li><strong>Concurrency Control</strong>: Use data locks for concurrency control to avoid re-entry causing data corruption</li>
+  <li><strong>Respond Promptly</strong>: Return the plain string <code>success</code> immediately after processing (within 5 seconds) to avoid triggering retries</li>
+</ol>
+
+<h3>Notification Handling Code Example</h3>
+<pre><span class="code-label">PYTHON</span><code class="language-python">@app.route("/notify", methods=["POST"])
+def handle_notify():
+    data = request.get_json()
+
+    # 1. Verify signature
+    recv_sign = data.pop("sign", "")
+    if generate_sign(data) != recv_sign:
+        return "FAIL"
+
+    # 2. Verify order
+    order_no = data.get("order_no")
+    amount = data.get("amount")
+    order = get_order_from_db(order_no)
+    if not order or float(order.amount) != float(amount):
+        return "FAIL"
+
+    # 3. Idempotency
+    if order.status == "PAID":
+        return "success"  # Already processed, return success directly
+
+    # 4. Update order status (lock for concurrency)
+    with db_lock:
+        update_order_status(order_no, "PAID")
+
+    # 5. Return success
+    return "success"</code></pre>
+
+    </main>
+
+    <nav class="toc-nav">
+<div class="toc-nav-title">On this page</div>
+<ul>
+  <li><a href="#mechanism" class="toc-h2">Notification Mechanism</a></li>
+  <li><a href="#retry-strategy" class="toc-h2">Retry Strategy</a></li>
+  <li><a href="#best-practices" class="toc-h2">Best Practices</a></li>
+</ul>
+</nav>
+  </div>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

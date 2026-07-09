@@ -8,17 +8,36 @@
   // Mobile menu toggle
   var menuToggle = document.querySelector('.menu-toggle');
   var sidebar = document.querySelector('.sidebar');
+  function syncSidebarState() {
+    if (sidebar.classList.contains('open')) {
+      document.body.classList.add('sidebar-open');
+    } else {
+      document.body.classList.remove('sidebar-open');
+    }
+  }
   if (menuToggle && sidebar) {
-    menuToggle.addEventListener('click', function() {
+    menuToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
       sidebar.classList.toggle('open');
+      syncSidebarState();
     });
-    // Close sidebar when clicking outside on mobile
+    // Close sidebar when clicking the backdrop or outside on mobile
     document.addEventListener('click', function(e) {
       if (window.innerWidth <= 900 && sidebar.classList.contains('open')) {
         if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
           sidebar.classList.remove('open');
+          syncSidebarState();
         }
       }
+    });
+    // Close sidebar after tapping a link on mobile (better UX)
+    sidebar.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (window.innerWidth <= 900) {
+          sidebar.classList.remove('open');
+          syncSidebarState();
+        }
+      });
     });
   }
 
@@ -74,7 +93,7 @@
 
     var btn = document.createElement('button');
     btn.className = 'copy-btn';
-    btn.textContent = '複製';
+    btn.textContent = (document.documentElement.lang === 'en') ? 'Copy' : '複製';
     btn.type = 'button';
     pre.appendChild(btn);
 
@@ -87,8 +106,8 @@
       var code = pre.querySelector('code');
       if (code) {
         navigator.clipboard.writeText(code.textContent).then(function() {
-          btn.textContent = '已複製';
-          setTimeout(function() { btn.textContent = '複製'; }, 2000);
+          btn.textContent = (document.documentElement.lang === 'en') ? 'Copied' : '已複製';
+          setTimeout(function() { btn.textContent = (document.documentElement.lang === 'en') ? 'Copy' : '複製'; }, 2000);
         });
       }
     });

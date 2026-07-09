@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Payments Offline (Physical Card) | Fintech Payment OpenAPI Docs</title>
+  <link rel="stylesheet" href="../../../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../../../en/index.html" class="logo">
+        <span class="logo-icon">FP</span>
+        <span class="logo-text">Fintech Payment <span class="logo-sub">OpenAPI</span></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../../../en/index.html">Home</a>
+        <a href="../../../en/common/quick-start.html">Getting Started</a>
+        <a href="../../../en/common/data-format.html">General Rules</a>
+        <a href="../../../en/payments/card-online/global-payments-online.html">Product Docs</a>
+      </nav>
+      <div class="lang-switcher"><a href="../../../payments/card-offline/global-payments-offline.html" class="lang-zh">繁中</a><span class="lang-sep">/</span><span class="lang-current">EN</span></div>
+
+      
+      <button class="menu-toggle" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="sidebar">
+<div class="sidebar-group" data-group="common">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>General Rules</div>
+  <ul class="sidebar-links">
+    <li><a href="../../../en/common/quick-start.html" class="sub-link">Quick Start</a></li>
+    <li><a href="../../../en/common/endpoints.html" class="sub-link">API Endpoints</a></li>
+    <li><a href="../../../en/common/data-format.html" class="sub-link">Data Format</a></li>
+    <li><a href="../../../en/common/signature.html" class="sub-link">Digital Signature</a></li>
+    <li><a href="../../../en/common/request-headers.html" class="sub-link">Request Headers</a></li>
+    <li><a href="../../../en/common/error-codes.html" class="sub-link">Error Codes</a></li>
+    <li><a href="../../../en/common/notification.html" class="sub-link">Payment Notification</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../../en/payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online</a></li>
+    <li><a href="../../../en/payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online <span class="status-tag upcoming">Coming Soon</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../../en/payments/card-offline/global-payments-offline.html" class="sub-link active">Global Payments Offline (Physical Card) <span class="status-tag upcoming">Coming Soon</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../../en/payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP Payment</a></li>
+    <li><a href="../../../en/payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB Payment</a></li>
+    <li><a href="../../../en/payments/qr-online/alipay-app.html" class="sub-link">Alipay APP Payment</a></li>
+    <li><a href="../../../en/payments/qr-online/alipay-plus.html" class="sub-link">Alipay Plus+ Payment</a></li>
+    <li><a href="../../../en/payments/qr-online/wechat-web.html" class="sub-link">Wechat WEB Payment</a></li>
+    <li><a href="../../../en/payments/qr-online/wechat-wap.html" class="sub-link">Wechat WAP Payment</a></li>
+    <li><a href="../../../en/payments/qr-online/wechat-miniprogram.html" class="sub-link">Wechat Mini Program Payment</a></li>
+    <li><a href="../../../en/payments/qr-online/wechat-app.html" class="sub-link">Wechat APP Payment</a></li>
+    <li><a href="../../../en/payments/qr-online/qr-code.html" class="sub-link">Dynamic QR Code Payment</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../../en/payments/qr-offline/barcode.html" class="sub-link">Barcode Payment</a></li>
+    </ul>
+</div>
+</aside>
+
+
+    <main class="main-content">
+      <h1 id="overview">Global Payments Offline (Physical Card)
+<span class="subtitle">Card Pay（Offline）</span>
+<span class="status-badge upcoming">Coming Soon</span>
+</h1>
+<div class="page-meta">
+<span class="page-meta-item">Document Version: V1.0</span>
+<span class="page-meta-item">API Version: V1.0</span>
+</div>
+<div class="callout warning">
+<div class="callout-title">⚠️ Notice</div>
+This API is not yet available for use and is for reference only. Please contact platform support for the specific launch date.
+</div>
+<h1 id="card-payment-global-payments-offline">Card Payment_Global Payments Offline</h1>
+<h2 id="physical-card-payment-api-documentation">Physical Card Payment API Documentation</h2>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Date</th>
+<th>Version</th>
+<th>Changes</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>2025-12-19</td>
+<td>1.0</td>
+<td>Initial draft</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="1-introduction">1 Introduction</h1>
+<h2 id="11-document-overview">1.1 Document Overview</h2>
+<p>Physical card payment refers to the payment method where credit cards or debit cards are swiped on POS terminals for consumption. Today, credit cards are very common, and they can be used in supermarkets, electronics stores, shopping malls, restaurants, hospitals, online services, telecommunications providers, and many other places.</p>
+<p>Merchants use the platform's API for integration. The merchant generates order parameters and provides them to the service provider to invoke payment. After successful payment, the merchant receives relevant payment information.</p>
+<p>Scenario example:</p>
+<div class="doc-image"><img src="../../../assets/images/global-payments-offline_1.jpg" alt="Documentation image" loading="lazy"></div>
+<p>Payment process:</p>
+<p>Step (1): The user makes a purchase at a physical store, and the cashier brings out the POS machine.</p>
+<p>Step (2): The user presents their credit card or debit card and swipes it on the POS machine for authorization.</p>
+<p>Step (3): The user signs on the POS machine and the payment is deducted.</p>
+<p>Step (4): The POS machine displays the payment result.</p>
+<h2 id="12-target-audience">1.2 Target Audience</h2>
+<p>For reference by technical or business personnel of merchant platform service providers.</p>
+<h1 id="2-solution-overview">2 Solution Overview</h1>
+<h2 id="21-business-implementation-process">2.1 Business Implementation Process</h2>
+<p>API call sequence:</p>
+<p>The Create Order API, Payment Notification API, and Order Query API all involve the signature process. All calls must be completed on the merchant's server side.
+The sequence diagram is as follows:</p>
+<div class="doc-image"><img src="../../../assets/images/global-payments-offline_2.png" alt="Documentation image" loading="lazy"></div>
+<h1 id="3-data-format">3 Data Format</h1>
+<h2 id="31-submit-data">3.1 Submit Data</h2>
+<p>Uses the standard HTTPS POST protocol. To ensure the recipient receives correct data, transmitted data must be signed.</p>
+<p>{</p>
+<p>&quot;service&quot;:&quot;pay.globalpayment.card.present&quot;,</p>
+<p>&quot;order_no&quot;:&quot;7586bb6238424e27a66866d1bf746640&quot;,</p>
+<p>&quot;card_type&quot;:&quot;VISA&quot;,</p>
+<p>&quot;amount&quot;:&quot;102.21&quot;,</p>
+<p>&quot;currency&quot;:&quot;USD&quot;,</p>
+<p>&quot;body&quot;:&quot;Multifunctional office chair&quot;,</p>
+<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
+<p>&quot;entry_mode&quot;:&quot;contact&quot;,</p>
+<p>&quot;number&quot;:&quot;4111111111111111&quot;,</p>
+<p>&quot;expiration_year&quot;:&quot;2031&quot;,</p>
+<p>&quot;expiration_month&quot;:&quot;12&quot;,</p>
+<p>&quot;client_id&quot;:&quot;1001&quot;,</p>
+<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
+<p>&quot;nonce_str&quot;:&quot;2r8qnc0h&quot;,</p>
+<p>&quot;sign&quot;:&quot;8535CEB8CAA4F3C15D6F907A9012A3DC&quot;,</p>
+<p>&quot;lang&quot;:&quot;en_US&quot;</p>
+<p>}</p>
+<h2 id="32-response-data-format">3.2 Response Data Format</h2>
+<p>Successful response:</p>
+<p>{</p>
+<p>&quot;message&quot;:&quot;SUCCESS&quot;,</p>
+<p>&quot;order_no&quot;:&quot;7586bb6238424e27a66866d1bf746640&quot;,</p>
+<p>&quot;transaction_id&quot;:&quot;FTP202012181541020001&quot;,</p>
+<p>&quot;submit_time&quot;:&quot;20201218154102&quot;,</p>
+<p>&quot;trade_state&quot;:&quot;NOTPAY&quot;,</p>
+<p>&quot;nonce_str&quot;:&quot;cg41bxt5&quot;,</p>
+<p>&quot;sign&quot;:&quot;8092A1F245A942685B0F0F8040398342&quot;</p>
+<p>}</p>
+<p>Error response:</p>
+<p>{</p>
+<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
+<pre><span class="code-label">JSON</span><code class="language-json">&quot;errors&quot;:[</code></pre>
+<p>{</p>
+<p>&quot;field&quot;:&quot;mch_id&quot;,</p>
+<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
+<p>&quot;code&quot;:&quot;MISSING_FIELD&quot;</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>When message returns non-SUCCESS, it indicates an API call error.</p>
+<h1 id="4-digital-signature">4 Digital Signature</h1>
+<p>To ensure the authenticity and integrity of data during transmission, we need to digitally sign the data. After receiving the signed data, signature verification must be performed.</p>
+<p>Digital signature has two steps: first, concatenate the original string to be signed according to certain rules; then, select a specific algorithm and key to calculate the signature result.</p>
+<h2 id="41-signature-original-string">4.1 Signature Original String</h2>
+<p>Whether for requests or responses, the signature original string is assembled as follows:
+1. Except for the sign field, all parameters are sorted in ascending order by field name's ASCII code and concatenated in QueryString format (i.e., key1=value1&amp;key2=value2…). Empty values are not transmitted and do not participate in signature string construction.
+2. In the signature original string, both field names and field values use original values without URL encoding.</p>
+<p>3. Platform responses or notification messages may add parameters due to upgrades. Please allow for this situation when verifying response signatures.</p>
+<p>Example:</p>
+<p>When calling an API, the API has the following fields:</p>
+<p>{</p>
+<p>&quot;client_id&quot;:&quot;1001&quot;,</p>
+<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
+<p>&quot;service&quot;:&quot;pay.globalpayment.card.present&quot;,</p>
+<p>&quot;order_no&quot;:&quot;cf8f6d68bbc64be0b871cf670a26e753&quot;,</p>
+<p>&quot;card_type&quot;:&quot;VISA&quot;,</p>
+<p>&quot;amount&quot;:&quot;339.00&quot;,</p>
+<p>&quot;currency&quot;:&quot;USD&quot;,</p>
+<p>&quot;body&quot;:&quot;a chair&quot;,</p>
+<p>&quot;entry_mode&quot;:&quot;contact&quot;,</p>
+<p>&quot;number&quot;:&quot;4111111111111111&quot;,</p>
+<p>&quot;expiration_year&quot;:&quot;2031&quot;,</p>
+<p>&quot;expiration_month&quot;:&quot;12&quot;,</p>
+<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
+<p>&quot;nonce_str&quot;:&quot;g1pkotyz&quot;,</p>
+<p>&quot;sign&quot;:&quot;669FA672674AA43A14254A1F9AED5636&quot;</p>
+<p>}</p>
+<p>The correct signature field sorting is:</p>
+<p>amount=339.00&amp;body=a chair&amp;card_type=VISA&amp;client_ip=127.0.0.1&amp;currency=USD&amp;entry_mode=contact&amp;expiration_month=12&amp;expiration_year=2031&amp;client_id=1001&amp;nonce_str=g1pkotyz&amp;number=4111111111111111&amp;order_no=cf8f6d68bbc64be0b871cf670a26e753&amp;service=pay.globalpayment.card.present&amp;store_id=1001001</p>
+<h2 id="42-signature-algorithm">4.2 Signature Algorithm</h2>
+<p>MD5 Signature
+MD5 is a digest generation algorithm. By appending the merchant communication key to the signature original string and performing MD5 calculation, the resulting digest string is the signature result. For convenient comparison, the signature result is uniformly converted to uppercase characters.</p>
+<p>Note: When converting the string to a byte stream for signature, the specified encoding character set should be consistent with the charset parameter.
+MD5 signature calculation formula:
+sign = MD5 (original string+&amp;key=merchant secret). toUpperCase</p>
+<p>Assuming the merchant secret is: MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=</p>
+<p>For example:
+Assuming the following JSON input parameters:
+i: After process a, the URL key-value pair dictionary-ordered string string1 is:
+amount=339.00&amp;body=a chair&amp;card_type=VISA&amp;client_ip=127.0.0.1&amp;currency=USD&amp;entry_mode=contact&amp;expiration_month=12&amp;expiration_year=2031&amp;client_id=1001&amp;nonce_str=g1pkotyz&amp;number=4111111111111111&amp;order_no=cf8f6d68bbc64be0b871cf670a26e753&amp;service=pay.globalpayment.card.present&amp;store_id=1001001
+ii: After process b, the obtained sign is:</p>
+<p>sign = md5(string1+&amp;key=merchant secret).toUpperCase</p>
+<p>The actual encrypted string is:</p>
+<p>sign = md5(amount=339.00&amp;body=a chair&amp;card_type=VISA&amp;client_ip=127.0.0.1&amp;currency=USD&amp;entry_mode=contact&amp;expiration_month=12&amp;expiration_year=2031&amp;client_id=1001&amp;nonce_str=g1pkotyz&amp;number=4111111111111111&amp;order_no=cf8f6d68bbc64be0b871cf670a26e753&amp;service=pay.globalpayment.card.present&amp;store_id=1001001&amp;key=MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=).toUpperCase</p>
+<p>The final signature obtained is: 3E902B1934765D62F26DB026D25A2773</p>
+<p>The sign and lang fields do not participate in API signature. The same rules apply for decrypting API response parameters.</p>
+<h2 id="43-request-headers">4.3 Request Headers</h2>
+<p>Request parameters:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Content Type</td>
+<td>Content-Type</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Value: application/json, request content type</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="5-api-description">5 API Description</h1>
+<h2 id="51-create-order-api">5.1 Create Order API</h2>
+<h3 id="511-business-function">5.1.1 Business Function</h3>
+<p>After the merchant calls the Create Order API, the response parameters are generated and returned to the merchant. The merchant determines the payment channel to invoke the payment institution for payment operations. After payment completion, the payment institution calls back the platform, and the platform notifies the merchant API of the result.</p>
+<h3 id="512-interaction-mode">5.1.2 Interaction Mode</h3>
+<p>Request: Backend synchronous request mode</p>
+<p>Response: Backend synchronous request mode</p>
+<h3 id="513-request-parameters">5.1.3 Request Parameters</h3>
+<p>Request URL: https://api.fintechpaymenthub.com/openapi/v1/pay</p>
+<p>POST JSON content body for request</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>API Type</td>
+<td>service</td>
+<td>Yes</td>
+<td>String(40)</td>
+<td>Fixed: pay.globalpayment.card.present</td>
+</tr>
+<tr>
+<td>Merchant client ID</td>
+<td>client_id</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Merchant client ID</td>
+</tr>
+<tr>
+<td>Store ID</td>
+<td>store_id</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Store ID</td>
+</tr>
+<tr>
+<td>Merchant order no</td>
+<td>order_no</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Order number within the merchant system, within 32 characters, can contain letters, ensure uniqueness in the merchant system</td>
+</tr>
+<tr>
+<td>Card Type</td>
+<td>card_type</td>
+<td>Yes</td>
+<td>String(20)</td>
+<td>Card type
+VISA、MASTER、UNION_PAY</td>
+</tr>
+<tr>
+<td>Amount</td>
+<td>amount</td>
+<td>Yes</td>
+<td>String(15)</td>
+<td>Total order amount (must be greater than 0), unit is yuan.</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>currency</td>
+<td>Yes</td>
+<td>String(3)</td>
+<td>3-digit currency code</td>
+</tr>
+<tr>
+<td>Product description</td>
+<td>body</td>
+<td>Yes</td>
+<td>String(127)</td>
+<td>Product description information</td>
+</tr>
+<tr>
+<td>Terminal IP</td>
+<td>client_ip</td>
+<td>No</td>
+<td>String(16)</td>
+<td>Machine IP where the order was generated</td>
+</tr>
+<tr>
+<td>Random string</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters, a different value must be passed for each submission</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+<tr>
+<td>Swipe Mode</td>
+<td>entry_mode</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>swiped: read data from card magnetic stripe; contact: read from direct contact chip card.</td>
+</tr>
+<tr>
+<td>Required values for magnetic stripe reading mode:</td>
+<td>Required values for magnetic stripe reading mode:</td>
+<td>Required values for magnetic stripe reading mode:</td>
+<td>Required values for magnetic stripe reading mode:</td>
+<td>Required values for magnetic stripe reading mode:</td>
+</tr>
+<tr>
+<td>Card Magnetic Stripe Data</td>
+<td>track_data</td>
+<td>Yes</td>
+<td>String(500)</td>
+<td>Data on the card's magnetic stripe</td>
+</tr>
+<tr>
+<td>Required values for direct contact chip card reading:</td>
+<td>Required values for direct contact chip card reading:</td>
+<td>Required values for direct contact chip card reading:</td>
+<td>Required values for direct contact chip card reading:</td>
+<td>Required values for direct contact chip card reading:</td>
+</tr>
+<tr>
+<td>Card Number</td>
+<td>number</td>
+<td>Yes</td>
+<td>String(20)</td>
+<td>Credit card or debit card number</td>
+</tr>
+<tr>
+<td>Expiration Year</td>
+<td>expiration_year</td>
+<td>Yes</td>
+<td>String(4)</td>
+<td>Format: YYYY</td>
+</tr>
+<tr>
+<td>Expiration Month</td>
+<td>expiration_month</td>
+<td>Yes</td>
+<td>String(2)</td>
+<td>Format: MM Valid values: 01 to 12</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>lang</td>
+<td>No</td>
+<td>String(32)</td>
+<td>Language</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="514-response-result">5.1.4 Response Result</h3>
+<p>Data is returned immediately in XML format</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Merchant order no</td>
+<td>order_no</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Order number generated by the merchant</td>
+</tr>
+<tr>
+<td>FTP order no</td>
+<td>transaction_id</td>
+<td>Yes</td>
+<td>String(26)</td>
+<td>Order number generated by FTP</td>
+</tr>
+<tr>
+<td>Submission Time</td>
+<td>submit_time</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Format is yyyyMMddhhmmss</td>
+</tr>
+<tr>
+<td>Trade Status</td>
+<td>trade_state</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>SUCCESS—Payment successful
+NOTPAY—Pending payment
+FAIL—Failed</td>
+</tr>
+<tr>
+<td>Random string</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="515-test-cases">5.1.5 Test Cases</h3>
+<p>Test cases are provided for convenient invocation</p>
+<p>Submitted data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;service&quot;:&quot;pay.globalpayment.card.present&quot;,
+    &quot;order_no&quot;:&quot;7586bb6238424e27a66866d1bf746640&quot;,
+    &quot;card_type&quot;:&quot;VISA&quot;,
+    &quot;amount&quot;:&quot;102.21&quot;,
+    &quot;currency&quot;:&quot;USD&quot;,
+    &quot;body&quot;:&quot;Multifunctional office chair&quot;,
+    &quot;client_ip&quot;:&quot;127.0.0.1&quot;,
+    &quot;entry_mode&quot;:&quot;contact&quot;,
+    &quot;number&quot;:&quot;4111111111111111&quot;,
+    &quot;expiration_year&quot;:&quot;2031&quot;,
+    &quot;expiration_month&quot;:&quot;12&quot;,
+    &quot;client_id&quot;:&quot;1001&quot;,
+    &quot;store_id&quot;:&quot;1001001&quot;,
+    &quot;nonce_str&quot;:&quot;2r8qnc0h&quot;,
+&quot;sign&quot;:&quot;8535CEB8CAA4F3C15D6F907A9012A3DC&quot;,
+&quot;lang&quot;:&quot;en_US&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Successful response data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;order_no&quot;:&quot;7586bb6238424e27a66866d1bf746640&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181541020001&quot;,
+    &quot;submit_time&quot;:&quot;20201218154102&quot;,
+    &quot;trade_state&quot;:&quot;NOTPAY&quot;,
+    &quot;nonce_str&quot;:&quot;cg41bxt5&quot;,
+    &quot;sign&quot;:&quot;8092A1F245A942685B0F0F8040398342&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="52-reverse-authorization-api">5.2 Reverse Authorization API</h2>
+<h3 id="521-business-function">5.2.1 Business Function</h3>
+<p>For card payments, if the cardholder does not want to swipe the card after the merchant calls the Create Order API, this API is called to reverse the credit card authorization.</p>
+<h3 id="522-interaction-mode">5.2.2 Interaction Mode</h3>
+<p>Request: Backend synchronous request mode</p>
+<p>Response: Backend synchronous request mode</p>
+<h3 id="523-request-parameters">5.2.3 Request Parameters</h3>
+<p>Request URL: https://api.fintechpaymenthub.com/openapi/v1/reverse</p>
+<p>POST JSON content body for request</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>API Type</td>
+<td>service</td>
+<td>Yes</td>
+<td>String(40)</td>
+<td>Fixed: pay.globalpayment.card.present</td>
+</tr>
+<tr>
+<td>Merchant client ID</td>
+<td>client_id</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Merchant client ID</td>
+</tr>
+<tr>
+<td>Store ID</td>
+<td>store_id</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Store ID</td>
+</tr>
+<tr>
+<td>FTP order no</td>
+<td>transaction_id</td>
+<td>No</td>
+<td>String(26)</td>
+<td>Order number generated by FTP (at least one of order_no and transaction_id is required; when both exist, transaction_id takes priority)</td>
+</tr>
+<tr>
+<td>Merchant order no</td>
+<td>order_no</td>
+<td>No</td>
+<td>String(26)</td>
+<td>Order number generated by the merchant (at least one of order_no and transaction_id is required; when both exist, transaction_id takes priority)</td>
+</tr>
+<tr>
+<td>Random string</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters, a different value must be passed for each submission</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>lang</td>
+<td>No</td>
+<td>String(32)</td>
+<td>Language</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="524-response-result">5.2.4 Response Result</h3>
+<p>Data is returned immediately in XML format</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Merchant order no</td>
+<td>order_no</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Order number generated by the merchant</td>
+</tr>
+<tr>
+<td>FTP order no</td>
+<td>transaction_id</td>
+<td>Yes</td>
+<td>String(26)</td>
+<td>Order number generated by FTP</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>state</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>SUCCESS—Reversal successful
+FAIL—Failed</td>
+</tr>
+<tr>
+<td>Random string</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="525-test-cases">5.2.5 Test Cases</h3>
+<p>Test cases are provided for convenient invocation</p>
+<p>Submitted data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;service&quot;:&quot;pay.globalpayment.card.present&quot;,
+    &quot;client_id&quot;:&quot;1001&quot;,
+    &quot;store_id&quot;:&quot;1001001&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181541020001&quot;,
+    &quot;order_no&quot;:&quot;612b4ab2775c4f1b9642a8269ce6e69e&quot;,
+    &quot;nonce_str&quot;:&quot;5mylxtfj&quot;,
+&quot;sign&quot;:&quot;448A938062F4CCAB8E494F1EFF6530A9&quot;,
+&quot;lang&quot;:&quot;en_US&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Successful response data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;order_no&quot;:&quot;7586bb6238424e27a66866d1bf746640&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181541020001&quot;,
+    &quot;state&quot;:&quot;SUCCESS&quot;,
+    &quot;sign&quot;:&quot;0C62E2BBFF3306C294310F92A58E8EDD&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="53-deduction-api">5.3 Deduction API</h2>
+<h3 id="531-business-function">5.3.1 Business Function</h3>
+<p>For card payments, after the merchant calls the Create Order API, the Deduction API must be called to complete the actual deduction operation. At this time, the amount in the card will be transferred to the platform.</p>
+<h3 id="532-interaction-mode">5.3.2 Interaction Mode</h3>
+<p>Request: Backend synchronous request mode</p>
+<p>Response: Backend synchronous request mode</p>
+<h3 id="533-request-parameters">5.3.3 Request Parameters</h3>
+<p>Request URL: https://api.fintechpaymenthub.com/openapi/v1/deductions</p>
+<p>POST JSON content body for request</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>API Type</td>
+<td>service</td>
+<td>Yes</td>
+<td>String(40)</td>
+<td>Fixed: pay.globalpayment.card.present</td>
+</tr>
+<tr>
+<td>Merchant client ID</td>
+<td>client_id</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Merchant client ID</td>
+</tr>
+<tr>
+<td>Store ID</td>
+<td>store_id</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Store ID</td>
+</tr>
+<tr>
+<td>FTP order no</td>
+<td>transaction_id</td>
+<td>Yes</td>
+<td>String(26)</td>
+<td>Order number generated by FTP</td>
+</tr>
+<tr>
+<td>Random string</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters, a different value must be passed for each submission</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>lang</td>
+<td>No</td>
+<td>String(32)</td>
+<td>Language</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="534-response-result">5.3.4 Response Result</h3>
+<p>Data is returned immediately in XML format</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Merchant order no</td>
+<td>order_no</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Order number generated by the merchant</td>
+</tr>
+<tr>
+<td>FTP order no</td>
+<td>transaction_id</td>
+<td>Yes</td>
+<td>String(26)</td>
+<td>Order number generated by FTP</td>
+</tr>
+<tr>
+<td>Submission Time</td>
+<td>submit_time</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Format is yyyyMMddhhmmss</td>
+</tr>
+<tr>
+<td>Payment Completion Time</td>
+<td>pay_finish_time</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Payment completion time, format is yyyyMMddhhmmss. For example, December 27, 2009 at 9:10:10 AM is represented as 20091227091010. Time zone is GMT+8 Beijing.</td>
+</tr>
+<tr>
+<td>Trade Status</td>
+<td>trade_state</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>SUCCESS—Payment successful
+REFUND—Refunded
+NOTPAY—Pending payment
+FAIL—Failed</td>
+</tr>
+<tr>
+<td>Random string</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="535-test-cases">5.3.5 Test Cases</h3>
+<p>Test cases are provided for convenient invocation</p>
+<p>Submitted data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;service&quot;:&quot;pay.globalpayment.card.present&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181606440001&quot;,
+    &quot;client_id&quot;:&quot;1001&quot;,
+    &quot;store_id&quot;:&quot;1001001&quot;,
+    &quot;nonce_str&quot;:&quot;6e9p0iy3&quot;,
+&quot;sign&quot;:&quot;D57E0E5BF6B6AA30DBB4E49BB67EA07D&quot;,
+&quot;lang&quot;:&quot;en_US&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Successful response data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;order_no&quot;:&quot;fc0eccc0831340a2afae70cfc2100b63&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181606440001&quot;,
+    &quot;submit_time&quot;:&quot;20201218160644&quot;,
+    &quot;pay_finish_time&quot;:&quot;20201218160657&quot;,
+    &quot;trade_state&quot;:&quot;SUCCESS&quot;,
+    &quot;sign&quot;:&quot;D0FF3E8C793F56EDB9C9C284C8EFF2F2&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="54-order-query-api">5.4 Order Query API</h2>
+<h3 id="541-business-function">5.4.1 Business Function</h3>
+<p>Query specific order information on the platform based on merchant order number or FTP order number.</p>
+<h3 id="542-interaction-mode">5.4.2 Interaction Mode</h3>
+<p>Backend system call interaction mode</p>
+<h3 id="543-request-parameters">5.4.3 Request Parameters</h3>
+<p>Request URL: https://api.fintechpaymenthub.com/openapi/v1/query
+POST JSON content body for request</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>API Type</td>
+<td>service</td>
+<td>Yes</td>
+<td>String(40)</td>
+<td>Fixed: pay.globalpayment.card.present</td>
+</tr>
+<tr>
+<td>Merchant client ID</td>
+<td>client_id</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Merchant client ID</td>
+</tr>
+<tr>
+<td>Store ID</td>
+<td>store_id</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Store ID</td>
+</tr>
+<tr>
+<td>Merchant order no</td>
+<td>order_no</td>
+<td>No</td>
+<td>String(32)</td>
+<td>Order number generated by the merchant</td>
+</tr>
+<tr>
+<td>FTP order no</td>
+<td>transaction_id</td>
+<td>No</td>
+<td>String(26)</td>
+<td>FTP order number, at least one of order_no and transaction_id is required; when both exist, transaction_id takes priority</td>
+</tr>
+<tr>
+<td>Random string</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>lang</td>
+<td>No</td>
+<td>String(32)</td>
+<td>Language</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="544-response-result">5.4.4 Response Result</h3>
+<p>Data is returned immediately in XML format</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>FTP order no</td>
+<td>transaction_id</td>
+<td>Yes</td>
+<td>String(26)</td>
+<td>Order number generated by FTP</td>
+</tr>
+<tr>
+<td>Merchant order no</td>
+<td>order_no</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Order number generated by the merchant</td>
+</tr>
+<tr>
+<td>Store ID</td>
+<td>store_id</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Store ID</td>
+</tr>
+<tr>
+<td>Submission Time</td>
+<td>submit_time</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Format is yyyyMMddhhmmss</td>
+</tr>
+<tr>
+<td>Trade Status</td>
+<td>trade_state</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>SUCCESS—Payment successful
+REFUND—Refunded
+NOTPAY—Pending payment
+FAIL—Failed</td>
+</tr>
+<tr>
+<td>Amount</td>
+<td>amount</td>
+<td>Yes</td>
+<td>Double</td>
+<td>This value cannot be negative</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>currency</td>
+<td>Yes</td>
+<td>String(3)</td>
+<td>3-digit ISO currency code, uppercase letters, CNY for Chinese Yuan.</td>
+</tr>
+<tr>
+<td>Card Type</td>
+<td>card_type</td>
+<td>Yes</td>
+<td>String(20)</td>
+<td>Card type
+VISA、MASTER、UNION_PAY</td>
+</tr>
+<tr>
+<td>Payer</td>
+<td>payer</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Payer</td>
+</tr>
+<tr>
+<td>Payment Completion Time</td>
+<td>pay_finish_time</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Payment completion time, format is yyyyMMddhhmmss. For example, December 27, 2009 at 9:10:10 AM is represented as 20091227091010. Time zone is GMT+8 Beijing.</td>
+</tr>
+<tr>
+<td>Product description</td>
+<td>body</td>
+<td>Yes</td>
+<td>String(127)</td>
+<td>Product description information</td>
+</tr>
+<tr>
+<td>Refund Amount</td>
+<td>refund_amount</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Refund amount</td>
+</tr>
+<tr>
+<td>Random string</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="545-test-cases">5.4.5 Test Cases</h3>
+<p>Test cases are provided for convenient invocation</p>
+<p>Submitted data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;service&quot;:&quot;pay.globalpayment.card.present&quot;,
+    &quot;order_no&quot;:&quot;&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181606440001&quot;,
+    &quot;client_id&quot;:&quot;1001&quot;,
+    &quot;store_id&quot;:&quot;1001001&quot;,
+    &quot;nonce_str&quot;:&quot;j4lu7w9z&quot;,
+&quot;sign&quot;:&quot;936D81CD4FC6E0B821597C5C558BFC11&quot;,
+&quot;lang&quot;:&quot;en_US&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Successful response data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181606440001&quot;,
+    &quot;order_no&quot;:&quot;fc0eccc0831340a2afae70cfc2100b63&quot;,
+    &quot;store_id&quot;:&quot;1001001&quot;,
+    &quot;submit_time&quot;:&quot;20201218160644&quot;,
+    &quot;trade_state&quot;:&quot;SUCCESS&quot;,
+    &quot;amount&quot;:102.21,
+    &quot;currency&quot;:&quot;USD&quot;,
+    &quot;pay_finish_time&quot;:&quot;20201218160657&quot;,
+    &quot;body&quot;:&quot;Multifunctional office chair&quot;,
+    &quot;refund_amount&quot;:0,
+    &quot;nonce_str&quot;:&quot;3yobej8f&quot;,
+    &quot;sign&quot;:&quot;7957C09B6BE3ED9E4AC439F342BF5BAD&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="6-error-codes">6 Error Codes</h1>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Error Code</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>MISSING_FIELD</td>
+<td>Field not passed</td>
+</tr>
+<tr>
+<td>INVALID_FIELD</td>
+<td>Field validation error</td>
+</tr>
+<tr>
+<td>NO_EXISTS</td>
+<td>Data does not exist</td>
+</tr>
+<tr>
+<td>OTHER</td>
+<td>Other error</td>
+</tr>
+<tr>
+<td>INVALID_SCOPE</td>
+<td>Data out of range</td>
+</tr>
+<tr>
+<td>INVALID_LENGTH</td>
+<td>Data length exceeds limit</td>
+</tr>
+<tr>
+<td>INCORRECT_SIGNATURE</td>
+<td>Invalid signature</td>
+</tr>
+<tr>
+<td>EXPIRED_ORDER</td>
+<td>Order has expired</td>
+</tr>
+<tr>
+<td>PAY_GATEWAY_FAIL</td>
+<td>Payment gateway exception</td>
+</tr>
+<tr>
+<td>UNKNOWN_ERROR</td>
+<td>Unknown error</td>
+</tr>
+<tr>
+<td>XML_FORMAT_ERROR</td>
+<td>XML format error</td>
+</tr>
+<tr>
+<td>REQUIRE_POST_METHOD</td>
+<td>Please use POST method</td>
+</tr>
+<tr>
+<td>ACCESS_DENIED</td>
+<td>Access denied</td>
+</tr>
+<tr>
+<td>POST_DATA_EMPTY</td>
+<td>POST data is empty</td>
+</tr>
+<tr>
+<td>NOT_UTF8</td>
+<td>Encoding format error</td>
+</tr>
+<tr>
+<td>ORDER_CLOSED</td>
+<td>Order is closed</td>
+</tr>
+<tr>
+<td>NO_AUTH</td>
+<td>Insufficient permissions</td>
+</tr>
+<tr>
+<td>LACK_PARAMS</td>
+<td>Missing parameters</td>
+</tr>
+<tr>
+<td>INVALID_STATUS</td>
+<td>Invalid status</td>
+</tr>
+<tr>
+<td>INVALID_SERVICE</td>
+<td>Invalid API type</td>
+</tr>
+<tr>
+<td>SN_IS_EXISTS</td>
+<td>Number already exists</td>
+</tr>
+<tr>
+<td>NOTIFY_FAIL</td>
+<td>Notification exception</td>
+</tr>
+<tr>
+<td>URL_FORMAT_ERROR</td>
+<td>URL format incorrect</td>
+</tr>
+<tr>
+<td>IP_FORMAT_ERROR</td>
+<td>IP format incorrect</td>
+</tr>
+<tr>
+<td>DATE_FORMAT_ERROR</td>
+<td>Date format incorrect</td>
+</tr>
+<tr>
+<td>TRADE_NOT_EXIST</td>
+<td>Transaction does not exist</td>
+</tr>
+<tr>
+<td>TRADE_HAS_SUCCESS</td>
+<td>Transaction has been paid</td>
+</tr>
+<tr>
+<td>TRADE_FAILED</td>
+<td>Transaction failed</td>
+</tr>
+<tr>
+<td>TRADE_TIMEOUT</td>
+<td>Transaction timeout</td>
+</tr>
+<tr>
+<td>INVALID_ORDER_STATUS</td>
+<td>Invalid order status</td>
+</tr>
+<tr>
+<td>REVERSE_FAILED</td>
+<td>Reverse authorization failed</td>
+</tr>
+<tr>
+<td>DEDUCTIONS_FAILED</td>
+<td>Deduction failed</td>
+</tr>
+<tr>
+<td>REFUND_FAILED</td>
+<td>Refund failed</td>
+</tr>
+<tr>
+<td>INVALID_CLIENT_ID</td>
+<td>Invalid client ID</td>
+</tr>
+<tr>
+<td>INVALID_STORE_ID</td>
+<td>Invalid store ID</td>
+</tr>
+<tr>
+<td>INVALID_AMOUNT</td>
+<td>Transaction amount incorrect</td>
+</tr>
+<tr>
+<td>INVALID_REFUND_FEE</td>
+<td>Refund amount incorrect</td>
+</tr>
+<tr>
+<td>VALID_FLOW_FAIL</td>
+<td>Request too frequent</td>
+</tr>
+<tr>
+<td>UNSUPPORTED_SERVICE</td>
+<td>Unsupported API type</td>
+</tr>
+<tr>
+<td>DATA_NOT_EXIST</td>
+<td>Queried data does not exist</td>
+</tr>
+<tr>
+<td>ACCOUNT_LOCKED</td>
+<td>Merchant or store account is locked</td>
+</tr>
+<tr>
+<td>AUTHORIZED_PENDING_REVIEW</td>
+<td>Authorization pending review</td>
+</tr>
+<tr>
+<td>DECLINED</td>
+<td>Processing declined</td>
+</tr>
+<tr>
+<td>INVALID_REQUEST</td>
+<td>Invalid request</td>
+</tr>
+<tr>
+<td>SERVER_ERROR</td>
+<td>Service error</td>
+</tr>
+<tr>
+<td>AUTHORIZED_RISK_DECLINED</td>
+<td>Risk authorization declined</td>
+</tr>
+<tr>
+<td>PENDING_AUTHENTICATION</td>
+<td>Authentication pending</td>
+</tr>
+<tr>
+<td>VOIDED</td>
+<td>Voided</td>
+</tr>
+<tr>
+<td>REJECTED</td>
+<td>Rejected</td>
+</tr>
+<tr>
+<td>AUTHENTICATION_FAILED</td>
+<td>Authentication failed</td>
+</tr>
+<tr>
+<td>PENDING_REVIEW</td>
+<td>Review pending</td>
+</tr>
+<tr>
+<td>CHALLENGE</td>
+<td>Risky transaction</td>
+</tr>
+<tr>
+<td>AVS_FAILED</td>
+<td>AVS check declined</td>
+</tr>
+<tr>
+<td>CONTACT_PROCESSOR</td>
+<td>Issuing bank has questions about the request</td>
+</tr>
+<tr>
+<td>EXPIRED_CARD</td>
+<td>Expired card</td>
+</tr>
+<tr>
+<td>PROCESSOR_DECLINED</td>
+<td>Issuing bank declined payment</td>
+</tr>
+<tr>
+<td>INSUFFICIENT_FUND</td>
+<td>Insufficient account funds</td>
+</tr>
+<tr>
+<td>STOLEN_LOST_CARD</td>
+<td>Card stolen or lost</td>
+</tr>
+<tr>
+<td>ISSUER_UNAVAILABLE</td>
+<td>Issuing bank unavailable</td>
+</tr>
+<tr>
+<td>UNAUTHORIZED_CARD</td>
+<td>Invalid card or unauthorized card-not-present transaction</td>
+</tr>
+<tr>
+<td>CVN_NOT_MATCH</td>
+<td>CVN does not match</td>
+</tr>
+<tr>
+<td>EXCEEDS_CREDIT_LIMIT</td>
+<td>Card has reached credit limit</td>
+</tr>
+<tr>
+<td>INVALID_CVN</td>
+<td>Invalid CVN</td>
+</tr>
+<tr>
+<td>DECLINED_CHECK</td>
+<td>Payment declined</td>
+</tr>
+<tr>
+<td>BLACKLISTED_CUSTOMER</td>
+<td>Order information mismatch</td>
+</tr>
+<tr>
+<td>SUSPENDED_ACCOUNT</td>
+<td>Account suspended</td>
+</tr>
+<tr>
+<td>PAYMENT_REFUSED</td>
+<td>Payment refused</td>
+</tr>
+<tr>
+<td>CV_FAILED</td>
+<td>CVN check declined</td>
+</tr>
+<tr>
+<td>INVALID_ACCOUNT</td>
+<td>Invalid account</td>
+</tr>
+<tr>
+<td>GENERAL_DECLINE</td>
+<td>General decline</td>
+</tr>
+<tr>
+<td>INVALID_MERCHANT_CONFIGURATION</td>
+<td>Merchant configuration error</td>
+</tr>
+<tr>
+<td>BOLETO_DECLINED</td>
+<td>Boleto request declined</td>
+</tr>
+<tr>
+<td>PROCESSOR_TIMEOUT</td>
+<td>Payment processing timeout</td>
+</tr>
+<tr>
+<td>DEBIT_CARD_USAGE_LIMIT_EXCEEDED</td>
+<td>Card usage limit exceeded</td>
+</tr>
+<tr>
+<td>SCORE_EXCEEDS_THRESHOLD</td>
+<td>Security check failed</td>
+</tr>
+<tr>
+<td>CONSUMER_AUTHENTICATION_REQUIRED</td>
+<td>Identity verification required</td>
+</tr>
+<tr>
+<td>CONSUMER_AUTHENTICATION_FAILED</td>
+<td>Payer authentication failed</td>
+</tr>
+<tr>
+<td>DECISION_PROFILE_REVIEW</td>
+<td>Card pending review</td>
+</tr>
+<tr>
+<td>DECISION_PROFILE_REJECT</td>
+<td>Card review rejected</td>
+</tr>
+<tr>
+<td>INVALID_DATA</td>
+<td>Invalid data</td>
+</tr>
+<tr>
+<td>DUPLICATE_REQUEST</td>
+<td>Duplicate request</td>
+</tr>
+<tr>
+<td>CARD_TYPE_NOT_ACCEPTED</td>
+<td>Card type not accepted</td>
+</tr>
+<tr>
+<td>PROCESSOR_UNAVAILABLE</td>
+<td>Bank failure</td>
+</tr>
+<tr>
+<td>INVALID_AMOUNT</td>
+<td>Transaction amount mismatch</td>
+</tr>
+<tr>
+<td>INVALID_CARD_TYPE</td>
+<td>Invalid card type</td>
+</tr>
+<tr>
+<td>SYSTEM_ERROR</td>
+<td>System error</td>
+</tr>
+<tr>
+<td>SERVER_TIMEOUT</td>
+<td>Service response timeout</td>
+</tr>
+<tr>
+<td>SERVICE_TIMEOUT</td>
+<td>Service response timeout</td>
+</tr>
+<tr>
+<td>INVALID_OR_MISSING_CONFIG</td>
+<td>Merchant configuration error</td>
+</tr>
+<tr>
+<td>EXCEEDS_AUTH_AMOUNT</td>
+<td>Amount incorrect</td>
+</tr>
+<tr>
+<td>AUTH_ALREADY_REVERSED</td>
+<td>Authorization already reversed</td>
+</tr>
+<tr>
+<td>TRANSACTION_ALREADY_SETTLED</td>
+<td>Transaction already settled</td>
+</tr>
+<tr>
+<td>INVALID_PAYMENT_ID</td>
+<td>Invalid request ID</td>
+</tr>
+<tr>
+<td>MISSING_AUTH</td>
+<td>Missing authorization</td>
+</tr>
+<tr>
+<td>TRANSACTION_ALREADY_REVERSED_OR_SETTLED</td>
+<td>Transaction already reversed or settled</td>
+</tr>
+<tr>
+<td>INVALID_CARD</td>
+<td>Invalid account</td>
+</tr>
+<tr>
+<td>CAPTURE_ALREADY_VOIDED</td>
+<td>Capture already voided</td>
+</tr>
+<tr>
+<td>ACCOUNT_NOT_ALLOWED_CREDIT</td>
+<td>Refund not allowed</td>
+</tr>
+<tr>
+<td>NOT_VOIDABLE</td>
+<td>Capture not voidable</td>
+</tr>
+<tr>
+<td>PENDING_AUTHENTICATION</td>
+<td>Cardholder authentication required</td>
+</tr>
+<tr>
+<td>AUTHENTICATION_FAILED</td>
+<td>Merchant authentication failed</td>
+</tr>
+<tr>
+<td>DECISION_PROFILE_CHALLENGE</td>
+<td>Risky transaction detected</td>
+</tr>
+<tr>
+<td>APARTMENT_NUMBER_NOT_FOUND</td>
+<td>Address information incorrect</td>
+</tr>
+<tr>
+<td>INSUFFICIENT_ADDRESS_INFORMATION</td>
+<td>Insufficient address information</td>
+</tr>
+<tr>
+<td>HOUSE_OR_BOX_NUMBER_NOT_FOUND</td>
+<td>House number or PO box incorrect</td>
+</tr>
+<tr>
+<td>MULTIPLE_ADDRESS_MATCHES</td>
+<td>Multiple address matches found</td>
+</tr>
+<tr>
+<td>BOX_NUMBER_NOT_FOUND</td>
+<td>PO information invalid</td>
+</tr>
+<tr>
+<td>ROUTE_SERVICE_NOT_FOUND</td>
+<td>Route service identifier invalid</td>
+</tr>
+<tr>
+<td>STREET_NAME_NOT_FOUND</td>
+<td>Postal code does not match street</td>
+</tr>
+<tr>
+<td>POSTAL_CODE_NOT_FOUND</td>
+<td>Postal code invalid</td>
+</tr>
+<tr>
+<td>UNVERIFIABLE_ADDRESS</td>
+<td>Address cannot be verified</td>
+</tr>
+<tr>
+<td>MULTIPLE_ADDRESS_MATCHES_INTERNATIONAL</td>
+<td>Multiple address situations found</td>
+</tr>
+<tr>
+<td>ADDRESS_MATCH_NOT_FOUND</td>
+<td>Address cannot be matched</td>
+</tr>
+<tr>
+<td>UNSUPPORTED_CHARACTER_SET</td>
+<td>Address verification service not supported</td>
+</tr>
+<tr>
+<td>CUSTOMER_WATCHLIST_MATCH</td>
+<td>Customer entity information restricted</td>
+</tr>
+<tr>
+<td>ADDRESS_COUNTRY_WATCHLIST_MATCH</td>
+<td>Order restricted</td>
+</tr>
+<tr>
+<td>EMAIL_COUNTRY_WATCHLIST_MATCH</td>
+<td>Email restricted</td>
+</tr>
+<tr>
+<td>IP_COUNTRY_WATCHLIST_MATCH</td>
+<td>IP restricted</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </main>
+
+    <nav class="toc-nav">
+<div class="toc-nav-title">On this page</div>
+<ul>
+  <li><a href="#11-document-overview" class="toc-h2">1.1 Document Overview</a></li>
+  <li><a href="#12-target-audience" class="toc-h2">1.2 Target Audience</a></li>
+  <li><a href="#21-business-implementation-process" class="toc-h2">2.1 Business Implementation Process</a></li>
+  <li><a href="#31-submit-data" class="toc-h2">3.1 Submit Data</a></li>
+  <li><a href="#32-response-data-format" class="toc-h2">3.2 Response Data Format</a></li>
+  <li><a href="#41-signature-original-string" class="toc-h2">4.1 Signature Original String</a></li>
+  <li><a href="#42-signature-algorithm" class="toc-h2">4.2 Signature Algorithm</a></li>
+  <li><a href="#43-request-headers" class="toc-h2">4.3 Request Headers</a></li>
+  <li><a href="#51-create-order-api" class="toc-h2">5.1 Create Order API</a></li>
+  <li><a href="#511-business-function" class="toc-h3">5.1.1 Business Function</a></li>
+  <li><a href="#512-interaction-mode" class="toc-h3">5.1.2 Interaction Mode</a></li>
+  <li><a href="#513-request-parameters" class="toc-h3">5.1.3 Request Parameters</a></li>
+  <li><a href="#514-response-result" class="toc-h3">5.1.4 Response Result</a></li>
+  <li><a href="#515-test-cases" class="toc-h3">5.1.5 Test Cases</a></li>
+  <li><a href="#52-reverse-authorization-api" class="toc-h2">5.2 Reverse Authorization API</a></li>
+  <li><a href="#521-business-function" class="toc-h3">5.2.1 Business Function</a></li>
+  <li><a href="#522-interaction-mode" class="toc-h3">5.2.2 Interaction Mode</a></li>
+  <li><a href="#523-request-parameters" class="toc-h3">5.2.3 Request Parameters</a></li>
+  <li><a href="#524-response-result" class="toc-h3">5.2.4 Response Result</a></li>
+  <li><a href="#525-test-cases" class="toc-h3">5.2.5 Test Cases</a></li>
+  <li><a href="#53-deduction-api" class="toc-h2">5.3 Deduction API</a></li>
+  <li><a href="#531-business-function" class="toc-h3">5.3.1 Business Function</a></li>
+  <li><a href="#532-interaction-mode" class="toc-h3">5.3.2 Interaction Mode</a></li>
+  <li><a href="#533-request-parameters" class="toc-h3">5.3.3 Request Parameters</a></li>
+  <li><a href="#534-response-result" class="toc-h3">5.3.4 Response Result</a></li>
+  <li><a href="#535-test-cases" class="toc-h3">5.3.5 Test Cases</a></li>
+  <li><a href="#54-order-query-api" class="toc-h2">5.4 Order Query API</a></li>
+  <li><a href="#541-business-function" class="toc-h3">5.4.1 Business Function</a></li>
+  <li><a href="#542-interaction-mode" class="toc-h3">5.4.2 Interaction Mode</a></li>
+  <li><a href="#543-request-parameters" class="toc-h3">5.4.3 Request Parameters</a></li>
+  <li><a href="#544-response-result" class="toc-h3">5.4.4 Response Result</a></li>
+  <li><a href="#545-test-cases" class="toc-h3">5.4.5 Test Cases</a></li>
+</ul>
+</nav>
+  </div>
+
+  <script src="../../../assets/js/main.js"></script>
+</body>
+</html>

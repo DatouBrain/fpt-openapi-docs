@@ -1,0 +1,2905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fintech Payment Online | Fintech Payment OpenAPI Docs</title>
+  <link rel="stylesheet" href="../../../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../../index.html" class="logo">
+        <span class="logo-icon">FP</span>
+        <span class="logo-text">Fintech Payment <span class="logo-sub">OpenAPI</span></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../../index.html">Home</a>
+        <a href="../../common/quick-start.html">Getting Started</a>
+        <a href="../../common/data-format.html">General Rules</a>
+        <a href="../../payments/card-online/global-payments-online.html">Product Docs</a>
+      </nav>
+      <div class="lang-switcher"><a href="../../../payments/card-online/fintech-payment-online.html" class="lang-zh">繁中</a><span class="lang-sep">/</span><span class="lang-current">EN</span></div>
+
+      
+      <button class="menu-toggle" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="sidebar">
+<div class="sidebar-group" data-group="common">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>General Rules</div>
+  <ul class="sidebar-links">
+    <li><a href="../../common/quick-start.html" class="sub-link">Quick Start</a></li>
+    <li><a href="../../common/endpoints.html" class="sub-link">API Endpoints</a></li>
+    <li><a href="../../common/data-format.html" class="sub-link">Data Format</a></li>
+    <li><a href="../../common/signature.html" class="sub-link">Digital Signature</a></li>
+    <li><a href="../../common/request-headers.html" class="sub-link">Request Headers</a></li>
+    <li><a href="../../common/error-codes.html" class="sub-link">Error Codes</a></li>
+    <li><a href="../../common/notification.html" class="sub-link">Payment Notification</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online (Card-not-present)</a></li>
+    <li><a href="../../payments/card-online/fintech-payment-online.html" class="sub-link active">Fintech Payment Online <span class="status-tag upcoming">Coming Soon</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="card-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../payments/card-offline/global-payments-offline.html" class="sub-link">Global Payments Offline (Physical Card) <span class="status-tag upcoming">Coming Soon</span></a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-online">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP Payment</a></li>
+    <li><a href="../../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB Payment</a></li>
+    <li><a href="../../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP Payment</a></li>
+    <li><a href="../../payments/qr-online/alipay-plus.html" class="sub-link">Alipay Plus+ Payment</a></li>
+    <li><a href="../../payments/qr-online/wechat-web.html" class="sub-link">Wechat WEB Payment</a></li>
+    <li><a href="../../payments/qr-online/wechat-wap.html" class="sub-link">Wechat WAP Payment</a></li>
+    <li><a href="../../payments/qr-online/wechat-miniprogram.html" class="sub-link">Wechat Mini Program Payment</a></li>
+    <li><a href="../../payments/qr-online/wechat-app.html" class="sub-link">Wechat APP Payment</a></li>
+    <li><a href="../../payments/qr-online/qr-code.html" class="sub-link">Dynamic QR Code Payment</a></li>
+  </ul>
+</div>
+<div class="sidebar-group" data-group="qr-offline">
+  <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Offline）</div>
+  <ul class="sidebar-links">
+    <li><a href="../../payments/qr-offline/barcode.html" class="sub-link">Barcode Payment</a></li>
+    </ul>
+</div>
+</aside>
+
+
+    <main class="main-content">
+      <h1 id="overview">Fintech Payment Online
+<span class="subtitle">Card Pay（Online）</span>
+<span class="status-badge upcoming">Coming Soon</span>
+</h1>
+<div class="page-meta">
+<span class="page-meta-item">Document Version: V1.0</span>
+<span class="page-meta-item">API Version: V1.0</span>
+</div>
+<div class="callout warning">
+<div class="callout-title">⚠️ Notice</div>
+This API is not yet available for use and is for reference only. Please contact platform support for the specific launch date.
+</div>
+<h1 id="card-payment">Card Payment</h1>
+<h2 id="fintech-payment-online-api-docs">Fintech Payment Online API Documentation</h2>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Date</th>
+<th>Version</th>
+<th>Changes</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>2025-12-19</td>
+<td>1.0</td>
+<td>Initial draft</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="1-introduction">1 Introduction</h1>
+<h2 id="11-document-overview">1.1 Document Overview</h2>
+<h2 id="12-target-audience">1.2 Target Audience</h2>
+<p>For reference by technical or business staff of merchant platform service providers.</p>
+<h1 id="2-solution-overview">2 Solution Overview</h1>
+<h2 id="21-business-implementation-flow">2.1 Business Implementation Flow</h2>
+<p>API call sequence:</p>
+<p>The Create Order API, Payment Notification API, and Order Query API all involve the signing process. All calls must be completed on the merchant server side.
+The sequence diagram is as follows:
+Create Order - Payment Flow</p>
+<div class="doc-image"><img src="../../../assets/images/fintech-payment-online_1.png" alt="Document image" loading="lazy"></div>
+<p>Create Order - Authorization Flow</p>
+<div class="doc-image"><img src="../../../assets/images/fintech-payment-online_2.png" alt="Document image" loading="lazy"></div>
+<p>Create Order - Checkout Flow</p>
+<div class="doc-image"><img src="../../../assets/images/fintech-payment-online_3.png" alt="Document image" loading="lazy"></div>
+<h1 id="3-data-format">3 Data Format</h1>
+<h2 id="31-submit-data">3.1 Submit Data</h2>
+<p>Uses the HTTPS standard POST protocol. To ensure the recipient receives data correctly, transmitted data must be signed.</p>
+<p>{</p>
+<p>&quot;service&quot;:&quot;pay.master.Fintech Payment.online&quot;,</p>
+<p>&quot;order_no&quot;:&quot;00f78e479fe74a11a73be0feb9999749&quot;,</p>
+<p>&quot;body&quot;:&quot;Test Fintech Payment Online Payment&quot;,</p>
+<p>&quot;amount&quot;:1.0,</p>
+<p>&quot;limit_credit_pay&quot;:&quot;0&quot;,</p>
+<p>&quot;callback_url&quot;:&quot;http://localhost/pay/result.html&quot;,</p>
+<p>&quot;notify_url&quot;:&quot;http://localhost/pay/notify&quot;,</p>
+<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
+<p>&quot;attach&quot;:&quot;&quot;,</p>
+<p>&quot;client_id&quot;:&quot;1002&quot;,</p>
+<p>&quot;store_id&quot;:&quot;1001002&quot;,</p>
+<p>&quot;nonce_str&quot;:&quot;ptf3tyjv&quot;,</p>
+<p>&quot;sign&quot;:&quot;64950ED7B13489114C671EFD24C45AC3&quot;,</p>
+<p>&quot;lang&quot;:&quot;en_US&quot;</p>
+<p>}</p>
+<h2 id="32-response-data-format">3.2 Response Data Format</h2>
+<p>Successful response:</p>
+<p>{</p>
+<p>&quot;message&quot;:&quot;SUCCESS&quot;,</p>
+<p>&quot;order_no&quot;:&quot;00f78e479fe74a11a73be0feb9999749&quot;,</p>
+<p>&quot;transaction_id&quot;:&quot;FTP202012181649370001&quot;,</p>
+<p>&quot;submit_time&quot;:&quot;20201218164937&quot;,</p>
+<p>&quot;nonce_str&quot;:&quot;o66w9pft&quot;,</p>
+<p>&quot;sign&quot;:&quot;3F6C05280C90E5BB1330524FD61C6121&quot;</p>
+<p>}</p>
+<p>Error response:</p>
+<p>{</p>
+<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
+<pre><span class="code-label">JSON</span><code class="language-json">&quot;errors&quot;:[</code></pre>
+<p>{</p>
+<p>&quot;field&quot;:&quot;mch_id&quot;,</p>
+<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
+<p>&quot;code&quot;:&quot;MISSING_FIELD&quot;</p>
+<p>}</p>
+<p>]</p>
+<p>}</p>
+<p>When message returns a value other than SUCCESS, it indicates an API call error.</p>
+<h1 id="4-digital-signature">4 Digital Signature</h1>
+<p>To ensure the authenticity and integrity of data during transmission, we need to digitally sign the data and perform signature verification after receiving the signed data.</p>
+<p>Digital signature involves two steps: first, assemble the raw string to be signed according to certain rules; then, select a specific algorithm and key to compute the signature result.</p>
+<h2 id="41-signature-raw-string">4.1 Signature Raw String</h2>
+<p>Whether for requests or responses, the signature raw string is assembled as follows:
+1. Except for the sign field, all parameters are sorted in ascending ASCII order by field name and concatenated in QueryString format (i.e., key1=value1&amp;key2=value2…). Empty values are not transmitted and do not participate in signature string assembly.
+2. In the signature raw string, field names and field values use their original values without URL encoding.</p>
+
+<p>3. The platform's response or notification messages may include additional parameters due to upgrades. Please allow for this when verifying response signatures.</p>
+<p>Example:</p>
+<p>Calling an API with the following fields:</p>
+<p>{</p>
+<p>&quot;client_id&quot;:&quot;1001&quot;,</p>
+<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
+<p>&quot;service&quot;:&quot;pay.master.Fintech Payment.online&quot;,</p>
+<p>&quot;order_no&quot;:&quot;Me08772e914454656bf26ec8996e35bb&quot;,</p>
+<p>&quot;amount&quot;:&quot;1&quot;,</p>
+<p>&quot;body&quot;:&quot;a chair&quot;,</p>
+<p>&quot;notify_url&quot;:&quot;2031&quot;,</p>
+<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
+<p>&quot;nonce_str&quot;:&quot;1409196838&quot;,</p>
+<p>&quot;sign&quot;:&quot;22C9835251DCF58BB70C78FA8D6448BD&quot;</p>
+<p>}</p>
+<p>The correct signature field sorting is:</p>
+<p>amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.master.Fintech Payment.online&amp;store_id=1001001</p>
+<h2 id="42-signature-algorithm">4.2 Signature Algorithm</h2>
+<p>MD5 Signature
+MD5 is a digest generation algorithm. By appending the merchant communication key to the signature raw string and performing MD5 computation, the resulting digest string is the signature result. For convenience of comparison, the signature result is uniformly converted to uppercase characters.</p>
+<p>Note: When converting the string to a byte stream during signing, the specified encoding character set should be consistent with the charset parameter.
+MD5 signature formula:
+sign = MD5 (raw string+&amp;key=merchant secret key). toUpperCase</p>
+<p>Assume the merchant secret key is: MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=</p>
+<p>For example:
+Assume the following JSON input parameters:
+i: After step a, the URL key-value pair dictionary-sorted string string1 is:
+amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.master.Fintech Payment.online&amp;store_id=1001001
+ii: After step b, the sign is:</p>
+<p>sign = md5(string1+&amp;key=merchant secret key).toUpperCase</p>
+<p>The actual encrypted string is:</p>
+<p>sign = md5(amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.master.Fintech Payment.online&amp;store_id=1001001&amp;key=MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=).toUpperCase</p>
+<p>The final signature obtained is: 7AE0CEACF55F20EAAE4390195AA77A92</p>
+<p>The sign and lang fields do not participate in API signature. The decryption rules for API response parameters follow the same logic.</p>
+<h2 id="43-request-headers">4.3 Request Headers</h2>
+<p>Request parameters:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Content Type</td>
+<td>Content-Type</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Value: application/json, request content type</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="5-api-description">5 API Description</h1>
+<h2 id="51-create-order-api">5.1 Create Order API</h2>
+<h3 id="511-business-function">5.1.1 Business Function</h3>
+<p>Initialize a create order request. This request can select different flows through different payment methods (such as direct payment, authorization, checkout payment).</p>
+<h3 id="512-interaction-mode">5.1.2 Interaction Mode</h3>
+<p>Request: Backend synchronous request mode</p>
+<p>Response + Notification: Backend request interaction mode + Backend notification interaction mode</p>
+<h3 id="513-request-parameters">5.1.3 Request Parameters</h3>
+<p>Request url: https://api.fintechpaymenthub.com/openapi/v1/pay</p>
+<p>Request the API via POST JSON body</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>API Type</td>
+<td>service</td>
+<td>Yes</td>
+<td>String(40)</td>
+<td>Select one of the following: pay.master.Fintech Payment.online (Mastercard payment)
+pay.visa.Fintech Payment.online (Visa payment)
+pay.unionpay.master.Fintech Payment.online (UnionPay payment)</td>
+</tr>
+<tr>
+<td>Merchant client ID</td>
+<td>client_id</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Merchant client ID</td>
+</tr>
+<tr>
+<td>Store ID</td>
+<td>store_id</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Store ID</td>
+</tr>
+<tr>
+<td>Merchant order no</td>
+<td>order_no</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Order number within the merchant system, up to 32 characters, may contain letters, ensure uniqueness within the merchant system</td>
+</tr>
+<tr>
+<td>Product description</td>
+<td>body</td>
+<td>Yes</td>
+<td>String(127)</td>
+<td>Product description information</td>
+</tr>
+<tr>
+<td>Amount</td>
+<td>amount</td>
+<td>Yes</td>
+<td>String(15)</td>
+<td>Total order amount (must be greater than 0), in units of currency.</td>
+</tr>
+<tr>
+<td>Notification URL</td>
+<td>notify_url</td>
+<td>Yes</td>
+<td>String(255)</td>
+<td>URL to receive platform notifications, must be an absolute path, within 255 characters, format: http://wap.tenpay.com/tenpay.asp, ensure the platform can access this address via the internet</td>
+</tr>
+<tr>
+<td>Terminal IP</td>
+<td>client_ip</td>
+<td>Yes</td>
+<td>String(16)</td>
+<td>IP of the machine where the order was generated</td>
+</tr>
+<tr>
+<td>Additional Info</td>
+<td>attach</td>
+<td>No</td>
+<td>String(127)</td>
+<td>Merchant additional information, can be used as an extended parameter</td>
+</tr>
+<tr>
+<td>Callback URL</td>
+<td>callback_url</td>
+<td>No</td>
+<td>String(255)</td>
+<td>Page to return to after transaction payment is completed, must be an absolute path, within 255 characters, ensure the platform can access this address via the internet</td>
+</tr>
+<tr>
+<td>Random string</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters, a different value must be passed for each submission</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>lang</td>
+<td>No</td>
+<td>String(32)</td>
+<td>Language</td>
+</tr>
+<tr>
+<td>Payment Type</td>
+<td>provide_type</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Payment type options [card: card payment]</td>
+</tr>
+<tr>
+<td>Transaction Type</td>
+<td>transaction_type</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Transaction type [card: payment, apm: authorization, checkout: checkout payment]</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>currency</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Currency</td>
+</tr>
+<tr>
+<td>Address</td>
+<td>shop_address</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Address (transaction source URL or store address)</td>
+</tr>
+<tr>
+<td>Address Line 1</td>
+<td>address1</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Address line 1</td>
+</tr>
+<tr>
+<td>Address Line 2</td>
+<td>address2</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Address line 2</td>
+</tr>
+<tr>
+<td>City</td>
+<td>city</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>City</td>
+</tr>
+<tr>
+<td>State</td>
+<td>state</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>State</td>
+</tr>
+<tr>
+<td>Zip Code</td>
+<td>zip_code</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Zip code</td>
+</tr>
+<tr>
+<td>Country</td>
+<td>country</td>
+<td>Yes</td>
+<td>String(3)</td>
+<td>Country (refer to supplementary code)</td>
+</tr>
+<tr>
+<td>First Name</td>
+<td>first_name</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>First name</td>
+</tr>
+<tr>
+<td>Last Name</td>
+<td>last_name</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Last name</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>phone</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Phone</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>email</td>
+<td>Yes</td>
+<td>String(128)</td>
+<td>Email</td>
+</tr>
+<tr>
+<td>Card Number</td>
+<td>pan</td>
+<td>No</td>
+<td>String(20)</td>
+<td>Card number, required when transaction_type is card or apm</td>
+</tr>
+<tr>
+<td>cvv</td>
+<td>cvv</td>
+<td>No</td>
+<td>String(4)</td>
+<td>cvv, required when transaction_type is card or apm</td>
+</tr>
+<tr>
+<td>Expiry Year</td>
+<td>expiry_year</td>
+<td>No</td>
+<td>String(4)</td>
+<td>Card expiry year (e.g., 2026), required when transaction_type is card or apm</td>
+</tr>
+<tr>
+<td>Expiry Month</td>
+<td>expiry_month</td>
+<td>No</td>
+<td>String(2)</td>
+<td>Card expiry month (e.g., 12), required when transaction_type is card or apm</td>
+</tr>
+<tr>
+<td>Product Info</td>
+<td>items</td>
+<td>Yes</td>
+<td>List</td>
+<td>Product information</td>
+</tr>
+<tr>
+<td>Product Name</td>
+<td>items.description</td>
+<td>Yes</td>
+<td>String(255)</td>
+<td>Product name</td>
+</tr>
+<tr>
+<td>Product Quantity</td>
+<td>items.quantity</td>
+<td>Yes</td>
+<td>String(9)</td>
+<td>Product quantity</td>
+</tr>
+<tr>
+<td>Product Unit Price</td>
+<td>items.unit_price</td>
+<td>Yes</td>
+<td>String(9)</td>
+<td>Product unit price</td>
+</tr>
+<tr>
+<td>Payment Method</td>
+<td>payment_method</td>
+<td>No</td>
+<td>String(32)</td>
+<td>Payment method, required when transaction_type is apm</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="514-response">5.1.4 Response</h3>
+<p>Data is returned immediately in JSON format</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Merchant order no</td>
+<td>order_no</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Order number generated by the merchant</td>
+</tr>
+<tr>
+<td>FTP order no</td>
+<td>transaction_id</td>
+<td>Yes</td>
+<td>String(26)</td>
+<td>Order number generated by FTP</td>
+</tr>
+<tr>
+<td>Submit time</td>
+<td>submit_time</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Format: yyyyMMddhhmmss</td>
+</tr>
+<tr>
+<td>Payment URL</td>
+<td>payUrl</td>
+<td>No</td>
+<td>String</td>
+<td>Payment URL, if it is a checkout type payment, the corresponding payment URL will be returned</td>
+</tr>
+<tr>
+<td>Result message</td>
+<td>message</td>
+<td>Yes</td>
+<td>String(500)</td>
+<td>Describes the query result, SUCCESS indicates success, otherwise returns other error messages</td>
+</tr>
+<tr>
+<td>Random string</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="515-test-cases">5.1.5 Test Cases</h3>
+<p>Test cases are provided for easy invocation</p>
+<p>Submitted data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;client_id&quot;: &quot;16324774461291xz&quot;,
+    &quot;store_id&quot;: &quot;HKG-5999-001-001-13579111-001&quot;,
+    &quot;order_no&quot;: &quot;TALWAPO2025121925542412&quot;,
+    &quot;body&quot;: &quot;Fintech Payment payment test product&quot;,
+    &quot;amount&quot;: &quot;6&quot;,
+    &quot;payment_inst&quot;: &quot;ALIPAYHK&quot;,
+    &quot;order_type&quot;: &quot;CAT&quot;,
+    &quot;service&quot;: &quot;pay.master.Fintech Payment.online&quot;,
+    &quot;notify_url&quot;: &quot;https://ftpdev.doocom.cn/pay-demo/alipay-web-notify/notify&quot;,
+    &quot;ip_address&quot;: &quot;61.144.175.64&quot;,
+    &quot;nonce_str&quot;: &quot;3A9C3422630DEDE155740EBD769DAE26&quot;,
+    &quot;sign&quot;: &quot;A7DE93C04BB1AE0A50ACA76DA13DFAD5&quot;,
+    &quot;provide_type&quot;: &quot;card&quot;,
+    &quot;transaction_type&quot;: &quot;apm&quot;,
+    &quot;currency&quot;: &quot;USD&quot;,
+    &quot;shop_address&quot;: &quot;www.test.com&quot;,
+    &quot;address1&quot;: &quot;123 Main Street&quot;,
+    &quot;address2&quot;: &quot;Suite 300&quot;,
+    &quot;city&quot;: &quot;HK&quot;,
+    &quot;state&quot;: &quot;HKG&quot;,
+    &quot;zip_code&quot; : &quot;200111&quot;,
+    &quot;country&quot;: &quot;HKG&quot;,
+    &quot;first_name&quot;: &quot;murphy&quot;,
+    &quot;last_name&quot;: &quot;loren&quot;,
+    &quot;phone&quot;: &quot;8615621531201&quot;,
+    &quot;email&quot;: &quot;21345@qq.com&quot;,
+    &quot;attach&quot;: &quot;test&quot;,
+    &quot;pan&quot;: &quot;5346930100125624&quot;,
+    &quot;cvv&quot;: &quot;123&quot;,
+    &quot;expiry_year&quot;: &quot;2026&quot;,
+    &quot;expiry_month&quot;: &quot;12&quot;,
+    &quot;items&quot;: [
+        {
+            &quot;description&quot;: &quot;Mint (piece)&quot;,
+            &quot;quantity&quot;: &quot;1&quot;,
+            &quot;unit_price&quot;: &quot;6&quot;
+        }
+    ]
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Successful response data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;: &quot;SUCCESS&quot;,
+    &quot;pay_url&quot;: &quot;https://oper.next-apis.com/service-openApi/hosted/checkout/v4/uY099tP5MjAyNTEyMTkyMDAxOTU1NDk5MzExMTQ5MDU2hQR6n797&quot;,
+    &quot;order_no&quot;: &quot;TALWAPO20251219255424570&quot;,
+    &quot;transaction_id&quot;: &quot;FTP202512191759200001&quot;,
+    &quot;nonce_str&quot;: &quot;04iilufm&quot;,
+    &quot;sign&quot;: &quot;E7FA9D92C6CDE96FB3972A8F791721D0&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="52-order-query-api">5.2 Order Query API</h2>
+<h3 id="521-business-function">5.2.1 Business Function</h3>
+<p>Query specific order information on the platform based on merchant order number or FTP order number.</p>
+<h3 id="522-interaction-mode">5.2.2 Interaction Mode</h3>
+<p>Backend system call interaction mode</p>
+<h3 id="523-request-parameters">5.2.3 Request Parameters</h3>
+<p>Request url: https://api.fintechpaymenthub.com/openapi/v1/query
+Request via POST JSON body</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>API Type</td>
+<td>service</td>
+<td>Yes</td>
+<td>String(40)</td>
+<td>Select one of the following: pay.master.Fintech Payment.online (Mastercard payment)
+pay.visa.Fintech Payment.online (Visa payment)
+pay.unionpay.master.Fintech Payment.online (UnionPay payment)</td>
+</tr>
+<tr>
+<td>Merchant client ID</td>
+<td>client_id</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Merchant client ID</td>
+</tr>
+<tr>
+<td>Store ID</td>
+<td>store_id</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Store ID</td>
+</tr>
+<tr>
+<td>Merchant order no</td>
+<td>order_no</td>
+<td>No</td>
+<td>String(32)</td>
+<td>Order number generated by the merchant (order_no and transaction_id: at least one is required; when both are present, transaction_id takes priority)</td>
+</tr>
+<tr>
+<td>FTP order no</td>
+<td>transaction_id</td>
+<td>No</td>
+<td>String(26)</td>
+<td>FTP order number (order_no and transaction_id: at least one is required; when both are present, transaction_id takes priority)</td>
+</tr>
+<tr>
+<td>Random string</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>lang</td>
+<td>No</td>
+<td>String(32)</td>
+<td>Language</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="524-response">5.2.4 Response</h3>
+<p>Data is returned immediately in JSON format</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>FTP order no</td>
+<td>transaction_id</td>
+<td>Yes</td>
+<td>String(26)</td>
+<td>Order number generated by FTP</td>
+</tr>
+<tr>
+<td>Merchant order no</td>
+<td>order_no</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Order number generated by the merchant</td>
+</tr>
+<tr>
+<td>Store ID</td>
+<td>store_id</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Store ID</td>
+</tr>
+<tr>
+<td>Submit time</td>
+<td>submit_time</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Format: yyyyMMddhhmmss</td>
+</tr>
+<tr>
+<td>Trade state</td>
+<td>trade_state</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>SUCCESS—Payment successful
+NOTPAY—Pending payment
+PROCESSING—Processing
+REFUND—Refund
+CANCEL—Closed
+FAIL—Failed</td>
+</tr>
+<tr>
+<td>Amount</td>
+<td>amount</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Total order amount (must be greater than 0), in units of currency. For example, if the total order amount is 1, amount is 1.</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>currency</td>
+<td>Yes</td>
+<td>String(3)</td>
+<td>3-character ISO currency code, uppercase letters, CNY for RMB.</td>
+</tr>
+<tr>
+<td>Payer</td>
+<td>payer</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Payer</td>
+</tr>
+<tr>
+<td>Payment completion time</td>
+<td>pay_finish_time</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Payment completion time, format: yyyyMMddhhmmss, for example, 9:10:10 on December 27, 2009 is represented as 20091227091010. Timezone is GMT+8 Beijing.</td>
+</tr>
+<tr>
+<td>Product description</td>
+<td>body</td>
+<td>Yes</td>
+<td>String(127)</td>
+<td>Product description information</td>
+</tr>
+<tr>
+<td>Refund amount</td>
+<td>refund_amount</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Refund amount, in units of currency. For example, if the total order amount is 1, amount is 1.</td>
+</tr>
+<tr>
+<td>Third-party Merchant ID</td>
+<td>out_transaction_id</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Transaction number corresponding to the transaction record bill details in WeChat</td>
+</tr>
+<tr>
+<td>Additional Info</td>
+<td>attach</td>
+<td>No</td>
+<td>String(127)</td>
+<td>Merchant data package, returned as-is</td>
+</tr>
+<tr>
+<td>Result message</td>
+<td>message</td>
+<td>Yes</td>
+<td>String(500)</td>
+<td>Describes the query result, SUCCESS indicates success, otherwise returns other error messages</td>
+</tr>
+<tr>
+<td>Random string</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="525-test-cases">5.2.5 Test Cases</h3>
+<p>Test cases are provided for easy invocation</p>
+<p>Submitted data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;service&quot;:&quot;pay.master.Fintech Payment.online&quot;,
+    &quot;order_no&quot;:&quot;&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181649370001&quot;,
+    &quot;client_id&quot;:&quot;1002&quot;,
+    &quot;store_id&quot;:&quot;1001002&quot;,
+    &quot;nonce_str&quot;:&quot;ha2n1pje&quot;,
+&quot;sign&quot;:&quot;955BEFA725040AA893CA2F852AD09B71&quot;,
+&quot;lang&quot;:&quot;en_US&quot;
+
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Successful response data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181649370001&quot;,
+    &quot;order_no&quot;:&quot;00f78e479fe74a11a73be0feb9999749&quot;,
+    &quot;store_id&quot;:&quot;1001002&quot;,
+    &quot;submit_time&quot;:&quot;20201218164937&quot;,
+    &quot;trade_state&quot;:&quot;SUCCESS&quot;,
+    &quot;amount&quot;:1,
+    &quot;currency&quot;:&quot;HKD&quot;,
+    &quot;payer&quot;:&quot;oAOWGsyf4fjHHMzS_wAzfEzGoyWQ&quot;,
+    &quot;pay_finish_time&quot;:&quot;20201110111036&quot;,
+    &quot;body&quot;:&quot;Test Fintech Payment online payment&quot;,
+    &quot;refund_amount&quot;:0,
+    &quot;nonce_str&quot;:&quot;dccxwj0e&quot;,
+    &quot;sign&quot;:&quot;2E4F0838DE0110BB54B67EDAF4B65213&quot;,
+    &quot;out_transaction_id&quot;:&quot;127500000158202011109001661238&quot;,
+    &quot;attach&quot;:&quot;sid=1&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="53-refund-api">5.3 Refund API</h2>
+<h3 id="531-business-function">5.3.1 Business Function</h3>
+<p>The merchant initiates a refund for a successfully paid order, and the operation result is returned synchronously in the same session.</p>
+<p>I. Refund Method</p>
+<p>Currently, only original path return refunds are supported.</p>
+<p>Note: Refunds to bank cards are not instant; each bank has different processing speeds, and generally, refunds arrive within 1-3 business days after initiation. The total refund amount cannot exceed the user's actual payment amount (cash voucher amounts cannot be refunded).</p>
+<p>II. Refund Restrictions</p>
+<p>Merchants should pay attention to refund restrictions when performing refund operations to avoid initiating refund requests that will not succeed. The main refund restrictions are:</p>
+<p>1. The refund application number is generated by the merchant, so the merchant must ensure the uniqueness of the refund application number. During the refund process, merchants should pay special attention: only when a refund failure can be confirmed should another refund be initiated.</p>
+<p>2. Currently, most banks support full refunds and partial refunds, but a few banks do not support full or partial refunds, or do not support refunds at all. In such cases, merchants can coordinate with the buyer.</p>
+<h3 id="532-interaction-mode">5.3.2 Interaction Mode</h3>
+<p>Backend system call interaction mode</p>
+<h3 id="533-request-parameters">5.3.3 Request Parameters</h3>
+<p>Request url: https://api.fintechpaymenthub.com/openapi/v1/refund
+Request via POST JSON body</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>API Type</td>
+<td>service</td>
+<td>Yes</td>
+<td>String(40)</td>
+<td>Select one of the following: pay.master.Fintech Payment.online (Mastercard payment)
+pay.visa.Fintech Payment.online (Visa payment)
+pay.unionpay.master.Fintech Payment.online (UnionPay payment)</td>
+</tr>
+<tr>
+<td>Merchant client ID</td>
+<td>client_id</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Merchant client ID</td>
+</tr>
+<tr>
+<td>Store ID</td>
+<td>store_id</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Store ID</td>
+</tr>
+<tr>
+<td>Merchant order no</td>
+<td>order_no</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Original order number generated by the merchant</td>
+</tr>
+<tr>
+<td>FTP order no</td>
+<td>transaction_id</td>
+<td>Yes</td>
+<td>String(26)</td>
+<td>Original order number generated by FTP</td>
+</tr>
+<tr>
+<td>Merchant refund no</td>
+<td>out_refund_no</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Merchant refund number, up to 32 characters, may contain letters, ensure uniqueness within the merchant system. Multiple requests with the same refund number are treated as a single order by the platform, and only one refund will be processed. If a refund is unsuccessful, please re-initiate using the original refund number to avoid duplicate refunds.</td>
+</tr>
+<tr>
+<td>Remarks</td>
+<td>remarks</td>
+<td>No</td>
+<td>String(255)</td>
+<td>Refund remarks</td>
+</tr>
+<tr>
+<td>Refund amount</td>
+<td>refund_fee</td>
+<td>Yes</td>
+<td>String(15)</td>
+<td>Total refund amount, in units of currency, partial refunds are allowed</td>
+</tr>
+<tr>
+<td>Random string</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>lang</td>
+<td>No</td>
+<td>String(32)</td>
+<td>Language</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="534-response">5.3.4 Response</h3>
+<p>Data is returned immediately in JSON format</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>FTP order no</td>
+<td>transaction_id</td>
+<td>Yes</td>
+<td>String(26)</td>
+<td>Order number generated by FTP</td>
+</tr>
+<tr>
+<td>Merchant order no</td>
+<td>order_no</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Order number generated by the merchant</td>
+</tr>
+<tr>
+<td>Merchant refund no</td>
+<td>out_refund_no</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Merchant refund number, up to 32 characters, may contain letters, ensure uniqueness within the merchant system. Multiple requests with the same refund number are treated as a single order by the platform, and only one refund will be processed. If a refund is unsuccessful, please re-initiate using the original refund number to avoid duplicate refunds.</td>
+</tr>
+<tr>
+<td>Submit time</td>
+<td>submit_time</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Format: yyyyMMddhhmmss</td>
+</tr>
+<tr>
+<td>Order amount</td>
+<td>amount</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Order amount, in units of currency</td>
+</tr>
+<tr>
+<td>Refund amount</td>
+<td>refund_amount</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Refund amount, in units of currency</td>
+</tr>
+<tr>
+<td>Result message</td>
+<td>message</td>
+<td>Yes</td>
+<td>String(500)</td>
+<td>Describes the query result, SUCCESS indicates success, otherwise returns other error messages</td>
+</tr>
+<tr>
+<td>Random string</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="535-test-cases">5.3.5 Test Cases</h3>
+<p>Test cases are provided for easy invocation</p>
+<p>Submitted data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;client_id&quot;: &quot;16324774461291xz&quot;,
+    &quot;store_id&quot;: &quot;HKG-5999-001-001-13579111-001&quot;,
+    &quot;order_no&quot;: &quot;TALWAPO20251219255424570&quot;,
+    &quot;out_refund_no&quot;: &quot;TALWAPR20251219180649751&quot;,
+    &quot;remarks&quot;: &quot;Fintech Payment Online refund test&quot;,
+    &quot;refund_fee&quot;: &quot;6&quot;,
+    &quot;service&quot;: &quot;pay.master.Fintech Payment.online&quot;,
+    &quot;nonce_str&quot;: &quot;F2ABD3CE886BA93395ACE9AB0F4603F0&quot;,
+    &quot;sign&quot;: &quot;CB4B66A8F65EB656CFC7D2386F8A5A22&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Successful response data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;order_no&quot;:&quot;00f78e479fe74a11a73be0feb9999749&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181649370001&quot;,
+    &quot;out_refund_no&quot;:&quot;T1608281521535&quot;,
+    &quot;submit_time&quot;:&quot;20201218165201&quot;,
+    &quot;amount&quot;:1,
+    &quot;refund_amount&quot;:1,
+    &quot;nonce_str&quot;:&quot;t2uycm0j&quot;,
+&quot;sign&quot;:&quot;D41D8CD98F00B204E9800998ECF8427E&quot;,
+&quot;lang&quot;:&quot;en_US&quot;
+
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="54-refund-query-api">5.4 Refund Query API</h2>
+<h3 id="541-business-function">5.4.1 Business Function</h3>
+<p>After submitting a refund application, query the refund status by calling this API.</p>
+<h3 id="542-interaction-mode">5.4.2 Interaction Mode</h3>
+<p>Backend system call interaction mode</p>
+<h3 id="543-request-parameters">5.4.3 Request Parameters</h3>
+<p>Request url: https://api.fintechpaymenthub.com/openapi/v1/refundQuery
+Request via POST JSON body</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>API Type</td>
+<td>service</td>
+<td>Yes</td>
+<td>String(40)</td>
+<td>Select one of the following: pay.master.Fintech Payment.online (Mastercard payment)
+pay.visa.Fintech Payment.online (Visa payment)
+pay.unionpay.master.Fintech Payment.online (UnionPay payment)</td>
+</tr>
+<tr>
+<td>Merchant client ID</td>
+<td>client_id</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Merchant client ID</td>
+</tr>
+<tr>
+<td>Store ID</td>
+<td>store_id</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Store ID</td>
+</tr>
+<tr>
+<td>Merchant order no</td>
+<td>order_no</td>
+<td>No</td>
+<td>String(32)</td>
+<td>Merchant order number returned by the refund, also the merchant order number of the order</td>
+</tr>
+<tr>
+<td>FTP order no</td>
+<td>transaction_id</td>
+<td>No</td>
+<td>String(26)</td>
+<td>FTP order number returned by the refund</td>
+</tr>
+<tr>
+<td>Merchant refund no</td>
+<td>out_refund_no</td>
+<td>No</td>
+<td>String(32)</td>
+<td>Refund number generated by the merchant</td>
+</tr>
+<tr>
+<td>Third-party refund no</td>
+<td>to_order_sn</td>
+<td>No</td>
+<td>String(255)</td>
+<td>Third-party refund number, if both exist, priority is: to_order_sn &gt; out_refund_no &gt; transaction_id &gt; order_no</td>
+</tr>
+<tr>
+<td>Random string</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>lang</td>
+<td>No</td>
+<td>String(32)</td>
+<td>Language</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="544-response">5.4.4 Response</h3>
+<p>Data is returned immediately in JSON format</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>FTP order no</td>
+<td>transaction_id</td>
+<td>Yes</td>
+<td>String(26)</td>
+<td>FTP order number corresponding to the order</td>
+</tr>
+<tr>
+<td>Merchant order no</td>
+<td>order_no</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Merchant order number corresponding to the order</td>
+</tr>
+<tr>
+<td>Refund amount</td>
+<td>total_fee</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Total refund amount, in units of currency</td>
+</tr>
+<tr>
+<td>Refund count</td>
+<td>refund_count</td>
+<td>Yes</td>
+<td>Int</td>
+<td>Number of refund records</td>
+</tr>
+<tr>
+<td>Merchant refund no</td>
+<td>out_refund_no_n</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Merchant refund number, up to 32 characters, may contain letters, ensure uniqueness within the merchant system. Multiple requests with the same refund number are treated as a single order by the platform, and only one refund will be processed. If a refund is unsuccessful, please re-initiate using the original refund number to avoid duplicate refunds.
+First refund return field: out_refund_no_1,
+Second refund return field: out_refund_no_2,
+and so on.</td>
+</tr>
+<tr>
+<td>FTP refund no</td>
+<td>refund_id_n</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>FTP refund number</td>
+</tr>
+<tr>
+<td>Third-party refund no</td>
+<td>to_order_sn_n</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Third-party refund number</td>
+</tr>
+<tr>
+<td>Refund amount</td>
+<td>refund_amount_n</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Refund amount, in units of currency</td>
+</tr>
+<tr>
+<td>Refund time</td>
+<td>refund_time_n</td>
+<td>Yes</td>
+<td>String(14)</td>
+<td>yyyyMMddHHmmss</td>
+</tr>
+<tr>
+<td>Refund status</td>
+<td>refund_status_n</td>
+<td>Yes</td>
+<td>String(16)</td>
+<td>Refund status:
+SUCCESS—Refund successful
+FAIL—Refund failed
+PROCESSING—Refund processing
+NOTSURE—Undetermined, requires merchant to re-initiate with original refund number CHANGE—Transferred to disbursement, refund to bank failed because user's bank account is invalid or frozen, causing original path refund to bank card to fail, funds flow back to merchant's cash account, requires merchant manual intervention, refund through offline or platform transfer.</td>
+</tr>
+<tr>
+<td>Result message</td>
+<td>message</td>
+<td>Yes</td>
+<td>String(500)</td>
+<td>Describes the query result, SUCCESS indicates success, otherwise returns other error messages</td>
+</tr>
+<tr>
+<td>Random string</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="545-test-cases">5.4.5 Test Cases</h3>
+<p>Test cases are provided for easy invocation</p>
+<p>Submitted data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;service&quot;:&quot;pay.master.Fintech Payment.online&quot;,
+    &quot;client_id&quot;:&quot;1001&quot;,
+    &quot;store_id&quot;:&quot;1001001&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181649370001&quot;,
+    &quot;order_no&quot;:&quot;&quot;,
+    &quot;out_refund_no&quot;:&quot;&quot;,
+    &quot;to_order_sn&quot;:&quot;&quot;,
+    &quot;nonce_str&quot;:&quot;bhdswd00&quot;,
+    &quot;sign&quot;:&quot;EDD59501B4E5FA849E352E23668480C4&quot;,
+    &quot;callback_url&quot;:&quot;http://localhost/pay/result.html&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Successful response data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+    &quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181624320001&quot;,
+    &quot;order_no&quot;:&quot;TALWEBO20210514114611632&quot;,
+    &quot;total_fee&quot;:1,
+    &quot;refund_count&quot;:1,
+    &quot;nonce_str&quot;:&quot;401n5buh&quot;,
+    &quot;out_refund_no_1&quot;:&quot;T9802e9e18ff340548357bfba730d407&quot;,
+    &quot;refund_id_1&quot;:&quot;FTP202105141152540001&quot;,
+    &quot;refund_amount_1&quot;:1,
+    &quot;to_order_sn_1&quot;:&quot;121500000214202105141132335702&quot;,
+    &quot;refund_time_1&quot;:&quot;20210514115254&quot;,
+    &quot;refund_status_1&quot;:&quot;SUCCESS&quot;,
+&quot;sign&quot;:&quot;7A5CA8D8BD0F4E9F78641F9433FD3A4D&quot;,
+&quot;lang&quot;:&quot;en_US&quot;
+
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="55-payment-notification-api">5.5 Payment Notification API</h2>
+<h3 id="551-business-function">5.5.1 Business Function</h3>
+<p>After payment is completed, the system will notify relevant data to the notify_url filled in during order creation. The notification URL is the notify_url parameter submitted in the payment API. After payment is completed, the platform will send relevant payment and user information to this URL.</p>
+<p>Merchants need to receive and process the information.</p>
+<p>For backend notification interaction, if the platform does not receive a pure string "success" response from the merchant or if the response is returned after more than 5 seconds, the platform considers the notification failed. The platform will intermittently re-initiate notifications through a certain strategy (notification frequency is 0/15/15/30/180/1800/1800/1800/1800/3600, unit: seconds) to improve the success rate of notifications as much as possible, but does not guarantee that the notification will ultimately succeed.</p>
+<p>Since there are cases of resending backend notifications, the same notification may be sent to the merchant system multiple times. The merchant system must be able to correctly handle duplicate notifications.</p>
+<p>The recommended approach is, when receiving a notification for processing, to first check the status of the corresponding business data to determine whether the notification has already been processed. If it has not been processed, proceed with processing; if it has been processed, return a success result directly. Before performing status checks and processing on business data, use data locks for concurrency control to avoid data confusion caused by function re-entry.</p>
+<p>Special note: After the merchant backend receives the notification parameters, it must verify the order number order_no and order amount amount in the received notification parameters against the orders and amounts in its own business system. Only after verification of consistency should the database order status be updated. Backend notifications are performed via the notify_url in the request, returning data stream via POST method. The specific information is an XML format string (merchants should pay attention to this when processing).</p>
+<h3 id="552-interaction-mode">5.5.2 Interaction Mode</h3>
+<p>Backend notification mode</p>
+<h3 id="553-response-parameters">5.5.3 Response Parameters</h3>
+<p>Data is returned immediately in JSON format</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field</th>
+<th>Variable</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>FTP order no</td>
+<td>transaction_id</td>
+<td>Yes</td>
+<td>String(26)</td>
+<td>Order number generated by FTP</td>
+</tr>
+<tr>
+<td>Merchant order no</td>
+<td>order_no</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Order number generated by the merchant</td>
+</tr>
+<tr>
+<td>Third-party Merchant ID</td>
+<td>out_transaction_id</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Transaction number corresponding to the transaction record bill details in WeChat</td>
+</tr>
+<tr>
+<td>Store ID</td>
+<td>store_id</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Store ID</td>
+</tr>
+<tr>
+<td>Submit time</td>
+<td>submit_time</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Format: yyyyMMddhhmmss</td>
+</tr>
+<tr>
+<td>Trade state</td>
+<td>trade_state</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>SUCCESS—Payment successful
+PROCESSING—Processing
+CANCEL—Closed
+FAIL—Failed</td>
+</tr>
+<tr>
+<td>Order amount</td>
+<td>amount</td>
+<td>Yes</td>
+<td>Double</td>
+<td>Total order amount (must be greater than 0), in units of currency. For example, if the total order amount is 1, amount is 1.</td>
+</tr>
+<tr>
+<td>Order currency</td>
+<td>currency</td>
+<td>Yes</td>
+<td>String(3)</td>
+<td>3-character ISO currency code, uppercase letters, CNY for RMB.</td>
+</tr>
+<tr>
+<td>Payer</td>
+<td>payer</td>
+<td>Yes</td>
+<td>String(50)</td>
+<td>Payer</td>
+</tr>
+<tr>
+<td>Payment completion time</td>
+<td>pay_finish_time</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Payment completion time, format: yyyyMMddhhmmss, for example, 9:10:10 on December 27, 2009 is represented as 20091227091010. Timezone is GMT+8 Beijing.</td>
+</tr>
+<tr>
+<td>Additional Info</td>
+<td>attach</td>
+<td>No</td>
+<td>String(127)</td>
+<td>Merchant data package, returned as-is</td>
+</tr>
+<tr>
+<td>Transaction Type</td>
+<td>trade_type</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Fixed: pay.master.Fintech Payment.online</td>
+</tr>
+<tr>
+<td>Payment currency</td>
+<td>pay_currency</td>
+<td>No</td>
+<td>String(32)</td>
+<td>Payment currency, needs to be returned based on actual situation</td>
+</tr>
+<tr>
+<td>Result message</td>
+<td>message</td>
+<td>Yes</td>
+<td>String(500)</td>
+<td>Describes the query result, SUCCESS indicates success, otherwise returns other error messages</td>
+</tr>
+<tr>
+<td>Random string</td>
+<td>nonce_str</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>Random string, no longer than 32 characters</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>sign</td>
+<td>Yes</td>
+<td>String(32)</td>
+<td>See Chapter 4 "Signature Rules"</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="554-test-cases">5.5.4 Test Cases</h3>
+<p>Test cases are provided for easy invocation</p>
+<p>Submitted data:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Example</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>{
+&quot;message&quot;:&quot;SUCCESS&quot;,
+    &quot;order_no&quot;:&quot;432259d302bc486d898d139431869e6b&quot;,
+    &quot;transaction_id&quot;:&quot;FTP202012181653320001&quot;,
+    &quot;out_transaction_id&quot;:&quot;2020111022001311413118431156&quot;,
+    &quot;store_id&quot;:&quot;1001002&quot;,
+    &quot;submit_time&quot;:&quot;20201218165332&quot;,
+    &quot;trade_state&quot;:&quot;SUCCESS&quot;,
+    &quot;amount&quot;:1,
+    &quot;currency&quot;:&quot;HKD&quot;,
+    &quot;payer&quot;:&quot;oAOWGsyf4fjHHMzS_wAzfEzGoyWQ&quot;,
+    &quot;pay_finish_time&quot;:&quot;20201110111036&quot;,
+    &quot;nonce_str&quot;:&quot;g1iwi4fg&quot;,
+    &quot;trade_type&quot;:&quot;pay.master.Fintech Payment.online&quot;,
+    &quot;sign&quot;:&quot;9983066974A7779BD16505AE7D6752C5&quot;,
+&quot;pay_currency&quot;:&quot;HKD&quot;
+}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="6-error-codes">6 Error Codes</h1>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Error Code</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>MISSING_FIELD</td>
+<td>Field not passed</td>
+</tr>
+<tr>
+<td>INVALID_FIELD</td>
+<td>Field validation error</td>
+</tr>
+<tr>
+<td>NO_EXISTS</td>
+<td>Data does not exist</td>
+</tr>
+<tr>
+<td>OTHER</td>
+<td>Other error</td>
+</tr>
+<tr>
+<td>INVALID_SCOPE</td>
+<td>Data out of scope</td>
+</tr>
+<tr>
+<td>INVALID_LENGTH</td>
+<td>Data length exceeds limit</td>
+</tr>
+<tr>
+<td>INCORRECT_SIGNATURE</td>
+<td>Invalid signature</td>
+</tr>
+<tr>
+<td>EXPIRED_ORDER</td>
+<td>Order has expired</td>
+</tr>
+<tr>
+<td>PAY_GATEWAY_FAIL</td>
+<td>Payment gateway error</td>
+</tr>
+<tr>
+<td>UNKNOWN_ERROR</td>
+<td>Unknown error</td>
+</tr>
+<tr>
+<td>XML_FORMAT_ERROR</td>
+<td>XML format error</td>
+</tr>
+<tr>
+<td>REQUIRE_POST_METHOD</td>
+<td>Please use POST method</td>
+</tr>
+<tr>
+<td>ACCESS_DENIED</td>
+<td>Access denied</td>
+</tr>
+<tr>
+<td>POST_DATA_EMPTY</td>
+<td>POST data is empty</td>
+</tr>
+<tr>
+<td>NOT_UTF8</td>
+<td>Encoding format error</td>
+</tr>
+<tr>
+<td>ORDER_CLOSED</td>
+<td>Order has been closed</td>
+</tr>
+<tr>
+<td>NO_AUTH</td>
+<td>Insufficient permissions</td>
+</tr>
+<tr>
+<td>LACK_PARAMS</td>
+<td>Missing parameters</td>
+</tr>
+<tr>
+<td>INVALID_STATUS</td>
+<td>Invalid status</td>
+</tr>
+<tr>
+<td>INVALID_SERVICE</td>
+<td>Invalid API type</td>
+</tr>
+<tr>
+<td>SN_IS_EXISTS</td>
+<td>Number already exists</td>
+</tr>
+<tr>
+<td>NOTIFY_FAIL</td>
+<td>Notification error</td>
+</tr>
+<tr>
+<td>URL_FORMAT_ERROR</td>
+<td>URL format incorrect</td>
+</tr>
+<tr>
+<td>IP_FORMAT_ERROR</td>
+<td>IP format incorrect</td>
+</tr>
+<tr>
+<td>DATE_FORMAT_ERROR</td>
+<td>Date format incorrect</td>
+</tr>
+<tr>
+<td>TRADE_NOT_EXIST</td>
+<td>Transaction does not exist</td>
+</tr>
+<tr>
+<td>TRADE_HAS_SUCCESS</td>
+<td>Transaction has been paid</td>
+</tr>
+<tr>
+<td>TRADE_FAILED</td>
+<td>Transaction failed</td>
+</tr>
+<tr>
+<td>TRADE_TIMEOUT</td>
+<td>Transaction timed out</td>
+</tr>
+<tr>
+<td>INVALID_ORDER_STATUS</td>
+<td>Invalid order status</td>
+</tr>
+<tr>
+<td>REVERSE_FAILED</td>
+<td>Authorization reversal failed</td>
+</tr>
+<tr>
+<td>DEDUCTIONS_FAILED</td>
+<td>Deduction failed</td>
+</tr>
+<tr>
+<td>REFUND_FAILED</td>
+<td>Refund failed</td>
+</tr>
+<tr>
+<td>INVALID_CLIENT_ID</td>
+<td>Invalid client ID</td>
+</tr>
+<tr>
+<td>INVALID_STORE_ID</td>
+<td>Invalid store ID</td>
+</tr>
+<tr>
+<td>INVALID_AMOUNT</td>
+<td>Transaction amount incorrect</td>
+</tr>
+<tr>
+<td>INVALID_REFUND_FEE</td>
+<td>Refund amount incorrect</td>
+</tr>
+<tr>
+<td>VALID_FLOW_FAIL</td>
+<td>Request too frequent</td>
+</tr>
+<tr>
+<td>UNSUPPORTED_SERVICE</td>
+<td>Unsupported API type</td>
+</tr>
+<tr>
+<td>DATA_NOT_EXIST</td>
+<td>Queried data does not exist</td>
+</tr>
+<tr>
+<td>ACCOUNT_LOCKED</td>
+<td>Merchant or store account has been locked</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="appendix">Appendix</h1>
+<h2 id="1-iso-country-region-table">1. ISO Country/Region Table</h2>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Country (Chinese)</th>
+<th>Country (English)</th>
+<th>3-Letter Code</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>China</td>
+<td>China</td>
+<td>CHN</td>
+</tr>
+<tr>
+<td>Mongolia</td>
+<td>Mongolia</td>
+<td>MNG</td>
+</tr>
+<tr>
+<td>North Korea</td>
+<td>North Korea</td>
+<td>PRK</td>
+</tr>
+<tr>
+<td>South Korea</td>
+<td>South Korea</td>
+<td>KOR</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>Japan</td>
+<td>JPN</td>
+</tr>
+<tr>
+<td>Philippines</td>
+<td>Philippines</td>
+<td>PHL</td>
+</tr>
+<tr>
+<td>Vietnam</td>
+<td>Vietnam</td>
+<td>VNM</td>
+</tr>
+<tr>
+<td>Laos</td>
+<td>Laos</td>
+<td>LAO</td>
+</tr>
+<tr>
+<td>Cambodia</td>
+<td>Cambodia</td>
+<td>KHM</td>
+</tr>
+<tr>
+<td>Myanmar</td>
+<td>Myanmar</td>
+<td>MMR</td>
+</tr>
+<tr>
+<td>Thailand</td>
+<td>Thailand</td>
+<td>THA</td>
+</tr>
+<tr>
+<td>Malaysia</td>
+<td>Malaysia</td>
+<td>MYS</td>
+</tr>
+<tr>
+<td>Brunei</td>
+<td>Brunei Darussalam</td>
+<td>BRN</td>
+</tr>
+<tr>
+<td>Singapore</td>
+<td>Singapore</td>
+<td>SGP</td>
+</tr>
+<tr>
+<td>Indonesia</td>
+<td>Indonesia</td>
+<td>IDN</td>
+</tr>
+<tr>
+<td>East Timor</td>
+<td>east Timor</td>
+<td>TLS</td>
+</tr>
+<tr>
+<td>Nepal</td>
+<td>Nepal</td>
+<td>NPL</td>
+</tr>
+<tr>
+<td>Bhutan</td>
+<td>Bhutan</td>
+<td>BTN</td>
+</tr>
+<tr>
+<td>Bangladesh</td>
+<td>Bengal</td>
+<td>BGD</td>
+</tr>
+<tr>
+<td>India</td>
+<td>India</td>
+<td>IND</td>
+</tr>
+<tr>
+<td>Pakistan</td>
+<td>Pakistan</td>
+<td>PAK</td>
+</tr>
+<tr>
+<td>Sri Lanka</td>
+<td>Sri Lanka</td>
+<td>LKA</td>
+</tr>
+<tr>
+<td>Maldives</td>
+<td>Maldives</td>
+<td>MDV</td>
+</tr>
+<tr>
+<td>Kazakhstan</td>
+<td>Kazakhstan</td>
+<td>KAZ</td>
+</tr>
+<tr>
+<td>Kyrgyzstan</td>
+<td>Kyrgyzstan</td>
+<td>KGZ</td>
+</tr>
+<tr>
+<td>Tajikistan</td>
+<td>Tajikistan</td>
+<td>TJK</td>
+</tr>
+<tr>
+<td>Uzbekistan</td>
+<td>Uzbekistan</td>
+<td>UZB</td>
+</tr>
+<tr>
+<td>Turkmenistan</td>
+<td>Turkmenistan</td>
+<td>TKM</td>
+</tr>
+<tr>
+<td>Afghanistan</td>
+<td>Afghanistan</td>
+<td>AFG</td>
+</tr>
+<tr>
+<td>Iraq</td>
+<td>Iraq</td>
+<td>IRQ</td>
+</tr>
+<tr>
+<td>Iran</td>
+<td>Iran</td>
+<td>IRN</td>
+</tr>
+<tr>
+<td>Syria</td>
+<td>Syria</td>
+<td>SYR</td>
+</tr>
+<tr>
+<td>Jordan</td>
+<td>Jordan</td>
+<td>JOR</td>
+</tr>
+<tr>
+<td>Lebanon</td>
+<td>Lebanon</td>
+<td>LBN</td>
+</tr>
+<tr>
+<td>Israel</td>
+<td>Israel</td>
+<td>ISR</td>
+</tr>
+<tr>
+<td>Palestine</td>
+<td>Palestine</td>
+<td>PSE</td>
+</tr>
+<tr>
+<td>Saudi Arabia</td>
+<td>Saudi Arabia</td>
+<td>SAU</td>
+</tr>
+<tr>
+<td>Bahrain</td>
+<td>Bahrain</td>
+<td>BHR</td>
+</tr>
+<tr>
+<td>Qatar</td>
+<td>Qatar</td>
+<td>QAT</td>
+</tr>
+<tr>
+<td>Kuwait</td>
+<td>Kuwait</td>
+<td>KWT</td>
+</tr>
+<tr>
+<td>United Arab Emirates</td>
+<td>United Arab Emirates</td>
+<td>UAE</td>
+</tr>
+<tr>
+<td>Oman</td>
+<td>Oman</td>
+<td>OMN</td>
+</tr>
+<tr>
+<td>Yemen</td>
+<td>Yemen</td>
+<td>YEM</td>
+</tr>
+<tr>
+<td>Georgia</td>
+<td>Georgia</td>
+<td>GEO</td>
+</tr>
+<tr>
+<td>Armenia</td>
+<td>Armenia</td>
+<td>ARM</td>
+</tr>
+<tr>
+<td>Azerbaijan</td>
+<td>Azerbaijan</td>
+<td>AZE</td>
+</tr>
+<tr>
+<td>Turkey</td>
+<td>Turkey</td>
+<td>TUR</td>
+</tr>
+<tr>
+<td>Cyprus</td>
+<td>Cyprus</td>
+<td>CYP</td>
+</tr>
+<tr>
+<td>Finland</td>
+<td>Finland</td>
+<td>FIN</td>
+</tr>
+<tr>
+<td>Sweden</td>
+<td>Sweden</td>
+<td>SWE</td>
+</tr>
+<tr>
+<td>Norway</td>
+<td>Norway</td>
+<td>NOR</td>
+</tr>
+<tr>
+<td>Iceland</td>
+<td>Iceland</td>
+<td>ISL</td>
+</tr>
+<tr>
+<td>Denmark</td>
+<td>Danmark</td>
+<td>DNK</td>
+</tr>
+<tr>
+<td>Faroe Islands</td>
+<td>Faroe Islands (DK)</td>
+<td>FRO</td>
+</tr>
+<tr>
+<td>Estonia</td>
+<td>Estonia</td>
+<td>EST</td>
+</tr>
+<tr>
+<td>Latvia</td>
+<td>Latvia</td>
+<td>LVA</td>
+</tr>
+<tr>
+<td>Lithuania</td>
+<td>Lithuania</td>
+<td>LTU</td>
+</tr>
+<tr>
+<td>Belarus</td>
+<td>Belarus</td>
+<td>BLR</td>
+</tr>
+<tr>
+<td>Russia</td>
+<td>Russia</td>
+<td>RUS</td>
+</tr>
+<tr>
+<td>Ukraine</td>
+<td>Ukraine</td>
+<td>UKR</td>
+</tr>
+<tr>
+<td>Moldova</td>
+<td>Moldova</td>
+<td>MDA</td>
+</tr>
+<tr>
+<td>Poland</td>
+<td>Poland</td>
+<td>POL</td>
+</tr>
+<tr>
+<td>Czech Republic</td>
+<td>Czech</td>
+<td>CZE</td>
+</tr>
+<tr>
+<td>Slovakia</td>
+<td>Slovakia</td>
+<td>SVK</td>
+</tr>
+<tr>
+<td>Hungary</td>
+<td>Hungary</td>
+<td>HUN</td>
+</tr>
+<tr>
+<td>Germany</td>
+<td>Germany</td>
+<td>DEU</td>
+</tr>
+<tr>
+<td>Austria</td>
+<td>Austria</td>
+<td>AUT</td>
+</tr>
+<tr>
+<td>Switzerland</td>
+<td>Switzerland</td>
+<td>CHE</td>
+</tr>
+<tr>
+<td>Liechtenstein</td>
+<td>Liechtenstein(LIE)</td>
+<td>LIE</td>
+</tr>
+<tr>
+<td>United Kingdom</td>
+<td>Britain</td>
+<td>GBR</td>
+</tr>
+<tr>
+<td>Ireland</td>
+<td>Ireland</td>
+<td>IRL</td>
+</tr>
+<tr>
+<td>Netherlands</td>
+<td>Holand</td>
+<td>NLD</td>
+</tr>
+<tr>
+<td>Belgium</td>
+<td>Belgium</td>
+<td>BEL</td>
+</tr>
+<tr>
+<td>Luxembourg</td>
+<td>Luxemburg</td>
+<td>LUX</td>
+</tr>
+<tr>
+<td>France</td>
+<td>France</td>
+<td>FRA</td>
+</tr>
+<tr>
+<td>Monaco</td>
+<td>Monaco</td>
+<td>MCO</td>
+</tr>
+<tr>
+<td>Romania</td>
+<td>Romania</td>
+<td>ROU</td>
+</tr>
+<tr>
+<td>Bulgaria</td>
+<td>Bulgaria</td>
+<td>BGR</td>
+</tr>
+<tr>
+<td>Serbia</td>
+<td>Serbia</td>
+<td>SRB</td>
+</tr>
+<tr>
+<td>Macedonia</td>
+<td>Macedonia</td>
+<td>MKD</td>
+</tr>
+<tr>
+<td>Albania</td>
+<td>Albania</td>
+<td>ALB</td>
+</tr>
+<tr>
+<td>Greece</td>
+<td>Greece</td>
+<td>GRC</td>
+</tr>
+<tr>
+<td>Slovenia</td>
+<td>Slovenia</td>
+<td>SVN</td>
+</tr>
+<tr>
+<td>Croatia</td>
+<td>Croatia</td>
+<td>HRV</td>
+</tr>
+<tr>
+<td>Bosnia and Herzegovina</td>
+<td>Bosnia</td>
+<td>BIH</td>
+</tr>
+<tr>
+<td>Italy</td>
+<td>Italy</td>
+<td>ITA</td>
+</tr>
+<tr>
+<td>Vatican City</td>
+<td>Vatican</td>
+<td>VAT</td>
+</tr>
+<tr>
+<td>San Marino</td>
+<td>San Marino</td>
+<td>SMR</td>
+</tr>
+<tr>
+<td>Malta</td>
+<td>Malta</td>
+<td>MLT</td>
+</tr>
+<tr>
+<td>Spain</td>
+<td>Spain</td>
+<td>ESP</td>
+</tr>
+<tr>
+<td>Portugal</td>
+<td>Portugal</td>
+<td>PRT</td>
+</tr>
+<tr>
+<td>Andorra</td>
+<td>Andorra</td>
+<td>AND</td>
+</tr>
+<tr>
+<td>Egypt</td>
+<td>Egypt</td>
+<td>EGY</td>
+</tr>
+<tr>
+<td>Libya</td>
+<td>Libya</td>
+<td>LBY</td>
+</tr>
+<tr>
+<td>Sudan</td>
+<td>Sudan</td>
+<td>SDN</td>
+</tr>
+<tr>
+<td>Tunisia</td>
+<td>Tunis</td>
+<td>TUN</td>
+</tr>
+<tr>
+<td>Algeria</td>
+<td>Algeria</td>
+<td>DZA</td>
+</tr>
+<tr>
+<td>Morocco</td>
+<td>Morocco</td>
+<td>MAR</td>
+</tr>
+<tr>
+<td>Ethiopia</td>
+<td>Ethiopia</td>
+<td>ETH</td>
+</tr>
+<tr>
+<td>Eritrea</td>
+<td>Eritrea</td>
+<td>ERI</td>
+</tr>
+<tr>
+<td>Somalia</td>
+<td>Somalia</td>
+<td>SOM</td>
+</tr>
+<tr>
+<td>Djibouti</td>
+<td>Djibouti</td>
+<td>DJI</td>
+</tr>
+<tr>
+<td>Kenya</td>
+<td>Kenya</td>
+<td>KEN</td>
+</tr>
+<tr>
+<td>Tanzania</td>
+<td>Tanzania</td>
+<td>TZA</td>
+</tr>
+<tr>
+<td>Uganda</td>
+<td>Uganda</td>
+<td>UGA</td>
+</tr>
+<tr>
+<td>Rwanda</td>
+<td>Rwanda</td>
+<td>RWA</td>
+</tr>
+<tr>
+<td>Burundi</td>
+<td>Burundi</td>
+<td>BDI</td>
+</tr>
+<tr>
+<td>Seychelles</td>
+<td>Seychelles</td>
+<td>SYC</td>
+</tr>
+<tr>
+<td>Chad</td>
+<td>Chad</td>
+<td>TCD</td>
+</tr>
+<tr>
+<td>Central African Republic</td>
+<td>Central Africa</td>
+<td>CAF</td>
+</tr>
+<tr>
+<td>Cameroon</td>
+<td>Cameroon</td>
+<td>CMR</td>
+</tr>
+<tr>
+<td>Equatorial Guinea</td>
+<td>Equatorial Guinea</td>
+<td>GNQ</td>
+</tr>
+<tr>
+<td>Gabon</td>
+<td>Gabon</td>
+<td>GAB</td>
+</tr>
+<tr>
+<td>Republic of the Congo</td>
+<td>Republic of Congo</td>
+<td>COG</td>
+</tr>
+<tr>
+<td>Democratic Republic of the Congo</td>
+<td>Democratic Republic of Congo</td>
+<td>COD</td>
+</tr>
+<tr>
+<td>Sao Tome and Principe</td>
+<td>Sao Tome and Principe</td>
+<td>STP</td>
+</tr>
+<tr>
+<td>Mauritania</td>
+<td>Mauritania</td>
+<td>MRT</td>
+</tr>
+<tr>
+<td>Western Sahara</td>
+<td>Western Sahara</td>
+<td>ESH</td>
+</tr>
+<tr>
+<td>Senegal</td>
+<td>Senegal</td>
+<td>SEN</td>
+</tr>
+<tr>
+<td>Gambia</td>
+<td>Gambian</td>
+<td>GMB</td>
+</tr>
+<tr>
+<td>Mali</td>
+<td>Mali</td>
+<td>MLI</td>
+</tr>
+<tr>
+<td>Burkina Faso</td>
+<td>Burkina Faso</td>
+<td>BFA</td>
+</tr>
+<tr>
+<td>Guinea</td>
+<td>Guinea</td>
+<td>GIN</td>
+</tr>
+<tr>
+<td>Guinea-Bissau</td>
+<td>Guinea-Bissau</td>
+<td>GNB</td>
+</tr>
+<tr>
+<td>Cape Verde</td>
+<td>Cape-Verde</td>
+<td>CPV</td>
+</tr>
+<tr>
+<td>Sierra Leone</td>
+<td>Sierra Leone</td>
+<td>SLE</td>
+</tr>
+<tr>
+<td>Liberia</td>
+<td>Liberia</td>
+<td>LBR</td>
+</tr>
+<tr>
+<td>Cote d'Ivoire</td>
+<td>Cote d&#x27;Ivoire</td>
+<td>CIV</td>
+</tr>
+<tr>
+<td>Ghana</td>
+<td>Ghana</td>
+<td>GHA</td>
+</tr>
+<tr>
+<td>Togo</td>
+<td>Togo</td>
+<td>TGO</td>
+</tr>
+<tr>
+<td>Benin</td>
+<td>Benin</td>
+<td>BEN</td>
+</tr>
+<tr>
+<td>Niger</td>
+<td>Niger</td>
+<td>NER</td>
+</tr>
+<tr>
+<td>Zambia</td>
+<td>Zambia</td>
+<td>ZMB</td>
+</tr>
+<tr>
+<td>Angola</td>
+<td>Angola</td>
+<td>AGO</td>
+</tr>
+<tr>
+<td>Zimbabwe</td>
+<td>Zimbabwe</td>
+<td>ZWE</td>
+</tr>
+<tr>
+<td>Malawi</td>
+<td>Malawi</td>
+<td>MWI</td>
+</tr>
+<tr>
+<td>Mozambique</td>
+<td>Mozambique</td>
+<td>MOZ</td>
+</tr>
+<tr>
+<td>Botswana</td>
+<td>Botswana</td>
+<td>BWA</td>
+</tr>
+<tr>
+<td>Namibia</td>
+<td>Namibia</td>
+<td>NAM</td>
+</tr>
+<tr>
+<td>South Africa</td>
+<td>South Africa</td>
+<td>ZAF</td>
+</tr>
+<tr>
+<td>Swaziland</td>
+<td>Swaziland</td>
+<td>SWZ</td>
+</tr>
+<tr>
+<td>Lesotho</td>
+<td>Lesotho</td>
+<td>LSO</td>
+</tr>
+<tr>
+<td>Madagascar</td>
+<td>Madagascan</td>
+<td>MDG</td>
+</tr>
+<tr>
+<td>Comoros</td>
+<td>Comorin</td>
+<td>COM</td>
+</tr>
+<tr>
+<td>Mauritius</td>
+<td>Mauritius</td>
+<td>MUS</td>
+</tr>
+<tr>
+<td>Saint Helena</td>
+<td>Saint Helena (UK)</td>
+<td>SHN</td>
+</tr>
+<tr>
+<td>Australia</td>
+<td>Australia</td>
+<td>AUS</td>
+</tr>
+<tr>
+<td>New Zealand</td>
+<td>New Zealand</td>
+<td>NZL</td>
+</tr>
+<tr>
+<td>Papua New Guinea</td>
+<td>Guinea</td>
+<td>PNG</td>
+</tr>
+<tr>
+<td>Solomon Islands</td>
+<td>Archipelago</td>
+<td>SLB</td>
+</tr>
+<tr>
+<td>Vanuatu</td>
+<td>Vanuatu</td>
+<td>VUT</td>
+</tr>
+<tr>
+<td>Micronesia</td>
+<td>Micronesia</td>
+<td>FSM</td>
+</tr>
+<tr>
+<td>Marshall Islands</td>
+<td>Marshall Islands</td>
+<td>MHL</td>
+</tr>
+<tr>
+<td>Palau</td>
+<td>Palau</td>
+<td>PLW</td>
+</tr>
+<tr>
+<td>Nauru</td>
+<td>Nauru</td>
+<td>NRU</td>
+</tr>
+<tr>
+<td>Kiribati</td>
+<td>Kiribati</td>
+<td>KIR</td>
+</tr>
+<tr>
+<td>Tuvalu</td>
+<td>Tuvalu TV</td>
+<td>TUV</td>
+</tr>
+<tr>
+<td>Samoa</td>
+<td>Samoa</td>
+<td>WSM</td>
+</tr>
+<tr>
+<td>Fiji Islands</td>
+<td>Fiji Islands</td>
+<td>FJI</td>
+</tr>
+<tr>
+<td>Tonga</td>
+<td>Tonga</td>
+<td>TON</td>
+</tr>
+<tr>
+<td>Cook Islands</td>
+<td>Cook Islands (NZ)</td>
+<td>COK</td>
+</tr>
+<tr>
+<td>Guam</td>
+<td>Guam (US)</td>
+<td>GUM</td>
+</tr>
+<tr>
+<td>New Caledonia</td>
+<td>New Caledonia (FR)</td>
+<td>NCL</td>
+</tr>
+<tr>
+<td>French Polynesia</td>
+<td>French Polynesia</td>
+<td>PYF</td>
+</tr>
+<tr>
+<td>Pitcairn Islands</td>
+<td>Pitcairn Island</td>
+<td>PCN</td>
+</tr>
+<tr>
+<td>Wallis and Futuna</td>
+<td>Wallis/Futuna</td>
+<td>WLF</td>
+</tr>
+<tr>
+<td>Niue</td>
+<td>Niue</td>
+<td>NIU</td>
+</tr>
+<tr>
+<td>Tokelau</td>
+<td>Tokelau</td>
+<td>TKL</td>
+</tr>
+<tr>
+<td>American Samoa</td>
+<td>American Samoa</td>
+<td>ASM</td>
+</tr>
+<tr>
+<td>Northern Mariana Islands</td>
+<td>Mariana (US)</td>
+<td>MNP</td>
+</tr>
+<tr>
+<td>Canada</td>
+<td>Canada</td>
+<td>CAN</td>
+</tr>
+<tr>
+<td>United States</td>
+<td>America</td>
+<td>USA</td>
+</tr>
+<tr>
+<td>Mexico</td>
+<td>Mexico</td>
+<td>MEX</td>
+</tr>
+<tr>
+<td>Greenland</td>
+<td>Greenland</td>
+<td>GRL</td>
+</tr>
+<tr>
+<td>Guatemala</td>
+<td>Guatemala</td>
+<td>GTM</td>
+</tr>
+<tr>
+<td>Belize</td>
+<td>Belize</td>
+<td>BLZ</td>
+</tr>
+<tr>
+<td>El Salvador</td>
+<td>Salvador</td>
+<td>SLV</td>
+</tr>
+<tr>
+<td>Honduras</td>
+<td>Honduras</td>
+<td>HND</td>
+</tr>
+<tr>
+<td>Nicaragua</td>
+<td>Nicaragua</td>
+<td>NIC</td>
+</tr>
+<tr>
+<td>Costa Rica</td>
+<td>Costarica(另Costa Rica)</td>
+<td>CRI</td>
+</tr>
+<tr>
+<td>Panama</td>
+<td>Panama</td>
+<td>PAN</td>
+</tr>
+<tr>
+<td>Bahamas</td>
+<td>Bahamas</td>
+<td>BHS</td>
+</tr>
+<tr>
+<td>Cuba</td>
+<td>Cuba</td>
+<td>CUB</td>
+</tr>
+<tr>
+<td>Jamaica</td>
+<td>Jamaica</td>
+<td>JAM</td>
+</tr>
+<tr>
+<td>Haiti</td>
+<td>Haiti</td>
+<td>HTI</td>
+</tr>
+<tr>
+<td>Dominican Republic</td>
+<td>Dominican Republic</td>
+<td>DOM</td>
+</tr>
+<tr>
+<td>Antigua and Barbuda</td>
+<td>Antigua and Barbuda</td>
+<td>ATG</td>
+</tr>
+<tr>
+<td>Saint Kitts and Nevis</td>
+<td>Saint Kitts and Nevis</td>
+<td>KNA</td>
+</tr>
+<tr>
+<td>Dominica</td>
+<td>Dominica</td>
+<td>DMA</td>
+</tr>
+<tr>
+<td>Saint Lucia</td>
+<td>Saint Lucia</td>
+<td>LCA</td>
+</tr>
+<tr>
+<td>Saint Vincent and the Grenadines</td>
+<td>Saint Vincent and the Grenadines</td>
+<td>VCT</td>
+</tr>
+<tr>
+<td>Grenada</td>
+<td>Grenada</td>
+<td>GRD</td>
+</tr>
+<tr>
+<td>Barbados</td>
+<td>Barbados</td>
+<td>BRB</td>
+</tr>
+<tr>
+<td>Trinidad and Tobago</td>
+<td>Trinidad and Tobago</td>
+<td>TTO</td>
+</tr>
+<tr>
+<td>Puerto Rico</td>
+<td>Porto Rico (US)</td>
+<td>PRI</td>
+</tr>
+<tr>
+<td>British Virgin Islands</td>
+<td>British Virgin Islands</td>
+<td>VGB</td>
+</tr>
+<tr>
+<td>United States Virgin Islands</td>
+<td>Virgin Islands of the United States</td>
+<td>VIR</td>
+</tr>
+<tr>
+<td>Anguilla</td>
+<td>Anguilla (UK)</td>
+<td>AIA</td>
+</tr>
+<tr>
+<td>Montserrat</td>
+<td>Montserrat (UK)</td>
+<td>MSR</td>
+</tr>
+<tr>
+<td>Guadeloupe</td>
+<td>Guadeloupe (FR)</td>
+<td>GLP</td>
+</tr>
+<tr>
+<td>Martinique</td>
+<td>Martinique</td>
+<td>MTQ</td>
+</tr>
+<tr>
+<td>Aruba</td>
+<td>Aruba</td>
+<td>ABW</td>
+</tr>
+<tr>
+<td>Turks and Caicos Islands</td>
+<td>Turks And Caicos Islands</td>
+<td>TCA</td>
+</tr>
+<tr>
+<td>Cayman Islands</td>
+<td>Cayman Islands</td>
+<td>CYM</td>
+</tr>
+<tr>
+<td>Bermuda</td>
+<td>Bermuda</td>
+<td>BMU</td>
+</tr>
+<tr>
+<td>Colombia</td>
+<td>Colombia</td>
+<td>COL</td>
+</tr>
+<tr>
+<td>Venezuela</td>
+<td>Venezuela</td>
+<td>VEN</td>
+</tr>
+<tr>
+<td>Guyana</td>
+<td>Guyana</td>
+<td>GUY</td>
+</tr>
+<tr>
+<td>French Guiana</td>
+<td>French Guiana</td>
+<td>GUF</td>
+</tr>
+<tr>
+<td>Suriname</td>
+<td>Suriname</td>
+<td>SUR</td>
+</tr>
+<tr>
+<td>Ecuador</td>
+<td>Ecuador</td>
+<td>ECU</td>
+</tr>
+<tr>
+<td>Peru</td>
+<td>Peru</td>
+<td>PER</td>
+</tr>
+<tr>
+<td>Bolivia</td>
+<td>Bolivia</td>
+<td>BOL</td>
+</tr>
+<tr>
+<td>Brazil</td>
+<td>Brazil</td>
+<td>BRA</td>
+</tr>
+<tr>
+<td>Chile</td>
+<td>Chile</td>
+<td>CHL</td>
+</tr>
+<tr>
+<td>Argentina</td>
+<td>Argentina</td>
+<td>ARG</td>
+</tr>
+<tr>
+<td>Uruguay</td>
+<td>Uruguay</td>
+<td>URY</td>
+</tr>
+<tr>
+<td>Paraguay</td>
+<td>Paraguay</td>
+<td>PRY</td>
+</tr>
+</tbody>
+</table>
+</div>
+    </main>
+
+    <nav class="toc-nav">
+<div class="toc-nav-title">On this page</div>
+<ul>
+  <li><a href="#11-document-overview" class="toc-h2">1.1 Document Overview</a></li>
+  <li><a href="#12-target-audience" class="toc-h2">1.2 Target Audience</a></li>
+  <li><a href="#21-business-implementation-flow" class="toc-h2">2.1 Business Implementation Flow</a></li>
+  <li><a href="#31-submit-data" class="toc-h2">3.1 Submit Data</a></li>
+  <li><a href="#32-response-data-format" class="toc-h2">3.2 Response Data Format</a></li>
+  <li><a href="#41-signature-raw-string" class="toc-h2">4.1 Signature Raw String</a></li>
+  <li><a href="#42-signature-algorithm" class="toc-h2">4.2 Signature Algorithm</a></li>
+  <li><a href="#43-request-headers" class="toc-h2">4.3 Request Headers</a></li>
+  <li><a href="#51-create-order-api" class="toc-h2">5.1 Create Order API</a></li>
+  <li><a href="#511-business-function" class="toc-h3">5.1.1 Business Function</a></li>
+  <li><a href="#512-interaction-mode" class="toc-h3">5.1.2 Interaction Mode</a></li>
+  <li><a href="#513-request-parameters" class="toc-h3">5.1.3 Request Parameters</a></li>
+  <li><a href="#514-response" class="toc-h3">5.1.4 Response</a></li>
+  <li><a href="#515-test-cases" class="toc-h3">5.1.5 Test Cases</a></li>
+  <li><a href="#52-order-query-api" class="toc-h2">5.2 Order Query API</a></li>
+  <li><a href="#521-business-function" class="toc-h3">5.2.1 Business Function</a></li>
+  <li><a href="#522-interaction-mode" class="toc-h3">5.2.2 Interaction Mode</a></li>
+  <li><a href="#523-request-parameters" class="toc-h3">5.2.3 Request Parameters</a></li>
+  <li><a href="#524-response" class="toc-h3">5.2.4 Response</a></li>
+  <li><a href="#525-test-cases" class="toc-h3">5.2.5 Test Cases</a></li>
+  <li><a href="#53-refund-api" class="toc-h2">5.3 Refund API</a></li>
+  <li><a href="#531-business-function" class="toc-h3">5.3.1 Business Function</a></li>
+  <li><a href="#532-interaction-mode" class="toc-h3">5.3.2 Interaction Mode</a></li>
+  <li><a href="#533-request-parameters" class="toc-h3">5.3.3 Request Parameters</a></li>
+  <li><a href="#534-response" class="toc-h3">5.3.4 Response</a></li>
+  <li><a href="#535-test-cases" class="toc-h3">5.3.5 Test Cases</a></li>
+  <li><a href="#54-refund-query-api" class="toc-h2">5.4 Refund Query API</a></li>
+  <li><a href="#541-business-function" class="toc-h3">5.4.1 Business Function</a></li>
+  <li><a href="#542-interaction-mode" class="toc-h3">5.4.2 Interaction Mode</a></li>
+  <li><a href="#543-request-parameters" class="toc-h3">5.4.3 Request Parameters</a></li>
+  <li><a href="#544-response" class="toc-h3">5.4.4 Response</a></li>
+  <li><a href="#545-test-cases" class="toc-h3">5.4.5 Test Cases</a></li>
+  <li><a href="#55-payment-notification-api" class="toc-h2">5.5 Payment Notification API</a></li>
+  <li><a href="#551-business-function" class="toc-h3">5.5.1 Business Function</a></li>
+  <li><a href="#552-interaction-mode" class="toc-h3">5.5.2 Interaction Mode</a></li>
+  <li><a href="#553-response-parameters" class="toc-h3">5.5.3 Response Parameters</a></li>
+  <li><a href="#554-test-cases" class="toc-h3">5.5.4 Test Cases</a></li>
+  <li><a href="#1-iso-country-region-table" class="toc-h2">1. ISO Country/Region Table</a></li>
+</ul>
+</nav>
+  </div>
+
+  <script src="../../../assets/js/main.js"></script>
+</body>
+</html>
