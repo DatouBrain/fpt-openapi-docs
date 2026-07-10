@@ -152,16 +152,16 @@
 <p>&quot;sign&quot;:&quot;3F6C05280C90E5BB1330524FD61C6121&quot;</p>
 <p>}</p>
 <p>錯誤返回：</p>
-<p>{</p>
-<p>&quot;message&quot;:&quot;Missing Client ID&quot;,</p>
-<pre><span class="code-label">JSON</span><code class="language-json">&quot;errors&quot;:[</code></pre>
-<p>{</p>
-<p>&quot;field&quot;:&quot;client_id&quot;,</p>
-<p>&quot;message&quot;:&quot;Missing Client ID&quot;,</p>
-<p>&quot;code&quot;:&quot;MISSING_FIELD&quot;</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+<pre><code>{
+  &quot;message&quot;: &quot;Missing Client ID&quot;,
+  &quot;errors&quot;: [
+    {
+      &quot;field&quot;: &quot;client_id&quot;,
+      &quot;message&quot;: &quot;Missing Client ID&quot;,
+      &quot;code&quot;: &quot;MISSING_FIELD&quot;
+    }
+  ]
+}</code></pre>
 <p>message返回非SUCCESS時表示接口調用出錯。</p>
 <h1 id="4數字簽名">4數字簽名</h1>
 <p>本接口的簽名規則遵循平臺統一的數字簽名規範，包含基本鍵值場景與含 items 等巢狀欄位場景的簽名規則、MD5 演算法及多語言代碼示例。請參閱<a href="../../common/signature.html">數字簽名</a>。</p>
@@ -407,7 +407,6 @@ pay.unionpay.sinopay.online（UnionPay支付）</td>
 </tr>
 <tr>
 <td>cvv</td>
-<td>cvv</td>
 <td>否</td>
 <td>String(4)</td>
 <td>cvv,儅provide_type=card時必傳</td>
@@ -544,8 +543,6 @@ pay.unionpay.sinopay.online（UnionPay支付）</td>
     &quot;order_no&quot;: &quot;TALWAPO2025121925542412&quot;,
     &quot;body&quot;: &quot;Fintech Payment支付測試商品&quot;,
     &quot;amount&quot;: &quot;6&quot;,
-    &quot;payment_inst&quot;: &quot;ALIPAYHK&quot;,
-    &quot;order_type&quot;: &quot;CAT&quot;,
     &quot;service&quot;: &quot;pay.master.sinopay.online&quot;,
     &quot;notify_url&quot;: &quot;https://ftpdev.doocom.cn/pay-demo/alipay-web-notify/notify&quot;,
     &quot;ip_address&quot;: &quot;61.144.175.64&quot;,
@@ -795,7 +792,6 @@ FAIL—失敗</td>
 <td>是</td>
 <td>String(500)</td>
 <td>描述查詢結果，SUCCESS表示成功，否則返回其他錯誤信息</td>
-<td>描述查詢結果，SUCCESS表示成功，否則返回其他錯誤信息</td>
 </tr>
 <tr>
 <td>隨機字串</td>
@@ -869,7 +865,7 @@ FAIL—失敗</td>
 </tbody>
 </table>
 </div>
-<h2 id="53-退款接口接口">5.3 退款接口接口</h2>
+<h2 id="53-退款接口">5.3 退款接口</h2>
 <h3 id="531-業務功能">5.3.1 業務功能</h3>
 <p>商戶針對某一個已經成功支付的訂單發起退款， 操作結果在同一會話中同步返回。</p>
 <p>一、 退款方式</p>
@@ -1037,7 +1033,6 @@ pay.unionpay.sinopay.online（UnionPay支付）</td>
 <td>message</td>
 <td>是</td>
 <td>String(500)</td>
-<td>描述查詢結果，SUCCESS表示成功，否則返回其他錯誤信息</td>
 <td>描述查詢結果，SUCCESS表示成功，否則返回其他錯誤信息</td>
 </tr>
 <tr>
@@ -1490,7 +1485,6 @@ FAIL—失敗</td>
 <td>message</td>
 <td>是</td>
 <td>String(500)</td>
-<td>描述查詢結果，SUCCESS表示成功，否則返回其他錯誤信息</td>
 <td>描述查詢結果，SUCCESS表示成功，否則返回其他錯誤信息</td>
 </tr>
 <tr>
@@ -3001,7 +2995,7 @@ items_str = str(items)
   <li><a href="#523-請求參數列表" class="toc-h3">5.2.3 請求參數列表</a></li>
   <li><a href="#524-返回結果" class="toc-h3">5.2.4 返回結果</a></li>
   <li><a href="#525測試用例" class="toc-h3">5.2.5測試用例</a></li>
-  <li><a href="#53-退款接口接口" class="toc-h2">5.3 退款接口接口</a></li>
+  <li><a href="#53-退款接口" class="toc-h2">5.3 退款接口</a></li>
   <li><a href="#531-業務功能" class="toc-h3">5.3.1 業務功能</a></li>
   <li><a href="#532-交互模式" class="toc-h3">5.3.2 交互模式</a></li>
   <li><a href="#533-請求參數列表" class="toc-h3">5.3.3 請求參數列表</a></li>

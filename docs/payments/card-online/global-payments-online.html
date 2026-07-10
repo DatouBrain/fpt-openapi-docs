@@ -153,16 +153,16 @@
 <p>&quot;sign&quot;:&quot;981566CDE97F43D27851A9238B0C429F&quot;</p>
 <p>}</p>
 <p>錯誤返回：</p>
-<p>{</p>
-<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
-<pre><span class="code-label">JSON</span><code class="language-json">&quot;errors&quot;:[</code></pre>
-<p>{</p>
-<p>&quot;field&quot;:&quot;mch_id&quot;,</p>
-<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
-<p>&quot;code&quot;:&quot;MISSING_FIELD&quot;</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+<pre><code>{
+  &quot;message&quot;: &quot;Missing Merchant ID&quot;,
+  &quot;errors&quot;: [
+    {
+      &quot;field&quot;: &quot;mch_id&quot;,
+      &quot;message&quot;: &quot;Missing Merchant ID&quot;,
+      &quot;code&quot;: &quot;MISSING_FIELD&quot;
+    }
+  ]
+}</code></pre>
 <p>message返回非SUCCESS時表示接口調用出錯。</p>
 <h1 id="4數字簽名">4數字簽名</h1>
 <p>本接口的簽名規則遵循平臺統一的數字簽名規範，包含基本鍵值場景與含 items 等巢狀欄位場景的簽名規則、MD5 演算法及多語言代碼示例。請參閱<a href="../../common/signature.html">數字簽名</a>。</p>
@@ -598,7 +598,6 @@
 <td>store_id</td>
 <td>是</td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td>提交時間</td>
@@ -866,7 +865,6 @@ FAIL—失敗</td>
 <td>message</td>
 <td>是</td>
 <td>String(500)</td>
-<td>描述查詢結果，SUCCESS表示成功，否則返回其他錯誤信息</td>
 <td>描述查詢結果，SUCCESS表示成功，否則返回其他錯誤信息</td>
 </tr>
 <tr>

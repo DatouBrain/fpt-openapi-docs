@@ -153,16 +153,16 @@ The sequence diagram is as follows:</p>
 <p>&quot;sign&quot;:&quot;981566CDE97F43D27851A9238B0C429F&quot;</p>
 <p>}</p>
 <p>Error return:</p>
-<p>{</p>
-<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
-<pre><span class="code-label">JSON</span><code class="language-json">&quot;errors&quot;:[</code></pre>
-<p>{</p>
-<p>&quot;field&quot;:&quot;mch_id&quot;,</p>
-<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
-<p>&quot;code&quot;:&quot;MISSING_FIELD&quot;</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+<pre><code>{
+  &quot;message&quot;: &quot;Missing Merchant ID&quot;,
+  &quot;errors&quot;: [
+    {
+      &quot;field&quot;: &quot;mch_id&quot;,
+      &quot;message&quot;: &quot;Missing Merchant ID&quot;,
+      &quot;code&quot;: &quot;MISSING_FIELD&quot;
+    }
+  ]
+}</code></pre>
 <p>A message other than SUCCESS indicates an API call error.</p>
 <h1 id="4-digital-signature">4 Digital Signature</h1>
 <p>The signature rules for this API follow the platform's unified digital signature specification, covering both basic key-value scenarios and nested field (e.g. items) scenarios, the MD5 algorithm, and multi-language code examples. Please refer to <a href="../../common/signature.html">Digital Signature</a>.</p>
@@ -597,7 +597,6 @@ Request via POST JSON content body</p>
 <td>Store ID</td>
 <td>store_id</td>
 <td>Yes</td>
-<td></td>
 <td></td>
 </tr>
 <tr>
