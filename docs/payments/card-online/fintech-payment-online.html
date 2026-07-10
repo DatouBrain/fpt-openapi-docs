@@ -305,7 +305,7 @@ pay.unionpay.sinopay.online（UnionPay支付）</td>
 <td>provide_type</td>
 <td>是</td>
 <td>String(32)</td>
-<td>支付類型可選[card：卡支付]</td>
+<td>支付類型可選[card：卡支付、checkout：收銀台托管]</td>
 </tr>
 <tr>
 <td>交易類型</td>
@@ -499,10 +499,10 @@ pay.unionpay.sinopay.online（UnionPay支付）</td>
 </tr>
 <tr>
 <td>支付鏈接</td>
-<td>payUrl</td>
+<td>pay_url</td>
 <td>否</td>
 <td>String</td>
-<td>支付鏈接,如果是收銀檯類型的支付會返回對應的支付鏈接</td>
+<td>支付鏈接，如果是收銀台類型的支付會返回對應的支付鏈接。注意：實際返回的字段名為 pay_url（蛇形命名），請在代碼中使用此字段名進行解析</td>
 </tr>
 <tr>
 <td>結果信息</td>
@@ -1541,7 +1541,165 @@ FAIL—失敗</td>
 </tbody>
 </table>
 </div>
-<h1 id="6-錯誤碼說明">6 錯誤碼說明</h1>
+<h1 id="6-checkout收銀台模式對接指南">6 Checkout 收銀台模式對接指南</h1>
+
+<div class="callout info">
+  <div class="callout-title">📖 適用範圍</div>
+  <p>本章適用於 Fintech Payment Online 接口（<code>pay.master.sinopay.online</code> / <code>pay.visa.sinopay.online</code> / <code>pay.unionpay.sinopay.online</code>）中 <code>transaction_type=checkout</code> 的收銀台支付場景。</p>
+</div>
+
+<h2 id="61-什麼是-checkout-收銀台模式">6.1 什麼是 Checkout 收銀台模式</h2>
+<p>Checkout 收銀台模式是指商戶在服務端調用下單接口後，獲取一個由平臺托管的收銀台頁面鏈接（<code>pay_url</code>），再將用戶重定向至該頁面完成支付。用戶在收銀台頁面上填寫信用卡信息並提交，整個卡號等敏感數據由平臺側處理，商戶無需在自身系統中收集或存儲卡信息。</p>
+
+<h2 id="62-providetype-的正確取值">6.2 provide_type 的正確取值</h2>
+<div class="callout warning">
+  <div class="callout-title">⚠️ 注意</div>
+  <p>在 Checkout 收銀台模式下，<code>provide_type</code> 必須設置為 <code>checkout</code>，而不是 <code>card</code>。</p>
+</div>
+<p>接口的 <code>provide_type</code> 字段有兩個取值，其含義和校驗行為完全不同：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>provide_type 取值</th>
+<th>含義</th>
+<th>是否要求傳入卡信息（pan/cvv/expiry_year/expiry_month）</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>card</code></td>
+<td>商戶側已收集卡信息，直接傳入卡號進行支付</td>
+<td><strong>是，必填</strong></td>
+</tr>
+<tr>
+<td><code>checkout</code></td>
+<td>由平臺收銀台托管，用戶在跳轉頁面填卡</td>
+<td><strong>否，無需傳入</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>如果錯誤地將 <code>transaction_type=checkout</code> 與 <code>provide_type=card</code> 組合使用，服務端會強制要求傳入 <code>pan</code>、<code>cvv</code>、<code>expiry_year</code>、<code>expiry_month</code>，即使後續的收銀台流程根本不需要這些信息，接口也會直接報錯：</p>
+<pre><code>{
+  "message": "Pan field is required",
+  "errors": [
+    { "field": "pan",          "code": "MISSING_FIELD" },
+    { "field": "expiry_year",  "code": "MISSING_FIELD" },
+    { "field": "expiry_month", "code": "MISSING_FIELD" },
+    { "field": "cvv",          "code": "MISSING_FIELD" }
+  ]
+}</code></pre>
+
+<h2 id="63-checkout-模式的完整請求示例">6.3 Checkout 模式的完整請求示例</h2>
+<p>以下是一個正確的 Checkout 模式請求示例（以 MasterCard 為例）：</p>
+<pre><code>{
+  "service": "pay.master.sinopay.online",
+  "client_id": "YOUR_CLIENT_ID",
+  "store_id": "YOUR_STORE_ID",
+  "order_no": "ORDER20260710001",
+  "body": "商品描述",
+  "amount": "100",
+  "currency": "HKD",
+  "notify_url": "https://your-domain.com/notify",
+  "callback_url": "https://your-domain.com/return",
+  "ip_address": "1.2.3.4",
+  "provide_type": "checkout",
+  "transaction_type": "checkout",
+  "shop_address": "https://your-domain.com",
+  "first_name": "San",
+  "last_name": "Zhang",
+  "phone": "85212345678",
+  "email": "user@example.com",
+  "address1": "123 Main Street",
+  "address2": "Suite 300",
+  "city": "Hong Kong",
+  "state": "HKG",
+  "zip_code": "000000",
+  "country": "HKG",
+  "nonce_str": "RANDOM_STRING_32",
+  "items": [
+    {
+      "description": "商品名稱",
+      "quantity": "1",
+      "unit_price": "100"
+    }
+  ],
+  "sign": "CALCULATED_SIGN"
+}</code></pre>
+
+<h2 id="64-持卡人與地址字段說明">6.4 持卡人與地址字段說明</h2>
+<p>如果您的業務場景中無法獲取到完整的持卡人信息，可以參考以下兜底策略：</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>字段</th>
+<th>建議兜底值</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr><td><code>first_name</code></td><td><code>N/A</code></td><td>若用戶未填寫姓名</td></tr>
+<tr><td><code>last_name</code></td><td><code>N/A</code></td><td>若用戶未填寫姓名</td></tr>
+<tr><td><code>phone</code></td><td><code>00000000</code></td><td>若用戶未填寫電話</td></tr>
+<tr><td><code>email</code></td><td><code>placeholder@example.com</code></td><td>若用戶未填寫郵箱</td></tr>
+<tr><td><code>zip_code</code></td><td><code>000000</code></td><td>若用戶未填寫郵編</td></tr>
+<tr><td><code>address1</code></td><td>商戶網站 URL</td><td>若用戶未填寫地址，可使用商戶網站地址</td></tr>
+<tr><td><code>address2</code></td><td>同 <code>address1</code></td><td>若無二級地址</td></tr>
+<tr><td><code>city</code></td><td><code>N/A</code></td><td>若無法獲取城市</td></tr>
+<tr><td><code>state</code></td><td>國家 3 位碼（如 <code>HKG</code>）</td><td>若無法獲取省州信息</td></tr>
+<tr><td><code>country</code></td><td><code>HKG</code></td><td>使用 ISO 3 位國家碼，香港默認 <code>HKG</code></td></tr>
+<tr><td><code>ip_address</code></td><td><code>127.0.0.1</code></td><td>若無法獲取客戶端真實 IP</td></tr>
+</tbody>
+</table>
+</div>
+<div class="callout warning">
+  <div class="callout-title">⚠️ country 字段格式</div>
+  <p><code>country</code> 字段必須使用 <strong>ISO 3 位字母代碼</strong>（如 <code>HKG</code>、<code>CHN</code>、<code>SGP</code>），不能使用 2 位代碼（如 <code>HK</code>、<code>CN</code>）。完整的國家代碼對照表請參閱文檔<a href="#附錄-iso國家地區表">附錄</a>。</p>
+</div>
+
+<h2 id="65-簽名注意事項">6.5 簽名注意事項</h2>
+<p>Checkout 模式的請求通常包含 <code>items</code> 數組，屬於巢狀字段，需使用新版簽名規則（V1.1）。</p>
+<p>在計算簽名時，<code>items</code> 字段需先序列化為<strong>緊湊的 Canonical JSON 字符串</strong>（無多餘空格），再參與 ASCII 排序。</p>
+<p><strong>正確示例</strong>（Python）：</p>
+<pre><code>import json, hashlib
+
+items = [{"description": "商品名稱", "quantity": "1", "unit_price": "100"}]
+# 正確：緊湊 JSON，無空格
+items_str = json.dumps(items, ensure_ascii=False, separators=(",", ":"))
+# 結果：[{"description":"商品名稱","quantity":"1","unit_price":"100"}]</code></pre>
+<p><strong>錯誤示例</strong>（直接 str() 轉換）：</p>
+<pre><code># 錯誤：Python 的 str() 會包含空格，導致簽名不一致
+items_str = str(items)
+# 結果：[{'description': '商品名稱', 'quantity': '1', 'unit_price': '100'}]</code></pre>
+<p>詳細的簽名算法和多語言示例，請參閱<a href="../../common/signature.html">數字簽名</a>文檔。</p>
+
+<h2 id="66-返回字段說明">6.6 返回字段說明</h2>
+<p>下單成功後，服務端會返回收銀台跳轉鏈接，請注意：<strong>實際返回的字段名為 </strong><code>pay_url</code>（蛇形命名），請在代碼中使用此字段名進行解析。</p>
+<pre><code>{
+  "message": "SUCCESS",
+  "pay_url": "https://gateway.next-apis.com/service-openApi/hosted/checkout/v4/...",
+  "order_no": "ORDER20260710001",
+  "transaction_id": "FTP202607101520240001",
+  "nonce_str": "xxxxxxxx",
+  "sign": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+}</code></pre>
+<p>獲取到 <code>pay_url</code> 後，將用戶重定向至該地址，用戶即可在平臺托管的收銀台頁面上完成支付。</p>
+
+<h2 id="67-transactiontype-與-providetype-對應速查表">6.7 transaction_type 與 provide_type 對應速查表</h2>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>transaction_type</th>
+<th>推薦 provide_type</th>
+<th>是否需要傳卡信息</th>
+<th>說明</th>
+</tr></thead>
+<tbody>
+<tr><td><code>card</code></td><td><code>card</code></td><td><strong>是</strong></td><td>商戶側直接傳卡號進行扣款</td></tr>
+<tr><td><code>apm</code></td><td><code>card</code></td><td><strong>是</strong></td><td>授權模式，需傳卡號進行授權</td></tr>
+<tr><td><code>checkout</code></td><td><code>checkout</code></td><td><strong>否</strong></td><td>收銀台模式，由平臺托管填卡流程</td></tr>
+</tbody>
+</table>
+</div>
+<h1 id="7-錯誤碼說明">7 錯誤碼說明</h1>
 <div class="table-wrapper">
 <table>
 <thead><tr>
@@ -2860,6 +3018,15 @@ FAIL—失敗</td>
   <li><a href="#552-交互模式" class="toc-h3">5.5.2 交互模式</a></li>
   <li><a href="#553-返回參數列表" class="toc-h3">5.5.3 返回參數列表</a></li>
   <li><a href="#554測試用例" class="toc-h3">5.5.4測試用例</a></li>
+  <li><a href="#6-checkout收銀台模式對接指南" class="toc-h2">6 Checkout 收銀台模式對接指南</a></li>
+  <li><a href="#61-什麼是-checkout-收銀台模式" class="toc-h3">6.1 什麼是 Checkout 收銀台模式</a></li>
+  <li><a href="#62-providetype-的正確取值" class="toc-h3">6.2 provide_type 的正確取值</a></li>
+  <li><a href="#63-checkout-模式的完整請求示例" class="toc-h3">6.3 Checkout 模式的完整請求示例</a></li>
+  <li><a href="#64-持卡人與地址字段說明" class="toc-h3">6.4 持卡人與地址字段說明</a></li>
+  <li><a href="#65-簽名注意事項" class="toc-h3">6.5 簽名注意事項</a></li>
+  <li><a href="#66-返回字段說明" class="toc-h3">6.6 返回字段說明</a></li>
+  <li><a href="#67-transactiontype-與-providetype-對應速查表" class="toc-h3">6.7 transaction_type 與 provide_type 對應速查表</a></li>
+  <li><a href="#7-錯誤碼說明" class="toc-h2">7 錯誤碼說明</a></li>
   <li><a href="#附錄-iso國家地區表" class="toc-h2">附錄、ISO國家/地區表</a></li>
 </ul>
 </nav>

@@ -305,7 +305,7 @@ pay.unionpay.sinopay.online (UnionPay payment)</td>
 <td>provide_type</td>
 <td>Yes</td>
 <td>String(32)</td>
-<td>Payment type options [card: card payment]</td>
+<td>Payment type options [card: card payment, checkout: checkout hosted]</td>
 </tr>
 <tr>
 <td>Transaction Type</td>
@@ -499,10 +499,10 @@ pay.unionpay.sinopay.online (UnionPay payment)</td>
 </tr>
 <tr>
 <td>Payment URL</td>
-<td>payUrl</td>
+<td>pay_url</td>
 <td>No</td>
 <td>String</td>
-<td>Payment URL, if it is a checkout type payment, the corresponding payment URL will be returned</td>
+<td>Payment URL, if it is a checkout type payment, the corresponding payment URL will be returned. Note: the actual returned field name is pay_url (snake_case), please use this field name for parsing in your code</td>
 </tr>
 <tr>
 <td>Result message</td>
@@ -1535,7 +1535,166 @@ FAIL—Failed</td>
 </tbody>
 </table>
 </div>
-<h1 id="6-error-codes">6 Error Codes</h1>
+<h1 id="6-checkout-payment-mode-integration-guide">6 Checkout Payment Mode Integration Guide</h1>
+
+<div class="callout info">
+  <div class="callout-title">📖 Scope</div>
+  <p>This chapter applies to Fintech Payment Online APIs (<code>pay.master.sinopay.online</code> / <code>pay.visa.sinopay.online</code> / <code>pay.unionpay.sinopay.online</code>) with <code>transaction_type=checkout</code> checkout payment scenarios.</p>
+</div>
+
+<h2 id="61-what-is-checkout-mode">6.1 What is Checkout Mode</h2>
+<p>Checkout mode means that after the merchant calls the order API on the server side, a platform-hosted checkout page link (<code>pay_url</code>) is returned. The merchant then redirects the user to this page to complete the payment. The user fills in credit card information on the checkout page, and all sensitive data such as card numbers is handled by the platform side. The merchant does not need to collect or store card information in their own system.</p>
+
+<h2 id="62-correct-providetype-value">6.2 Correct provide_type Value</h2>
+<div class="callout warning">
+  <div class="callout-title">⚠️ Note</div>
+  <p>In Checkout mode, <code>provide_type</code> must be set to <code>checkout</code>, not <code>card</code>.</p>
+</div>
+<p>The <code>provide_type</code> field has two values with completely different meanings and validation behaviors:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>provide_type Value</th>
+<th>Meaning</th>
+<th>Requires Card Info (pan/cvv/expiry_year/expiry_month)</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>card</code></td>
+<td>Merchant has collected card info, passes card number directly</td>
+<td><strong>Yes, required</strong></td>
+</tr>
+<tr>
+<td><code>checkout</code></td>
+<td>Platform checkout hosted, user fills card on redirect page</td>
+<td><strong>No, not needed</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>If you incorrectly combine <code>transaction_type=checkout</code> with <code>provide_type=card</code>, the server will forcibly require <code>pan</code>, <code>cvv</code>, <code>expiry_year</code>, <code>expiry_month</code>, even though the checkout flow does not need them. The API will return an error:</p>
+<pre><code>{
+  "message": "Pan field is required",
+  "errors": [
+    { "field": "pan",          "code": "MISSING_FIELD" },
+    { "field": "expiry_year",  "code": "MISSING_FIELD" },
+    { "field": "expiry_month", "code": "MISSING_FIELD" },
+    { "field": "cvv",          "code": "MISSING_FIELD" }
+  ]
+}</code></pre>
+
+<h2 id="63-complete-checkout-request-example">6.3 Complete Checkout Request Example</h2>
+<p>The following is a correct Checkout mode request example (MasterCard):</p>
+<pre><code>{
+  "service": "pay.master.sinopay.online",
+  "client_id": "YOUR_CLIENT_ID",
+  "store_id": "YOUR_STORE_ID",
+  "order_no": "ORDER20260710001",
+  "body": "Product description",
+  "amount": "100",
+  "currency": "HKD",
+  "notify_url": "https://your-domain.com/notify",
+  "callback_url": "https://your-domain.com/return",
+  "ip_address": "1.2.3.4",
+  "provide_type": "checkout",
+  "transaction_type": "checkout",
+  "shop_address": "https://your-domain.com",
+  "first_name": "San",
+  "last_name": "Zhang",
+  "phone": "85212345678",
+  "email": "user@example.com",
+  "address1": "123 Main Street",
+  "address2": "Suite 300",
+  "city": "Hong Kong",
+  "state": "HKG",
+  "zip_code": "000000",
+  "country": "HKG",
+  "nonce_str": "RANDOM_STRING_32",
+  "items": [
+    {
+      "description": "Product name",
+      "quantity": "1",
+      "unit_price": "100"
+    }
+  ],
+  "sign": "CALCULATED_SIGN"
+}</code></pre>
+
+<h2 id="64-cardholder-and-address-fields">6.4 Cardholder and Address Fields</h2>
+<p>If your business scenario cannot obtain complete cardholder information, you can refer to the following fallback strategy:</p>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>Field</th>
+<th>Suggested Fallback Value</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr><td><code>first_name</code></td><td><code>N/A</code></td><td>If user did not provide name</td></tr>
+<tr><td><code>last_name</code></td><td><code>N/A</code></td><td>If user did not provide name</td></tr>
+<tr><td><code>phone</code></td><td><code>00000000</code></td><td>If user did not provide phone</td></tr>
+<tr><td><code>email</code></td><td><code>placeholder@example.com</code></td><td>If user did not provide email</td></tr>
+<tr><td><code>zip_code</code></td><td><code>000000</code></td><td>If user did not provide zip code</td></tr>
+<tr><td><code>address1</code></td><td>Merchant website URL</td><td>If user did not provide address, use merchant website</td></tr>
+<tr><td><code>address2</code></td><td>Same as <code>address1</code></td><td>If no secondary address</td></tr>
+<tr><td><code>city</code></td><td><code>N/A</code></td><td>If city cannot be obtained</td></tr>
+<tr><td><code>state</code></td><td>Country 3-letter code (e.g., <code>HKG</code>)</td><td>If state/province cannot be obtained</td></tr>
+<tr><td><code>country</code></td><td><code>HKG</code></td><td>Use ISO 3-letter country code, Hong Kong default <code>HKG</code></td></tr>
+<tr><td><code>ip_address</code></td><td><code>127.0.0.1</code></td><td>If client real IP cannot be obtained</td></tr>
+</tbody>
+</table>
+</div>
+<div class="callout warning">
+  <div class="callout-title">⚠️ country Field Format</div>
+  <p>The <code>country</code> field must use <strong>ISO 3-letter alphabetic codes</strong> (e.g., <code>HKG</code>, <code>CHN</code>, <code>SGP</code>), not 2-letter codes (e.g., <code>HK</code>, <code>CN</code>). For the complete country code reference, see the <a href="#appendix-iso-country-region-table">Appendix</a>.</p>
+</div>
+
+<h2 id="65-signature-notes">6.5 Signature Notes</h2>
+<p>Checkout mode requests typically contain an <code>items</code> array, which is a nested field requiring the new signature rules (V1.1).</p>
+<p>When calculating the signature, the <code>items</code> field must first be serialized into a <strong>compact Canonical JSON string</strong> (no extra spaces) before participating in ASCII sorting.</p>
+<p><strong>Correct example</strong> (Python):</p>
+<pre><code>import json, hashlib
+
+items = [{"description": "Product name", "quantity": "1", "unit_price": "100"}]
+# Correct: compact JSON, no spaces
+items_str = json.dumps(items, ensure_ascii=False, separators=(",", ":"))
+# Result: [{"description":"Product name","quantity":"1","unit_price":"100"}]</code></pre>
+<p><strong>Incorrect example</strong> (using str() directly):</p>
+<pre><code># Wrong: Python's str() includes spaces, causing signature mismatch
+items_str = str(items)
+# Result: [{'description': 'Product name', 'quantity': '1', 'unit_price': '100'}]</code></pre>
+<p>For detailed signature algorithm and multi-language examples, see the <a href="../../common/signature.html">Digital Signature</a> documentation.</p>
+
+<h2 id="66-response-fields">6.6 Response Fields</h2>
+<p>After a successful order, the server returns a checkout redirect link. Note: <strong>the actual returned field name is </strong><code>pay_url</code> (snake_case), please use this field name for parsing in your code.</p>
+<pre><code>{
+  "message": "SUCCESS",
+  "pay_url": "https://gateway.next-apis.com/service-openApi/hosted/checkout/v4/...",
+  "order_no": "ORDER20260710001",
+  "transaction_id": "FTP202607101520240001",
+  "nonce_str": "xxxxxxxx",
+  "sign": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+}</code></pre>
+<p>After obtaining <code>pay_url</code>, redirect the user to this URL. The user can then complete the payment on the platform-hosted checkout page.</p>
+
+<h2 id="67-transactiontype-and-providetype-quick-reference">6.7 transaction_type and provide_type Quick Reference</h2>
+<div class="table-wrapper">
+<table>
+<thead><tr>
+<th>transaction_type</th>
+<th>Recommended provide_type</th>
+<th>Requires Card Info</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr><td><code>card</code></td><td><code>card</code></td><td><strong>Yes</strong></td><td>Merchant passes card number directly for payment</td></tr>
+<tr><td><code>apm</code></td><td><code>card</code></td><td><strong>Yes</strong></td><td>Authorization mode, requires card number for authorization</td></tr>
+<tr><td><code>checkout</code></td><td><code>checkout</code></td><td><strong>No</strong></td><td>Checkout mode, platform hosts the card entry flow</td></tr>
+</tbody>
+</table>
+</div>
+
+<h1 id="7-error-codes">7 Error Codes</h1>
 <div class="table-wrapper">
 <table>
 <thead><tr>
@@ -2854,6 +3013,15 @@ FAIL—Failed</td>
   <li><a href="#552-interaction-mode" class="toc-h3">5.5.2 Interaction Mode</a></li>
   <li><a href="#553-response-parameters" class="toc-h3">5.5.3 Response Parameters</a></li>
   <li><a href="#554-test-cases" class="toc-h3">5.5.4 Test Cases</a></li>
+  <li><a href="#6-checkout-payment-mode-integration-guide" class="toc-h2">6 Checkout Payment Mode Integration Guide</a></li>
+  <li><a href="#61-what-is-checkout-mode" class="toc-h3">6.1 What is Checkout Mode</a></li>
+  <li><a href="#62-correct-providetype-value" class="toc-h3">6.2 Correct provide_type Value</a></li>
+  <li><a href="#63-complete-checkout-request-example" class="toc-h3">6.3 Complete Checkout Request Example</a></li>
+  <li><a href="#64-cardholder-and-address-fields" class="toc-h3">6.4 Cardholder and Address Fields</a></li>
+  <li><a href="#65-signature-notes" class="toc-h3">6.5 Signature Notes</a></li>
+  <li><a href="#66-response-fields" class="toc-h3">6.6 Response Fields</a></li>
+  <li><a href="#67-transactiontype-and-providetype-quick-reference" class="toc-h3">6.7 transaction_type and provide_type Quick Reference</a></li>
+  <li><a href="#7-error-codes" class="toc-h2">7 Error Codes</a></li>
   <li><a href="#appendix-iso-country-region-table" class="toc-h2">Appendix. ISO Country/Region Table</a></li>
 </ul>
 </nav>
