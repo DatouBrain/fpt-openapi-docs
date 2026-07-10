@@ -44,7 +44,7 @@
   <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
   <ul class="sidebar-links">
     <li><a href="../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online 無卡支付</a></li>
-    <li><a href="../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online 支付 <span class="status-tag upcoming">暫未開放</span></a></li>
+    <li><a href="../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online 支付</a></li>
   </ul>
 </div>
 <div class="sidebar-group" data-group="card-offline">
@@ -56,6 +56,7 @@
 <div class="sidebar-group" data-group="qr-online">
   <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
   <ul class="sidebar-links">
+    <li><a href="../payments/qr-online/qr-code.html" class="sub-link">動態銀碼掃碼支付</a></li>
     <li><a href="../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP 支付</a></li>
     <li><a href="../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB 支付</a></li>
     <li><a href="../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP 支付</a></li>
@@ -64,7 +65,6 @@
     <li><a href="../payments/qr-online/wechat-wap.html" class="sub-link">Wechat WAP 支付</a></li>
     <li><a href="../payments/qr-online/wechat-miniprogram.html" class="sub-link">Wechat 公眾帳號和小程序支付</a></li>
     <li><a href="../payments/qr-online/wechat-app.html" class="sub-link">Wechat APP 支付</a></li>
-    <li><a href="../payments/qr-online/qr-code.html" class="sub-link">動態銀碼掃碼支付</a></li>
   </ul>
 </div>
 <div class="sidebar-group" data-group="qr-offline">
@@ -79,7 +79,7 @@
     <main class="main-content">
       <h1 id="overview">數字簽名</h1>
 <div class="page-meta">
-  <span class="page-meta-item">文檔版本：V1.0</span>
+  <span class="page-meta-item">文檔版本：V1.1</span>
 </div>
 <p>為保證資料傳輸過程中的真實性和完整性，所有 API 請求和響應都需要進行數字簽名。簽名分為兩步：先按規則拼接簽名原始串，再用 MD5 演算法計算簽名結果。</p>
 
@@ -91,6 +91,10 @@
   <li>字段名和字段值都採用原始值，不進行 URL Encode</li>
   <li>平台返回的應答或通知可能會由於升級增加參數，請驗證應答簽名時注意允許這種情況</li>
 </ol>
+<div class="callout warning">
+  <div class="callout-title">⚠️ IP 欄位差異</div>
+  <p>QR Pay 系列產品的請求參數為 <code>client_ip</code>，而 Fintech Payment Online 卡支付產品的請求參數為 <code>ip_address</code>。對接 Fintech Payment Online Card 支付時，請將以下示例中的 <code>client_ip</code> 替換為 <code>ip_address</code>。</p>
+</div>
 
 <h3>示例</h3>
 <p>假設有以下請求參數：</p>
@@ -108,6 +112,39 @@
 }</code></pre>
 <p>正確的簽名排序結果為（排除 <code>sign</code> 和 <code>lang</code>）：</p>
 <pre><span class="code-label">TEXT</span><code class="language-text">amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.weixin.web.intl&amp;store_id=1001001</code></pre>
+
+<h3 id="sign-string-items">含 items 等巢狀欄位的簽名</h3>
+<p>當請求包含 <code>items</code> 等 JSON 陣列或物件欄位時（如 Fintech Payment Online 卡支付的下單接口），該欄位仍作為頂層欄位按欄位名排序參與簽名，其欄位值需用<strong>無多餘空白的 JSON 字串</strong>（canonical JSON）表示。規則如下：</p>
+<ol>
+  <li>陣列元素順序保持原始順序，物件欄位按名稱從小到大排序</li>
+  <li><code>null</code> 值欄位不參與物件 JSON 組串</li>
+  <li>字串值用雙引號包裹並對特殊字元轉義</li>
+  <li><code>items.quantity</code>、<code>items.unit_price</code> 為字串欄位，按字串處理（需加雙引號）</li>
+  <li>JSON 字串中不留多餘空白（無空格、無換行）</li>
+</ol>
+<p>示例，假設有以下含 <code>items</code> 的請求參數：</p>
+<pre><span class="code-label">JSON</span><code class="language-json">{
+  "client_id": "1001",
+  "store_id": "1001001",
+  "service": "pay.master.sinopay.online",
+  "order_no": "Me08772e914454656bf26ec8996e35bb",
+  "amount": "246",
+  "body": "Sinopay items test",
+  "notify_url": "2031",
+  "ip_address": "127.0.0.1",
+  "nonce_str": "1409196838",
+  "items": [
+    {"description": "Mint (piece)", "quantity": "1", "unit_price": "246"}
+  ]
+}</code></pre>
+<p><code>items</code> 的 canonical JSON 表示為：</p>
+<pre><span class="code-label">TEXT</span><code class="language-text">[{"description":"Mint (piece)","quantity":"1","unit_price":"246"}]</code></pre>
+<p>正確的簽名排序結果為（排除 <code>sign</code> 和 <code>lang</code>）：</p>
+<pre><span class="code-label">TEXT</span><code class="language-text">amount=246&amp;body=Sinopay items test&amp;client_id=1001&amp;ip_address=127.0.0.1&amp;items=[{"description":"Mint (piece)","quantity":"1","unit_price":"246"}]&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.master.sinopay.online&amp;store_id=1001001</code></pre>
+<div class="callout info">
+  <div class="callout-title">💡 新舊兼容說明</div>
+  <p>當請求不含 <code>items</code> 等巢狀欄位時（如掃碼支付、WAP、WEB 等），新舊簽名規則產出的簽名完全一致，已對接的開發者無需任何改動。只有含巢狀欄位的請求（如卡支付的 <code>items</code>）才需按上述 canonical JSON 規則處理。</p>
+</div>
 
 <h2 id="sign-algorithm">簽名演算法</h2>
 <p>使用 MD5 摘要演算法，在簽名原始串後加上商戶通信金鑰進行計算，結果轉為大寫：</p>
@@ -216,6 +253,7 @@ function generateSign(params, merchantKey) {
 <div class="toc-nav-title">本頁目錄</div>
 <ul>
   <li><a href="#sign-string" class="toc-h2">簽名原始串</a></li>
+  <li><a href="#sign-string-items" class="toc-h3">含 items 等巢狀欄位的簽名</a></li>
   <li><a href="#sign-algorithm" class="toc-h2">簽名演算法</a></li>
   <li><a href="#full-example" class="toc-h2">完整示例</a></li>
   <li><a href="#code-examples" class="toc-h2">多語言代碼示例</a></li>

@@ -44,7 +44,7 @@
   <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
   <ul class="sidebar-links">
     <li><a href="../../payments/card-online/global-payments-online.html" class="sub-link active">Global Payments Online (Card-not-present)</a></li>
-    <li><a href="../../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online <span class="status-tag upcoming">Coming Soon</span></a></li>
+    <li><a href="../../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online</a></li>
   </ul>
 </div>
 <div class="sidebar-group" data-group="card-offline">
@@ -56,6 +56,7 @@
 <div class="sidebar-group" data-group="qr-online">
   <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
   <ul class="sidebar-links">
+    <li><a href="../../payments/qr-online/qr-code.html" class="sub-link">Dynamic QR Code Payment</a></li>
     <li><a href="../../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP Payment</a></li>
     <li><a href="../../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB Payment</a></li>
     <li><a href="../../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP Payment</a></li>
@@ -64,7 +65,6 @@
     <li><a href="../../payments/qr-online/wechat-wap.html" class="sub-link">WeChat WAP Payment</a></li>
     <li><a href="../../payments/qr-online/wechat-miniprogram.html" class="sub-link">WeChat Official Account &amp; Mini Program Payment</a></li>
     <li><a href="../../payments/qr-online/wechat-app.html" class="sub-link">WeChat APP Payment</a></li>
-    <li><a href="../../payments/qr-online/qr-code.html" class="sub-link">Dynamic QR Code Payment</a></li>
   </ul>
 </div>
 <div class="sidebar-group" data-group="qr-offline">
@@ -164,62 +164,8 @@ The sequence diagram is as follows:</p>
 <p>]</p>
 <p>}</p>
 <p>A message other than SUCCESS indicates an API call error.</p>
-<h1 id="4數字簽名">4 Digital Signature</h1>
-<p>To ensure the authenticity and integrity of data during transmission, we need to digitally sign the data and perform signature verification after receiving signed data.</p>
-<p>Digital signature has two steps: first, concatenate the original string to be signed according to certain rules, then select a specific algorithm and key to calculate the signature result.</p>
-<h2 id="41-簽名原始串">4.1 Signature Original String</h2>
-<p>Whether for requests or responses, the signature original string is assembled as follows:
-1. Except for the sign field, all parameters are sorted in ascending order by ASCII code of field names and concatenated in QueryString format (i.e., key1=value1&amp;key2=value2…). Empty values are not transmitted and do not participate in signature string assembly.
-2. In the signature original string, field names and field values use original values without URL Encode.</p>
-<p>3. The platform's response or notification messages may add parameters due to upgrades. Please note to allow for this situation when verifying response signatures.</p>
-<p>Example:</p>
-<p>Calling an API with the following fields:</p>
-<p>{</p>
-<p>&quot;client_id&quot;:&quot;1001&quot;,</p>
-<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
-<p>&quot;service&quot;:&quot;pay.globalpayment.card.notpresent&quot;,</p>
-<p>&quot;order_no&quot;:&quot;43e83019eb1941dba5fa27f97b398627&quot;,</p>
-<p>&quot;number&quot;:&quot;4111111111111111&quot;,</p>
-<p>&quot;card_type&quot;:&quot;VISA&quot;,</p>
-<p>&quot;expiration_year&quot;:&quot;2031&quot;,</p>
-<p>&quot;expiration_month&quot;:&quot;12&quot;,</p>
-<p>&quot;amount&quot;:&quot;4244.00&quot;,</p>
-<p>&quot;currency&quot;:&quot;USD&quot;,</p>
-<p>&quot;first_name&quot;:&quot;John&quot;,</p>
-<p>&quot;last_name&quot;:&quot;Doe&quot;,</p>
-<p>&quot;address&quot;:&quot;1 Market St&quot;,</p>
-<p>&quot;bill_locality&quot;:&quot;san francisco&quot;,</p>
-<p>&quot;administrative_area&quot;:&quot;CA&quot;,</p>
-<p>&quot;postal_code&quot;:&quot;94105&quot;,</p>
-<p>&quot;country&quot;:&quot;GB&quot;,</p>
-<p>&quot;email&quot;:&quot;test@cybs.com&quot;,</p>
-<p>&quot;phone&quot;:&quot;4158880000&quot;,</p>
-<p>&quot;body&quot;:&quot;Office cabinet,</p>
-<p>good quality,</p>
-<p>very beautiful&quot;,</p>
-<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
-<p>&quot;nonce_str&quot;:&quot;gyej53wz&quot;,</p>
-<p>&quot;sign&quot;:&quot;D8018D80F164A46C53BF1D6ADC8D8EB1&quot;</p>
-<p>}</p>
-<p>The correct signature field sorting is:</p>
-<p>address=1 Market St&amp;administrative_area=CA&amp;amount=4244.00&amp;bill_locality=san francisco&amp;body=Office cabinet, good quality, very beautiful&amp;card_type=VISA&amp;client_ip=127.0.0.1&amp;country=GB&amp;currency=USD&amp;email=test@cybs.com&amp;expiration_month=12&amp;expiration_year=2031&amp;first_name=John&amp;last_name=Doe&amp;client_id=1001&amp;nonce_str=gyej53wz&amp;number=4111111111111111&amp;order_no=43e83019eb1941dba5fa27f97b398627&amp;phone=4158880000&amp;postal_code=94105&amp;service=pay.globalpayment.card.notpresent&amp;store_id=1001001</p>
-<h2 id="42-簽名演算法">4.2 Signature Algorithm</h2>
-<p>MD5 Signature
-MD5 is a digest generation algorithm. By appending the merchant communication key to the signature original string and performing MD5 calculation, the resulting digest string is the signature result. For convenience of comparison, the signature result is uniformly converted to uppercase characters.</p>
-<p>Note: When converting the string to byte stream during signature, the specified encoding character set should be consistent with the charset parameter.
-MD5 signature calculation formula:
-sign = MD5 (original string+&amp;key=merchant secret key).toUpperCase</p>
-<p>Assuming the merchant secret key is: MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=</p>
-<p>For example:
-Assuming the following JSON input parameters:
-i: After process a, the URL key-value pair dictionary sorted string string1 is:
-address=1 Market St&amp;administrative_area=CA&amp;amount=4244.00&amp;bill_locality=san francisco&amp;body=Office cabinet, good quality, very beautiful&amp;card_type=VISA&amp;client_ip=127.0.0.1&amp;country=GB&amp;currency=USD&amp;email=test@cybs.com&amp;expiration_month=12&amp;expiration_year=2031&amp;first_name=John&amp;last_name=Doe&amp;client_id=1001&amp;nonce_str=gyej53wz&amp;number=4111111111111111&amp;order_no=43e83019eb1941dba5fa27f97b398627&amp;phone=4158880000&amp;postal_code=94105&amp;service=pay.globalpayment.card.notpresent&amp;store_id=1001001
-ii: After process b, the obtained sign is:</p>
-<p>sign = md5(string1+&amp;key=merchant secret key).toUpperCase</p>
-<p>The actual encrypted string is:</p>
-<p>sign = md5(address=1 Market St&amp;administrative_area=CA&amp;amount=4244.00&amp;bill_locality=san francisco&amp;body=Office cabinet, good quality, very beautiful&amp;card_type=VISA&amp;client_ip=127.0.0.1&amp;country=GB&amp;currency=USD&amp;email=test@cybs.com&amp;expiration_month=12&amp;expiration_year=2031&amp;first_name=John&amp;last_name=Doe&amp;client_id=1001&amp;nonce_str=gyej53wz&amp;number=4111111111111111&amp;order_no=43e83019eb1941dba5fa27f97b398627&amp;phone=4158880000&amp;postal_code=94105&amp;service=pay.globalpayment.card.notpresent&amp;store_id=1001001&amp;key=MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=).toUpperCase</p>
-<p>The final signature obtained is: 450D4C7163D44302BAD0C75A7EDE38AF</p>
-<p>The sign and lang fields do not participate in API signature. The same applies to the return parameter decryption rules.</p>
+<h1 id="4-digital-signature">4 Digital Signature</h1>
+<p>The signature rules for this API follow the platform's unified digital signature specification, covering both basic key-value scenarios and nested field (e.g. items) scenarios, the MD5 algorithm, and multi-language code examples. Please refer to <a href="../../common/signature.html">Digital Signature</a>.</p>
 <h1 id="5-接口描述">5 API Description</h1>
 <h2 id="51-下單接口">5.1 Create Order API</h2>
 <h3 id="511-業務功能">5.1.1 Business Function</h3>
@@ -1463,8 +1409,7 @@ FAIL—Failed</td>
   <li><a href="#21-業務實現流程" class="toc-h2">2.1 Business Implementation Process</a></li>
   <li><a href="#31-提交數據" class="toc-h2">3.1 Submit Data</a></li>
   <li><a href="#32-返回結果數據格式" class="toc-h2">3.2 Return Result Data Format</a></li>
-  <li><a href="#41-簽名原始串" class="toc-h2">4.1 Signature Original String</a></li>
-  <li><a href="#42-簽名演算法" class="toc-h2">4.2 Signature Algorithm</a></li>
+  <li><a href="#4-digital-signature" class="toc-h2">4 Digital Signature</a></li>
   <li><a href="#51-下單接口" class="toc-h2">5.1 Create Order API</a></li>
   <li><a href="#511-業務功能" class="toc-h3">5.1.1 Business Function</a></li>
   <li><a href="#512-交互模式" class="toc-h3">5.1.2 Interaction Mode</a></li>

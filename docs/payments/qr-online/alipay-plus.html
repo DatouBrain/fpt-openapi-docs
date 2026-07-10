@@ -44,7 +44,7 @@
   <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
   <ul class="sidebar-links">
     <li><a href="../../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online 無卡支付</a></li>
-    <li><a href="../../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online 支付 <span class="status-tag upcoming">暫未開放</span></a></li>
+    <li><a href="../../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online 支付</a></li>
   </ul>
 </div>
 <div class="sidebar-group" data-group="card-offline">
@@ -56,6 +56,7 @@
 <div class="sidebar-group" data-group="qr-online">
   <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
   <ul class="sidebar-links">
+    <li><a href="../../payments/qr-online/qr-code.html" class="sub-link">動態銀碼掃碼支付</a></li>
     <li><a href="../../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP 支付</a></li>
     <li><a href="../../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB 支付</a></li>
     <li><a href="../../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP 支付</a></li>
@@ -64,7 +65,6 @@
     <li><a href="../../payments/qr-online/wechat-wap.html" class="sub-link">Wechat WAP 支付</a></li>
     <li><a href="../../payments/qr-online/wechat-miniprogram.html" class="sub-link">Wechat 公眾帳號和小程序支付</a></li>
     <li><a href="../../payments/qr-online/wechat-app.html" class="sub-link">Wechat APP 支付</a></li>
-    <li><a href="../../payments/qr-online/qr-code.html" class="sub-link">動態銀碼掃碼支付</a></li>
   </ul>
 </div>
 <div class="sidebar-group" data-group="qr-offline">
@@ -167,49 +167,8 @@
 <p>}</p>
 <p>message返回非SUCCESS時表示接口調用出錯。</p>
 <h1 id="4數字簽名">4數字簽名</h1>
-<p>為了保證資料傳輸過程中的資料真實性和完整性， 我們需要對資料進行數字簽名， 在接收簽名資料之後進行簽名校驗。</p>
-<p>數字簽名有兩個步驟， 先按一定規則拼接要簽名的原始串， 再選擇具體的演算法和密鑰計算出簽名結果。</p>
-<h2 id="41-簽名原始串">4.1 簽名原始串</h2>
-<p>無論是請求還是應答， 簽名原始串按以下方式組裝成字串：
-1、 除 sign 欄位外， 所有參數按照欄位名的 ascii 碼從小到大排序後使用 QueryString 的格式（即key1=value1&amp;key2=value2…） 拼接而成， 空值不傳遞， 不參與簽名組串。
-2、 簽名原始串中， 欄位名和欄位值都採用原始值， 不進行 URL Encode。</p>
-<p>3、 平臺返回的應答或通知消息可能會由於升級增加參數， 請驗證應答簽名時注意允許這種情況。</p>
-<p>舉例：</p>
-<p>調用某個接口， 接口有如下欄位：</p>
-<p>{</p>
-<p>&quot;client_id&quot;:&quot;1001&quot;,</p>
-<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
-<p>&quot;service&quot;:&quot; pay.aps.alipay.wappay&quot;,</p>
-<p>&quot;order_no&quot;:&quot;Me08772e914454656bf26ec8996e35bb&quot;,</p>
-<p>&quot;amount&quot;:&quot;1&quot;,</p>
-<p>&quot;body&quot;:&quot;a chair&quot;,</p>
-<p>&quot;notify_url&quot;:&quot;2031&quot;,</p>
-<p>&quot;payment_inst&quot;:&quot;ALIPAYHK&quot;,</p>
-<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
-<p>&quot;nonce_str&quot;:&quot;1409196838&quot;,</p>
-<p>&quot;sign&quot;:&quot;22C9835251DCF58BB70C78FA8D6448BD&quot;</p>
-<p>}</p>
-<p>正確的簽名欄位排序為：</p>
-<p>amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;payment_inst=ALIPAYHK&amp;service=pay.aps.alipay.wappay&amp;store_id=1001001</p>
-<h2 id="42-簽名演算法">4.2 簽名演算法</h2>
-<p>MD5 簽名
-MD5 是一種摘要生成演算法， 通過在簽名原始串後加上商戶通信金鑰的內容， 進行 MD5 運算， 形成的摘要
-字串即為簽名結果。 為了方便比較， 簽名結果統一轉換為大寫字元。</p>
-<p>注意： 簽名時將字串轉化成位元組流時指定的編碼字元集應與參數 charset 一致。
-MD5 簽名計算公式：
-sign = MD5 (原字串+&amp;key=商戶祕鑰). toUpperCase</p>
-<p>假設商戶祕鑰為：MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=</p>
-<p>如：
-假設以下為 JSON傳入參數：
-i： 經過 a 過程 URL 鍵值對字典序排序後的字串 string1 為：
-amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;payment_inst=ALIPAYHK&amp;service=pay.aps.alipay.wappay&amp;store_id=1001001
-ii： 經過 b 過程後得到 sign 為：</p>
-<p>sign = md5(string1+&amp;key=商戶祕鑰).toUpperCase</p>
-<p>實際加密字符串為：</p>
-<p>sign = md5(amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;payment_inst=ALIPAYHK&amp;service=pay.aps.alipay.wappay&amp;store_id=1001001&amp;key=MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=).toUpperCase</p>
-<p>最終得到的簽名為：22C9835251DCF58BB70C78FA8D6448BD</p>
-<p>sign與 lang字段不參與接口簽名，接口返回參數解密規則同理</p>
-<h2 id="43-請求頭說明">4.3 請求頭說明</h2>
+<p>本接口的簽名規則遵循平臺統一的數字簽名規範，包含基本鍵值場景與含 items 等巢狀欄位場景的簽名規則、MD5 演算法及多語言代碼示例。請參閱<a href="../../common/signature.html">數字簽名</a>。</p>
+<h2 id="41-請求頭說明">4.1 請求頭說明</h2>
 <p>請求參數：</p>
 <div class="table-wrapper">
 <table>
@@ -1655,9 +1614,8 @@ FAIL—失敗</td>
   <li><a href="#12閱讀對象" class="toc-h2">1.2閱讀對象</a></li>
   <li><a href="#21-提交數據" class="toc-h2">2.1 提交數據</a></li>
   <li><a href="#22-返回結果數據格式" class="toc-h2">2.2 返回結果數據格式</a></li>
-  <li><a href="#41-簽名原始串" class="toc-h2">4.1 簽名原始串</a></li>
-  <li><a href="#42-簽名演算法" class="toc-h2">4.2 簽名演算法</a></li>
-  <li><a href="#43-請求頭說明" class="toc-h2">4.3 請求頭說明</a></li>
+  <li><a href="#4數字簽名" class="toc-h2">4 數字簽名</a></li>
+  <li><a href="#41-請求頭說明" class="toc-h2">4.1 請求頭說明</a></li>
   <li><a href="#51-下單接口" class="toc-h2">5.1 下單接口</a></li>
   <li><a href="#511-業務功能" class="toc-h3">5.1.1 業務功能</a></li>
   <li><a href="#512-交互模式" class="toc-h3">5.1.2 交互模式</a></li>

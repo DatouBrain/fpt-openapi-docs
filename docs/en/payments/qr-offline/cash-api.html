@@ -44,7 +44,7 @@
   <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
   <ul class="sidebar-links">
     <li><a href="../../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online</a></li>
-    <li><a href="../../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online <span class="status-tag upcoming">Coming Soon</span></a></li>
+    <li><a href="../../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online</a></li>
   </ul>
 </div>
 <div class="sidebar-group" data-group="card-offline">
@@ -56,6 +56,7 @@
 <div class="sidebar-group" data-group="qr-online">
   <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
   <ul class="sidebar-links">
+    <li><a href="../../payments/qr-online/qr-code.html" class="sub-link">Dynamic QR Code Payment</a></li>
     <li><a href="../../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP Payment</a></li>
     <li><a href="../../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB Payment</a></li>
     <li><a href="../../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP Payment</a></li>
@@ -64,7 +65,6 @@
     <li><a href="../../payments/qr-online/wechat-wap.html" class="sub-link">Wechat WAP Payment</a></li>
     <li><a href="../../payments/qr-online/wechat-miniprogram.html" class="sub-link">Wechat Official Account & Mini Program Payment</a></li>
     <li><a href="../../payments/qr-online/wechat-app.html" class="sub-link">Wechat APP Payment</a></li>
-    <li><a href="../../payments/qr-online/qr-code.html" class="sub-link">Dynamic QR Code Payment</a></li>
   </ul>
 </div>
 <div class="sidebar-group" data-group="qr-offline">
@@ -153,48 +153,8 @@
 <p>}</p>
 <p>When message returns a value other than SUCCESS, it indicates an API call error.</p>
 <h1 id="4-digital-signature">4 Digital Signature</h1>
-<p>To ensure the authenticity and integrity of data during transmission, digital signatures are required. The signature is verified upon receiving the signed data.</p>
-<p>Digital signing involves two steps: first, assemble the original string to be signed according to specific rules; then, apply the chosen algorithm and key to compute the signature result.</p>
-<h2 id="41-signature-original-string">4.1 Signature Original String</h2>
-<p>Whether for requests or responses, the original signature string is assembled as follows:
-1. Excluding the sign field, all parameters are sorted in ascending order by field name using ASCII values, then concatenated in QueryString format (i.e., key1=value1&amp;key2=value2…). Empty values are not included and do not participate in the signature string.
-2. In the original signature string, both field names and field values use their original values without URL encoding.</p>
-<p>3. The platform's response or notification messages may include additional parameters due to upgrades. Please account for this when verifying response signatures.</p>
-<p>Example:</p>
-<p>Calling an API with the following fields:</p>
-<p>{</p>
-<p>&quot;client_id&quot;:&quot;1001&quot;,</p>
-<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
-<p>&quot;service&quot;:&quot;pay.cash.intl&quot;,</p>
-<p>&quot;order_no&quot;:&quot;Me08772e914454656bf26ec8996e35bb&quot;,</p>
-<p>&quot;amount&quot;:&quot;1&quot;,</p>
-<p>&quot;body&quot;:&quot;a chair&quot;,</p>
-<p>&quot;notify_url&quot;:&quot;2031&quot;,</p>
-<p>&quot;payment_inst&quot;:&quot;CASH&quot;,</p>
-<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
-<p>&quot;nonce_str&quot;:&quot;1409196838&quot;,</p>
-<p>&quot;sign&quot;:&quot;22C9835251DCF58BB70C78FA8D6448BD&quot;</p>
-<p>}</p>
-<p>The correct signature field ordering is:</p>
-<p>amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;payment_inst=CASH&amp;service=pay.cash.intl&amp;store_id=1001001</p>
-<h2 id="42-signature-algorithm">4.2 Signature Algorithm</h2>
-<p>MD5 Signature
-MD5 is a digest generation algorithm. By appending the merchant communication key to the original signature string and performing MD5 computation, the resulting digest string becomes the signature result. For ease of comparison, the signature result is uniformly converted to uppercase characters.</p>
-<p>Note: When converting the string to a byte stream during signing, the specified encoding character set must be consistent with the charset parameter.
-MD5 signature formula:
-sign = MD5 (original string+&amp;key=merchant secret key). toUpperCase</p>
-<p>Assuming the merchant secret key is: MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=</p>
-<p>Example:
-Assuming the following JSON input parameters:
-i: After step a, the URL key-value pair dictionary-sorted string string1 is:
-amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;payment_inst=CASH&amp;service=pay.cash.intl&amp;store_id=1001001
-ii: After step b, the sign is:</p>
-<p>sign = md5(string1+&amp;key=merchant secret key).toUpperCase</p>
-<p>The actual encrypted string is:</p>
-<p>sign = md5(amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;payment_inst=CASH&amp;service=pay.cash.intl&amp;store_id=1001001&amp;key=MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=).toUpperCase</p>
-<p>The final signature obtained is: 22C9835251DCF58BB70C78FA8D6448BD</p>
-<p>The sign and lang fields do not participate in the API signature. The same applies to the decryption rules for API response parameters.</p>
-<h2 id="43-request-headers">4.3 Request Headers</h2>
+<p>The signature rules for this API follow the platform's unified digital signature specification, covering both basic key-value scenarios and nested field (e.g. items) scenarios, the MD5 algorithm, and multi-language code examples. Please refer to <a href="../../common/signature.html">Digital Signature</a>.</p>
+<h2 id="41-request-headers">4.1 Request Headers</h2>
 <p>Request parameters:</p>
 <div class="table-wrapper">
 <table>
@@ -1054,9 +1014,8 @@ Failure: FAIL</td>
   <li><a href="#21-business-implementation-flow" class="toc-h2">2.1 Business Implementation Flow</a></li>
   <li><a href="#31-submit-data" class="toc-h2">3.1 Submit Data</a></li>
   <li><a href="#32-response-data-format" class="toc-h2">3.2 Response Data Format</a></li>
-  <li><a href="#41-signature-original-string" class="toc-h2">4.1 Signature Original String</a></li>
-  <li><a href="#42-signature-algorithm" class="toc-h2">4.2 Signature Algorithm</a></li>
-  <li><a href="#43-request-headers" class="toc-h2">4.3 Request Headers</a></li>
+  <li><a href="#4-digital-signature" class="toc-h2">4 Digital Signature</a></li>
+  <li><a href="#41-request-headers" class="toc-h2">4.1 Request Headers</a></li>
   <li><a href="#51-create-order-api" class="toc-h2">5.1 Create Order API</a></li>
   <li><a href="#511-business-function" class="toc-h3">5.1.1 Business Function</a></li>
   <li><a href="#512-interaction-mode" class="toc-h3">5.1.2 Interaction Mode</a></li>

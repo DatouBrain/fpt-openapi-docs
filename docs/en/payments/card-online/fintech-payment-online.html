@@ -44,7 +44,7 @@
   <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
   <ul class="sidebar-links">
     <li><a href="../../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online (Card-not-present)</a></li>
-    <li><a href="../../payments/card-online/fintech-payment-online.html" class="sub-link active">Fintech Payment Online <span class="status-tag upcoming">Coming Soon</span></a></li>
+    <li><a href="../../payments/card-online/fintech-payment-online.html" class="sub-link active">Fintech Payment Online</a></li>
   </ul>
 </div>
 <div class="sidebar-group" data-group="card-offline">
@@ -56,6 +56,7 @@
 <div class="sidebar-group" data-group="qr-online">
   <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
   <ul class="sidebar-links">
+    <li><a href="../../payments/qr-online/qr-code.html" class="sub-link">Dynamic QR Code Payment</a></li>
     <li><a href="../../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP Payment</a></li>
     <li><a href="../../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB Payment</a></li>
     <li><a href="../../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP Payment</a></li>
@@ -64,7 +65,6 @@
     <li><a href="../../payments/qr-online/wechat-wap.html" class="sub-link">Wechat WAP Payment</a></li>
     <li><a href="../../payments/qr-online/wechat-miniprogram.html" class="sub-link">Wechat Mini Program Payment</a></li>
     <li><a href="../../payments/qr-online/wechat-app.html" class="sub-link">Wechat APP Payment</a></li>
-    <li><a href="../../payments/qr-online/qr-code.html" class="sub-link">Dynamic QR Code Payment</a></li>
   </ul>
 </div>
 <div class="sidebar-group" data-group="qr-offline">
@@ -79,15 +79,10 @@
     <main class="main-content">
       <h1 id="overview">Fintech Payment Online
 <span class="subtitle">Card Pay（Online）</span>
-<span class="status-badge upcoming">Coming Soon</span>
 </h1>
 <div class="page-meta">
-<span class="page-meta-item">Document Version: V1.0</span>
+<span class="page-meta-item">Document Version: V1.1</span>
 <span class="page-meta-item">API Version: V1.0</span>
-</div>
-<div class="callout warning">
-<div class="callout-title">⚠️ Notice</div>
-This API is not yet available for use and is for reference only. Please contact platform support for the specific launch date.
 </div>
 <h1 id="card-payment">Card Payment</h1>
 <h2 id="fintech-payment-online-api-docs">Fintech Payment Online API Documentation</h2>
@@ -103,6 +98,11 @@ This API is not yet available for use and is for reference only. Please contact 
 <td>2025-12-19</td>
 <td>1.0</td>
 <td>Initial draft</td>
+</tr>
+<tr>
+<td>2026-07-09</td>
+<td>1.1</td>
+<td>Updated signature rules (added canonical JSON signature rules for items nested fields); field client_ip changed to ip_address; error example mch_id corrected to client_id; UnionPay service name removed .master; card info field required condition changed to provide_type=card; service name unified to sinopay.online</td>
 </tr>
 </tbody>
 </table>
@@ -126,14 +126,14 @@ Create Order - Payment Flow</p>
 <h2 id="31-submit-data">3.1 Submit Data</h2>
 <p>Uses the HTTPS standard POST protocol. To ensure the recipient receives data correctly, transmitted data must be signed.</p>
 <p>{</p>
-<p>&quot;service&quot;:&quot;pay.master.Fintech Payment.online&quot;,</p>
+<p>&quot;service&quot;:&quot;pay.master.sinopay.online&quot;,</p>
 <p>&quot;order_no&quot;:&quot;00f78e479fe74a11a73be0feb9999749&quot;,</p>
 <p>&quot;body&quot;:&quot;Test Fintech Payment Online Payment&quot;,</p>
 <p>&quot;amount&quot;:1.0,</p>
 <p>&quot;limit_credit_pay&quot;:&quot;0&quot;,</p>
 <p>&quot;callback_url&quot;:&quot;http://localhost/pay/result.html&quot;,</p>
 <p>&quot;notify_url&quot;:&quot;http://localhost/pay/notify&quot;,</p>
-<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
+<p>&quot;ip_address&quot;:&quot;127.0.0.1&quot;,</p>
 <p>&quot;attach&quot;:&quot;&quot;,</p>
 <p>&quot;client_id&quot;:&quot;1002&quot;,</p>
 <p>&quot;store_id&quot;:&quot;1001002&quot;,</p>
@@ -153,59 +153,19 @@ Create Order - Payment Flow</p>
 <p>}</p>
 <p>Error response:</p>
 <p>{</p>
-<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
+<p>&quot;message&quot;:&quot;Missing Client ID&quot;,</p>
 <pre><span class="code-label">JSON</span><code class="language-json">&quot;errors&quot;:[</code></pre>
 <p>{</p>
-<p>&quot;field&quot;:&quot;mch_id&quot;,</p>
-<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
+<p>&quot;field&quot;:&quot;client_id&quot;,</p>
+<p>&quot;message&quot;:&quot;Missing Client ID&quot;,</p>
 <p>&quot;code&quot;:&quot;MISSING_FIELD&quot;</p>
 <p>}</p>
 <p>]</p>
 <p>}</p>
 <p>When message returns a value other than SUCCESS, it indicates an API call error.</p>
 <h1 id="4-digital-signature">4 Digital Signature</h1>
-<p>To ensure the authenticity and integrity of data during transmission, we need to digitally sign the data and perform signature verification after receiving the signed data.</p>
-<p>Digital signature involves two steps: first, assemble the raw string to be signed according to certain rules; then, select a specific algorithm and key to compute the signature result.</p>
-<h2 id="41-signature-raw-string">4.1 Signature Raw String</h2>
-<p>Whether for requests or responses, the signature raw string is assembled as follows:
-1. Except for the sign field, all parameters are sorted in ascending ASCII order by field name and concatenated in QueryString format (i.e., key1=value1&amp;key2=value2…). Empty values are not transmitted and do not participate in signature string assembly.
-2. In the signature raw string, field names and field values use their original values without URL encoding.</p>
-
-<p>3. The platform's response or notification messages may include additional parameters due to upgrades. Please allow for this when verifying response signatures.</p>
-<p>Example:</p>
-<p>Calling an API with the following fields:</p>
-<p>{</p>
-<p>&quot;client_id&quot;:&quot;1001&quot;,</p>
-<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
-<p>&quot;service&quot;:&quot;pay.master.Fintech Payment.online&quot;,</p>
-<p>&quot;order_no&quot;:&quot;Me08772e914454656bf26ec8996e35bb&quot;,</p>
-<p>&quot;amount&quot;:&quot;1&quot;,</p>
-<p>&quot;body&quot;:&quot;a chair&quot;,</p>
-<p>&quot;notify_url&quot;:&quot;2031&quot;,</p>
-<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
-<p>&quot;nonce_str&quot;:&quot;1409196838&quot;,</p>
-<p>&quot;sign&quot;:&quot;22C9835251DCF58BB70C78FA8D6448BD&quot;</p>
-<p>}</p>
-<p>The correct signature field sorting is:</p>
-<p>amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.master.Fintech Payment.online&amp;store_id=1001001</p>
-<h2 id="42-signature-algorithm">4.2 Signature Algorithm</h2>
-<p>MD5 Signature
-MD5 is a digest generation algorithm. By appending the merchant communication key to the signature raw string and performing MD5 computation, the resulting digest string is the signature result. For convenience of comparison, the signature result is uniformly converted to uppercase characters.</p>
-<p>Note: When converting the string to a byte stream during signing, the specified encoding character set should be consistent with the charset parameter.
-MD5 signature formula:
-sign = MD5 (raw string+&amp;key=merchant secret key). toUpperCase</p>
-<p>Assume the merchant secret key is: MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=</p>
-<p>For example:
-Assume the following JSON input parameters:
-i: After step a, the URL key-value pair dictionary-sorted string string1 is:
-amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.master.Fintech Payment.online&amp;store_id=1001001
-ii: After step b, the sign is:</p>
-<p>sign = md5(string1+&amp;key=merchant secret key).toUpperCase</p>
-<p>The actual encrypted string is:</p>
-<p>sign = md5(amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.master.Fintech Payment.online&amp;store_id=1001001&amp;key=MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=).toUpperCase</p>
-<p>The final signature obtained is: 7AE0CEACF55F20EAAE4390195AA77A92</p>
-<p>The sign and lang fields do not participate in API signature. The decryption rules for API response parameters follow the same logic.</p>
-<h2 id="43-request-headers">4.3 Request Headers</h2>
+<p>The signature rules for this API follow the platform's unified digital signature specification, covering both basic key-value scenarios and nested field (e.g. items) scenarios, the MD5 algorithm, and multi-language code examples. Please refer to <a href="../../common/signature.html">Digital Signature</a>.</p>
+<h2 id="41-request-headers">4.1 Request Headers</h2>
 <p>Request parameters:</p>
 <div class="table-wrapper">
 <table>
@@ -252,9 +212,9 @@ ii: After step b, the sign is:</p>
 <td>service</td>
 <td>Yes</td>
 <td>String(40)</td>
-<td>Select one of the following: pay.master.Fintech Payment.online (Mastercard payment)
-pay.visa.Fintech Payment.online (Visa payment)
-pay.unionpay.master.Fintech Payment.online (UnionPay payment)</td>
+<td>Select one of the following: pay.master.sinopay.online (Mastercard payment)
+pay.visa.sinopay.online (Visa payment)
+pay.unionpay.sinopay.online (UnionPay payment)</td>
 </tr>
 <tr>
 <td>Merchant client ID</td>
@@ -300,7 +260,7 @@ pay.unionpay.master.Fintech Payment.online (UnionPay payment)</td>
 </tr>
 <tr>
 <td>Terminal IP</td>
-<td>client_ip</td>
+<td>ip_address</td>
 <td>Yes</td>
 <td>String(16)</td>
 <td>IP of the machine where the order was generated</td>
@@ -443,28 +403,28 @@ pay.unionpay.master.Fintech Payment.online (UnionPay payment)</td>
 <td>pan</td>
 <td>No</td>
 <td>String(20)</td>
-<td>Card number, required when transaction_type is card or apm</td>
+<td>Card number, required when provide_type=card</td>
 </tr>
 <tr>
 <td>cvv</td>
 <td>cvv</td>
 <td>No</td>
 <td>String(4)</td>
-<td>cvv, required when transaction_type is card or apm</td>
+<td>cvv, required when provide_type=card</td>
 </tr>
 <tr>
 <td>Expiry Year</td>
 <td>expiry_year</td>
 <td>No</td>
 <td>String(4)</td>
-<td>Card expiry year (e.g., 2026), required when transaction_type is card or apm</td>
+<td>Card expiry year (e.g., 2026), required when provide_type=card</td>
 </tr>
 <tr>
 <td>Expiry Month</td>
 <td>expiry_month</td>
 <td>No</td>
 <td>String(2)</td>
-<td>Card expiry month (e.g., 12), required when transaction_type is card or apm</td>
+<td>Card expiry month (e.g., 12), required when provide_type=card</td>
 </tr>
 <tr>
 <td>Product Info</td>
@@ -586,7 +546,7 @@ pay.unionpay.master.Fintech Payment.online (UnionPay payment)</td>
     &quot;amount&quot;: &quot;6&quot;,
     &quot;payment_inst&quot;: &quot;ALIPAYHK&quot;,
     &quot;order_type&quot;: &quot;CAT&quot;,
-    &quot;service&quot;: &quot;pay.master.Fintech Payment.online&quot;,
+    &quot;service&quot;: &quot;pay.master.sinopay.online&quot;,
     &quot;notify_url&quot;: &quot;https://ftpdev.doocom.cn/pay-demo/alipay-web-notify/notify&quot;,
     &quot;ip_address&quot;: &quot;61.144.175.64&quot;,
     &quot;nonce_str&quot;: &quot;3A9C3422630DEDE155740EBD769DAE26&quot;,
@@ -665,9 +625,9 @@ Request via POST JSON body</p>
 <td>service</td>
 <td>Yes</td>
 <td>String(40)</td>
-<td>Select one of the following: pay.master.Fintech Payment.online (Mastercard payment)
-pay.visa.Fintech Payment.online (Visa payment)
-pay.unionpay.master.Fintech Payment.online (UnionPay payment)</td>
+<td>Select one of the following: pay.master.sinopay.online (Mastercard payment)
+pay.visa.sinopay.online (Visa payment)
+pay.unionpay.sinopay.online (UnionPay payment)</td>
 </tr>
 <tr>
 <td>Merchant client ID</td>
@@ -864,7 +824,7 @@ FAIL—Failed</td>
 <tbody>
 <tr>
 <td>{
-    &quot;service&quot;:&quot;pay.master.Fintech Payment.online&quot;,
+    &quot;service&quot;:&quot;pay.master.sinopay.online&quot;,
     &quot;order_no&quot;:&quot;&quot;,
     &quot;transaction_id&quot;:&quot;FTP202012181649370001&quot;,
     &quot;client_id&quot;:&quot;1002&quot;,
@@ -938,9 +898,9 @@ Request via POST JSON body</p>
 <td>service</td>
 <td>Yes</td>
 <td>String(40)</td>
-<td>Select one of the following: pay.master.Fintech Payment.online (Mastercard payment)
-pay.visa.Fintech Payment.online (Visa payment)
-pay.unionpay.master.Fintech Payment.online (UnionPay payment)</td>
+<td>Select one of the following: pay.master.sinopay.online (Mastercard payment)
+pay.visa.sinopay.online (Visa payment)
+pay.unionpay.sinopay.online (UnionPay payment)</td>
 </tr>
 <tr>
 <td>Merchant client ID</td>
@@ -1110,7 +1070,7 @@ pay.unionpay.master.Fintech Payment.online (UnionPay payment)</td>
     &quot;out_refund_no&quot;: &quot;TALWAPR20251219180649751&quot;,
     &quot;remarks&quot;: &quot;Fintech Payment Online refund test&quot;,
     &quot;refund_fee&quot;: &quot;6&quot;,
-    &quot;service&quot;: &quot;pay.master.Fintech Payment.online&quot;,
+    &quot;service&quot;: &quot;pay.master.sinopay.online&quot;,
     &quot;nonce_str&quot;: &quot;F2ABD3CE886BA93395ACE9AB0F4603F0&quot;,
     &quot;sign&quot;: &quot;CB4B66A8F65EB656CFC7D2386F8A5A22&quot;
 }</td>
@@ -1166,9 +1126,9 @@ Request via POST JSON body</p>
 <td>service</td>
 <td>Yes</td>
 <td>String(40)</td>
-<td>Select one of the following: pay.master.Fintech Payment.online (Mastercard payment)
-pay.visa.Fintech Payment.online (Visa payment)
-pay.unionpay.master.Fintech Payment.online (UnionPay payment)</td>
+<td>Select one of the following: pay.master.sinopay.online (Mastercard payment)
+pay.visa.sinopay.online (Visa payment)
+pay.unionpay.sinopay.online (UnionPay payment)</td>
 </tr>
 <tr>
 <td>Merchant client ID</td>
@@ -1360,7 +1320,7 @@ NOTSURE—Undetermined, requires merchant to re-initiate with original refund nu
 <tbody>
 <tr>
 <td>{
-    &quot;service&quot;:&quot;pay.master.Fintech Payment.online&quot;,
+    &quot;service&quot;:&quot;pay.master.sinopay.online&quot;,
     &quot;client_id&quot;:&quot;1001&quot;,
     &quot;store_id&quot;:&quot;1001001&quot;,
     &quot;transaction_id&quot;:&quot;FTP202012181649370001&quot;,
@@ -1511,7 +1471,7 @@ FAIL—Failed</td>
 <td>trade_type</td>
 <td>Yes</td>
 <td>String(32)</td>
-<td>Fixed: pay.master.Fintech Payment.online</td>
+<td>Fixed: pay.master.sinopay.online</td>
 </tr>
 <tr>
 <td>Payment currency</td>
@@ -1567,7 +1527,7 @@ FAIL—Failed</td>
     &quot;payer&quot;:&quot;oAOWGsyf4fjHHMzS_wAzfEzGoyWQ&quot;,
     &quot;pay_finish_time&quot;:&quot;20201110111036&quot;,
     &quot;nonce_str&quot;:&quot;g1iwi4fg&quot;,
-    &quot;trade_type&quot;:&quot;pay.master.Fintech Payment.online&quot;,
+    &quot;trade_type&quot;:&quot;pay.master.sinopay.online&quot;,
     &quot;sign&quot;:&quot;9983066974A7779BD16505AE7D6752C5&quot;,
 &quot;pay_currency&quot;:&quot;HKD&quot;
 }</td>
@@ -1751,7 +1711,7 @@ FAIL—Failed</td>
 </table>
 </div>
 <h1 id="appendix">Appendix</h1>
-<h2 id="1-iso-country-region-table">1. ISO Country/Region Table</h2>
+<h2 id="appendix-iso-country-region-table">Appendix. ISO Country/Region Table</h2>
 <div class="table-wrapper">
 <table>
 <thead><tr>
@@ -2863,9 +2823,8 @@ FAIL—Failed</td>
   <li><a href="#21-business-implementation-flow" class="toc-h2">2.1 Business Implementation Flow</a></li>
   <li><a href="#31-submit-data" class="toc-h2">3.1 Submit Data</a></li>
   <li><a href="#32-response-data-format" class="toc-h2">3.2 Response Data Format</a></li>
-  <li><a href="#41-signature-raw-string" class="toc-h2">4.1 Signature Raw String</a></li>
-  <li><a href="#42-signature-algorithm" class="toc-h2">4.2 Signature Algorithm</a></li>
-  <li><a href="#43-request-headers" class="toc-h2">4.3 Request Headers</a></li>
+  <li><a href="#4-digital-signature" class="toc-h2">4 Digital Signature</a></li>
+  <li><a href="#41-request-headers" class="toc-h2">4.1 Request Headers</a></li>
   <li><a href="#51-create-order-api" class="toc-h2">5.1 Create Order API</a></li>
   <li><a href="#511-business-function" class="toc-h3">5.1.1 Business Function</a></li>
   <li><a href="#512-interaction-mode" class="toc-h3">5.1.2 Interaction Mode</a></li>
@@ -2895,7 +2854,7 @@ FAIL—Failed</td>
   <li><a href="#552-interaction-mode" class="toc-h3">5.5.2 Interaction Mode</a></li>
   <li><a href="#553-response-parameters" class="toc-h3">5.5.3 Response Parameters</a></li>
   <li><a href="#554-test-cases" class="toc-h3">5.5.4 Test Cases</a></li>
-  <li><a href="#1-iso-country-region-table" class="toc-h2">1. ISO Country/Region Table</a></li>
+  <li><a href="#appendix-iso-country-region-table" class="toc-h2">Appendix. ISO Country/Region Table</a></li>
 </ul>
 </nav>
   </div>

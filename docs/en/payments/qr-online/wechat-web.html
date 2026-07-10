@@ -44,7 +44,7 @@
   <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
   <ul class="sidebar-links">
     <li><a href="../../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online (Card-not-present)</a></li>
-    <li><a href="../../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online <span class="status-tag upcoming">Coming Soon</span></a></li>
+    <li><a href="../../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online</a></li>
   </ul>
 </div>
 <div class="sidebar-group" data-group="card-offline">
@@ -56,6 +56,7 @@
 <div class="sidebar-group" data-group="qr-online">
   <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
   <ul class="sidebar-links">
+    <li><a href="../../payments/qr-online/qr-code.html" class="sub-link">Dynamic QR Code Payment</a></li>
     <li><a href="../../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP Payment</a></li>
     <li><a href="../../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB Payment</a></li>
     <li><a href="../../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP Payment</a></li>
@@ -64,7 +65,6 @@
     <li><a href="../../payments/qr-online/wechat-wap.html" class="sub-link">WeChat WAP Payment</a></li>
     <li><a href="../../payments/qr-online/wechat-miniprogram.html" class="sub-link">WeChat Official Account &amp; Mini Program Payment</a></li>
     <li><a href="../../payments/qr-online/wechat-app.html" class="sub-link">WeChat APP Payment</a></li>
-    <li><a href="../../payments/qr-online/qr-code.html" class="sub-link">Dynamic QR Code Payment</a></li>
   </ul>
 </div>
 <div class="sidebar-group" data-group="qr-offline">
@@ -166,47 +166,8 @@ The sequence diagram is as follows:</p>
 <p>}</p>
 <p>When message returns a value other than SUCCESS, it indicates an API call error.</p>
 <h1 id="4-digital-signature">4 Digital Signature</h1>
-<p>To ensure data authenticity and integrity during transmission, we need to digitally sign the data and verify the signature after receiving the signed data.</p>
-<p>Digital signature has two steps: first concatenate the raw signature string according to certain rules, then select the specific algorithm and key to compute the signature result.</p>
-<h2 id="41-signature-raw-string">4.1 Signature Raw String</h2>
-<p>For both requests and responses, the raw signature string is assembled into a string as follows:
-1. Except for the sign field, all parameters are sorted by the ASCII code of the field name in ascending order and concatenated in QueryString format (i.e. key1=value1&amp;key2=value2…) . Empty values are not transmitted and do not participate in signature string assembly.
-2. In the raw signature string, both field names and field values use their original values without URL Encode.</p>
-<p>3. The platform's response or notification messages may add parameters due to upgrades; please allow for this when verifying the response signature.</p>
-<p>Example:</p>
-<p>When calling an API, the API has the following fields:</p>
-<p>{</p>
-<p>&quot;client_id&quot;:&quot;1001&quot;,</p>
-<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
-<p>&quot;service&quot;:&quot;pay.weixin.web.intl&quot;,</p>
-<p>&quot;order_no&quot;:&quot;Me08772e914454656bf26ec8996e35bb&quot;,</p>
-<p>&quot;amount&quot;:&quot;1&quot;,</p>
-<p>&quot;body&quot;:&quot;a chair&quot;,</p>
-<p>&quot;notify_url&quot;:&quot;2031&quot;,</p>
-<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
-<p>&quot;nonce_str&quot;:&quot;1409196838&quot;,</p>
-<p>&quot;sign&quot;:&quot;22C9835251DCF58BB70C78FA8D6448BD&quot;</p>
-<p>}</p>
-<p>The correct sorted signature fields are:</p>
-<p>amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.weixin.web.intl&amp;store_id=1001001</p>
-<h2 id="42-signature-algorithm">4.2 Signature Algorithm</h2>
-<p>MD5 Signature
-MD5 is a digest generation algorithm. By appending the merchant communication key content to the raw signature string and performing MD5 computation, the resulting digest string is the signature result. For easy comparison, the signature result is uniformly converted to uppercase characters.</p>
-<p>Note: The encoding character set specified when converting the string to a byte stream during signing should be consistent with the charset parameter.
-MD5 signature calculation formula:
-sign = MD5 (raw string + &amp;key=merchant key). toUpperCase</p>
-<p>Assume the merchant key is: MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=</p>
-<p>Example:
-Assume the following are the JSON input parameters:
-i: The string string1 after URL key-value pair dictionary sorting in process a is:
-amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.weixin.web.intl&amp;store_id=1001001
-ii: The sign obtained after process b is:</p>
-<p>sign = md5(string1+&amp;key=merchant key).toUpperCase</p>
-<p>The actual encrypted string is:</p>
-<p>sign = md5(amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.weixin.web.intl&amp;store_id=1001001&amp;key=MjNiYWE4NGY2YTMxNDk2MTljODBkMjZkMjk0NjAxY2M=).toUpperCase</p>
-<p>The final signature is: 52A4A2D2ACA971B309A0B9B1F21C8698</p>
-<p>The sign and lang fields do not participate in the API signature; the same applies to the decryption rules for API return parameters.</p>
-<h2 id="43-request-headers">4.3 Request Headers</h2>
+<p>The signature rules for this API follow the platform's unified digital signature specification, covering both basic key-value scenarios and nested field (e.g. items) scenarios, the MD5 algorithm, and multi-language code examples. Please refer to <a href="../../common/signature.html">Digital Signature</a>.</p>
+<h2 id="41-request-headers">4.1 Request Headers</h2>
 <p>Request parameters:</p>
 <div class="table-wrapper">
 <table>
@@ -228,7 +189,7 @@ ii: The sign obtained after process b is:</p>
 </tbody>
 </table>
 </div>
-<h1 id="api-description">API Description</h1>
+<h1 id="5-api-description">5 API Description</h1>
 <h2 id="51-order-api">5.1 Order API</h2>
 <h3 id="511-business-function">5.1.1 Business Function</h3>
 <p>Initializes the order request and generates a QR code through this request for scan-to-pay.</p>
@@ -1420,17 +1381,17 @@ NOTSURE—Undetermined, merchant needs to re-initiate with the original refund n
 </tbody>
 </table>
 </div>
-<h2 id="55-payment-notification-api">5.5 Payment Notification API</h2>
-<h3 id="551-business-function-notification">5.5.1 Business Function</h3>
+<h2 id="56-payment-notification-api">5.6 Payment Notification API</h2>
+<h3 id="561-business-function-notification">5.6.1 Business Function</h3>
 <p>After payment is completed, the system will notify the relevant data to the notify_url filled in when placing the order. The notification URL is the notify_url parameter submitted in the payment API. After payment is completed, the platform will send the relevant payment and user information to this URL,</p>
 <p>and the merchant needs to receive and process the information.</p>
 <p>For backend notification interaction, if the platform receives a response from the merchant that is not the pure string "success" or returns after more than 5 seconds, the platform considers the notification failed. The platform will intermittently re-initiate notifications through a certain strategy (notification frequency is 0/15/15/30/180/1800/1800/1800/1800/3600, in seconds) to improve the notification success rate as much as possible, but does not guarantee that the notification will ultimately succeed.</p>
 <p>Since backend notifications may be resent, the same notification may be sent to the merchant system multiple times. The merchant system must be able to correctly handle duplicate notifications.</p>
 <p>The recommended approach is, when receiving a notification for processing, first check the status of the corresponding business data to determine whether the notification has already been processed. If not processed, then process it; if already processed, directly return a success result. Before checking and processing the status of business data, a data lock should be used for concurrency control to avoid data confusion caused by function reentrancy.</p>
 <p>Special note: After the merchant backend receives the notification parameters, it must verify the order number order_no and order amount amount in the received notification parameters against the order and amount in its own business system. Only after verification is consistent should the database order status be updated. Backend notification is performed via the notify_url in the request, returning data stream via POST method, and the specific information is in XML format string (merchants should pay attention when processing).</p>
-<h3 id="552-interaction-mode-notification">5.5.2 Interaction Mode</h3>
+<h3 id="562-interaction-mode-notification">5.6.2 Interaction Mode</h3>
 <p>Backend notification mode</p>
-<h3 id="553-return-parameter-list">5.5.3 Return Parameter List</h3>
+<h3 id="563-return-parameter-list">5.6.3 Return Parameter List</h3>
 <p>Data is returned in JSON format immediately</p>
 <div class="table-wrapper">
 <table>
@@ -1575,7 +1536,7 @@ FAIL—Failed</td>
 </tbody>
 </table>
 </div>
-<h3 id="554-test-cases-notification">5.5.4 Test Cases</h3>
+<h3 id="564-test-cases-notification">5.6.4 Test Cases</h3>
 <p>Test cases are provided for convenient invocation</p>
 <p>Submitted data:</p>
 <div class="table-wrapper">
@@ -1793,9 +1754,8 @@ FAIL—Failed</td>
   <li><a href="#21-business-implementation-flow" class="toc-h2">2.1 Business Implementation Flow</a></li>
   <li><a href="#31-submitted-data" class="toc-h2">3.1 Submitted Data</a></li>
   <li><a href="#32-return-result-data-format" class="toc-h2">3.2 Return Result Data Format</a></li>
-  <li><a href="#41-signature-raw-string" class="toc-h2">4.1 Signature Raw String</a></li>
-  <li><a href="#42-signature-algorithm" class="toc-h2">4.2 Signature Algorithm</a></li>
-  <li><a href="#43-request-headers" class="toc-h2">4.3 Request Headers</a></li>
+  <li><a href="#4-digital-signature" class="toc-h2">4 Digital Signature</a></li>
+  <li><a href="#41-request-headers" class="toc-h2">4.1 Request Headers</a></li>
   <li><a href="#51-order-api" class="toc-h2">5.1 Order API</a></li>
   <li><a href="#511-business-function" class="toc-h3">5.1.1 Business Function</a></li>
   <li><a href="#512-interaction-mode" class="toc-h3">5.1.2 Interaction Mode</a></li>
@@ -1826,11 +1786,11 @@ FAIL—Failed</td>
   <li><a href="#553-request-parameter-list" class="toc-h3">5.5.3 Request Parameter List</a></li>
   <li><a href="#554-return-result" class="toc-h3">5.5.4 Return Result</a></li>
   <li><a href="#555-test-cases" class="toc-h3">5.5.5 Test Cases</a></li>
-  <li><a href="#55-payment-notification-api" class="toc-h2">5.5 Payment Notification API</a></li>
-  <li><a href="#551-business-function-notification" class="toc-h3">5.5.1 Business Function</a></li>
-  <li><a href="#552-interaction-mode-notification" class="toc-h3">5.5.2 Interaction Mode</a></li>
-  <li><a href="#553-return-parameter-list" class="toc-h3">5.5.3 Return Parameter List</a></li>
-  <li><a href="#554-test-cases-notification" class="toc-h3">5.5.4 Test Cases</a></li>
+  <li><a href="#56-payment-notification-api" class="toc-h2">5.6 Payment Notification API</a></li>
+  <li><a href="#561-business-function-notification" class="toc-h3">5.6.1 Business Function</a></li>
+  <li><a href="#562-interaction-mode-notification" class="toc-h3">5.6.2 Interaction Mode</a></li>
+  <li><a href="#563-return-parameter-list" class="toc-h3">5.6.3 Return Parameter List</a></li>
+  <li><a href="#564-test-cases-notification" class="toc-h3">5.6.4 Test Cases</a></li>
 </ul>
 </nav>
   </div>

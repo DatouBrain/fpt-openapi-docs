@@ -952,6 +952,31 @@ table code {
 /* ============================================
    Responsive
    ============================================ */
+
+/* 2K 超寬大屏優化：導航欄固定不動，正文區域動態放寬 */
+@media (min-width: 1920px) {
+  .main-content {
+    max-width: 1200px !important;
+    padding: 48px 56px 96px;
+  }
+  /* 表格、代碼塊在大屏下適當放寬內邊距，保持比例協調 */
+  table th,
+  table td {
+    padding: 12px 18px;
+  }
+  pre {
+    padding: 22px 28px;
+    font-size: 14px;
+  }
+}
+
+/* 4K 超寬屏：進一步放寬正文上限 */
+@media (min-width: 2560px) {
+  .main-content {
+    max-width: 1400px !important;
+  }
+}
+
 @media (max-width: 1400px) {
   .toc-nav {
     display: none;

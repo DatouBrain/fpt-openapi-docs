@@ -42,7 +42,7 @@
   <div class="sidebar-group-title"><span class="toggle-icon">▼</span>💳 Card Pay（Online）</div>
   <ul class="sidebar-links">
     <li><a href="../payments/card-online/global-payments-online.html" class="sub-link">Global Payments Online (Card-not-present)</a></li>
-    <li><a href="../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online <span class="status-tag upcoming">Coming Soon</span></a></li>
+    <li><a href="../payments/card-online/fintech-payment-online.html" class="sub-link">Fintech Payment Online</a></li>
   </ul>
 </div>
 <div class="sidebar-group" data-group="card-offline">
@@ -54,6 +54,7 @@
 <div class="sidebar-group" data-group="qr-online">
   <div class="sidebar-group-title"><span class="toggle-icon">▼</span>📱 QR Pay（Online）</div>
   <ul class="sidebar-links">
+    <li><a href="../payments/qr-online/qr-code.html" class="sub-link">Dynamic QR Code Payment</a></li>
     <li><a href="../payments/qr-online/alipay-wap.html" class="sub-link">Alipay WAP Payment</a></li>
     <li><a href="../payments/qr-online/alipay-web.html" class="sub-link">Alipay WEB Payment</a></li>
     <li><a href="../payments/qr-online/alipay-app.html" class="sub-link">Alipay APP Payment</a></li>
@@ -62,7 +63,6 @@
     <li><a href="../payments/qr-online/wechat-wap.html" class="sub-link">WeChat WAP Payment</a></li>
     <li><a href="../payments/qr-online/wechat-miniprogram.html" class="sub-link">WeChat Official Account &amp; Mini Program Payment</a></li>
     <li><a href="../payments/qr-online/wechat-app.html" class="sub-link">WeChat APP Payment</a></li>
-    <li><a href="../payments/qr-online/qr-code.html" class="sub-link">Dynamic QR Code Payment</a></li>
   </ul>
 </div>
 <div class="sidebar-group" data-group="qr-offline">
@@ -77,7 +77,7 @@
     <main class="main-content">
       <h1 id="overview">Digital Signature</h1>
 <div class="page-meta">
-  <span class="page-meta-item">Doc Version: V1.0</span>
+  <span class="page-meta-item">Doc Version: V1.1</span>
 </div>
 <p>To ensure authenticity and integrity during data transmission, all API requests and responses must be digitally signed. Signing is a two-step process: first assemble the raw signature string according to the rules, then compute the signature result using the MD5 algorithm.</p>
 
@@ -89,6 +89,10 @@
   <li>Both field names and field values use their original values without URL Encode</li>
   <li>The platform's response or notification may add parameters due to upgrades; please allow for this when verifying the response signature</li>
 </ol>
+<div class="callout warning">
+  <div class="callout-title">⚠️ IP Field Difference</div>
+  <p>QR Pay products use <code>client_ip</code> as the request parameter, while Fintech Payment Online card payment products use <code>ip_address</code>. When integrating Fintech Payment Online Card payment, replace <code>client_ip</code> in the examples below with <code>ip_address</code>.</p>
+</div>
 
 <h3>Example</h3>
 <p>Assume the following request parameters:</p>
@@ -106,6 +110,39 @@
 }</code></pre>
 <p>The correct sorted signature result (excluding <code>sign</code> and <code>lang</code>) is:</p>
 <pre><span class="code-label">TEXT</span><code class="language-text">amount=1&amp;body=a chair&amp;client_id=1001&amp;client_ip=127.0.0.1&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.weixin.web.intl&amp;store_id=1001001</code></pre>
+
+<h3 id="sign-string-items">Signing with Nested Fields (e.g. items)</h3>
+<p>When a request contains JSON array or object fields such as <code>items</code> (e.g. the Create Order API for Fintech Payment Online card payment), the field still participates in the signature as a top-level field sorted by field name, and its value is represented as a <strong>compact JSON string with no extra whitespace</strong> (canonical JSON). The rules are as follows:</p>
+<ol>
+  <li>Array elements keep their original order; object fields are sorted by name in ascending order</li>
+  <li><code>null</code>-valued fields are excluded from the object JSON string</li>
+  <li>String values are wrapped in double quotes with special characters escaped</li>
+  <li><code>items.quantity</code> and <code>items.unit_price</code> are string fields and treated as strings (wrapped in quotes)</li>
+  <li>No extra whitespace in the JSON string (no spaces, no line breaks)</li>
+</ol>
+<p>Example, assume the following request parameters containing <code>items</code>:</p>
+<pre><span class="code-label">JSON</span><code class="language-json">{
+  "client_id": "1001",
+  "store_id": "1001001",
+  "service": "pay.master.sinopay.online",
+  "order_no": "Me08772e914454656bf26ec8996e35bb",
+  "amount": "246",
+  "body": "Sinopay items test",
+  "notify_url": "2031",
+  "ip_address": "127.0.0.1",
+  "nonce_str": "1409196838",
+  "items": [
+    {"description": "Mint (piece)", "quantity": "1", "unit_price": "246"}
+  ]
+}</code></pre>
+<p>The canonical JSON representation of <code>items</code> is:</p>
+<pre><span class="code-label">TEXT</span><code class="language-text">[{"description":"Mint (piece)","quantity":"1","unit_price":"246"}]</code></pre>
+<p>The correct sorted signature result (excluding <code>sign</code> and <code>lang</code>) is:</p>
+<pre><span class="code-label">TEXT</span><code class="language-text">amount=246&amp;body=Sinopay items test&amp;client_id=1001&amp;ip_address=127.0.0.1&amp;items=[{"description":"Mint (piece)","quantity":"1","unit_price":"246"}]&amp;nonce_str=1409196838&amp;notify_url=2031&amp;order_no=Me08772e914454656bf26ec8996e35bb&amp;service=pay.master.sinopay.online&amp;store_id=1001001</code></pre>
+<div class="callout info">
+  <div class="callout-title">💡 Backward Compatibility</div>
+  <p>When a request does not contain nested fields such as <code>items</code> (e.g. QR code payment, WAP, WEB, etc.), the new and old signature rules produce identical signatures, so existing developers need no changes. Only requests containing nested fields (such as the card payment <code>items</code>) need to follow the canonical JSON rules above.</p>
+</div>
 
 <h2 id="sign-algorithm">Signature Algorithm</h2>
 <p>Use the MD5 digest algorithm, appending the merchant communication key to the raw signature string for computation, then convert the result to uppercase:</p>
@@ -214,6 +251,7 @@ function generateSign(params, merchantKey) {
 <div class="toc-nav-title">On this page</div>
 <ul>
   <li><a href="#sign-string" class="toc-h2">Signature Raw String</a></li>
+  <li><a href="#sign-string-items" class="toc-h3">Signing with Nested Fields (e.g. items)</a></li>
   <li><a href="#sign-algorithm" class="toc-h2">Signature Algorithm</a></li>
   <li><a href="#full-example" class="toc-h2">Full Example</a></li>
   <li><a href="#code-examples" class="toc-h2">Multi-language Code Examples</a></li>
