@@ -20,8 +20,8 @@ from opencc import OpenCC
 _cc = OpenCC('s2t')
 
 # Configuration
-INPUT_DIR = "/Users/susi/Documents/Project/fpt.openapi/Fintech Payment Platform OpenAPI說明文檔20260304"
-OUTPUT_DIR = "/Users/susi/Documents/Project/fpt.openapi/docs"
+INPUT_DIR = "/Users/susi/Documents/Project/ftp.openapi.trae/Fintech Payment Platform OpenAPI說明文檔20260304"
+OUTPUT_DIR = "/Users/susi/Documents/Project/ftp.openapi.trae/docs"
 
 # XML namespaces for image extraction
 _NSW = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'

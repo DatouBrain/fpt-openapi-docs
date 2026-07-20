@@ -102,7 +102,7 @@
 <tr>
 <td>2026-07-09</td>
 <td>1.1</td>
-<td>Updated signature rules (added canonical JSON signature rules for items nested fields); field client_ip changed to ip_address; error example mch_id corrected to client_id; UnionPay service name removed .master; card info field required condition changed to provide_type=card; service name unified to sinopay.online</td>
+<td>Updated signature rules (added canonical JSON signature rules for items nested fields); field client_ip changed to ip_address; error example mch_id corrected to client_id; UnionPay service name removed .master; card info field required condition changed to provide_type=card; service name unified to ftp.online</td>
 </tr>
 </tbody>
 </table>
@@ -126,7 +126,7 @@ Create Order - Payment Flow</p>
 <h2 id="31-submit-data">3.1 Submit Data</h2>
 <p>Uses the HTTPS standard POST protocol. To ensure the recipient receives data correctly, transmitted data must be signed.</p>
 <p>{</p>
-<p>&quot;service&quot;:&quot;pay.master.sinopay.online&quot;,</p>
+<p>&quot;service&quot;:&quot;pay.master.ftp.online&quot;,</p>
 <p>&quot;order_no&quot;:&quot;00f78e479fe74a11a73be0feb9999749&quot;,</p>
 <p>&quot;body&quot;:&quot;Test Fintech Payment Online Payment&quot;,</p>
 <p>&quot;amount&quot;:1.0,</p>
@@ -212,9 +212,9 @@ Create Order - Payment Flow</p>
 <td>service</td>
 <td>Yes</td>
 <td>String(40)</td>
-<td>Select one of the following: pay.master.sinopay.online (Mastercard payment)
-pay.visa.sinopay.online (Visa payment)
-pay.unionpay.sinopay.online (UnionPay payment)</td>
+<td>Select one of the following: pay.master.ftp.online (Mastercard payment)
+pay.visa.ftp.online (Visa payment)
+pay.unionpay.ftp.online (UnionPay payment)</td>
 </tr>
 <tr>
 <td>Merchant client ID</td>
@@ -543,7 +543,7 @@ pay.unionpay.sinopay.online (UnionPay payment)</td>
     &quot;order_no&quot;: &quot;TALWAPO2025121925542412&quot;,
     &quot;body&quot;: &quot;Fintech Payment payment test product&quot;,
     &quot;amount&quot;: &quot;6&quot;,
-    &quot;service&quot;: &quot;pay.master.sinopay.online&quot;,
+    &quot;service&quot;: &quot;pay.master.ftp.online&quot;,
     &quot;notify_url&quot;: &quot;https://ftpdev.doocom.cn/pay-demo/alipay-web-notify/notify&quot;,
     &quot;ip_address&quot;: &quot;61.144.175.64&quot;,
     &quot;nonce_str&quot;: &quot;3A9C3422630DEDE155740EBD769DAE26&quot;,
@@ -622,9 +622,9 @@ Request via POST JSON body</p>
 <td>service</td>
 <td>Yes</td>
 <td>String(40)</td>
-<td>Select one of the following: pay.master.sinopay.online (Mastercard payment)
-pay.visa.sinopay.online (Visa payment)
-pay.unionpay.sinopay.online (UnionPay payment)</td>
+<td>Select one of the following: pay.master.ftp.online (Mastercard payment)
+pay.visa.ftp.online (Visa payment)
+pay.unionpay.ftp.online (UnionPay payment)</td>
 </tr>
 <tr>
 <td>Merchant client ID</td>
@@ -821,7 +821,7 @@ FAIL—Failed</td>
 <tbody>
 <tr>
 <td>{
-    &quot;service&quot;:&quot;pay.master.sinopay.online&quot;,
+    &quot;service&quot;:&quot;pay.master.ftp.online&quot;,
     &quot;order_no&quot;:&quot;&quot;,
     &quot;transaction_id&quot;:&quot;FTP202012181649370001&quot;,
     &quot;client_id&quot;:&quot;1002&quot;,
@@ -895,9 +895,9 @@ Request via POST JSON body</p>
 <td>service</td>
 <td>Yes</td>
 <td>String(40)</td>
-<td>Select one of the following: pay.master.sinopay.online (Mastercard payment)
-pay.visa.sinopay.online (Visa payment)
-pay.unionpay.sinopay.online (UnionPay payment)</td>
+<td>Select one of the following: pay.master.ftp.online (Mastercard payment)
+pay.visa.ftp.online (Visa payment)
+pay.unionpay.ftp.online (UnionPay payment)</td>
 </tr>
 <tr>
 <td>Merchant client ID</td>
@@ -1067,7 +1067,7 @@ pay.unionpay.sinopay.online (UnionPay payment)</td>
     &quot;out_refund_no&quot;: &quot;TALWAPR20251219180649751&quot;,
     &quot;remarks&quot;: &quot;Fintech Payment Online refund test&quot;,
     &quot;refund_fee&quot;: &quot;6&quot;,
-    &quot;service&quot;: &quot;pay.master.sinopay.online&quot;,
+    &quot;service&quot;: &quot;pay.master.ftp.online&quot;,
     &quot;nonce_str&quot;: &quot;F2ABD3CE886BA93395ACE9AB0F4603F0&quot;,
     &quot;sign&quot;: &quot;CB4B66A8F65EB656CFC7D2386F8A5A22&quot;
 }</td>
@@ -1123,9 +1123,9 @@ Request via POST JSON body</p>
 <td>service</td>
 <td>Yes</td>
 <td>String(40)</td>
-<td>Select one of the following: pay.master.sinopay.online (Mastercard payment)
-pay.visa.sinopay.online (Visa payment)
-pay.unionpay.sinopay.online (UnionPay payment)</td>
+<td>Select one of the following: pay.master.ftp.online (Mastercard payment)
+pay.visa.ftp.online (Visa payment)
+pay.unionpay.ftp.online (UnionPay payment)</td>
 </tr>
 <tr>
 <td>Merchant client ID</td>
@@ -1317,7 +1317,7 @@ NOTSURE—Undetermined, requires merchant to re-initiate with original refund nu
 <tbody>
 <tr>
 <td>{
-    &quot;service&quot;:&quot;pay.master.sinopay.online&quot;,
+    &quot;service&quot;:&quot;pay.master.ftp.online&quot;,
     &quot;client_id&quot;:&quot;1001&quot;,
     &quot;store_id&quot;:&quot;1001001&quot;,
     &quot;transaction_id&quot;:&quot;FTP202012181649370001&quot;,
@@ -1468,7 +1468,7 @@ FAIL—Failed</td>
 <td>trade_type</td>
 <td>Yes</td>
 <td>String(32)</td>
-<td>Fixed: pay.master.sinopay.online</td>
+<td>Fixed: pay.master.ftp.online</td>
 </tr>
 <tr>
 <td>Payment currency</td>
@@ -1524,7 +1524,7 @@ FAIL—Failed</td>
     &quot;payer&quot;:&quot;oAOWGsyf4fjHHMzS_wAzfEzGoyWQ&quot;,
     &quot;pay_finish_time&quot;:&quot;20201110111036&quot;,
     &quot;nonce_str&quot;:&quot;g1iwi4fg&quot;,
-    &quot;trade_type&quot;:&quot;pay.master.sinopay.online&quot;,
+    &quot;trade_type&quot;:&quot;pay.master.ftp.online&quot;,
     &quot;sign&quot;:&quot;9983066974A7779BD16505AE7D6752C5&quot;,
 &quot;pay_currency&quot;:&quot;HKD&quot;
 }</td>
@@ -1536,7 +1536,7 @@ FAIL—Failed</td>
 
 <div class="callout info">
   <div class="callout-title">📖 Scope</div>
-  <p>This chapter applies to Fintech Payment Online APIs (<code>pay.master.sinopay.online</code> / <code>pay.visa.sinopay.online</code> / <code>pay.unionpay.sinopay.online</code>) with <code>transaction_type=checkout</code> checkout payment scenarios.</p>
+  <p>This chapter applies to Fintech Payment Online APIs (<code>pay.master.ftp.online</code> / <code>pay.visa.ftp.online</code> / <code>pay.unionpay.ftp.online</code>) with <code>transaction_type=checkout</code> checkout payment scenarios.</p>
 </div>
 
 <h2 id="61-what-is-checkout-mode">6.1 What is Checkout Mode</h2>
@@ -1583,7 +1583,7 @@ FAIL—Failed</td>
 <h2 id="63-complete-checkout-request-example">6.3 Complete Checkout Request Example</h2>
 <p>The following is a correct Checkout mode request example (MasterCard):</p>
 <pre><code>{
-  "service": "pay.master.sinopay.online",
+  "service": "pay.master.ftp.online",
   "client_id": "YOUR_CLIENT_ID",
   "store_id": "YOUR_STORE_ID",
   "order_no": "ORDER20260710001",

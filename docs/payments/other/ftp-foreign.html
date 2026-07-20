@@ -131,19 +131,19 @@
 <h1 id="3數據格式">3數據格式</h1>
 <h2 id="31-提交數據">3.1 提交數據</h2>
 <p>採用 HTTPS 標準的 POST 協議， 為了保證接收方接收數據正確,傳輸數據必須簽名。</p>
-<pre><span class="code-label">JSON</span><code class="language-json">{
-  &quot;amount&quot;: 1,
-  &quot;attach&quot;: &quot;&quot;,
-  &quot;body&quot;: &quot;測試外幣支付&quot;,
-  &quot;client_id&quot;: &quot;1618816471353tv2&quot;,
-  &quot;client_ip&quot;: &quot;127.0.0.1&quot;,
-  &quot;notify_url&quot;: &quot;http://59.110.228.143:9050/pima-pay/v1/notify/feedbackTest&quot;,
-  &quot;order_no&quot;: &quot;b17f24ff026d40949c85a24f4f375d42&quot;,
-  &quot;service&quot;: &quot;pay.foreign.intl&quot;,</code></pre>
-<p>&quot;nonce_str&quot;:&quot;qj1g38h3&quot;,</p>
-<p>&quot;sign&quot;:&quot;DBB695DEBA231E9D96014042A45C2201&quot;,
-  &quot;store_id&quot;: &quot;HKG-001-411-040-24411122-001&quot;
-}</p>
+<pre><code>{
+  &quot;amount&quot;: 1,
+  &quot;attach&quot;: &quot;&quot;,
+  &quot;body&quot;: &quot;測試外幣支付&quot;,
+  &quot;client_id&quot;: &quot;1618816471353tv2&quot;,
+  &quot;client_ip&quot;: &quot;127.0.0.1&quot;,
+  &quot;notify_url&quot;: &quot;http://59.110.228.143:9050/pima-pay/v1/notify/feedbackTest&quot;,
+  &quot;order_no&quot;: &quot;b17f24ff026d40949c85a24f4f375d42&quot;,
+  &quot;service&quot;: &quot;pay.foreign.intl&quot;,
+  &quot;nonce_str&quot;: &quot;qj1g38h3&quot;,
+  &quot;sign&quot;: &quot;DBB695DEBA231E9D96014042A45C2201&quot;,
+  &quot;store_id&quot;: &quot;HKG-001-411-040-24411122-001&quot;
+}</code></pre>
 <h2 id="32-返回結果數據格式">3.2 返回結果數據格式</h2>
 <p>正確返回：</p>
 <p>{</p>
@@ -155,16 +155,16 @@
 <p>&quot;sign&quot;:&quot;DBB695DEBA231E9D96014042A45C2201&quot;</p>
 <p>}</p>
 <p>錯誤返回：</p>
-<p>{</p>
-<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
-<pre><span class="code-label">JSON</span><code class="language-json">&quot;errors&quot;:[</code></pre>
-<p>{</p>
-<p>&quot;field&quot;:&quot;mch_id&quot;,</p>
-<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
-<p>&quot;code&quot;:&quot;MISSING_FIELD&quot;</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+<pre><code>{
+  &quot;message&quot;: &quot;Missing Merchant ID&quot;,
+  &quot;errors&quot;: [
+    {
+      &quot;field&quot;: &quot;mch_id&quot;,
+      &quot;message&quot;: &quot;Missing Merchant ID&quot;,
+      &quot;code&quot;: &quot;MISSING_FIELD&quot;
+    }
+  ]
+}</code></pre>
 <p>message返回非SUCCESS時表示接口調用出錯。</p>
 <h1 id="4數字簽名">4數字簽名</h1>
 <p>本接口的簽名規則遵循平臺統一的數字簽名規範，包含基本鍵值場景與含 items 等巢狀欄位場景的簽名規則、MD5 演算法及多語言代碼示例。請參閱<a href="../../common/signature.html">數字簽名</a>。</p>

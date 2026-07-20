@@ -9,7 +9,7 @@
 import re
 import os
 
-BASE = "/Users/susi/Documents/Project/fpt.openapi.trae"
+BASE = "/Users/susi/Documents/Project/ftp.openapi.trae"
 
 FILES = [
     "docs/payments/qr-online/alipay-wap.html",
