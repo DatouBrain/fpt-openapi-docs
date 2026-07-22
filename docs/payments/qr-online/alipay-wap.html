@@ -126,43 +126,43 @@
 <h1 id="3數據格式">3數據格式</h1>
 <h2 id="31-提交數據">3.1 提交數據</h2>
 <p>採用 HTTPS 標準的 POST 協議， 為了保證接收方接收數據正確,傳輸數據必須簽名。</p>
-<p>{</p>
-<p>&quot;service&quot;:&quot;pay.alipay.wappay.intl&quot;,</p>
-<p>&quot;client_id&quot;:&quot;1001&quot;,</p>
-<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
-<p>&quot;order_no&quot;:&quot;a0e55bf5349a4a31a9fcf689ceb079bd&quot;,</p>
-<p>&quot;body&quot;:&quot;Office cabinet, good quality, very beautiful&quot;,</p>
-<p>&quot;amount&quot;:1.0,</p>
-<p>&quot;notify_url&quot;:&quot;http://localhost/pay/notify&quot;,</p>
-<p>&quot;payment_inst&quot;:&quot;ALIPAYCN&quot;,</p>
-<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
-<p>&quot;attach&quot;:&quot;string&quot;,</p>
-<p>&quot;nonce_str&quot;:&quot;818qbn2t&quot;,</p>
-<p>&quot;sign&quot;:&quot;C38E845F27E077C02EF6194ABC30E0AA&quot;,</p>
-<p>&quot;lang&quot;:&quot;en_US&quot;</p>
-<p>}</p>
+<pre><code>{
+  &quot;service&quot;: &quot;pay.alipay.wappay.intl&quot;,
+  &quot;client_id&quot;: &quot;1001&quot;,
+  &quot;store_id&quot;: &quot;1001001&quot;,
+  &quot;order_no&quot;: &quot;a0e55bf5349a4a31a9fcf689ceb079bd&quot;,
+  &quot;body&quot;: &quot;Office cabinet, good quality, very beautiful&quot;,
+  &quot;amount&quot;: 1.0,
+  &quot;notify_url&quot;: &quot;http://localhost/pay/notify&quot;,
+  &quot;payment_inst&quot;: &quot;ALIPAYCN&quot;,
+  &quot;client_ip&quot;: &quot;127.0.0.1&quot;,
+  &quot;attach&quot;: &quot;string&quot;,
+  &quot;nonce_str&quot;: &quot;818qbn2t&quot;,
+  &quot;sign&quot;: &quot;C38E845F27E077C02EF6194ABC30E0AA&quot;,
+  &quot;lang&quot;: &quot;en_US&quot;
+}</code></pre>
 <h2 id="32-返回結果數據格式">3.2 返回結果數據格式</h2>
 <p>正確返回：</p>
-<p>{</p>
-<p>&quot;message&quot;:&quot;SUCCESS&quot;,</p>
-<p>&quot;order_no&quot;:&quot;a0e55bf5349a4a31a9fcf689ceb079bd&quot;,</p>
-<p>&quot;transaction_id&quot;:&quot;FTP202012181614010001&quot;,</p>
-<p>&quot;submit_time&quot;:&quot;20201218161401&quot;,</p>
-<p>&quot;pay_url&quot;:&quot; &quot;,</p>
-<p>&quot;nonce_str&quot;:&quot;5wtazrkr&quot;,</p>
-<p>&quot;sign&quot;:&quot;7862591E1C4E5FFAACD3DF85AF4235ED&quot;</p>
-<p>}</p>
+<pre><code>{
+  &quot;message&quot;: &quot;SUCCESS&quot;,
+  &quot;order_no&quot;: &quot;a0e55bf5349a4a31a9fcf689ceb079bd&quot;,
+  &quot;transaction_id&quot;: &quot;FTP202012181614010001&quot;,
+  &quot;submit_time&quot;: &quot;20201218161401&quot;,
+  &quot;pay_url&quot;: &quot; &quot;,
+  &quot;nonce_str&quot;: &quot;5wtazrkr&quot;,
+  &quot;sign&quot;: &quot;7862591E1C4E5FFAACD3DF85AF4235ED&quot;
+}</code></pre>
 <p>錯誤返回：</p>
-<p>{</p>
-<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
-<pre><span class="code-label">JSON</span><code class="language-json">&quot;errors&quot;:[</code></pre>
-<p>{</p>
-<p>&quot;field&quot;:&quot;mch_id&quot;,</p>
-<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
-<p>&quot;code&quot;:&quot;MISSING_FIELD&quot;</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+<pre><code>{
+  &quot;message&quot;: &quot;Missing Client ID&quot;,
+  &quot;errors&quot;: [
+    {
+      &quot;field&quot;: &quot;client_id&quot;,
+      &quot;message&quot;: &quot;Missing Client ID&quot;,
+      &quot;code&quot;: &quot;MISSING_FIELD&quot;
+    }
+  ]
+}</code></pre>
 <p>message返回非SUCCESS時表示接口調用出錯。</p>
 <h1 id="4數字簽名">4數字簽名</h1>
 <p>本接口的簽名規則遵循平臺統一的數字簽名規範，包含基本鍵值場景與含 items 等巢狀欄位場景的簽名規則、MD5 演算法及多語言代碼示例。請參閱<a href="../../common/signature.html">數字簽名</a>。</p>

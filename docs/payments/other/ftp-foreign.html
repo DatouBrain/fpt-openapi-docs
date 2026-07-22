@@ -146,21 +146,21 @@
 }</code></pre>
 <h2 id="32-返回結果數據格式">3.2 返回結果數據格式</h2>
 <p>正確返回：</p>
-<p>{</p>
-<p>&quot;message&quot;:&quot;SUCCESS&quot;,</p>
-<p>&quot;order_no&quot;:&quot;55b45c52781147fea231374429006675&quot;,</p>
-<p>&quot;transaction_id&quot;:&quot;FTP202304191810200001&quot;,</p>
-<p>&quot;submit_time&quot;:&quot;20230419181020&quot;,</p>
-<p>&quot;nonce_str&quot;:&quot;qj1g38h3&quot;,</p>
-<p>&quot;sign&quot;:&quot;DBB695DEBA231E9D96014042A45C2201&quot;</p>
-<p>}</p>
+<pre><code>{
+  &quot;message&quot;: &quot;SUCCESS&quot;,
+  &quot;order_no&quot;: &quot;55b45c52781147fea231374429006675&quot;,
+  &quot;transaction_id&quot;: &quot;FTP202304191810200001&quot;,
+  &quot;submit_time&quot;: &quot;20230419181020&quot;,
+  &quot;nonce_str&quot;: &quot;qj1g38h3&quot;,
+  &quot;sign&quot;: &quot;DBB695DEBA231E9D96014042A45C2201&quot;
+}</code></pre>
 <p>錯誤返回：</p>
 <pre><code>{
-  &quot;message&quot;: &quot;Missing Merchant ID&quot;,
+  &quot;message&quot;: &quot;Missing Client ID&quot;,
   &quot;errors&quot;: [
     {
-      &quot;field&quot;: &quot;mch_id&quot;,
-      &quot;message&quot;: &quot;Missing Merchant ID&quot;,
+      &quot;field&quot;: &quot;client_id&quot;,
+      &quot;message&quot;: &quot;Missing Client ID&quot;,
       &quot;code&quot;: &quot;MISSING_FIELD&quot;
     }
   ]

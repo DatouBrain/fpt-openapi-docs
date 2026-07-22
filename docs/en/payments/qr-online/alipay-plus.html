@@ -126,45 +126,45 @@
 <h1 id="2data-format">2 Data Format</h1>
 <h2 id="21-submitted-data">2.1 Submitted Data</h2>
 <p>Uses HTTPS standard POST protocol. To ensure the receiver correctly receives the data, the transmitted data must be signed.</p>
-<p>{</p>
-<p>&quot;service&quot;:&quot;pay.aps.alipay.wappay&quot;,</p>
-<p>&quot;client_id&quot;:&quot;1001&quot;,</p>
-<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
-<p>&quot;order_no&quot;:&quot;306f4f64bade41618b8e6d18b048c890&quot;,</p>
-<p>&quot;body&quot;:&quot;Office cabinet, good quality, very beautiful&quot;,</p>
-<p>&quot;amount&quot;:1.0,</p>
-<p>&quot;notify_url&quot;:&quot;http://localhost/pay/notify&quot;,</p>
-<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
-<p>&quot;payment_inst&quot;:&quot;ALIPAYCN&quot;,</p>
-<p>&quot;attach&quot;:&quot;&quot;,</p>
-<p>&quot;supplier&quot;:&quot;&quot;,</p>
-<p>&quot;callback_url&quot;:&quot;http://localhost/pay/result.html&quot;,</p>
-<p>&quot;nonce_str&quot;:&quot;6fy019ar&quot;,</p>
-<p>&quot;sign&quot;:&quot;41B8025E21ECF017BB37E12D30DFE954&quot;,</p>
-<p>&quot;lang&quot;:&quot;en_US&quot;</p>
-<p>}</p>
+<pre><code>{
+  &quot;service&quot;: &quot;pay.aps.alipay.wappay&quot;,
+  &quot;client_id&quot;: &quot;1001&quot;,
+  &quot;store_id&quot;: &quot;1001001&quot;,
+  &quot;order_no&quot;: &quot;306f4f64bade41618b8e6d18b048c890&quot;,
+  &quot;body&quot;: &quot;Office cabinet, good quality, very beautiful&quot;,
+  &quot;amount&quot;: 1.0,
+  &quot;notify_url&quot;: &quot;http://localhost/pay/notify&quot;,
+  &quot;client_ip&quot;: &quot;127.0.0.1&quot;,
+  &quot;payment_inst&quot;: &quot;ALIPAYCN&quot;,
+  &quot;attach&quot;: &quot;&quot;,
+  &quot;supplier&quot;: &quot;&quot;,
+  &quot;callback_url&quot;: &quot;http://localhost/pay/result.html&quot;,
+  &quot;nonce_str&quot;: &quot;6fy019ar&quot;,
+  &quot;sign&quot;: &quot;41B8025E21ECF017BB37E12D30DFE954&quot;,
+  &quot;lang&quot;: &quot;en_US&quot;
+}</code></pre>
 <h2 id="22-return-result-data-format">2.2 Return Result Data Format</h2>
 <p>Successful return:</p>
-<p>{</p>
-<p>&quot;message&quot;:&quot;SUCCESS&quot;,</p>
-<p>&quot;order_no&quot;:&quot;306f4f64bade41618b8e6d18b048c890&quot;,</p>
-<p>&quot;transaction_id&quot;:&quot;FTP202012181643190001&quot;,</p>
-<p>&quot;submit_time&quot;:&quot;20201218164319&quot;,</p>
-<p>&quot;pay_url&quot;:&quot; &quot;,</p>
-<p>&quot;nonce_str&quot;:&quot;i1ykzktz&quot;,</p>
-<p>&quot;sign&quot;:&quot;8D03BC20ADD1040C12837966388C1FA6&quot;</p>
-<p>}</p>
+<pre><code>{
+  &quot;message&quot;: &quot;SUCCESS&quot;,
+  &quot;order_no&quot;: &quot;306f4f64bade41618b8e6d18b048c890&quot;,
+  &quot;transaction_id&quot;: &quot;FTP202012181643190001&quot;,
+  &quot;submit_time&quot;: &quot;20201218164319&quot;,
+  &quot;pay_url&quot;: &quot; &quot;,
+  &quot;nonce_str&quot;: &quot;i1ykzktz&quot;,
+  &quot;sign&quot;: &quot;8D03BC20ADD1040C12837966388C1FA6&quot;
+}</code></pre>
 <p>Error return:</p>
-<p>{</p>
-<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
-<pre><span class="code-label">JSON</span><code class="language-json">&quot;errors&quot;:[</code></pre>
-<p>{</p>
-<p>&quot;field&quot;:&quot;mch_id&quot;,</p>
-<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
-<p>&quot;code&quot;:&quot;MISSING_FIELD&quot;</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+<pre><code>{
+  &quot;message&quot;: &quot;Missing Client ID&quot;,
+  &quot;errors&quot;: [
+    {
+      &quot;field&quot;: &quot;client_id&quot;,
+      &quot;message&quot;: &quot;Missing Client ID&quot;,
+      &quot;code&quot;: &quot;MISSING_FIELD&quot;
+    }
+  ]
+}</code></pre>
 <p>If message returns a value other than SUCCESS, it indicates an API call error.</p>
 <h1 id="3-digital-signature">3 Digital Signature</h1>
 <p>The signature rules for this API follow the platform's unified digital signature specification, covering both basic key-value scenarios and nested field (e.g. items) scenarios, the MD5 algorithm, and multi-language code examples. Please refer to <a href="../../common/signature.html">Digital Signature</a>.</p>

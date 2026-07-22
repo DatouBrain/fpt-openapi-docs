@@ -124,34 +124,34 @@
 <h1 id="3數據格式">3數據格式</h1>
 <h2 id="31-提交數據">3.1 提交數據</h2>
 <p>除下單接口外採用 HTTPS 標準的 POST 協議，為了保證接收方接收數據正確,傳輸數據必須簽名。</p>
-<p>{</p>
-<p>&quot;service&quot;:&quot;pay.globalpayment.card.notpresent&quot;,</p>
-<p>&quot;order_no&quot;:&quot;&quot;,</p>
-<p>&quot;transaction_id&quot;:&quot;FTP202012181537420001&quot;,</p>
-<p>&quot;client_id&quot;:&quot;1001&quot;,</p>
-<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
-<p>&quot;nonce_str&quot;:&quot;bz5zqumn&quot;,</p>
-<p>&quot;sign&quot;:&quot;CD51286B6211CB73DB4FD95CEF7EC55E&quot;，</p>
-<p>&quot;lang&quot;:&quot;en_US&quot;</p>
-<p>}</p>
+<pre><code>{
+  &quot;service&quot;: &quot;pay.globalpayment.card.notpresent&quot;,
+  &quot;order_no&quot;: &quot;&quot;,
+  &quot;transaction_id&quot;: &quot;FTP202012181537420001&quot;,
+  &quot;client_id&quot;: &quot;1001&quot;,
+  &quot;store_id&quot;: &quot;1001001&quot;,
+  &quot;nonce_str&quot;: &quot;bz5zqumn&quot;,
+  &quot;sign&quot;: &quot;CD51286B6211CB73DB4FD95CEF7EC55E&quot;,
+  &quot;lang&quot;: &quot;en_US&quot;
+}</code></pre>
 <h2 id="32-返回結果數據格式">3.2 返回結果數據格式</h2>
 <p>正確返回：</p>
-<p>{</p>
-<p>&quot;message&quot;:&quot;SUCCESS&quot;,</p>
-<p>&quot;transaction_id&quot;:&quot;FTP202012181537420001&quot;,</p>
-<p>&quot;order_no&quot;:&quot;01c6a794745e4538a9cb20ceffe1423c&quot;,</p>
-<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
-<p>&quot;submit_time&quot;:&quot;20201218153742&quot;,</p>
-<p>&quot;trade_state&quot;:&quot;SUCCESS&quot;,</p>
-<p>&quot;amount&quot;:102.21,</p>
-<p>&quot;currency&quot;:&quot;USD&quot;,</p>
-<p>&quot;payer&quot;:&quot;JohnDoe&quot;,</p>
-<p>&quot;pay_finish_time&quot;:&quot;20201218153743&quot;,</p>
-<p>&quot;body&quot;:&quot;Office cabinet, good quality, very beautiful&quot;,</p>
-<p>&quot;refund_amount&quot;:0,</p>
-<p>&quot;nonce_str&quot;:&quot;y97cl1nr&quot;,</p>
-<p>&quot;sign&quot;:&quot;981566CDE97F43D27851A9238B0C429F&quot;</p>
-<p>}</p>
+<pre><code>{
+  &quot;message&quot;: &quot;SUCCESS&quot;,
+  &quot;transaction_id&quot;: &quot;FTP202012181537420001&quot;,
+  &quot;order_no&quot;: &quot;01c6a794745e4538a9cb20ceffe1423c&quot;,
+  &quot;store_id&quot;: &quot;1001001&quot;,
+  &quot;submit_time&quot;: &quot;20201218153742&quot;,
+  &quot;trade_state&quot;: &quot;SUCCESS&quot;,
+  &quot;amount&quot;: 102.21,
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;payer&quot;: &quot;JohnDoe&quot;,
+  &quot;pay_finish_time&quot;: &quot;20201218153743&quot;,
+  &quot;body&quot;: &quot;Office cabinet, good quality, very beautiful&quot;,
+  &quot;refund_amount&quot;: 0,
+  &quot;nonce_str&quot;: &quot;y97cl1nr&quot;,
+  &quot;sign&quot;: &quot;981566CDE97F43D27851A9238B0C429F&quot;
+}</code></pre>
 <p>錯誤返回：</p>
 <pre><code>{
   &quot;message&quot;: &quot;Missing Client ID&quot;,

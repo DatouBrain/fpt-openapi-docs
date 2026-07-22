@@ -129,46 +129,46 @@ The sequence diagram is as follows:</p>
 <h1 id="3-data-format">3 Data Format</h1>
 <h2 id="31-submit-data">3.1 Submit Data</h2>
 <p>Uses the standard HTTPS POST protocol. To ensure the recipient receives correct data, transmitted data must be signed.</p>
-<p>{</p>
-<p>&quot;service&quot;:&quot;pay.globalpayment.card.present&quot;,</p>
-<p>&quot;order_no&quot;:&quot;7586bb6238424e27a66866d1bf746640&quot;,</p>
-<p>&quot;card_type&quot;:&quot;VISA&quot;,</p>
-<p>&quot;amount&quot;:&quot;102.21&quot;,</p>
-<p>&quot;currency&quot;:&quot;USD&quot;,</p>
-<p>&quot;body&quot;:&quot;Multifunctional office chair&quot;,</p>
-<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
-<p>&quot;entry_mode&quot;:&quot;contact&quot;,</p>
-<p>&quot;number&quot;:&quot;4111111111111111&quot;,</p>
-<p>&quot;expiration_year&quot;:&quot;2031&quot;,</p>
-<p>&quot;expiration_month&quot;:&quot;12&quot;,</p>
-<p>&quot;client_id&quot;:&quot;1001&quot;,</p>
-<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
-<p>&quot;nonce_str&quot;:&quot;2r8qnc0h&quot;,</p>
-<p>&quot;sign&quot;:&quot;8535CEB8CAA4F3C15D6F907A9012A3DC&quot;,</p>
-<p>&quot;lang&quot;:&quot;en_US&quot;</p>
-<p>}</p>
+<pre><code>{
+  &quot;service&quot;: &quot;pay.globalpayment.card.present&quot;,
+  &quot;order_no&quot;: &quot;7586bb6238424e27a66866d1bf746640&quot;,
+  &quot;card_type&quot;: &quot;VISA&quot;,
+  &quot;amount&quot;: &quot;102.21&quot;,
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;body&quot;: &quot;Multifunctional office chair&quot;,
+  &quot;client_ip&quot;: &quot;127.0.0.1&quot;,
+  &quot;entry_mode&quot;: &quot;contact&quot;,
+  &quot;number&quot;: &quot;4111111111111111&quot;,
+  &quot;expiration_year&quot;: &quot;2031&quot;,
+  &quot;expiration_month&quot;: &quot;12&quot;,
+  &quot;client_id&quot;: &quot;1001&quot;,
+  &quot;store_id&quot;: &quot;1001001&quot;,
+  &quot;nonce_str&quot;: &quot;2r8qnc0h&quot;,
+  &quot;sign&quot;: &quot;8535CEB8CAA4F3C15D6F907A9012A3DC&quot;,
+  &quot;lang&quot;: &quot;en_US&quot;
+}</code></pre>
 <h2 id="32-response-data-format">3.2 Response Data Format</h2>
 <p>Successful response:</p>
-<p>{</p>
-<p>&quot;message&quot;:&quot;SUCCESS&quot;,</p>
-<p>&quot;order_no&quot;:&quot;7586bb6238424e27a66866d1bf746640&quot;,</p>
-<p>&quot;transaction_id&quot;:&quot;FTP202012181541020001&quot;,</p>
-<p>&quot;submit_time&quot;:&quot;20201218154102&quot;,</p>
-<p>&quot;trade_state&quot;:&quot;NOTPAY&quot;,</p>
-<p>&quot;nonce_str&quot;:&quot;cg41bxt5&quot;,</p>
-<p>&quot;sign&quot;:&quot;8092A1F245A942685B0F0F8040398342&quot;</p>
-<p>}</p>
+<pre><code>{
+  &quot;message&quot;: &quot;SUCCESS&quot;,
+  &quot;order_no&quot;: &quot;7586bb6238424e27a66866d1bf746640&quot;,
+  &quot;transaction_id&quot;: &quot;FTP202012181541020001&quot;,
+  &quot;submit_time&quot;: &quot;20201218154102&quot;,
+  &quot;trade_state&quot;: &quot;NOTPAY&quot;,
+  &quot;nonce_str&quot;: &quot;cg41bxt5&quot;,
+  &quot;sign&quot;: &quot;8092A1F245A942685B0F0F8040398342&quot;
+}</code></pre>
 <p>Error response:</p>
-<p>{</p>
-<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
-<pre><span class="code-label">JSON</span><code class="language-json">&quot;errors&quot;:[</code></pre>
-<p>{</p>
-<p>&quot;field&quot;:&quot;mch_id&quot;,</p>
-<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
-<p>&quot;code&quot;:&quot;MISSING_FIELD&quot;</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+<pre><code>{
+  &quot;message&quot;: &quot;Missing Client ID&quot;,
+  &quot;errors&quot;: [
+    {
+      &quot;field&quot;: &quot;client_id&quot;,
+      &quot;message&quot;: &quot;Missing Client ID&quot;,
+      &quot;code&quot;: &quot;MISSING_FIELD&quot;
+    }
+  ]
+}</code></pre>
 <p>When message returns non-SUCCESS, it indicates an API call error.</p>
 <h1 id="4-digital-signature">4 Digital Signature</h1>
 <p>The signature rules for this API follow the platform's unified digital signature specification, covering both basic key-value scenarios and nested field (e.g. items) scenarios, the MD5 algorithm, and multi-language code examples. Please refer to <a href="../../common/signature.html">Digital Signature</a>.</p>

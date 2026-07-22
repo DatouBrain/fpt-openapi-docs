@@ -126,43 +126,43 @@ The sequence diagram is as follows:</p>
 <h1 id="3data-format">3 Data Format</h1>
 <h2 id="31-submitted-data">3.1 Submitted Data</h2>
 <p>Uses HTTPS standard POST protocol. To ensure the receiver correctly receives the data, the transmitted data must be signed.</p>
-<p>{</p>
-<p>&quot;service&quot;:&quot;pay.alipay.wappay.intl&quot;,</p>
-<p>&quot;client_id&quot;:&quot;1001&quot;,</p>
-<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
-<p>&quot;order_no&quot;:&quot;a0e55bf5349a4a31a9fcf689ceb079bd&quot;,</p>
-<p>&quot;body&quot;:&quot;Office cabinet, good quality, very beautiful&quot;,</p>
-<p>&quot;amount&quot;:1.0,</p>
-<p>&quot;notify_url&quot;:&quot;http://localhost/pay/notify&quot;,</p>
-<p>&quot;payment_inst&quot;:&quot;ALIPAYCN&quot;,</p>
-<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
-<p>&quot;attach&quot;:&quot;string&quot;,</p>
-<p>&quot;nonce_str&quot;:&quot;818qbn2t&quot;,</p>
-<p>&quot;sign&quot;:&quot;C38E845F27E077C02EF6194ABC30E0AA&quot;,</p>
-<p>&quot;lang&quot;:&quot;en_US&quot;</p>
-<p>}</p>
+<pre><code>{
+  &quot;service&quot;: &quot;pay.alipay.wappay.intl&quot;,
+  &quot;client_id&quot;: &quot;1001&quot;,
+  &quot;store_id&quot;: &quot;1001001&quot;,
+  &quot;order_no&quot;: &quot;a0e55bf5349a4a31a9fcf689ceb079bd&quot;,
+  &quot;body&quot;: &quot;Office cabinet, good quality, very beautiful&quot;,
+  &quot;amount&quot;: 1.0,
+  &quot;notify_url&quot;: &quot;http://localhost/pay/notify&quot;,
+  &quot;payment_inst&quot;: &quot;ALIPAYCN&quot;,
+  &quot;client_ip&quot;: &quot;127.0.0.1&quot;,
+  &quot;attach&quot;: &quot;string&quot;,
+  &quot;nonce_str&quot;: &quot;818qbn2t&quot;,
+  &quot;sign&quot;: &quot;C38E845F27E077C02EF6194ABC30E0AA&quot;,
+  &quot;lang&quot;: &quot;en_US&quot;
+}</code></pre>
 <h2 id="32-return-result-data-format">3.2 Return Result Data Format</h2>
 <p>Successful return:</p>
-<p>{</p>
-<p>&quot;message&quot;:&quot;SUCCESS&quot;,</p>
-<p>&quot;order_no&quot;:&quot;a0e55bf5349a4a31a9fcf689ceb079bd&quot;,</p>
-<p>&quot;transaction_id&quot;:&quot;FTP202012181614010001&quot;,</p>
-<p>&quot;submit_time&quot;:&quot;20201218161401&quot;,</p>
-<p>&quot;pay_url&quot;:&quot; &quot;,</p>
-<p>&quot;nonce_str&quot;:&quot;5wtazrkr&quot;,</p>
-<p>&quot;sign&quot;:&quot;7862591E1C4E5FFAACD3DF85AF4235ED&quot;</p>
-<p>}</p>
+<pre><code>{
+  &quot;message&quot;: &quot;SUCCESS&quot;,
+  &quot;order_no&quot;: &quot;a0e55bf5349a4a31a9fcf689ceb079bd&quot;,
+  &quot;transaction_id&quot;: &quot;FTP202012181614010001&quot;,
+  &quot;submit_time&quot;: &quot;20201218161401&quot;,
+  &quot;pay_url&quot;: &quot; &quot;,
+  &quot;nonce_str&quot;: &quot;5wtazrkr&quot;,
+  &quot;sign&quot;: &quot;7862591E1C4E5FFAACD3DF85AF4235ED&quot;
+}</code></pre>
 <p>Error return:</p>
-<p>{</p>
-<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
-<pre><span class="code-label">JSON</span><code class="language-json">&quot;errors&quot;:[</code></pre>
-<p>{</p>
-<p>&quot;field&quot;:&quot;mch_id&quot;,</p>
-<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
-<p>&quot;code&quot;:&quot;MISSING_FIELD&quot;</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+<pre><code>{
+  &quot;message&quot;: &quot;Missing Client ID&quot;,
+  &quot;errors&quot;: [
+    {
+      &quot;field&quot;: &quot;client_id&quot;,
+      &quot;message&quot;: &quot;Missing Client ID&quot;,
+      &quot;code&quot;: &quot;MISSING_FIELD&quot;
+    }
+  ]
+}</code></pre>
 <p>If message returns a value other than SUCCESS, it indicates an API call error.</p>
 <h1 id="4-digital-signature">4 Digital Signature</h1>
 <p>The signature rules for this API follow the platform's unified digital signature specification, covering both basic key-value scenarios and nested field (e.g. items) scenarios, the MD5 algorithm, and multi-language code examples. Please refer to <a href="../../common/signature.html">Digital Signature</a>.</p>

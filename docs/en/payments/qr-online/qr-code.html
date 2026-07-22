@@ -134,40 +134,40 @@ The sequence diagram is as follows:</p>
 <h1 id="3data-format">3 Data Format</h1>
 <h2 id="31-submitted-data">3.1 Submitted Data</h2>
 <p>Uses HTTPS standard POST protocol. To ensure the receiver correctly receives the data, the transmitted data must be signed.</p>
-<p>{</p>
-<p>&quot;service&quot;:&quot;pay.alipay.native.intl&quot;,</p>
-<p>&quot;client_id&quot;:&quot;1001&quot;,</p>
-<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
-<p>&quot;order_no&quot;:&quot;4370dcbf793645269e260527aea1ba0c&quot;,</p>
-<p>&quot;body&quot;:&quot;測試支付寶掃碼支付&quot;,</p>
-<p>&quot;amount&quot;:1.0,</p>
-<p>&quot;limit_credit_pay&quot;:&quot;0&quot;,</p>
-<p>&quot;notify_url&quot;:&quot;http://localhost/pay/notify&quot;,</p>
-<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
-<p>&quot;attach&quot;:&quot;&quot;,</p>
-<p>&quot;nonce_str&quot;:&quot;1bwpzeoh&quot;,</p>
-<p>&quot;sign&quot;:&quot;194565B69FD86C12F8148A52E37718C4&quot;,</p>
-<p>&quot;lang&quot;:&quot;en_US&quot;</p>
-<p>}</p>
+<pre><code>{
+  &quot;service&quot;: &quot;pay.alipay.native.intl&quot;,
+  &quot;client_id&quot;: &quot;1001&quot;,
+  &quot;store_id&quot;: &quot;1001001&quot;,
+  &quot;order_no&quot;: &quot;4370dcbf793645269e260527aea1ba0c&quot;,
+  &quot;body&quot;: &quot;測試支付寶掃碼支付&quot;,
+  &quot;amount&quot;: 1.0,
+  &quot;limit_credit_pay&quot;: &quot;0&quot;,
+  &quot;notify_url&quot;: &quot;http://localhost/pay/notify&quot;,
+  &quot;client_ip&quot;: &quot;127.0.0.1&quot;,
+  &quot;attach&quot;: &quot;&quot;,
+  &quot;nonce_str&quot;: &quot;1bwpzeoh&quot;,
+  &quot;sign&quot;: &quot;194565B69FD86C12F8148A52E37718C4&quot;,
+  &quot;lang&quot;: &quot;en_US&quot;
+}</code></pre>
 <h2 id="32-return-result-data-format">3.2 Return Result Data Format</h2>
 <p>Successful return:</p>
-<p>{</p>
-<p>&quot;message&quot;:&quot;SUCCESS&quot;,</p>
-<p>&quot;order_no&quot;:&quot;4370dcbf793645269e260527aea1ba0c&quot;,</p>
-<p>&quot;transaction_id&quot;:&quot;FTP202012181655430001&quot;,</p>
-<p>&quot;submit_time&quot;:&quot;20201218165543&quot;,</p>
-<p>&quot;code_url&quot;:&quot;&quot;,</p>
-<p>&quot;code_img_url&quot;:&quot;&quot;,</p>
-<p>&quot;nonce_str&quot;:&quot;xcf5xkkv&quot;,</p>
-<p>&quot;sign&quot;:&quot;CEE0EF3C6F0D37DE5B20000871B68509&quot;</p>
-<p>}</p>
+<pre><code>{
+  &quot;message&quot;: &quot;SUCCESS&quot;,
+  &quot;order_no&quot;: &quot;4370dcbf793645269e260527aea1ba0c&quot;,
+  &quot;transaction_id&quot;: &quot;FTP202012181655430001&quot;,
+  &quot;submit_time&quot;: &quot;20201218165543&quot;,
+  &quot;code_url&quot;: &quot;&quot;,
+  &quot;code_img_url&quot;: &quot;&quot;,
+  &quot;nonce_str&quot;: &quot;xcf5xkkv&quot;,
+  &quot;sign&quot;: &quot;CEE0EF3C6F0D37DE5B20000871B68509&quot;
+}</code></pre>
 <p>Error return:</p>
 <pre><span class="code-label">JSON</span><code class="language-json">{
-  &quot;message&quot;:&quot;Missing Merchant ID&quot;,
+  &quot;message&quot;:&quot;Missing Client ID&quot;,
   &quot;errors&quot;:[
     {
-      &quot;field&quot;:&quot;mch_id&quot;,
-      &quot;message&quot;:&quot;Missing Merchant ID&quot;,
+      &quot;field&quot;:&quot;client_id&quot;,
+      &quot;message&quot;:&quot;Missing Client ID&quot;,
       &quot;code&quot;:&quot;MISSING_FIELD&quot;
     }
   ]

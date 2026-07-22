@@ -137,42 +137,42 @@ The sequence diagram is as follows:</p>
 <h1 id="3-data-format">3 Data Format</h1>
 <h2 id="31-submit-data">3.1 Submit Data</h2>
 <p>Uses the standard HTTPS POST protocol. To ensure the receiver receives data correctly, the transmitted data must be signed.</p>
-<p>{</p>
-<p>&quot;service&quot;:&quot;unified.trade.micropay&quot;,</p>
-<p>&quot;client_id&quot;:&quot;1001&quot;,</p>
-<p>&quot;store_id&quot;:&quot;1001001&quot;,</p>
-<p>&quot;order_no&quot;:&quot;aa95f4d66f4440268b3e168053eee75a&quot;,</p>
-<p>&quot;body&quot;:&quot;Test Alipay barcode payment&quot;,</p>
-<p>&quot;amount&quot;:1.0,</p>
-<p>&quot;client_ip&quot;:&quot;127.0.0.1&quot;,</p>
-<p>&quot;attach&quot;:&quot;&quot;,</p>
-<p>&quot;auth_code&quot;:&quot;282785352345226827&quot;,</p>
-<p>&quot;nonce_str&quot;:&quot;2fb1kvih&quot;,</p>
-<p>&quot;sign&quot;:&quot;C7F8CA843B4A7C47FF4C6C674F3FEFE5&quot;,</p>
-<p>&quot;lang&quot;:&quot;en_US&quot;</p>
-<p>}</p>
+<pre><code>{
+  &quot;service&quot;: &quot;unified.trade.micropay&quot;,
+  &quot;client_id&quot;: &quot;1001&quot;,
+  &quot;store_id&quot;: &quot;1001001&quot;,
+  &quot;order_no&quot;: &quot;aa95f4d66f4440268b3e168053eee75a&quot;,
+  &quot;body&quot;: &quot;Test Alipay barcode payment&quot;,
+  &quot;amount&quot;: 1.0,
+  &quot;client_ip&quot;: &quot;127.0.0.1&quot;,
+  &quot;attach&quot;: &quot;&quot;,
+  &quot;auth_code&quot;: &quot;282785352345226827&quot;,
+  &quot;nonce_str&quot;: &quot;2fb1kvih&quot;,
+  &quot;sign&quot;: &quot;C7F8CA843B4A7C47FF4C6C674F3FEFE5&quot;,
+  &quot;lang&quot;: &quot;en_US&quot;
+}</code></pre>
 <h2 id="32-response-data-format">3.2 Response Data Format</h2>
 <p>Successful response:</p>
-<p>{</p>
-<p>&quot;message&quot;:&quot;SUCCESS&quot;,</p>
-<p>&quot;order_no&quot;:&quot;aa95f4d66f4440268b3e168053eee75a&quot;,</p>
-<p>&quot;transaction_id&quot;:&quot;FTP202012181701310001&quot;,</p>
-<p>&quot;submit_time&quot;:&quot;20201218170131&quot;,</p>
-<p>&quot;need_query&quot;:&quot;N&quot;,</p>
-<p>&quot;nonce_str&quot;:&quot;b5tz1ea2&quot;,</p>
-<p>&quot;sign&quot;:&quot;9A4F5C97F98F78EF77B89EF8BF746328&quot;</p>
-<p>}</p>
+<pre><code>{
+  &quot;message&quot;: &quot;SUCCESS&quot;,
+  &quot;order_no&quot;: &quot;aa95f4d66f4440268b3e168053eee75a&quot;,
+  &quot;transaction_id&quot;: &quot;FTP202012181701310001&quot;,
+  &quot;submit_time&quot;: &quot;20201218170131&quot;,
+  &quot;need_query&quot;: &quot;N&quot;,
+  &quot;nonce_str&quot;: &quot;b5tz1ea2&quot;,
+  &quot;sign&quot;: &quot;9A4F5C97F98F78EF77B89EF8BF746328&quot;
+}</code></pre>
 <p>Error response:</p>
-<p>{</p>
-<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
-<pre><span class="code-label">JSON</span><code class="language-json">&quot;errors&quot;:[</code></pre>
-<p>{</p>
-<p>&quot;field&quot;:&quot;mch_id&quot;,</p>
-<p>&quot;message&quot;:&quot;Missing Merchant ID&quot;,</p>
-<p>&quot;code&quot;:&quot;MISSING_FIELD&quot;</p>
-<p>}</p>
-<p>]</p>
-<p>}</p>
+<pre><code>{
+  &quot;message&quot;: &quot;Missing Client ID&quot;,
+  &quot;errors&quot;: [
+    {
+      &quot;field&quot;: &quot;client_id&quot;,
+      &quot;message&quot;: &quot;Missing Client ID&quot;,
+      &quot;code&quot;: &quot;MISSING_FIELD&quot;
+    }
+  ]
+}</code></pre>
 <p>When message returns a value other than SUCCESS, it indicates an API call error.</p>
 <h1 id="4-digital-signature">4 Digital Signature</h1>
 <p>The signature rules for this API follow the platform's unified digital signature specification, covering both basic key-value scenarios and nested field (e.g. items) scenarios, the MD5 algorithm, and multi-language code examples. Please refer to <a href="../../common/signature.html">Digital Signature</a>.</p>
