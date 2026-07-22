@@ -166,9 +166,9 @@
 <p>]</p>
 <p>}</p>
 <p>If message returns a value other than SUCCESS, it indicates an API call error.</p>
-<h1 id="4-digital-signature">4 Digital Signature</h1>
+<h1 id="3-digital-signature">3 Digital Signature</h1>
 <p>The signature rules for this API follow the platform's unified digital signature specification, covering both basic key-value scenarios and nested field (e.g. items) scenarios, the MD5 algorithm, and multi-language code examples. Please refer to <a href="../../common/signature.html">Digital Signature</a>.</p>
-<h2 id="41-request-headers">4.1 Request Headers</h2>
+<h2 id="31-request-headers">3.1 Request Headers</h2>
 <p>Request parameters:</p>
 <div class="table-wrapper">
 <table>
@@ -190,14 +190,14 @@
 </tbody>
 </table>
 </div>
-<h1 id="5-api-description">5 API Description</h1>
-<h2 id="51-order-api">5.1 Order API</h2>
-<h3 id="511-business-function">5.1.1 Business Function</h3>
+<h1 id="4-api-description">4 API Description</h1>
+<h2 id="41-order-api">4.1 Order API</h2>
+<h3 id="411-business-function">4.1.1 Business Function</h3>
 <p>Initialize the payment request and return the third-party checkout page (WEB/WAP) through the request.</p>
-<h3 id="512-interaction-mode">5.1.2 Interaction Mode</h3>
+<h3 id="412-interaction-mode">4.1.2 Interaction Mode</h3>
 <p>Request: Synchronous backend request mode</p>
 <p>Return result + notification: Backend request interaction mode + backend notification interaction mode</p>
-<h3 id="513-request-parameter-list">5.1.3 Request Parameter List</h3>
+<h3 id="413-request-parameter-list">4.1.3 Request Parameter List</h3>
 <p>Request URL: https://api.fintechpaymenthub.com/openapi/v1/pay</p>
 <p>Request the API via POST JSON body</p>
 <div class="table-wrapper">
@@ -343,7 +343,7 @@ TINABA</td>
 </tbody>
 </table>
 </div>
-<h3 id="514-return-result">5.1.4 Return Result</h3>
+<h3 id="414-return-result">4.1.4 Return Result</h3>
 <p>Data is returned in JSON format in real time</p>
 <div class="table-wrapper">
 <table>
@@ -438,7 +438,7 @@ URL: indicates the code can be directly displayed on the UI as an image, with a 
 </tbody>
 </table>
 </div>
-<h3 id="515-test-case">5.1.5 Test Case</h3>
+<h3 id="415-test-case">4.1.5 Test Case</h3>
 <p>Test cases are provided for easy invocation</p>
 <p>Submitted data:</p>
 <div class="table-wrapper">
@@ -493,12 +493,12 @@ URL: indicates the code can be directly displayed on the UI as an image, with a 
 </tbody>
 </table>
 </div>
-<h2 id="52-order-query-api">5.2 Order Query API</h2>
-<h3 id="521-business-function">5.2.1 Business Function</h3>
+<h2 id="42-order-query-api">4.2 Order Query API</h2>
+<h3 id="421-business-function">4.2.1 Business Function</h3>
 <p>Query specific order information on the platform by merchant order number or FTP order number.</p>
-<h3 id="522-interaction-mode">5.2.2 Interaction Mode</h3>
+<h3 id="422-interaction-mode">4.2.2 Interaction Mode</h3>
 <p>Backend system call interaction mode</p>
-<h3 id="523-request-parameter-list">5.2.3 Request Parameter List</h3>
+<h3 id="423-request-parameter-list">4.2.3 Request Parameter List</h3>
 <p>Request URL: https://api.fintechpaymenthub.com/openapi/v1/query
 Request via POST JSON body</p>
 <div class="table-wrapper">
@@ -570,7 +570,7 @@ Request via POST JSON body</p>
 </tbody>
 </table>
 </div>
-<h3 id="524-return-result">5.2.4 Return Result</h3>
+<h3 id="424-return-result">4.2.4 Return Result</h3>
 <p>Data is returned in JSON format in real time</p>
 <div class="table-wrapper">
 <table>
@@ -695,7 +695,7 @@ FAIL—failed</td>
 </tbody>
 </table>
 </div>
-<h3 id="525-test-case">5.2.5 Test Case</h3>
+<h3 id="425-test-case">4.2.5 Test Case</h3>
 <p>Test cases are provided for easy invocation</p>
 <p>Submitted data:</p>
 <div class="table-wrapper">
@@ -749,8 +749,8 @@ FAIL—failed</td>
 </tbody>
 </table>
 </div>
-<h2 id="53-refund-api">5.3 Refund API</h2>
-<h3 id="531-business-function">5.3.1 Business Function</h3>
+<h2 id="43-refund-api">4.3 Refund API</h2>
+<h3 id="431-business-function">4.3.1 Business Function</h3>
 <p>The merchant initiates a refund for an order that has been successfully paid, and the operation result is returned synchronously in the same session.</p>
 <p>I. Refund Method</p>
 <p>Currently, only the original route refund is supported.</p>
@@ -763,9 +763,9 @@ FAIL—failed</td>
 <p>2. Currently, most banks support full refunds and partial refunds, but a few banks do not support full refunds or partial refunds, or</p>
 <p>do not support refunds. In this case, the merchant can coordinate with the seller to refund to the Alipay account.</p>
 <p>Currently, only the keyless refund API is provided. Merchants who need a keyed refund API, please contact business for explanation.</p>
-<h3 id="532-interaction-mode">5.3.2 Interaction Mode</h3>
+<h3 id="432-interaction-mode">4.3.2 Interaction Mode</h3>
 <p>Backend system call interaction mode</p>
-<h3 id="533-request-parameter-list">5.3.3 Request Parameter List</h3>
+<h3 id="433-request-parameter-list">4.3.3 Request Parameter List</h3>
 <p>Request URL: https://api.fintechpaymenthub.com/openapi/v1/refund
 Request via POST JSON body</p>
 <div class="table-wrapper">
@@ -859,7 +859,7 @@ the platform processes as a single order and only refunds once. If the refund is
 </tbody>
 </table>
 </div>
-<h3 id="534-return-result">5.3.4 Return Result</h3>
+<h3 id="434-return-result">4.3.4 Return Result</h3>
 <p>Data is returned in JSON format in real time</p>
 <div class="table-wrapper">
 <table>
@@ -938,7 +938,7 @@ the platform processes as a single order and only refunds once. If the refund is
 </tbody>
 </table>
 </div>
-<h3 id="535-test-case">5.3.5 Test Case</h3>
+<h3 id="435-test-case">4.3.5 Test Case</h3>
 <p>Test cases are provided for easy invocation</p>
 <p>Submitted data:</p>
 <div class="table-wrapper">
@@ -989,12 +989,12 @@ the platform processes as a single order and only refunds once. If the refund is
 </tbody>
 </table>
 </div>
-<h2 id="54-refund-query-api">5.4 Refund Query API</h2>
-<h3 id="541-business-function">5.4.1 Business Function</h3>
+<h2 id="44-refund-query-api">4.4 Refund Query API</h2>
+<h3 id="441-business-function">4.4.1 Business Function</h3>
 <p>After submitting a refund application, query the refund status by calling this API.</p>
-<h3 id="542-interaction-mode">5.4.2 Interaction Mode</h3>
+<h3 id="442-interaction-mode">4.4.2 Interaction Mode</h3>
 <p>Backend system call interaction mode</p>
-<h3 id="543-request-parameter-list">5.4.3 Request Parameter List</h3>
+<h3 id="443-request-parameter-list">4.4.3 Request Parameter List</h3>
 <p>Request URL: https://api.fintechpaymenthub.com/openapi/v1/refundQuery
 Request via POST JSON body</p>
 <div class="table-wrapper">
@@ -1080,7 +1080,7 @@ Request via POST JSON body</p>
 </tbody>
 </table>
 </div>
-<h3 id="544-return-result">5.4.4 Return Result</h3>
+<h3 id="444-return-result">4.4.4 Return Result</h3>
 <p>Data is returned in JSON format in real time</p>
 <div class="table-wrapper">
 <table>
@@ -1127,7 +1127,7 @@ Request via POST JSON body</p>
 <td>String(32)</td>
 <td>Merchant refund number, up to 32 characters, may contain letters, ensure uniqueness within the merchant system. Multiple requests with the same refund number,
 the platform processes as a single order and only refunds once. If the refund is unsuccessful, please use the original refund number to resubmit to avoid duplicate refunds.
-First refund return field: out_refund_no_1,
+First refund return field: out_refund_no,
 Second refund return field: out_refund_no_2,
 and so on.</td>
 </tr>
@@ -1194,7 +1194,7 @@ NOTSURE—undetermined, merchant needs to resubmit with the original refund numb
 </tbody>
 </table>
 </div>
-<h3 id="545-test-case">5.4.5 Test Case</h3>
+<h3 id="445-test-case">4.4.5 Test Case</h3>
 <p>Test cases are provided for easy invocation</p>
 <p>Submitted data:</p>
 <div class="table-wrapper">
@@ -1236,20 +1236,20 @@ NOTSURE—undetermined, merchant needs to resubmit with the original refund numb
     &quot;total_fee&quot;:1,
     &quot;refund_count&quot;:1,
     &quot;nonce_str&quot;:&quot;401n5buh&quot;,
-    &quot;out_refund_no_1&quot;:&quot;T9802e9e18ff340548357bfba730d407&quot;,
-    &quot;refund_id_1&quot;:&quot;FTP202105141152540001&quot;,
-    &quot;refund_amount_1&quot;:1,
-    &quot;to_order_sn_1&quot;:&quot;121500000214202105141132335702&quot;,
-    &quot;refund_time_1&quot;:&quot;20210514115254&quot;,
-    &quot;refund_status_1&quot;:&quot;SUCCESS&quot;,
+    &quot;out_refund_no&quot;:&quot;T9802e9e18ff340548357bfba730d407&quot;,
+    &quot;refund_id&quot;:&quot;FTP202105141152540001&quot;,
+    &quot;refund_amount&quot;:1,
+    &quot;to_order_sn&quot;:&quot;121500000214202105141132335702&quot;,
+    &quot;refund_time&quot;:&quot;20210514115254&quot;,
+    &quot;refund_status&quot;:&quot;SUCCESS&quot;,
     &quot;sign&quot;:&quot;7A5CA8D8BD0F4E9F78641F9433FD3A4D&quot;
 }</td>
 </tr>
 </tbody>
 </table>
 </div>
-<h2 id="55-payment-notification-api">5.5 Payment Notification API</h2>
-<h3 id="551-business-function">5.5.1 Business Function</h3>
+<h2 id="45-payment-notification-api">4.5 Payment Notification API</h2>
+<h3 id="451-business-function">4.5.1 Business Function</h3>
 <p>The payment notification URL is the notify_url parameter submitted in Web payment. After the payment is completed, the platform will send the relevant payment and user information to the URL. The merchant needs to receive and process this information.</p>
 <p>During backend notification interaction, if the platform receives a response from the merchant that is not the pure string &quot;success&quot; or that responds after 5 seconds, the platform will consider it unsuccessful. The platform will intermittently restart the notification with a certain strategy (notification interval: 0/15/15/30/180/1800/1800/1800/1800/3600 unit: seconds), trying its best to improve the notification success rate, but cannot guarantee the final success of the notification.</p>
 <p>Since backend notifications may be resent, the same notification may be sent to the merchant system multiple times. The merchant system must be able to handle duplicate notifications correctly.</p>
@@ -1257,9 +1257,9 @@ NOTSURE—undetermined, merchant needs to resubmit with the original refund numb
 <p>Notification: After the merchant backend receives the parameter notification, it needs to verify the out_trade_no and total_fee in the received notification based on its own business system's order number and order amount. The order status in the database can only be updated after verification consistency.</p>
 <p>Suggestion: After creating an order and initiating payment, if no payment success notification request is received within 5 minutes, it is recommended to initiate the order query API, querying once every 5 seconds, for a total of 12 queries.</p>
 <p>Backend notifications will be returned via the notify_url that sent the payment request in POST mode.</p>
-<h3 id="552-interaction-mode">5.5.2 Interaction Mode</h3>
+<h3 id="452-interaction-mode">4.5.2 Interaction Mode</h3>
 <p>Backend notification mode</p>
-<h3 id="553-return-parameter-list">5.5.3 Return Parameter List</h3>
+<h3 id="453-return-parameter-list">4.5.3 Return Parameter List</h3>
 <p>Data is returned in JSON format in real time</p>
 <div class="table-wrapper">
 <table>
@@ -1396,7 +1396,7 @@ FAIL—failed</td>
 </tbody>
 </table>
 </div>
-<h3 id="554-test-case">5.5.4 Test Case</h3>
+<h3 id="454-test-case">4.5.4 Test Case</h3>
 <p>Test cases are provided for easy invocation</p>
 <p>Submitted data:</p>
 <div class="table-wrapper">
@@ -1427,7 +1427,7 @@ FAIL—failed</td>
 </tbody>
 </table>
 </div>
-<h1 id="6error-codes">6 Error Codes</h1>
+<h1 id="5error-codes">5 Error Codes</h1>
 <div class="table-wrapper">
 <table>
 <thead><tr>
@@ -1611,37 +1611,37 @@ FAIL—failed</td>
   <li><a href="#12-intended-audience" class="toc-h2">1.2 Intended Audience</a></li>
   <li><a href="#21-submitted-data" class="toc-h2">2.1 Submitted Data</a></li>
   <li><a href="#22-return-result-data-format" class="toc-h2">2.2 Return Result Data Format</a></li>
-  <li><a href="#4-digital-signature" class="toc-h2">4 Digital Signature</a></li>
-  <li><a href="#41-request-headers" class="toc-h2">4.1 Request Headers</a></li>
-  <li><a href="#51-order-api" class="toc-h2">5.1 Order API</a></li>
-  <li><a href="#511-business-function" class="toc-h3">5.1.1 Business Function</a></li>
-  <li><a href="#512-interaction-mode" class="toc-h3">5.1.2 Interaction Mode</a></li>
-  <li><a href="#513-request-parameter-list" class="toc-h3">5.1.3 Request Parameter List</a></li>
-  <li><a href="#514-return-result" class="toc-h3">5.1.4 Return Result</a></li>
-  <li><a href="#515-test-case" class="toc-h3">5.1.5 Test Case</a></li>
-  <li><a href="#52-order-query-api" class="toc-h2">5.2 Order Query API</a></li>
-  <li><a href="#521-business-function" class="toc-h3">5.2.1 Business Function</a></li>
-  <li><a href="#522-interaction-mode" class="toc-h3">5.2.2 Interaction Mode</a></li>
-  <li><a href="#523-request-parameter-list" class="toc-h3">5.2.3 Request Parameter List</a></li>
-  <li><a href="#524-return-result" class="toc-h3">5.2.4 Return Result</a></li>
-  <li><a href="#525-test-case" class="toc-h3">5.2.5 Test Case</a></li>
-  <li><a href="#53-refund-api" class="toc-h2">5.3 Refund API</a></li>
-  <li><a href="#531-business-function" class="toc-h3">5.3.1 Business Function</a></li>
-  <li><a href="#532-interaction-mode" class="toc-h3">5.3.2 Interaction Mode</a></li>
-  <li><a href="#533-request-parameter-list" class="toc-h3">5.3.3 Request Parameter List</a></li>
-  <li><a href="#534-return-result" class="toc-h3">5.3.4 Return Result</a></li>
-  <li><a href="#535-test-case" class="toc-h3">5.3.5 Test Case</a></li>
-  <li><a href="#54-refund-query-api" class="toc-h2">5.4 Refund Query API</a></li>
-  <li><a href="#541-business-function" class="toc-h3">5.4.1 Business Function</a></li>
-  <li><a href="#542-interaction-mode" class="toc-h3">5.4.2 Interaction Mode</a></li>
-  <li><a href="#543-request-parameter-list" class="toc-h3">5.4.3 Request Parameter List</a></li>
-  <li><a href="#544-return-result" class="toc-h3">5.4.4 Return Result</a></li>
-  <li><a href="#545-test-case" class="toc-h3">5.4.5 Test Case</a></li>
-  <li><a href="#55-payment-notification-api" class="toc-h2">5.5 Payment Notification API</a></li>
-  <li><a href="#551-business-function" class="toc-h3">5.5.1 Business Function</a></li>
-  <li><a href="#552-interaction-mode" class="toc-h3">5.5.2 Interaction Mode</a></li>
-  <li><a href="#553-return-parameter-list" class="toc-h3">5.5.3 Return Parameter List</a></li>
-  <li><a href="#554-test-case" class="toc-h3">5.5.4 Test Case</a></li>
+  <li><a href="#3-digital-signature" class="toc-h2">3 Digital Signature</a></li>
+  <li><a href="#31-request-headers" class="toc-h2">3.1 Request Headers</a></li>
+  <li><a href="#41-order-api" class="toc-h2">4.1 Order API</a></li>
+  <li><a href="#411-business-function" class="toc-h3">4.1.1 Business Function</a></li>
+  <li><a href="#412-interaction-mode" class="toc-h3">4.1.2 Interaction Mode</a></li>
+  <li><a href="#413-request-parameter-list" class="toc-h3">4.1.3 Request Parameter List</a></li>
+  <li><a href="#414-return-result" class="toc-h3">4.1.4 Return Result</a></li>
+  <li><a href="#415-test-case" class="toc-h3">4.1.5 Test Case</a></li>
+  <li><a href="#42-order-query-api" class="toc-h2">4.2 Order Query API</a></li>
+  <li><a href="#421-business-function" class="toc-h3">4.2.1 Business Function</a></li>
+  <li><a href="#422-interaction-mode" class="toc-h3">4.2.2 Interaction Mode</a></li>
+  <li><a href="#423-request-parameter-list" class="toc-h3">4.2.3 Request Parameter List</a></li>
+  <li><a href="#424-return-result" class="toc-h3">4.2.4 Return Result</a></li>
+  <li><a href="#425-test-case" class="toc-h3">4.2.5 Test Case</a></li>
+  <li><a href="#43-refund-api" class="toc-h2">4.3 Refund API</a></li>
+  <li><a href="#431-business-function" class="toc-h3">4.3.1 Business Function</a></li>
+  <li><a href="#432-interaction-mode" class="toc-h3">4.3.2 Interaction Mode</a></li>
+  <li><a href="#433-request-parameter-list" class="toc-h3">4.3.3 Request Parameter List</a></li>
+  <li><a href="#434-return-result" class="toc-h3">4.3.4 Return Result</a></li>
+  <li><a href="#435-test-case" class="toc-h3">4.3.5 Test Case</a></li>
+  <li><a href="#44-refund-query-api" class="toc-h2">4.4 Refund Query API</a></li>
+  <li><a href="#441-business-function" class="toc-h3">4.4.1 Business Function</a></li>
+  <li><a href="#442-interaction-mode" class="toc-h3">4.4.2 Interaction Mode</a></li>
+  <li><a href="#443-request-parameter-list" class="toc-h3">4.4.3 Request Parameter List</a></li>
+  <li><a href="#444-return-result" class="toc-h3">4.4.4 Return Result</a></li>
+  <li><a href="#445-test-case" class="toc-h3">4.4.5 Test Case</a></li>
+  <li><a href="#45-payment-notification-api" class="toc-h2">4.5 Payment Notification API</a></li>
+  <li><a href="#451-business-function" class="toc-h3">4.5.1 Business Function</a></li>
+  <li><a href="#452-interaction-mode" class="toc-h3">4.5.2 Interaction Mode</a></li>
+  <li><a href="#453-return-parameter-list" class="toc-h3">4.5.3 Return Parameter List</a></li>
+  <li><a href="#454-test-case" class="toc-h3">4.5.4 Test Case</a></li>
 </ul>
 </nav>
   </div>

@@ -1257,7 +1257,7 @@ Request via POST JSON body</p>
 <td>String(32)</td>
 <td>Merchant refund number, within 32 characters, may contain letters, ensure uniqueness in the merchant system. Multiple requests with the same refund number,
 the platform treats as one order and only refunds once. If the refund is unsuccessful, please re-initiate using the original refund number to avoid duplicate refunds.
-First refund return field: out_refund_no_1,
+First refund return field: out_refund_no,
 Second refund return field: out_refund_no_2,
 and so on.</td>
 </tr>
@@ -1365,12 +1365,12 @@ NOTSURE—Undetermined, merchant needs to re-initiate with the original refund n
     &quot;total_fee&quot;:1,
     &quot;refund_count&quot;:1,
     &quot;nonce_str&quot;:&quot;401n5buh&quot;,
-    &quot;out_refund_no_1&quot;:&quot;T9802e9e18ff340548357bfba730d407&quot;,
-    &quot;refund_id_1&quot;:&quot;FTP202105141152540001&quot;,
-    &quot;refund_amount_1&quot;:1,
-    &quot;to_order_sn_1&quot;:&quot;121500000214202105141132335702&quot;,
-    &quot;refund_time_1&quot;:&quot;20210514115254&quot;,
-    &quot;refund_status_1&quot;:&quot;SUCCESS&quot;,
+    &quot;out_refund_no&quot;:&quot;T9802e9e18ff340548357bfba730d407&quot;,
+    &quot;refund_id&quot;:&quot;FTP202105141152540001&quot;,
+    &quot;refund_amount&quot;:1,
+    &quot;to_order_sn&quot;:&quot;121500000214202105141132335702&quot;,
+    &quot;refund_time&quot;:&quot;20210514115254&quot;,
+    &quot;refund_status&quot;:&quot;SUCCESS&quot;,
 &quot;sign&quot;:&quot;7A5CA8D8BD0F4E9F78641F9433FD3A4D&quot;,
 &quot;lang&quot;:&quot;en_US&quot;
 
